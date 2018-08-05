@@ -6,12 +6,14 @@ import { NavbarComponent } from './layout/navbar/navbar.component';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { NO_ERRORS_SCHEMA } from '../../node_modules/@angular/core';
 import { FooterComponent } from './layout/footer/footer.component';
+import { HomePageComponent } from './pages/home-page/home-page.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
-    FooterComponent
+    FooterComponent,
+    HomePageComponent
   ],
   imports: [
     MDBBootstrapModule.forRoot(),

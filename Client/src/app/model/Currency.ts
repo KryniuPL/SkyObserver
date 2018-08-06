@@ -6,5 +6,4 @@ export class Currency {
         this.name = name;
         this.pathToIconFile = path;
     }
-    
 }

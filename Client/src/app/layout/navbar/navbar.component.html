@@ -20,7 +20,8 @@
     <!-- Right -->
     <ul class="navbar-nav nav-flex-icons">
       <li class="nav-item">
-        <a class="nav-link" class="nav-link border border-light rounded" data-toggle="modal" data-target="#basicExample" (click)="frame.show()" mdbWavesEffect>
+        <a class="nav-link" class="nav-link border border-light rounded" data-toggle="modal" data-target="#basicExample" (click)="frame.show()"
+          mdbWavesEffect>
           <i class="fa fa-cogs" aria-hidden="true" data-target="#basicExampleModal"></i>
           <span class="clearfix d-none d-sm-inline-block" data-target="#basicExampleModal">Settings</span>
         </a>
@@ -51,26 +52,18 @@
 
       <!--Body-->
       <div class="modal-body">
-          <div class="form-group">
-              <label for="exampleFormControlSelect1">Language</label>
-              <select class="form-control" id="exampleFormControlSelect1">
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
-                <option>5</option>
-              </select>
-            </div>
-            <div class="form-group">
-                <label for="exampleFormControlSelect1">Currency</label>
-                <select class="form-control" id="exampleFormControlSelect1">
-                  <option>1</option>
-                  <option>2</option>
-                  <option>3</option>
-                  <option>4</option>
-                  <option>5</option>
-                </select>
-              </div>
+        <div class="form-group">
+          <label for="exampleFormControlSelect1">Language</label>
+          <select class="form-control special-color-dark" id="exampleFormControlSelect1">
+            <option *ngFor="let language of languages" [value]="language.name"> {{language.name}} </option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="exampleFormControlSelect1">Currency</label>
+          <select class="form-control special-color-dark" id="exampleFormControlSelect1">
+            <option *ngFor="let currency of currencies" [value]="currency.name"> {{currency.name}} </option>
+          </select>
+        </div>
       </div>
 
       <!--Footer-->

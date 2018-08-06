@@ -20,7 +20,7 @@
     <!-- Right -->
     <ul class="navbar-nav nav-flex-icons">
       <li class="nav-item">
-        <a class="nav-link" class="nav-link border border-light rounded" data-target="#basicExampleModal">
+        <a class="nav-link" class="nav-link border border-light rounded" data-toggle="modal" data-target="#basicExample" (click)="frame.show()" mdbWavesEffect>
           <i class="fa fa-cogs" aria-hidden="true" data-target="#basicExampleModal"></i>
           <span class="clearfix d-none d-sm-inline-block" data-target="#basicExampleModal">Settings</span>
         </a>
@@ -35,24 +35,38 @@
   </links>
 </mdb-navbar>
 
-
-<!-- Modal -->
-<div class="modal fade" id="basicExampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
+<div mdbModal #frame="mdbModal" class="modal fade top" id="frameModalTop" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog modal-notify modal-info" role="document">
+    <!--Content-->
     <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
+      <!--Header-->
+      <div class="modal-header unique-color-dark">
+        <p class="heading lead">Settings panel</p>
+
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="frame.hide()">
+          <span aria-hidden="true" class="white-text">&times;</span>
         </button>
       </div>
+
+      <!--Body-->
       <div class="modal-body">
-        ...
+          <p class="text-md-left">Language</p>
+          
       </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+
+      <!--Footer-->
+      <div class="modal-footer justify-content-center">
+        <button mdbBtn type="button" color="success" class="waves-light" mdbWavesEffect>
+          Save
+          <mdb-icon icon="check" class="mr-1"></mdb-icon>
+        </button>
+        <button mdbBtn type="button" color="mdb-color" class="waves-light" mdbWavesEffect (click)="frame.hide()">
+          Cancel
+          <mdb-icon icon="times" class="mr-1"></mdb-icon>
+        </button>
       </div>
     </div>
+    <!--/.Content-->
   </div>
 </div>

@@ -24,6 +24,8 @@ export class NavbarComponent implements OnInit {
   saveUserLanguageAndCurrencySettings(selectedLanguage: Language, selectedCurrency: Currency){
     this.selectedLanguage = selectedLanguage;
     this.selectedCurrency = selectedCurrency;
+    //save settings
+    //reload page
   }
 
 

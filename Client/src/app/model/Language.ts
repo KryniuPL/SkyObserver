@@ -6,4 +6,8 @@ export class Language {
         this.name = name;
         this.pathToIconFile = path;
     }
+
+    getName(){
+        return this.name;
+    }
 }

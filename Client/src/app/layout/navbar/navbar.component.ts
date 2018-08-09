@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
-import { Currency } from "../../model/Currency";
-import { Language } from "../../model/Language";
+import { Currency } from "../../model/classes/Currency";
+import { Language } from "../../model/classes/Language";
 
 @Component({
   selector: "app-navbar",

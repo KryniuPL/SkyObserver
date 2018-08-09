@@ -1,0 +1,25 @@
+.container{
+    top: 100px;
+    height: 10%;
+    width: 80%;
+    border: 0;
+    margin: 0;
+    position: absolute;
+    z-index: 2;
+    background: rgba(142, 168, 194, 0.3) /* Green background with 30% opacity */
+}
+
+@media only screen and (max-width: 768px) {
+    /* For desktop: */
+    .container {
+        width: 90%;
+    }
+}
+@media only screen and (max-width: 425px) {
+    /* For desktop: */
+    left: 5%;
+    right: 5%;
+    .container {
+        width: 90%;
+    }
+}

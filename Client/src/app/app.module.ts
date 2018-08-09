@@ -8,13 +8,15 @@ import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { NO_ERRORS_SCHEMA } from '../../node_modules/@angular/core';
 import { FooterComponent } from './layout/footer/footer.component';
 import { HomePageComponent } from './pages/home-page/home-page.component';
+import { SearchPanelComponent } from './layout/search-panel/search-panel/search-panel.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
     FooterComponent,
-    HomePageComponent
+    HomePageComponent,
+    SearchPanelComponent
   ],
   imports: [
     FormsModule,

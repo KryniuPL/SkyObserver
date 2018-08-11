@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -10,6 +10,7 @@ import { FooterComponent } from './layout/footer/footer.component';
 import { HomePageComponent } from './pages/home-page/home-page.component';
 import { SearchPanelComponent } from './layout/search-panel/search-panel.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {MatAutocompleteModule, MatInputModule} from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -20,8 +21,12 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
     SearchPanelComponent
   ],
   imports: [
+    MatInputModule,
+    MatAutocompleteModule,
+    BrowserModule,
     BrowserAnimationsModule,
     FormsModule,
+    ReactiveFormsModule,
     MDBBootstrapModule.forRoot(),
     BrowserModule,
     AppRoutingModule

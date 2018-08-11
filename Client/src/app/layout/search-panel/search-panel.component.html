@@ -1,3 +1,4 @@
+
 <div class="container">
   <div class="search-engine">
     <!-- powered by Skyscanner -->
@@ -17,7 +18,7 @@
       </div>
     </div>
 
-    <!-- Small button group -->
+    <!-- Number of passengers button group -->
     <div class="btn-group settings-item" mdbDropdown>
         <button mdbDropdownToggle mdbBtn color="elegant" size="sm" class="dropdown-toggle waves-light" type="button" mdbWavesEffect>
           1 passenger
@@ -27,7 +28,7 @@
         </div>
       </div>
 
-      <!-- Small button group -->
+      <!-- Class button group -->
     <div class="btn-group settings-item" mdbDropdown>
         <button mdbDropdownToggle mdbBtn color="elegant" size="sm" class="dropdown-toggle waves-light" type="button" mdbWavesEffect>
           Economy
@@ -42,5 +43,18 @@
       </div>
 
   </div>
-  Serch panel here
+  <div class="round-trip">
+      <form class="example-form">
+          <mat-form-field class="example-full-width">
+            <input type="text" placeholder="Pick one" aria-label="Number" matInput [formControl]="myControl" [matAutocomplete]="auto">
+            <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+              <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+                {{option}}
+              </mat-option>
+            </mat-autocomplete>
+          </mat-form-field>
+        </form>
+  </div>
+  
 </div>
+

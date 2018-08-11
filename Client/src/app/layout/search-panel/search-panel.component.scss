@@ -1,11 +1,30 @@
 .container{
     top: 100px;
-    height: 10%;
+    height: 15%;
     width: 80%;
     border: 0;
+    padding-right: 0;
+    padding-left: 0;
     margin: 0;
     position: absolute;
     z-index: 2;
+    background: rgba(142, 168, 194, 0.3) /* Green background with 30% opacity */
+}
+.search-engine{
+    border: 0;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 30%;
+    background: rgba(142, 168, 194, 0.6);
+}
+
+.settings {
+    border: 0;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 30%;
     background: rgba(142, 168, 194, 0.3) /* Green background with 30% opacity */
 }
 

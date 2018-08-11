@@ -9,6 +9,8 @@ import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { FooterComponent } from './layout/footer/footer.component';
 import { HomePageComponent } from './pages/home-page/home-page.component';
 import { SearchPanelComponent } from './layout/search-panel/search-panel.component';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {MatSelectModule} from '@angular/material/select';
 
 @NgModule({
   declarations: [
@@ -19,6 +21,8 @@ import { SearchPanelComponent } from './layout/search-panel/search-panel.compone
     SearchPanelComponent
   ],
   imports: [
+    MatSelectModule,
+    BrowserAnimationsModule,
     FormsModule,
     MDBBootstrapModule.forRoot(),
     BrowserModule,
@@ -28,4 +32,6 @@ import { SearchPanelComponent } from './layout/search-panel/search-panel.compone
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule { 
+
+}

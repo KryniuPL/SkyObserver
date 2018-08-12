@@ -1,3 +1,9 @@
+button{
+    margin: 0;
+    margin-bottom: 20px;
+    border: none;
+}
+
 .container{
     top: 100px;
     height: 40%;
@@ -43,7 +49,7 @@
 }
 
   .input {
-    margin-left: 20px;
+    
     width: 20%;
   }
  ::ng-deep .mat-form-field-appearance-fill .mat-form-field-flex {

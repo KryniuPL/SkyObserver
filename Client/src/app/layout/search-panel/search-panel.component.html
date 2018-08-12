@@ -46,7 +46,7 @@
   <div class="round-trip">
       <form>
 
-          <mat-form-field class="input" appearance="fill" [color]="warn">
+          <mat-form-field class="input" appearance="fill" [color]="warn" style="margin-left: 20px">
             <input type="text" placeholder="Where from?" aria-label="Number" matInput [formControl]="myControl" [matAutocomplete]="auto">
             <i class="material-icons" matPrefix>flight_takeoff</i>
             <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
@@ -55,6 +55,10 @@
               </mat-option>
             </mat-autocomplete>
           </mat-form-field>
+
+          <button mdbBtn type="button" color="elegant" mdbWavesEffect>
+            <mdb-icon icon="exchange" class="mr-1" size="2x"></mdb-icon>
+          </button>
 
           <mat-form-field class="input" appearance="fill" [color]="warn">
               <input type="text" placeholder="Where to?" aria-label="Number" matInput [formControl]="myControl" [matAutocomplete]="auto">
@@ -66,8 +70,17 @@
               </mat-autocomplete>
             </mat-form-field>
 
+            <mat-form-field class="input" appearance="fill" style="margin-left: 20px">
+                <input matInput [matDatepicker]="picker" placeholder="Departure date">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker touchUi #picker></mat-datepicker>
+            </mat-form-field>
 
-
+            <mat-form-field class="input" appearance="fill">
+                <input matInput [matDatepicker]="picker2" placeholder="Return date">
+                <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                <mat-datepicker touchUi #picker2></mat-datepicker>
+            </mat-form-field>
 
       </form>
   </div>

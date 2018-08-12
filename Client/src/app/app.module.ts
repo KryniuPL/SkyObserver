@@ -10,8 +10,10 @@ import { FooterComponent } from './layout/footer/footer.component';
 import { HomePageComponent } from './pages/home-page/home-page.component';
 import { SearchPanelComponent } from './layout/search-panel/search-panel.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {MatAutocompleteModule, MatInputModule} from '@angular/material';
+import {MatAutocompleteModule, MatInputModule, MatNativeDateModule} from '@angular/material';
 import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+
 
 @NgModule({
   declarations: [
@@ -22,6 +24,8 @@ import {MatFormFieldModule} from '@angular/material/form-field';
     SearchPanelComponent
   ],
   imports: [
+    MatDatepickerModule,
+    MatNativeDateModule,
     MatFormFieldModule,
     MatInputModule,
     MatAutocompleteModule,

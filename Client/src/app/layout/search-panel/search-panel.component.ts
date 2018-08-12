@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { FormControl, Validators, FormBuilder, FormGroup } from '@angular/forms';
 import {Observable} from 'rxjs';
 import {map, startWith} from 'rxjs/operators';
-import {MatAutocomplete} from '@angular/material/autocomplete';
+
 
 @Component({
   selector: 'app-search-panel',
@@ -11,11 +11,15 @@ import {MatAutocomplete} from '@angular/material/autocomplete';
 })
 export class SearchPanelComponent implements OnInit {
 
+  color = 'white';
   myControl = new FormControl();
   options: string[] = ['One', 'Two', 'Three'];
   filteredOptions: Observable<string[]>;
 
-  constructor() { }
+  constructor() {
+  
+  }
+
 
   ngOnInit() {
     this.filteredOptions = this.myControl.valueChanges.pipe(
@@ -24,6 +28,7 @@ export class SearchPanelComponent implements OnInit {
     );
   }
 
+  
   private _filter(value: string): string[] {
     const filterValue = value.toLowerCase();
 

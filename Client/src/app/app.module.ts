@@ -11,6 +11,7 @@ import { HomePageComponent } from './pages/home-page/home-page.component';
 import { SearchPanelComponent } from './layout/search-panel/search-panel.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatAutocompleteModule, MatInputModule} from '@angular/material';
+import {MatFormFieldModule} from '@angular/material/form-field';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import {MatAutocompleteModule, MatInputModule} from '@angular/material';
     SearchPanelComponent
   ],
   imports: [
+    MatFormFieldModule,
     MatInputModule,
     MatAutocompleteModule,
     BrowserModule,

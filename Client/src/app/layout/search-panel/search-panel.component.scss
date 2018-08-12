@@ -36,17 +36,15 @@
 
 .round-trip{
     height: 50%;
-    background-color: white;
+    background-color: #2E2E2E;
+}  
+  .input {
+    margin-left: 20px;
+    width: 20%;
+  }
+ ::ng-deep .mat-form-field-appearance-fill .mat-form-field-flex {
+    background-color: lightblue;
 }
-
-  .example-form {
-    width: 100% !important;
-  }
-  
-  .example-full-width {
-    width: 100% !important;
-  }
-  
 
 @media only screen and (max-width: 768px) {
     /* For desktop: */

@@ -9,7 +9,7 @@
       <button mdbDropdownToggle mdbBtn color="elegant" size="sm" class="dropdown-toggle waves-light" type="button" mdbWavesEffect>
         One way
       </button>
-      <div class="dropdown-menu">
+      <div class="dropdown-menu" style="position: absolute">
         <a class="dropdown-item" href="#">Action</a>
         <a class="dropdown-item" href="#">Another action</a>
         <a class="dropdown-item" href="#">Something else here</a>
@@ -44,16 +44,30 @@
 
   </div>
   <div class="round-trip">
-      <form class="example-form">
-          <mat-form-field class="example-full-width">
-            <input type="text" placeholder="Pick one" aria-label="Number" matInput [formControl]="myControl" [matAutocomplete]="auto">
+      <form>
+
+          <mat-form-field class="input" appearance="fill" [color]="warn">
+            <input type="text" placeholder="Where from?" aria-label="Number" matInput [formControl]="myControl" [matAutocomplete]="auto">
             <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
               <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
                 {{option}}
               </mat-option>
             </mat-autocomplete>
           </mat-form-field>
-        </form>
+
+          <mat-form-field class="input" appearance="fill" [color]="warn">
+              <input type="text" placeholder="Where to?" aria-label="Number" matInput [formControl]="myControl" [matAutocomplete]="auto">
+              <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+                <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+                  {{option}}
+                </mat-option>
+              </mat-autocomplete>
+            </mat-form-field>
+
+
+
+
+      </form>
   </div>
   
 </div>

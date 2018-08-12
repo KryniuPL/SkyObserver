@@ -5,11 +5,11 @@
   </div>
   <div class="settings">
     <!-- Small button group -->
-    <div class="btn-group settings-item" mdbDropdown>
+    <div class="btn-group settings-item" mdbDropdown style="z-index: 3;">
       <button mdbDropdownToggle mdbBtn color="elegant" size="sm" class="dropdown-toggle waves-light" type="button" mdbWavesEffect>
         One way
       </button>
-      <div class="dropdown-menu" style="position: absolute">
+      <div class="dropdown-menu" >
         <a class="dropdown-item" href="#">Action</a>
         <a class="dropdown-item" href="#">Another action</a>
         <a class="dropdown-item" href="#">Something else here</a>
@@ -19,7 +19,7 @@
     </div>
 
     <!-- Number of passengers button group -->
-    <div class="btn-group settings-item" mdbDropdown>
+    <div class="btn-group settings-item" mdbDropdown style="z-index: 3;">
         <button mdbDropdownToggle mdbBtn color="elegant" size="sm" class="dropdown-toggle waves-light" type="button" mdbWavesEffect>
           1 passenger
         </button>
@@ -29,11 +29,11 @@
       </div>
 
       <!-- Class button group -->
-    <div class="btn-group settings-item" mdbDropdown>
+    <div class="btn-group settings-item" mdbDropdown style="z-index: 3;">
         <button mdbDropdownToggle mdbBtn color="elegant" size="sm" class="dropdown-toggle waves-light" type="button" mdbWavesEffect>
           Economy
         </button>
-        <div class="dropdown-menu">
+        <div class="dropdown-menu" >
           <a class="dropdown-item" href="#">Action</a>
           <a class="dropdown-item" href="#">Another action</a>
           <a class="dropdown-item" href="#">Something else here</a>
@@ -48,6 +48,7 @@
 
           <mat-form-field class="input" appearance="fill" [color]="warn">
             <input type="text" placeholder="Where from?" aria-label="Number" matInput [formControl]="myControl" [matAutocomplete]="auto">
+            <i class="material-icons" matPrefix>flight_takeoff</i>
             <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
               <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
                 {{option}}
@@ -57,6 +58,7 @@
 
           <mat-form-field class="input" appearance="fill" [color]="warn">
               <input type="text" placeholder="Where to?" aria-label="Number" matInput [formControl]="myControl" [matAutocomplete]="auto">
+              <i class="material-icons" matPrefix>flight_land</i>
               <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
                 <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
                   {{option}}

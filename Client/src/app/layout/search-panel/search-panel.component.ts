@@ -13,7 +13,7 @@ export class SearchPanelComponent implements OnInit {
 
   color = 'white';
   myControl = new FormControl();
-  options: string[] = ['One', 'Two', 'Three'];
+  options: string[] = ['Warsaw', 'New York', 'London'];
   filteredOptions: Observable<string[]>;
 
   constructor() {

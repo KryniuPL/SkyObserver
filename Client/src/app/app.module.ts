@@ -13,6 +13,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatAutocompleteModule, MatInputModule, MatNativeDateModule} from '@angular/material';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatDatepickerModule} from '@angular/material/datepicker';
+import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
     NavbarComponent,
     FooterComponent,
     HomePageComponent,
-    SearchPanelComponent
+    SearchPanelComponent,
+    PageNotFoundComponent
   ],
   imports: [
     MatDatepickerModule,

@@ -1,3 +1,6 @@
+button{
+    background-color: #ee4b5e;
+}
 .btn-circle {
     width: 30px;
     height: 30px;
@@ -6,6 +9,7 @@
     font-size: 12px;
     line-height: 1.428571429;
     border-radius: 15px;
+    
   }
   .btn-circle.btn-lg {
     margin-bottom: 22px;
@@ -17,9 +21,17 @@
     border-radius: 25px;
   }
 
+.dropdown-divider{
+    margin: 0;
+}
+
+.dropdown-menu a:hover{
+    background-color: #4B515D;
+}
+
 .container{
     top: 100px;
-    height: 40%;
+    height: 25%;
     width: 80%;
     border: 0;
     padding-right: 0;
@@ -66,7 +78,7 @@
     width: 20%;
 }
  ::ng-deep .mat-form-field-appearance-fill .mat-form-field-flex {
-    background-color: lightblue;
+    background-color: rgba(71, 97, 129, 0.8);
 }
 
 @media only screen and (max-width: 768px) {

@@ -7,14 +7,14 @@
     <!-- Small button group -->
     <div class="btn-group settings-item" mdbDropdown style="z-index: 3;">
       <button mdbDropdownToggle mdbBtn color="elegant" size="sm" class="dropdown-toggle waves-light" type="button" mdbWavesEffect>
-        One way
+        {{selectedJourney.name}}
       </button>
       <div class="dropdown-menu" >
-        <a class="dropdown-item" href="#">Action</a>
-        <a class="dropdown-item" href="#">Another action</a>
-        <a class="dropdown-item" href="#">Something else here</a>
-        <div class="dropdown-divider"></div>
-        <a class="dropdown-item" href="#">Separated link</a>
+        <a *ngFor="let option of journeyOptions" class="dropdown-item" (click)="changeTypeOfJourney(option)">
+          {{option.name}}
+          <i *ngIf="option.isSelected" class="fa fa-check" aria-hidden="true" style="margin-left: 10px"></i>
+        </a>
+        
       </div>
     </div>
 
@@ -25,17 +25,21 @@
         </button>
     </div>
 
+ 
+
       <!-- Class button group -->
     <div class="btn-group settings-item" mdbDropdown style="z-index: 3;">
         <button mdbDropdownToggle mdbBtn color="elegant" size="sm" class="dropdown-toggle waves-light" type="button" mdbWavesEffect>
           Economy
         </button>
         <div class="dropdown-menu" >
-          <a class="dropdown-item" href="#">Action</a>
-          <a class="dropdown-item" href="#">Another action</a>
-          <a class="dropdown-item" href="#">Something else here</a>
+          <a class="dropdown-item" href="#">Economy</a>
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">Separated link</a>
+          <a class="dropdown-item" href="#">Premium Economy</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#">Business</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#">First class</a>
         </div>
       </div>
 
@@ -53,7 +57,7 @@
             </mat-autocomplete>
           </mat-form-field>
 
-          <button type="button" class="btn btn-info btn-circle btn-lg">
+          <button type="button" class="btn btn-circle btn-lg">
             <i class="material-icons" style="font-size: 30px;padding-right: 16px; 
             top: 50%;
             left: 50%;

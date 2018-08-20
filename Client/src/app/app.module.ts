@@ -14,7 +14,7 @@ import {MatAutocompleteModule, MatInputModule, MatNativeDateModule} from '@angul
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
-
+import {MatListModule} from '@angular/material/list';
 
 @NgModule({
   declarations: [
@@ -26,6 +26,7 @@ import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.com
     PageNotFoundComponent
   ],
   imports: [
+    MatListModule,
     MatDatepickerModule,
     MatNativeDateModule,
     MatFormFieldModule,

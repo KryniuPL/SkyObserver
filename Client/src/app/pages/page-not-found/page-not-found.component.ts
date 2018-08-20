@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Title } from '../../../../node_modules/@angular/platform-browser';
+import { Router } from '../../../../node_modules/@angular/router';
 
 @Component({
   selector: 'app-page-not-found',
@@ -8,7 +9,7 @@ import { Title } from '../../../../node_modules/@angular/platform-browser';
 })
 export class PageNotFoundComponent implements OnInit {
 
-  public constructor(private titleService: Title ) { }
+  public constructor(private titleService: Title,private router: Router) { }
 
   public setTitle( newTitle: string) {
     this.titleService.setTitle( newTitle );
@@ -17,5 +18,8 @@ export class PageNotFoundComponent implements OnInit {
   ngOnInit() {
     this.setTitle('Page Not Found');
   }
-
+  goHome(){ 
+    this.router.navigate(['']);
+    this.titleService.setTitle('SkyObserver');
+  }
 }

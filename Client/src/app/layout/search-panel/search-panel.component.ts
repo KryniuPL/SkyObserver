@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators, FormBuilder, FormGroup } from '@angular/forms';
 import {Observable} from 'rxjs';
 import {map, startWith} from 'rxjs/operators';
+import { JourneyOption } from '../../model/classes/JourneyOption';
 
 
 @Component({
@@ -11,13 +12,15 @@ import {map, startWith} from 'rxjs/operators';
 })
 export class SearchPanelComponent implements OnInit {
 
-  color = 'white';
+  journeyOptions: JourneyOption[] = [];
+
+
   myControl = new FormControl();
   options: string[] = ['Warsaw', 'New York', 'London'];
   filteredOptions: Observable<string[]>;
 
   constructor() {
-  
+      this.loadJourneyOptions();
   }
 
 
@@ -28,6 +31,11 @@ export class SearchPanelComponent implements OnInit {
     );
   }
 
+  loadJourneyOptions(){
+    this.journeyOptions.push(new JourneyOption('Round Trip', true));
+    this.journeyOptions.push(new JourneyOption('One-way', false));
+    this.journeyOptions.push(new JourneyOption('Multi-city', false));
+  }
   
   private _filter(value: string): string[] {
     const filterValue = value.toLowerCase();

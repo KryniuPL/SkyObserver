@@ -27,13 +27,7 @@ export class SearchPanelComponent implements OnInit {
 
   constructor() {
     this.loadJourneyOptions();
-    this.loadFlightsClasses();
-    this.selectedClass = this.flightsClasses.find(
-      flightClass => flightClass.name === "Economy"
-    );
-    this.selectedJourney = this.journeyOptions.find(
-      option => option.name === "Round Trip"
-    );
+    this.loadFlightsClasses(); 
   }
 
   changeTypeOfJourney(option: JourneyOption) {
@@ -63,6 +57,9 @@ export class SearchPanelComponent implements OnInit {
     this.journeyOptions.push(new JourneyOption("Round Trip", true));
     this.journeyOptions.push(new JourneyOption("One-way", false));
     this.journeyOptions.push(new JourneyOption("Multi-city", false));
+    this.selectedJourney = this.journeyOptions.find(
+      option => option.name === "Round Trip"
+    );
   }
 
   loadFlightsClasses() {
@@ -70,6 +67,9 @@ export class SearchPanelComponent implements OnInit {
     this.flightsClasses.push(new FlightClass("Premium Economy", false));
     this.flightsClasses.push(new FlightClass("Business", false));
     this.flightsClasses.push(new FlightClass("First Class", false));
+    this.selectedClass = this.flightsClasses.find(
+      flightClass => flightClass.name === "Economy"
+    );
   }
 
   private _filter(value: string): string[] {

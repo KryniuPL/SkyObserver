@@ -1,4 +1,25 @@
-
+mat-list-item.mat-list-item-content{
+    padding-left: 20px;
+}
+span{
+    width: 60%;
+}
+button.mat-icon-button{
+    font-size: 20px;
+    margin-right: 20px;
+    margin-left: 15px;
+    min-width: 50px;
+    background-color: #E0E0E0;
+    border-radius: 10%;
+}
+button.mat-icon-button[disabled]{
+    font-size: 20px;
+    margin-right: 20px;
+    margin-left: 15px;
+    min-width: 50px;
+    background-color: #F7F7F7;
+    border-radius: 10%;
+}
 .btn-circle {
     width: 30px;
     height: 30px;

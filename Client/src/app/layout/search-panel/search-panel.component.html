@@ -1,4 +1,3 @@
-
 <div class="container">
   <div class="search-engine">
     <!-- powered by Skyscanner -->
@@ -9,93 +8,90 @@
       <button mdbDropdownToggle mdbBtn color="elegant" size="sm" class="dropdown-toggle waves-light" type="button" mdbWavesEffect>
         {{selectedJourney.name}}
       </button>
-      <div class="dropdown-menu" >
+      <div class="dropdown-menu">
         <a *ngFor="let option of journeyOptions" class="dropdown-item" (click)="changeTypeOfJourney(option)">
           {{option.name}}
           <i *ngIf="option.isSelected" class="fa fa-check" aria-hidden="true" style="margin-left: 10px"></i>
         </a>
-        
+
       </div>
     </div>
 
     <!-- Number of passengers button group -->
     <div class="btn-group settings-item" mdbDropdown style="z-index: 3;">
-        <button mdbDropdownToggle mdbBtn color="elegant" size="sm" class="dropdown-toggle waves-light" type="button" mdbWavesEffect (click)="basicModal.show()">
-          1 passenger
-        </button>
+      <button mdbDropdownToggle mdbBtn color="elegant" size="sm" class="dropdown-toggle waves-light" type="button" mdbWavesEffect
+        (click)="basicModal.show()">
+        1 passenger
+      </button>
     </div>
 
- 
 
-      <!-- Class button group -->
+
+    <!-- Class button group -->
     <div class="btn-group settings-item" mdbDropdown style="z-index: 3;">
-        <button mdbDropdownToggle mdbBtn color="elegant" size="sm" class="dropdown-toggle waves-light" type="button" mdbWavesEffect>
-          Economy
-        </button>
-        <div class="dropdown-menu" >
-          <a class="dropdown-item" href="#">Economy</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">Premium Economy</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">Business</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">First class</a>
-        </div>
+      <button mdbDropdownToggle mdbBtn color="elegant" size="sm" class="dropdown-toggle waves-light" type="button" mdbWavesEffect>
+        {{selectedClass.name}}
+      </button>
+      <div class="dropdown-menu">
+        <a *ngFor="let flightClass of flightsClasses" class="dropdown-item" (click)="changeFlightClass(flightClass)">
+          {{flightClass.name}}
+          <i *ngIf="flightClass.isSelected" class="fa fa-check" aria-hidden="true" style="margin-left: 10px"></i>
+        </a>
       </div>
+    </div>
 
   </div>
   <div class="round-trip">
-      <form>
+    <form>
 
-          <mat-form-field class="input" appearance="fill" [color]="warn" style="margin-left: 20px">
-            <input type="text" placeholder="Where from?" aria-label="Number" matInput [formControl]="myControl" [matAutocomplete]="auto">
-            <i class="material-icons" matPrefix>flight_takeoff</i>
-            <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
-              <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
-                {{option}}
-              </mat-option>
-            </mat-autocomplete>
-          </mat-form-field>
+      <mat-form-field class="input" appearance="fill" [color]="warn" style="margin-left: 20px">
+        <input type="text" placeholder="Where from?" aria-label="Number" matInput [formControl]="myControl" [matAutocomplete]="auto">
+        <i class="material-icons" matPrefix>flight_takeoff</i>
+        <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+          <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+            {{option}}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
 
-          <button type="button" class="btn btn-circle btn-lg" style="background-color: #ee4b5e">
-            <i class="material-icons" style="font-size: 30px;padding-right: 16px; 
+      <button type="button" class="btn btn-circle btn-lg" style="background-color: #ee4b5e">
+        <i class="material-icons" style="font-size: 30px;padding-right: 16px; 
             top: 50%;
             left: 50%;
             height: 60%;
             transform: translate(-50%, -50%);
             display: block;">compare_arrows</i>
-          </button>
+      </button>
 
-          <mat-form-field class="input" appearance="fill" [color]="warn">
-              <input type="text" placeholder="Where to?" aria-label="Number" matInput [formControl]="myControl" [matAutocomplete]="auto">
-              <i class="material-icons" matPrefix>flight_land</i>
-              <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
-                <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
-                  {{option}}
-                </mat-option>
-              </mat-autocomplete>
-            </mat-form-field>
+      <mat-form-field class="input" appearance="fill" [color]="warn">
+        <input type="text" placeholder="Where to?" aria-label="Number" matInput [formControl]="myControl" [matAutocomplete]="auto">
+        <i class="material-icons" matPrefix>flight_land</i>
+        <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+          <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+            {{option}}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
 
-            <mat-form-field class="input" appearance="fill" style="margin-left: 20px">
-                <input matInput [matDatepicker]="picker" placeholder="Departure date">
-                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                <mat-datepicker touchUi #picker></mat-datepicker>
-            </mat-form-field>
+      <mat-form-field class="input" appearance="fill" style="margin-left: 20px">
+        <input matInput [matDatepicker]="picker" placeholder="Departure date">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker touchUi #picker></mat-datepicker>
+      </mat-form-field>
 
-            <mat-form-field class="input" appearance="fill" style="margin-left: 10px">
-                <input matInput [matDatepicker]="picker2" placeholder="Return date">
-                <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
-                <mat-datepicker touchUi #picker2></mat-datepicker>
-            </mat-form-field>
+      <mat-form-field class="input" appearance="fill" style="margin-left: 10px">
+        <input matInput [matDatepicker]="picker2" placeholder="Return date">
+        <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+        <mat-datepicker touchUi #picker2></mat-datepicker>
+      </mat-form-field>
 
-      </form>
+    </form>
   </div>
-  
+
 </div>
 
 
-<div mdbModal #basicModal="mdbModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myBasicModalLabel"
-  aria-hidden="true">
+<div mdbModal #basicModal="mdbModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myBasicModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-sm" role="document">
     <div class="modal-content">
       <div class="modal-header unique-color-dark" style="color:white;">

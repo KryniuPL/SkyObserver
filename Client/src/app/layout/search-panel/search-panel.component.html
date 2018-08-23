@@ -114,21 +114,21 @@
           </mat-list-item>
           <mat-list-item role="listitem">
               <span>Children</span>
-              <button mat-icon-button color="basic" disabled (click)="deletePassenger('Child')">
+              <button mat-icon-button color="basic" [disabled]="children.length < 1" (click)="deletePassenger('Child')">
                   <mat-icon aria-label="Example icon-button with a heart icon">remove</mat-icon>
               </button>
               {{children.length}}
-              <button mat-icon-button color="basic" (click)="addPassanger('Child')">
+              <button mat-icon-button color="basic" [disabled]="children.length === 9" (click)="addPassanger('Child')">
                   <mat-icon aria-label="Example icon-button with a heart icon">add</mat-icon>
                 </button>
           </mat-list-item>
           <mat-list-item role="listitem">
               <span>Infants</span>
-              <button mat-icon-button color="basic" disabled (click)="deletePassenger('Infant')">
+              <button mat-icon-button color="basic" [disabled]="infants.length < 1" (click)="deletePassenger('Infant')">
                   <mat-icon aria-label="Example icon-button with a heart icon">remove</mat-icon>
               </button>
               {{infants.length}}
-              <button mat-icon-button color="basic" (click)="addPassanger('Infant')">
+              <button mat-icon-button color="basic" [disabled]="infants.length === 9" (click)="addPassanger('Infant')">
                   <mat-icon aria-label="Example icon-button with a heart icon">add</mat-icon>
                 </button>
           </mat-list-item>

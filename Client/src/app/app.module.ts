@@ -16,7 +16,7 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
 import {MatListModule} from '@angular/material/list';
 import {MatButtonModule} from '@angular/material/button';
-import {MatIconModule} from '@angular/material/icon'
+import {MatIconModule} from '@angular/material/icon';
 
 @NgModule({
   declarations: [
@@ -25,7 +25,7 @@ import {MatIconModule} from '@angular/material/icon'
     FooterComponent,
     HomePageComponent,
     SearchPanelComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
   ],
   imports: [
     MatIconModule,

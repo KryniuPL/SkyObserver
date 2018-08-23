@@ -21,7 +21,7 @@
     <div class="btn-group settings-item" mdbDropdown style="z-index: 3;">
       <button mdbDropdownToggle mdbBtn color="elegant" size="sm" class="dropdown-toggle waves-light" type="button" mdbWavesEffect
         (click)="basicModal.show()">
-        1 passenger
+        Passanger
       </button>
     </div>
 
@@ -104,39 +104,39 @@
         <mat-list role="list">
           <mat-list-item role="listitem">
             <span>Adults</span>
-            <button mat-icon-button color="basic" disabled>
+            <button mat-icon-button color="basic" [disabled]="adults.length < 2" (click)="deletePassenger('Adult')">
                 <mat-icon aria-label="Example icon-button with a heart icon">remove</mat-icon>
             </button>
-            2
-            <button mat-icon-button color="basic">
+            {{adults.length}}
+            <button mat-icon-button color="basic" [disabled]="adults.length === 9" (click)="addPassanger('Adult')">
                 <mat-icon aria-label="Example icon-button with a heart icon">add</mat-icon>
               </button>
           </mat-list-item>
           <mat-list-item role="listitem">
               <span>Children</span>
-              <button mat-icon-button color="basic" disabled>
+              <button mat-icon-button color="basic" disabled (click)="deletePassenger('Child')">
                   <mat-icon aria-label="Example icon-button with a heart icon">remove</mat-icon>
               </button>
-              2
-              <button mat-icon-button color="basic">
+              {{children.length}}
+              <button mat-icon-button color="basic" (click)="addPassanger('Child')">
                   <mat-icon aria-label="Example icon-button with a heart icon">add</mat-icon>
                 </button>
           </mat-list-item>
           <mat-list-item role="listitem">
               <span>Infants</span>
-              <button mat-icon-button color="basic" disabled>
+              <button mat-icon-button color="basic" disabled (click)="deletePassenger('Infant')">
                   <mat-icon aria-label="Example icon-button with a heart icon">remove</mat-icon>
               </button>
-              2
-              <button mat-icon-button color="basic">
+              {{infants.length}}
+              <button mat-icon-button color="basic" (click)="addPassanger('Infant')">
                   <mat-icon aria-label="Example icon-button with a heart icon">add</mat-icon>
                 </button>
           </mat-list-item>
         </mat-list>
       </div>
       <div class="modal-footer">
-        <button type="button" mdbBtn color="secondary" class="waves-light" aria-label="Close" (click)="basicModal.hide()" mdbWavesEffect>Close</button>
-        <button type="button" mdbBtn color="primary" class="relative waves-light" mdbWavesEffect>Save changes</button>
+        <button style="width: 35%" type="button" mdbBtn color="mdb-color" class="relative waves-light" aria-label="Close" (click)="basicModal.hide();clearPassangersLists();loadPassengers()" mdbWavesEffect>Close</button>
+        <button type="button" mdbBtn color="success" class="relative waves-light" mdbWavesEffect>Save changes</button>
       </div>
     </div>
   </div>

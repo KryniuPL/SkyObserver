@@ -9,6 +9,7 @@ import { Observable } from "rxjs";
 import { map, startWith } from "rxjs/operators";
 import { JourneyOption } from "../../model/classes/JourneyOption";
 import { FlightClass } from "../../model/classes/FlightClass";
+import { Passenger } from "../../model/classes/Passenger";
 
 @Component({
   selector: "app-search-panel",
@@ -17,17 +18,50 @@ import { FlightClass } from "../../model/classes/FlightClass";
 })
 export class SearchPanelComponent implements OnInit {
   selectedJourney: JourneyOption;
-  journeyOptions: JourneyOption[] = [];
   selectedClass: FlightClass;
+  journeyOptions: JourneyOption[] = [];
   flightsClasses: FlightClass[] = [];
+  adults: Passenger[] = [];
+  children: Passenger[] = [];
+  infants: Passenger[] = [];
+
 
   myControl = new FormControl();
   options: string[] = ["Warsaw", "New York", "London"];
   filteredOptions: Observable<string[]>;
 
   constructor() {
-    this.loadJourneyOptions();
-    this.loadFlightsClasses(); 
+
+  }
+
+  addPassanger(typeOfPassanger: string){
+    if(typeOfPassanger === 'Adult'){
+      this.adults.push(new Passenger('Adult'));
+    }
+    else if(typeOfPassanger === 'Child'){
+      this.children.push(new Passenger('Child'))
+    }
+    else{
+      this.infants.push(new Passenger('Infant'));
+    }
+  }
+
+  deletePassenger(typeOfPassanger: string){
+    if(typeOfPassanger === 'Adult'){
+      this.adults.pop();
+    }
+    else if(typeOfPassanger === 'Child'){
+      this.children.pop()
+    }
+    else{
+      this.infants.pop();
+    }
+  }
+
+  clearPassangersLists(){
+    this.adults = [];
+    this.children = [];
+    this.infants = [];
   }
 
   changeTypeOfJourney(option: JourneyOption) {
@@ -47,6 +81,9 @@ export class SearchPanelComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.loadJourneyOptions();
+    this.loadFlightsClasses(); 
+    this.loadPassengers();
     this.filteredOptions = this.myControl.valueChanges.pipe(
       startWith(""),
       map(value => this._filter(value))
@@ -70,6 +107,10 @@ export class SearchPanelComponent implements OnInit {
     this.selectedClass = this.flightsClasses.find(
       flightClass => flightClass.name === "Economy"
     );
+  }
+
+  loadPassengers(){
+    this.adults.push(new Passenger('Adult'));
   }
 
   private _filter(value: string): string[] {

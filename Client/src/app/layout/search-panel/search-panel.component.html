@@ -100,32 +100,32 @@
         <mat-list role="list">
           <mat-list-item role="listitem">
             <span>Adults</span>
-            <button mat-icon-button color="basic" [disabled]="adults.length < 2" (click)="deletePassenger('Adult')">
-              <mat-icon aria-label="Example icon-button with a heart icon">remove</mat-icon>
+            <button class="passengersButtons" mat-icon-button color="basic" [disabled]="adults.length < 2" (click)="deletePassenger('Adult')">
+              <mat-icon class="passengersIcons" aria-label="Example icon-button with a heart icon">remove</mat-icon>
             </button>
             {{adults.length}}
-            <button mat-icon-button color="basic" [disabled]="adults.length === 9" (click)="addPassanger('Adult')">
-              <mat-icon aria-label="Example icon-button with a heart icon">add</mat-icon>
+            <button class="passengersButtons"  mat-icon-button color="basic" [disabled]="adults.length === 9" (click)="addPassanger('Adult')">
+              <mat-icon  class="passengersIcons" aria-label="Example icon-button with a heart icon">add</mat-icon>
             </button>
           </mat-list-item>
           <mat-list-item role="listitem">
             <span>Children</span>
-            <button mat-icon-button color="basic" [disabled]="children.length < 1" (click)="deletePassenger('Child')">
-              <mat-icon aria-label="Example icon-button with a heart icon">remove</mat-icon>
+            <button class="passengersButtons"  mat-icon-button color="basic" [disabled]="children.length < 1" (click)="deletePassenger('Child')">
+              <mat-icon class="passengersIcons" aria-label="Example icon-button with a heart icon">remove</mat-icon>
             </button>
             {{children.length}}
-            <button mat-icon-button color="basic" [disabled]="children.length === 9" (click)="addPassanger('Child')">
-              <mat-icon aria-label="Example icon-button with a heart icon">add</mat-icon>
+            <button class="passengersButtons"  mat-icon-button color="basic" [disabled]="children.length === 9" (click)="addPassanger('Child')">
+              <mat-icon class="passengersIcons" aria-label="Example icon-button with a heart icon">add</mat-icon>
             </button>
           </mat-list-item>
           <mat-list-item role="listitem">
             <span>Infants</span>
-            <button mat-icon-button color="basic" [disabled]="infants.length < 1" (click)="deletePassenger('Infant')">
-              <mat-icon aria-label="Example icon-button with a heart icon">remove</mat-icon>
+            <button  class="passengersButtons" mat-icon-button color="basic" [disabled]="infants.length < 1" (click)="deletePassenger('Infant')">
+              <mat-icon class="passengersIcons" aria-label="Example icon-button with a heart icon">remove</mat-icon>
             </button>
             {{infants.length}}
-            <button mat-icon-button color="basic" [disabled]="infants.length === 9" (click)="addPassanger('Infant')">
-              <mat-icon aria-label="Example icon-button with a heart icon">add</mat-icon>
+            <button class="passengersButtons"  mat-icon-button color="basic" [disabled]="infants.length === 9" (click)="addPassanger('Infant')">
+              <mat-icon class="passengersIcons" aria-label="Example icon-button with a heart icon">add</mat-icon>
             </button>
           </mat-list-item>
         </mat-list>

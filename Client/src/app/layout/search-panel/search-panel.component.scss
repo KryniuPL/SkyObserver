@@ -45,6 +45,7 @@ button.mat-icon-button[disabled]{
 }
 
 .dropdown-menu a:hover{
+    color: white;
     background-color: #4B515D;
 }
 
@@ -80,20 +81,35 @@ button.mat-icon-button[disabled]{
     background-color: #1C2331;
 }  
 .material-icons{
-    padding-right: 10px
+    margin-top: 4px;
+    padding-right: 10px;
+    color: white
 }
 
-.input{
-    height: 20%;
-    width: 20%;
+::ng-deep.mat-form-field-infix {
+    padding: .5em 0;
+    border-top: 0 solid transparent;
+    color: black;
 }
-
+::ng-deep button.mat-icon-button{
+    color: white;
+    margin-top: 4px;
+    height: 20px !important;
+    width: 20px !important;
+}
+.passengersButtons{
+    height: 40px !important;
+}
+.passengersIcons{
+    color: black !important;
+}
 .date{
     height: 20%;
     width: 20%;
 }
  ::ng-deep .mat-form-field-appearance-fill .mat-form-field-flex {
     background-color: rgba(71, 97, 129, 0.8);
+    color: white;
 }
 
 @media only screen and (max-width: 768px) {

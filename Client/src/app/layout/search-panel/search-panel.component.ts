@@ -17,10 +17,12 @@ import { Passenger } from "../../model/classes/Passenger";
   styleUrls: ["./search-panel.component.scss"]
 })
 export class SearchPanelComponent implements OnInit {
+  oneWay: boolean = false;
   selectedJourney: JourneyOption;
   selectedClass: FlightClass;
   journeyOptions: JourneyOption[] = [];
   flightsClasses: FlightClass[] = [];
+  allPassengers: Passenger[] = [];
   adults: Passenger[] = [];
   children: Passenger[] = [];
   infants: Passenger[] = [];
@@ -32,6 +34,18 @@ export class SearchPanelComponent implements OnInit {
 
   constructor() {
 
+  }
+  submitPassengersDialog(){
+    this.allPassengers = [];
+    this.adults.forEach(element => {
+      this.allPassengers.push(element);
+    });
+    this.children.forEach(element => {
+      this.allPassengers.push(element);
+    });
+    this.infants.forEach(element => {
+      this.allPassengers.push(element);
+    });
   }
 
   addPassanger(typeOfPassanger: string){
@@ -59,6 +73,7 @@ export class SearchPanelComponent implements OnInit {
   }
 
   clearPassangersLists(){
+    this.allPassengers = [];
     this.adults = [];
     this.children = [];
     this.infants = [];
@@ -70,6 +85,12 @@ export class SearchPanelComponent implements OnInit {
     });
     this.selectedJourney = option;
     this.selectedJourney.isSelected = true;
+    if(this.selectedJourney.name === 'One-way'){
+      this.oneWay = true
+    }
+    else {
+      this.oneWay = false;
+    }
   }
 
   changeFlightClass(flightClass: FlightClass) {
@@ -111,6 +132,7 @@ export class SearchPanelComponent implements OnInit {
 
   loadPassengers(){
     this.adults.push(new Passenger('Adult'));
+    this.allPassengers.push(new Passenger('Adult'));
   }
 
   private _filter(value: string): string[] {

@@ -1,7 +1,5 @@
 <div class="container">
-  <div class="search-engine">
-    <!-- powered by Skyscanner -->
-  </div>
+
   <div class="settings">
     <!-- Small button group -->
     <div class="btn-group settings-item" mdbDropdown style="z-index: 3;">
@@ -13,7 +11,6 @@
           {{option.name}}
           <i *ngIf="option.isSelected" class="fa fa-check" aria-hidden="true" style="margin-left: 10px"></i>
         </a>
-
       </div>
     </div>
 
@@ -21,11 +18,10 @@
     <div class="btn-group settings-item" mdbDropdown style="z-index: 3;">
       <button mdbDropdownToggle mdbBtn color="elegant" size="sm" class="dropdown-toggle waves-light" type="button" mdbWavesEffect
         (click)="basicModal.show()">
-        Passanger
+        <span *ngIf="allPassengers.length === 1"> 1 Passenger </span>
+        <span *ngIf="allPassengers.length > 1">{{ allPassengers.length }} Passengers</span>
       </button>
     </div>
-
-
 
     <!-- Class button group -->
     <div class="btn-group settings-item" mdbDropdown style="z-index: 3;">
@@ -73,13 +69,13 @@
         </mat-autocomplete>
       </mat-form-field>
 
-      <mat-form-field class="input" appearance="fill" style="margin-left: 20px">
+      <mat-form-field class="date" [style.width.%]="oneWay ? 42 : 20" appearance="fill" style="margin-left: 20px">
         <input matInput [matDatepicker]="picker" placeholder="Departure date">
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker touchUi #picker></mat-datepicker>
       </mat-form-field>
 
-      <mat-form-field class="input" appearance="fill" style="margin-left: 10px">
+      <mat-form-field *ngIf="selectedJourney.name === 'Round Trip'" class="input" appearance="fill" style="margin-left: 10px">
         <input matInput [matDatepicker]="picker2" placeholder="Return date">
         <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
         <mat-datepicker touchUi #picker2></mat-datepicker>
@@ -105,38 +101,39 @@
           <mat-list-item role="listitem">
             <span>Adults</span>
             <button mat-icon-button color="basic" [disabled]="adults.length < 2" (click)="deletePassenger('Adult')">
-                <mat-icon aria-label="Example icon-button with a heart icon">remove</mat-icon>
+              <mat-icon aria-label="Example icon-button with a heart icon">remove</mat-icon>
             </button>
             {{adults.length}}
             <button mat-icon-button color="basic" [disabled]="adults.length === 9" (click)="addPassanger('Adult')">
-                <mat-icon aria-label="Example icon-button with a heart icon">add</mat-icon>
-              </button>
+              <mat-icon aria-label="Example icon-button with a heart icon">add</mat-icon>
+            </button>
           </mat-list-item>
           <mat-list-item role="listitem">
-              <span>Children</span>
-              <button mat-icon-button color="basic" [disabled]="children.length < 1" (click)="deletePassenger('Child')">
-                  <mat-icon aria-label="Example icon-button with a heart icon">remove</mat-icon>
-              </button>
-              {{children.length}}
-              <button mat-icon-button color="basic" [disabled]="children.length === 9" (click)="addPassanger('Child')">
-                  <mat-icon aria-label="Example icon-button with a heart icon">add</mat-icon>
-                </button>
+            <span>Children</span>
+            <button mat-icon-button color="basic" [disabled]="children.length < 1" (click)="deletePassenger('Child')">
+              <mat-icon aria-label="Example icon-button with a heart icon">remove</mat-icon>
+            </button>
+            {{children.length}}
+            <button mat-icon-button color="basic" [disabled]="children.length === 9" (click)="addPassanger('Child')">
+              <mat-icon aria-label="Example icon-button with a heart icon">add</mat-icon>
+            </button>
           </mat-list-item>
           <mat-list-item role="listitem">
-              <span>Infants</span>
-              <button mat-icon-button color="basic" [disabled]="infants.length < 1" (click)="deletePassenger('Infant')">
-                  <mat-icon aria-label="Example icon-button with a heart icon">remove</mat-icon>
-              </button>
-              {{infants.length}}
-              <button mat-icon-button color="basic" [disabled]="infants.length === 9" (click)="addPassanger('Infant')">
-                  <mat-icon aria-label="Example icon-button with a heart icon">add</mat-icon>
-                </button>
+            <span>Infants</span>
+            <button mat-icon-button color="basic" [disabled]="infants.length < 1" (click)="deletePassenger('Infant')">
+              <mat-icon aria-label="Example icon-button with a heart icon">remove</mat-icon>
+            </button>
+            {{infants.length}}
+            <button mat-icon-button color="basic" [disabled]="infants.length === 9" (click)="addPassanger('Infant')">
+              <mat-icon aria-label="Example icon-button with a heart icon">add</mat-icon>
+            </button>
           </mat-list-item>
         </mat-list>
       </div>
       <div class="modal-footer">
-        <button style="width: 35%" type="button" mdbBtn color="mdb-color" class="relative waves-light" aria-label="Close" (click)="basicModal.hide();clearPassangersLists();loadPassengers()" mdbWavesEffect>Close</button>
-        <button type="button" mdbBtn color="success" class="relative waves-light" mdbWavesEffect>Save changes</button>
+        <button style="width: 35%" type="button" mdbBtn color="mdb-color" class="relative waves-light" aria-label="Close" (click)="basicModal.hide()"
+          mdbWavesEffect>Close</button>
+        <button type="button" mdbBtn color="success" class="relative waves-light" mdbWavesEffect (click)="submitPassengersDialog();basicModal.hide()">Save changes</button>
       </div>
     </div>
   </div>

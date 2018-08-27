@@ -40,7 +40,7 @@
   <div class="round-trip">
     <form>
 
-      <mat-form-field class="input" appearance="fill" [color]="warn" style="margin-left: 20px">
+      <mat-form-field [color]="color" class="input" appearance="fill" [color]="warn" style="margin-left: 20px">
         <input type="text" placeholder="Where from?" aria-label="Number" matInput [formControl]="myControl" [matAutocomplete]="auto">
         <i class="material-icons" matPrefix>flight_takeoff</i>
         <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">

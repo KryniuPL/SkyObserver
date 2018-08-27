@@ -17,6 +17,7 @@ import { Passenger } from "../../model/classes/Passenger";
   styleUrls: ["./search-panel.component.scss"]
 })
 export class SearchPanelComponent implements OnInit {
+  color: string = 'white';
   oneWay: boolean = false;
   selectedJourney: JourneyOption;
   selectedClass: FlightClass;

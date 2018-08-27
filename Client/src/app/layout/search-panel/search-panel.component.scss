@@ -1,8 +1,15 @@
 .list .mat-list .mat-list-item .mat-list-item-content {
     padding: 20px !important; /* try to use !important if doesn't work */
   }
+  ::placeholder {
+    color: white;
+  }
 span{
     width: 60%;
+}
+
+.mat-input-element {
+    color: white;
 }
 button.mat-icon-button{
     font-size: 20px;

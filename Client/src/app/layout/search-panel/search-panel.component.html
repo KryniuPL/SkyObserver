@@ -37,7 +37,8 @@
     </div>
 
   </div>
-  <div class="round-trip">
+
+  <div class="round-trip" *ngIf="multiTrip === false">
     <form>
 
       <mat-form-field [color]="color" class="input" appearance="fill" [color]="warn" style="margin-left: 20px">
@@ -84,7 +85,9 @@
     </form>
     
   </div>
+  <app-multi-travel *ngIf="multiTrip === true">
 
+  </app-multi-travel>
 </div>
 
 

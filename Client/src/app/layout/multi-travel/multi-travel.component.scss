@@ -1,0 +1,149 @@
+
+.list .mat-list .mat-list-item .mat-list-item-content {
+    padding: 20px !important; /* try to use !important if doesn't work */
+  }
+::placeholder {
+    color: white;
+}
+span{
+    width: 60%;
+}
+
+.clear{
+    margin-top: 0 !important;
+    margin-left: 0 !important;
+    margin-bottom: 5px !important;
+    background-color: #1C2331 !important;
+    outline: none;
+    
+}
+.mat-input-element {
+    color: white;
+}
+button.mat-icon-button{
+    font-size: 20px;
+    margin-right: 20px;
+    margin-left: 15px;
+    min-width: 50px;
+    background-color: #E0E0E0;
+    border-radius: 10%;
+}
+button.mat-icon-button[disabled]{
+    font-size: 20px;
+    margin-right: 20px;
+    margin-left: 15px;
+    min-width: 50px;
+    background-color: #F7F7F7;
+    border-radius: 10%;
+}
+.btn-circle {
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    padding: 6px 0;
+    font-size: 12px;
+    line-height: 1.428571429;
+    border-radius: 15px;
+    
+  }
+  .btn-circle.btn-lg {
+    margin-bottom: 22px;
+    width: 50px;
+    height: 50px;
+    padding: 10px 16px;
+    font-size: 18px;
+    line-height: 1.33;
+    border-radius: 25px;
+  }
+
+.dropdown-divider{
+    margin: 0;
+}
+
+.dropdown-menu a:hover{
+    color: white;
+    background-color: #4B515D;
+}
+
+.multi-trip{
+    height: 100%;
+    background-color: #1C2331;
+}  
+.material-icons{
+    margin-top: 4px;
+    padding-right: 10px;
+    color: white
+}
+
+::ng-deep.mat-form-field-infix {
+    padding: .5em 0;
+    border-top: 0 solid transparent;
+    color: black;
+}
+::ng-deep button.mat-icon-button{
+    color: white;
+    margin-top: 4px;
+    height: 20px !important;
+    width: 20px !important;
+}
+.passengersButtons{
+    height: 40px !important;
+}
+.passengersIcons{
+    color: black !important;
+}
+
+::ng-deep.mat-calendar-next-button.mat-icon-button{
+    min-height: 40px !important;
+    min-width: 40px !important;
+}
+::ng-deep.mat-calendar-previous-button.mat-icon-button{
+    min-height: 40px !important;
+    min-width: 40px !important;
+}
+
+ ::ng-deep .mat-form-field-appearance-fill .mat-form-field-flex {
+    background-color: rgba(71, 97, 129, 0.8);
+    color: white;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// @media only screen and (max-width: 768px) {
+//     /* For desktop: */
+//     .container {
+//         width: 90%;
+//     }
+// }
+// @media only screen and (max-width: 425px) {
+//     /* For desktop: */
+//     left: 5%;
+//     right: 5%;
+//     .container {
+//         width: 90%;
+//     }
+// }

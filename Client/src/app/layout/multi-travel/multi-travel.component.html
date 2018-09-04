@@ -1,3 +1,44 @@
-<p>
-  multi-travel works!
-</p>
+<div class="multi-trip">
+  <form>
+    <mat-form-field [color]="color" class="input" appearance="fill" [color]="warn" style="margin-left: 55px">
+      <input type="text" placeholder="Where from?" aria-label="Number" matInput [formControl]="myControl" [matAutocomplete]="auto">
+      <i class="material-icons" matPrefix>flight_takeoff</i>
+      <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+        <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+          {{option}}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+
+    <button type="button" class="btn btn-circle btn-lg" style="background-color: #ee4b5e">
+      <i class="material-icons" style="font-size: 30px;padding-right: 16px; 
+          top: 50%;
+          left: 50%;
+          height: 60%;
+          transform: translate(-50%, -50%);
+          display: block;">compare_arrows</i>
+    </button>
+
+    <mat-form-field class="input" appearance="fill" [color]="warn">
+      <input type="text" placeholder="Where to?" aria-label="Number" matInput [formControl]="myControl" [matAutocomplete]="auto">
+      <i class="material-icons" matPrefix>flight_land</i>
+      <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+        <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+          {{option}}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+
+    <mat-form-field class="date" [style.width.%]="36" appearance="fill" style="margin-left: 20px">
+      <input matInput [matDatepicker]="picker" placeholder="Departure date">
+      <mat-datepicker-toggle matSuffix [for]="picker" class="datesIcons"></mat-datepicker-toggle>
+      <mat-datepicker touchUi #picker></mat-datepicker>
+    </mat-form-field>
+
+    <button mat-icon-button class="clear">
+      <mat-icon aria-label="Example icon-button with a heart icon" style="margin-top: 0; height: 35px;">clear</mat-icon>
+    </button>
+
+  </form>
+  
+</div>

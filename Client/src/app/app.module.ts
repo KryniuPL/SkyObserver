@@ -17,6 +17,7 @@ import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.com
 import {MatListModule} from '@angular/material/list';
 import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
+import { MultiTravelComponent } from './layout/multi-travel/multi-travel.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import {MatIconModule} from '@angular/material/icon';
     HomePageComponent,
     SearchPanelComponent,
     PageNotFoundComponent,
+    MultiTravelComponent,
   ],
   imports: [
     MatIconModule,

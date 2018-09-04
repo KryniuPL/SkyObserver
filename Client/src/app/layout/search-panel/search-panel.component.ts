@@ -20,6 +20,7 @@ export class SearchPanelComponent implements OnInit {
   
   color: string = 'white';
   oneWay: boolean = false;
+  multiTrip: boolean = false;
   selectedJourney: JourneyOption;
   selectedClass: FlightClass;
   journeyOptions: JourneyOption[] = [];
@@ -89,6 +90,9 @@ export class SearchPanelComponent implements OnInit {
     this.selectedJourney.isSelected = true;
     if(this.selectedJourney.name === 'One-way'){
       this.oneWay = true
+    }
+    else if(this.selectedJourney.name === 'Multi-city'){
+      this.multiTrip = true;
     }
     else {
       this.oneWay = false;

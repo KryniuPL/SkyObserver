@@ -1,0 +1,12 @@
+SHORT-TERMS GOALS (by the end of this week [2.09.2018])
+-change name of round-trip class to someting more abstract
+-div described upper should change its dimensions dynamically
+-describe <form> in css class
+-start working wit multi-part component
+
+
+LONG TERMS GOALS (by the end of 10.09.2018)
+-write email to doctor and ask about frontend tests
+-finish basic functionality of client app without extras like nice UI
+It is not necessary at this time
+

@@ -90,12 +90,14 @@ export class SearchPanelComponent implements OnInit {
     this.selectedJourney.isSelected = true;
     if(this.selectedJourney.name === 'One-way'){
       this.oneWay = true
+      this.multiTrip = false;
     }
     else if(this.selectedJourney.name === 'Multi-city'){
       this.multiTrip = true;
     }
     else {
       this.oneWay = false;
+      this.multiTrip = false;
     }
   }
 

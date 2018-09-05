@@ -1,6 +1,6 @@
-<div class="multi-trip">
+<div class="multi-trip" *ngFor="let flight of flights">
   <form>
-    <mat-form-field [color]="color" class="input" appearance="fill" [color]="warn" style="margin-left: 55px">
+    <mat-form-field [color]="color" class="input" appearance="fill" [color]="warn" style="margin-left: 40px">
       <input type="text" placeholder="Where from?" aria-label="Number" matInput [formControl]="myControl" [matAutocomplete]="auto">
       <i class="material-icons" matPrefix>flight_takeoff</i>
       <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
@@ -35,10 +35,16 @@
       <mat-datepicker touchUi #picker></mat-datepicker>
     </mat-form-field>
 
-    <button mat-icon-button class="clear">
-      <mat-icon aria-label="Example icon-button with a heart icon" style="margin-top: 0; height: 35px;">clear</mat-icon>
+    <button mat-icon-button class="clear" *ngIf="flights.length > 1">
+      <mat-icon aria-label="Example icon-button with a heart icon" style="margin-top: 0; height: 35px;" (click)="deleteFlight(flight)" >clear</mat-icon>
     </button>
-
   </form>
+</div>
+
+<div id="adderDiv">
+  <button id="adderButton" *ngIf="flights.length < 5" mat-stroked-button (click)="addFlight()">Add Flight</button>
+</div>
+
+<div>
   
 </div>

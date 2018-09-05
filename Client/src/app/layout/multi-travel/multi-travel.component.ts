@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MultiFlight } from '../../model/classes/MultiFlight';
 
 @Component({
   selector: 'app-multi-travel',
@@ -7,9 +8,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MultiTravelComponent implements OnInit {
 
+  flights: MultiFlight[] = [];
+
   constructor() { }
 
   ngOnInit() {
+      this.loadMultiFlights();
   }
 
+  loadMultiFlights(){
+    this.flights.push(new MultiFlight('','',new Date()));
+    this.flights.push(new MultiFlight('','',new Date()));
+  }
+
+  deleteFlight(flight: MultiFlight){
+    var indexOfFlight = this.flights.indexOf(flight);
+    this.flights.splice(indexOfFlight,1);
+  }
+
+  addFlight(){
+    this.flights.push(new MultiFlight('','',new Date()));
+  }
 }

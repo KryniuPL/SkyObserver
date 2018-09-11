@@ -2,7 +2,7 @@
 
   <div class="settings">
     <!-- Small button group -->
-    <div class="btn-group settings-item" mdbDropdown style="z-index: 3;margin-left: 40px !important">
+    <div class="btn-group settings-item" mdbDropdown style="z-index: 3;margin-left: 36px !important">
       <button mdbDropdownToggle mdbBtn color="elegant" size="sm" class="dropdown-toggle waves-light" type="button" mdbWavesEffect>
         {{selectedJourney.name}}
       </button>
@@ -41,7 +41,7 @@
   <div class="round-trip" *ngIf="multiTrip === false">
     <form>
 
-      <mat-form-field [color]="color" class="input" appearance="fill" [color]="warn" style="margin-left: 40px">
+      <mat-form-field [color]="color" class="input" appearance="fill" [color]="warn" style="margin-left: 36px">
         <input type="text" placeholder="Where from?" aria-label="Number" matInput [formControl]="myControl" [matAutocomplete]="auto">
         <i class="material-icons" matPrefix>flight_takeoff</i>
         <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
@@ -83,11 +83,19 @@
       </mat-form-field>
 
     </form>
-    
+    <div *ngIf="multiTrip === false" style="background-color: #1C2331;">
+    <button id="searchButton" mat-raised-button color="warn">
+        <i class="material-icons" style="margin-bottom: 8px;">
+            search
+        </i>
+        SEARCH
+      </button>
+    </div>
   </div>
   <app-multi-travel *ngIf="multiTrip === true">
 
   </app-multi-travel>
+
 </div>
 
 

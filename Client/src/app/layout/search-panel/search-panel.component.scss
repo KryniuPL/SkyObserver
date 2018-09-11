@@ -76,7 +76,17 @@ button.mat-icon-button[disabled]{
     height: 75px;
     background-color: #1C2331;
 }
-
+#searchButton{
+    border-radius: 25px;
+    padding: 0;
+    background-color: #ee4b5e;
+    width: 120px;
+    top: 80%;
+    left: 50%;
+    margin-bottom: 35px;
+    margin-top: -50px;
+    margin-left: -100px;
+}
 .settings-item{
     margin-left: 20px;
     position: relative;

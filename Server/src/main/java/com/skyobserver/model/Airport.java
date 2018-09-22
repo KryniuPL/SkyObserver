@@ -29,6 +29,9 @@ public class Airport {
   private String wikipediaLink;
   private String keywords;
 
+  public Airport(){
+
+  }
 
   public long getId() {
     return id;

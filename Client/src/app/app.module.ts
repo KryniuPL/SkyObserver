@@ -18,6 +18,9 @@ import {MatListModule} from '@angular/material/list';
 import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
 import { MultiTravelComponent } from './layout/multi-travel/multi-travel.component';
+import { AirportsService } from './services/airports-service/airports-service.service';
+import { HttpClientModule } from '@angular/common/http';
+
 
 @NgModule({
   declarations: [
@@ -30,6 +33,7 @@ import { MultiTravelComponent } from './layout/multi-travel/multi-travel.compone
     MultiTravelComponent,
   ],
   imports: [
+    HttpClientModule,
     MatIconModule,
     MatButtonModule,
     MatListModule,
@@ -47,7 +51,7 @@ import { MultiTravelComponent } from './layout/multi-travel/multi-travel.compone
     AppRoutingModule
   ],
   schemas: [ NO_ERRORS_SCHEMA ],
-  providers: [],
+  providers: [AirportsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { 

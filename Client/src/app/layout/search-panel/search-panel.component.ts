@@ -10,6 +10,11 @@ import { map, startWith } from "rxjs/operators";
 import { JourneyOption } from "../../model/classes/JourneyOption";
 import { FlightClass } from "../../model/classes/FlightClass";
 import { Passenger } from "../../model/classes/Passenger";
+import { AirportsService } from "../../services/airports-service/airports-service.service";
+import { Airport } from "../../model/interfaces/Airport";
+import {debounceTime} from 'rxjs/internal/operators';
+
+
 
 @Component({
   selector: "app-search-panel",
@@ -18,7 +23,7 @@ import { Passenger } from "../../model/classes/Passenger";
 })
 export class SearchPanelComponent implements OnInit {
   
-  color: string = 'white';
+
   oneWay: boolean = false;
   multiTrip: boolean = false;
   selectedJourney: JourneyOption;
@@ -30,14 +35,19 @@ export class SearchPanelComponent implements OnInit {
   children: Passenger[] = [];
   infants: Passenger[] = [];
 
-
+  airports: Airport[] = [];
   myControl = new FormControl();
-  options: string[] = ["Warsaw", "New York", "London"];
-  filteredOptions: Observable<string[]>;
-
-  constructor() {
-
+  
+  constructor(private airportService: AirportsService) {
+    this.myControl.valueChanges.pipe(debounceTime(400)).subscribe(data =>{
+      this.airportService.getAirportsStartingWithPhrase(data).subscribe(response => {
+        this.airports = response;
+        console.log(this.airports);
+      });
+    });
   }
+
+
   submitPassengersDialog(){
     this.allPassengers = [];
     this.adults.forEach(element => {
@@ -113,10 +123,7 @@ export class SearchPanelComponent implements OnInit {
     this.loadJourneyOptions();
     this.loadFlightsClasses(); 
     this.loadPassengers();
-    this.filteredOptions = this.myControl.valueChanges.pipe(
-      startWith(""),
-      map(value => this._filter(value))
-    );
+    
   }
 
   loadJourneyOptions() {
@@ -143,11 +150,5 @@ export class SearchPanelComponent implements OnInit {
     this.allPassengers.push(new Passenger('Adult'));
   }
 
-  private _filter(value: string): string[] {
-    const filterValue = value.toLowerCase();
-
-    return this.options.filter(
-      option => option.toLowerCase().indexOf(filterValue) === 0
-    );
-  }
+ 
 }

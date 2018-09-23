@@ -41,12 +41,12 @@
   <div class="round-trip" *ngIf="multiTrip === false">
     <form>
 
-      <mat-form-field [color]="color" class="input" appearance="fill" [color]="warn" style="margin-left: 36px">
+      <mat-form-field class="input" appearance="fill" [color]="warn" style="margin-left: 36px">
         <input type="text" placeholder="Where from?" aria-label="Number" matInput [formControl]="myControl" [matAutocomplete]="auto">
         <i class="material-icons" matPrefix>flight_takeoff</i>
         <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
-          <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
-            {{option}}
+          <mat-option *ngFor="let item of airports" [value]="item.name">
+            {{ item.name }}
           </mat-option>
         </mat-autocomplete>
       </mat-form-field>
@@ -61,11 +61,11 @@
       </button>
 
       <mat-form-field class="input" appearance="fill" [color]="warn">
-        <input type="text" placeholder="Where to?" aria-label="Number" matInput [formControl]="myControl" [matAutocomplete]="auto">
+        <input type="text" placeholder="Where from?" aria-label="Number" matInput [formControl]="myControl" [matAutocomplete]="auto">
         <i class="material-icons" matPrefix>flight_land</i>
         <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
-          <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
-            {{option}}
+          <mat-option *ngFor="let item of airports" [value]="item.name">
+            {{ item.name }}
           </mat-option>
         </mat-autocomplete>
       </mat-form-field>

@@ -42,7 +42,6 @@ export class SearchPanelComponent implements OnInit {
     this.myControl.valueChanges.pipe(debounceTime(400)).subscribe(data =>{
       this.airportService.getAirportsStartingWithPhrase(data).subscribe(response => {
         this.airports = response;
-        console.log(this.airports);
       });
     });
   }

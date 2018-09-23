@@ -60,13 +60,16 @@ button.mat-icon-button[disabled]{
 .container{
     top: 100px;
     min-height: 25%;
-    width: 80%;
+    width: 100% !important;
     border: 0;
     padding-right: 0;
     padding-left: 0;
     margin: 0;
     position: absolute;
     z-index: 2;
+}
+.input{
+    width: 22%;
 }
 .settings {
     border: 0;

@@ -42,10 +42,13 @@
     <form>
 
       <mat-form-field class="input" appearance="fill" [color]="warn" style="margin-left: 36px">
-        <input type="text" placeholder="Where from?" aria-label="Number" matInput [formControl]="myControl" [matAutocomplete]="auto">
+        <input type="text" placeholder="Where from?" aria-label="Number" matInput [formControl]="myControl" [matAutocomplete]="auto" onClick="this.select();">
         <i class="material-icons" matPrefix>flight_takeoff</i>
         <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
-          <mat-option *ngFor="let item of airports" [value]="item.name">
+          <mat-option *ngFor="let item of airports" [value]="item.municipality + '  ' + '(' + item.iataCode + ')' ">
+              <i class="material-icons" style="color: black;margin-top:20px;">
+                  local_airport
+              </i>
             {{ item.name }}
           </mat-option>
         </mat-autocomplete>
@@ -60,15 +63,18 @@
             display: block;">compare_arrows</i>
       </button>
 
-      <mat-form-field class="input" appearance="fill" [color]="warn">
-        <input type="text" placeholder="Where from?" aria-label="Number" matInput [formControl]="myControl" [matAutocomplete]="auto">
-        <i class="material-icons" matPrefix>flight_land</i>
-        <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
-          <mat-option *ngFor="let item of airports" [value]="item.name">
-            {{ item.name }}
-          </mat-option>
-        </mat-autocomplete>
-      </mat-form-field>
+      <mat-form-field class="input" appearance="fill" >
+          <input type="text" placeholder="Where from?" aria-label="Number" matInput [formControl]="myControl" [matAutocomplete]="auto">
+          <i class="material-icons" matPrefix>flight_land</i>
+          <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+            <mat-option *ngFor="let item of airports" [value]="item.municipality + '  ' + '(' + item.iataCode + ')' ">
+                <i class="material-icons" style="color: black;margin-top:20px;">
+                    local_airport
+                </i>
+              {{ item.name }}
+            </mat-option>
+          </mat-autocomplete>
+        </mat-form-field>
 
       <mat-form-field class="date" [style.width.%]="oneWay ? 42 : 20" appearance="fill" style="margin-left: 20px">
         <input matInput [matDatepicker]="picker" placeholder="Departure date">
@@ -76,7 +82,7 @@
         <mat-datepicker touchUi #picker></mat-datepicker>
       </mat-form-field>
 
-      <mat-form-field *ngIf="selectedJourney.name === 'Round Trip'" class="input" appearance="fill" style="margin-left: 10px">
+      <mat-form-field *ngIf="selectedJourney.name === 'Round Trip'" appearance="fill" style="margin-left: 10px">
         <input matInput [matDatepicker]="picker2" placeholder="Return date">
         <mat-datepicker-toggle matSuffix [for]="picker2" class="datesIcons"></mat-datepicker-toggle>
         <mat-datepicker touchUi #picker2></mat-datepicker>

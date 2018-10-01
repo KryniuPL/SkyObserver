@@ -15,10 +15,8 @@ export class AirportsService {
 
   }
 
-
   getAirportsStartingWithPhrase(phrase: string): Observable<Airport[]>{
     return this.http.get<Airport[]>(this.getAirportsUsingIncompletePhraseURL + phrase);   
   }
-
 
 }

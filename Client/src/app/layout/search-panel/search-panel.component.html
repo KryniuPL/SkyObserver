@@ -41,10 +41,10 @@
   <div class="round-trip" *ngIf="multiTrip === false">
     <form>
 
-      <mat-form-field class="input" appearance="fill" [color]="warn" style="margin-left: 36px">
-        <input type="text" placeholder="Where from?" aria-label="Number" matInput [formControl]="myControl" [matAutocomplete]="auto" onClick="this.select();">
+      <mat-form-field class="input" appearance="fill" style="margin-left: 36px">
+        <input type="text" placeholder="Where from?" aria-label="Number" matInput [formControl]="originAirportControl" [matAutocomplete]="auto" onClick="this.select();">
         <i class="material-icons" matPrefix>flight_takeoff</i>
-        <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+        <mat-autocomplete #auto="matAutocomplete">
           <mat-option *ngFor="let item of airports" [value]="item.municipality + '  ' + '(' + item.iataCode + ')' ">
               <i class="material-icons" style="color: black;margin-top:20px;">
                   local_airport
@@ -64,10 +64,10 @@
       </button>
 
       <mat-form-field class="input" appearance="fill" >
-          <input type="text" placeholder="Where from?" aria-label="Number" matInput [formControl]="myControl" [matAutocomplete]="auto">
+          <input type="text" placeholder="Where from?" aria-label="Number" matInput [formControl]="desitnationAirportControl" [matAutocomplete]="auto2" onClick="this.select();">
           <i class="material-icons" matPrefix>flight_land</i>
-          <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
-            <mat-option *ngFor="let item of airports" [value]="item.municipality + '  ' + '(' + item.iataCode + ')' ">
+          <mat-autocomplete #auto2="matAutocomplete">
+            <mat-option *ngFor="let item of destinationAirports" [value]="item.municipality + '  ' + '(' + item.iataCode + ')' ">
                 <i class="material-icons" style="color: black;margin-top:20px;">
                     local_airport
                 </i>

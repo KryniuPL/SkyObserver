@@ -13,6 +13,8 @@ import { Passenger } from "../../model/classes/Passenger";
 import { AirportsService } from "../../services/airports-service/airports-service.service";
 import { Airport } from "../../model/interfaces/Airport";
 import {debounceTime} from 'rxjs/internal/operators';
+import { debounceTimeConst } from "../../../environments/environment";
+import { log } from "util";
 
 
 
@@ -36,14 +38,24 @@ export class SearchPanelComponent implements OnInit {
   infants: Passenger[] = [];
 
   airports: Airport[] = [];
-  myControl = new FormControl();
-  
+  destinationAirports: Airport[] = [];
+
+  originAirportControl = new FormControl();
+  desitnationAirportControl = new FormControl();
+
   constructor(private airportService: AirportsService) {
-    this.myControl.valueChanges.pipe(debounceTime(400)).subscribe(data =>{
+    this.originAirportControl.valueChanges.pipe(debounceTime(debounceTimeConst)).subscribe(data =>{
       this.airportService.getAirportsStartingWithPhrase(data).subscribe(response => {
         this.airports = response;
       });
     });
+
+    this.desitnationAirportControl.valueChanges.pipe(debounceTime(debounceTimeConst)).subscribe(data =>{
+      this.airportService.getAirportsStartingWithPhrase(data).subscribe(response => {
+        this.destinationAirports = response;
+      });
+    });
+
   }
 
 

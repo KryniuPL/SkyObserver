@@ -45,7 +45,7 @@
         <input type="text" placeholder="Where from?" aria-label="Number" matInput [formControl]="originAirportControl" [matAutocomplete]="auto" onClick="this.select();">
         <i class="material-icons" matPrefix>flight_takeoff</i>
         <mat-autocomplete #auto="matAutocomplete">
-          <mat-option *ngFor="let item of airports" [value]="item.municipality + '  ' + '(' + item.iataCode + ')' ">
+          <mat-option *ngFor="let item of airports" [value]="item.municipality + ' ' + '(' + item.iataCode + ')' ">
               <i class="material-icons" style="color: black;margin-top:20px;">
                   local_airport
               </i>
@@ -67,7 +67,7 @@
           <input type="text" placeholder="Where from?" aria-label="Number" matInput [formControl]="desitnationAirportControl" [matAutocomplete]="auto2" onClick="this.select();">
           <i class="material-icons" matPrefix>flight_land</i>
           <mat-autocomplete #auto2="matAutocomplete">
-            <mat-option *ngFor="let item of destinationAirports" [value]="item.municipality + '  ' + '(' + item.iataCode + ')' ">
+            <mat-option *ngFor="let item of destinationAirports" [value]="item.municipality + ' ' + '(' + item.iataCode + ')' ">
                 <i class="material-icons" style="color: black;margin-top:20px;">
                     local_airport
                 </i>
@@ -77,15 +77,15 @@
         </mat-form-field>
 
       <mat-form-field class="date" [style.width.%]="oneWay ? 42 : 20" appearance="fill" style="margin-left: 20px">
-        <input [min]="startDate" matInput [matDatepicker]="picker" placeholder="Departure date">
+        <input [min]="startDate" matInput [matDatepicker]="picker" placeholder="Departure date"  (dateChange)="changeStartDate($event);" disabled>
         <mat-datepicker-toggle matSuffix [for]="picker" class="datesIcons"></mat-datepicker-toggle>
-        <mat-datepicker touchUi #picker startView="month" [startAt]="startDate"></mat-datepicker>
+        <mat-datepicker disabled="false" touchUi #picker startView="month" [startAt]="startDate"></mat-datepicker>
       </mat-form-field>
 
       <mat-form-field *ngIf="selectedJourney.name === 'Round Trip'" appearance="fill" style="margin-left: 10px">
-        <input matInput [matDatepicker]="picker2" placeholder="Return date">
+        <input [min]="startDate" matInput [matDatepicker]="picker2" placeholder="Return date" (dateChange)="resetStartDate($event)" disabled  >
         <mat-datepicker-toggle matSuffix [for]="picker2" class="datesIcons"></mat-datepicker-toggle>
-        <mat-datepicker touchUi #picker2></mat-datepicker>
+        <mat-datepicker disabled="false" touchUi #picker2></mat-datepicker>
       </mat-form-field>
 
     </form>

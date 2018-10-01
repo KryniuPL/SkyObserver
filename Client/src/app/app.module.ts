@@ -21,7 +21,6 @@ import { MultiTravelComponent } from './layout/multi-travel/multi-travel.compone
 import { AirportsService } from './services/airports-service/airports-service.service';
 import { HttpClientModule } from '@angular/common/http';
 
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -56,7 +55,7 @@ import { HttpClientModule } from '@angular/common/http';
     { 
       provide: MAT_DATE_LOCALE, useValue: 'en-GB' 
     },
-    
+
   ],
   bootstrap: [AppComponent]
 })

@@ -15,6 +15,7 @@ import { Airport } from "../../model/interfaces/Airport";
 import {debounceTime} from 'rxjs/internal/operators';
 import { debounceTimeConst } from "../../../environments/environment";
 import { log } from "util";
+import { MatDatepickerInputEvent } from "@angular/material";
 
 
 
@@ -60,6 +61,12 @@ export class SearchPanelComponent implements OnInit {
 
   }
 
+  resetStartDate(event: MatDatepickerInputEvent<Date>){
+    this.startDate = new Date();
+  }
+  changeStartDate(event: MatDatepickerInputEvent<Date>){
+    this.startDate = event.value;
+  }
 
   submitPassengersDialog(){
     this.allPassengers = [];

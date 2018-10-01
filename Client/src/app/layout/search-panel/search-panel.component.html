@@ -77,9 +77,9 @@
         </mat-form-field>
 
       <mat-form-field class="date" [style.width.%]="oneWay ? 42 : 20" appearance="fill" style="margin-left: 20px">
-        <input matInput [matDatepicker]="picker" placeholder="Departure date">
+        <input [min]="startDate" matInput [matDatepicker]="picker" placeholder="Departure date">
         <mat-datepicker-toggle matSuffix [for]="picker" class="datesIcons"></mat-datepicker-toggle>
-        <mat-datepicker touchUi #picker></mat-datepicker>
+        <mat-datepicker touchUi #picker startView="month" [startAt]="startDate"></mat-datepicker>
       </mat-form-field>
 
       <mat-form-field *ngIf="selectedJourney.name === 'Round Trip'" appearance="fill" style="margin-left: 10px">

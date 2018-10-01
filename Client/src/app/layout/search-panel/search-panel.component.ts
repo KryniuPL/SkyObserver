@@ -37,6 +37,8 @@ export class SearchPanelComponent implements OnInit {
   children: Passenger[] = [];
   infants: Passenger[] = [];
 
+  startDate= new Date();
+
   airports: Airport[] = [];
   destinationAirports: Airport[] = [];
 

@@ -10,7 +10,7 @@ import { FooterComponent } from './layout/footer/footer.component';
 import { HomePageComponent } from './pages/home-page/home-page.component';
 import { SearchPanelComponent } from './layout/search-panel/search-panel.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {MatAutocompleteModule, MatInputModule, MatNativeDateModule} from '@angular/material';
+import {MatAutocompleteModule, MatInputModule, MatNativeDateModule, MAT_DATE_LOCALE} from '@angular/material';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
@@ -51,7 +51,13 @@ import { HttpClientModule } from '@angular/common/http';
     AppRoutingModule
   ],
   schemas: [ NO_ERRORS_SCHEMA ],
-  providers: [AirportsService],
+  providers: [
+    AirportsService,
+    { 
+      provide: MAT_DATE_LOCALE, useValue: 'en-GB' 
+    },
+    
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { 

@@ -9,7 +9,8 @@ import { MultiFlight } from '../../model/classes/MultiFlight';
 export class MultiTravelComponent implements OnInit {
 
   flights: MultiFlight[] = [];
-
+  startDate= new Date();
+  
   constructor() { }
 
   ngOnInit() {

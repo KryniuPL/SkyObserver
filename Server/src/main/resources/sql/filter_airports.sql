@@ -1,4 +1,5 @@
-delete from airports where airports.type = 'closed';
-delete from airports where airports.type = 'small_airport';
-delete from airports where airports.type = 'heliport';
-delete from airports where airports.type = 'seaplane_base';
+delete from airport where airport.type = 'closed';
+delete from airport where airport.type = 'small_airport';
+delete from airport where airport.type = 'heliport';
+delete from airport where airport.type = 'seaplane_base';
+delete from airport where airport.type = 'balloonport';

@@ -3,7 +3,8 @@
   <div class="settings">
     <!-- Small button group -->
     <div class="btn-group settings-item" mdbDropdown style="z-index: 3;margin-left: 36px !important">
-      <button mdbDropdownToggle mdbBtn color="elegant" size="sm" class="dropdown-toggle waves-light" type="button" mdbWavesEffect>
+      <button mdbDropdownToggle mdbBtn color="elegant" size="sm" class="dropdown-toggle waves-light" type="button"
+        mdbWavesEffect>
         {{selectedJourney.name}}
       </button>
       <div class="dropdown-menu">
@@ -16,8 +17,8 @@
 
     <!-- Number of passengers button group -->
     <div class="btn-group settings-item" mdbDropdown style="z-index: 3;">
-      <button mdbDropdownToggle mdbBtn color="elegant" size="sm" class="dropdown-toggle waves-light" type="button" mdbWavesEffect
-        (click)="basicModal.show()">
+      <button mdbDropdownToggle mdbBtn color="elegant" size="sm" class="dropdown-toggle waves-light" type="button"
+        mdbWavesEffect (click)="basicModal.show()">
         <span *ngIf="allPassengers.length === 1"> 1 Passenger </span>
         <span *ngIf="allPassengers.length > 1">{{ allPassengers.length }} Passengers</span>
       </button>
@@ -25,7 +26,8 @@
 
     <!-- Class button group -->
     <div class="btn-group settings-item" mdbDropdown style="z-index: 3;">
-      <button mdbDropdownToggle mdbBtn color="elegant" size="sm" class="dropdown-toggle waves-light" type="button" mdbWavesEffect>
+      <button mdbDropdownToggle mdbBtn color="elegant" size="sm" class="dropdown-toggle waves-light" type="button"
+        mdbWavesEffect>
         {{selectedClass.name}}
       </button>
       <div class="dropdown-menu">
@@ -42,13 +44,14 @@
     <form>
 
       <mat-form-field class="input" appearance="fill" style="margin-left: 36px">
-        <input type="text" placeholder="Where from?" aria-label="Number" matInput [formControl]="originAirportControl" [matAutocomplete]="auto" onClick="this.select();">
+        <input type="text" placeholder="Where from?" aria-label="Number" matInput [formControl]="originAirportControl"
+          [matAutocomplete]="auto" onClick="this.select();">
         <i class="material-icons" matPrefix>flight_takeoff</i>
         <mat-autocomplete #auto="matAutocomplete">
           <mat-option *ngFor="let item of airports" [value]="item.municipality + ' ' + '(' + item.iataCode + ')' ">
-              <i class="material-icons" style="color: black;margin-top:20px;">
-                  local_airport
-              </i>
+            <i class="material-icons" style="color: black;margin-top:20px;">
+              local_airport
+            </i>
             {{ item.name }}
           </mat-option>
         </mat-autocomplete>
@@ -63,36 +66,39 @@
             display: block;">compare_arrows</i>
       </button>
 
-      <mat-form-field class="input" appearance="fill" >
-          <input type="text" placeholder="Where from?" aria-label="Number" matInput [formControl]="desitnationAirportControl" [matAutocomplete]="auto2" onClick="this.select();">
-          <i class="material-icons" matPrefix>flight_land</i>
-          <mat-autocomplete #auto2="matAutocomplete">
-            <mat-option *ngFor="let item of destinationAirports" [value]="item.municipality + ' ' + '(' + item.iataCode + ')' ">
-                <i class="material-icons" style="color: black;margin-top:20px;">
-                    local_airport
-                </i>
-              {{ item.name }}
-            </mat-option>
-          </mat-autocomplete>
-        </mat-form-field>
+      <mat-form-field class="input" appearance="fill">
+        <input type="text" placeholder="Where from?" aria-label="Number" matInput [formControl]="desitnationAirportControl"
+          [matAutocomplete]="auto2" onClick="this.select();">
+        <i class="material-icons" matPrefix>flight_land</i>
+        <mat-autocomplete #auto2="matAutocomplete">
+          <mat-option *ngFor="let item of destinationAirports" [value]="item.municipality + ' ' + '(' + item.iataCode + ')' ">
+            <i class="material-icons" style="color: black;margin-top:20px;">
+              local_airport
+            </i>
+            {{ item.name }}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
 
       <mat-form-field class="date" [style.width.%]="oneWay ? 42 : 20" appearance="fill" style="margin-left: 20px">
-        <input [min]="startDate" matInput [matDatepicker]="picker" placeholder="Departure date" (dateChange)="changeStartDate($event);" disabled>
+        <input [min]="startDate" matInput [matDatepicker]="picker" placeholder="Departure date" (dateChange)="changeStartDate($event);"
+          disabled>
         <mat-datepicker-toggle matSuffix [for]="picker" class="datesIcons"></mat-datepicker-toggle>
         <mat-datepicker disabled="false" touchUi #picker></mat-datepicker>
       </mat-form-field>
 
       <mat-form-field *ngIf="selectedJourney.name === 'Round Trip'" appearance="fill" style="margin-left: 10px">
-        <input [min]="startDate" matInput [matDatepicker]="picker2" placeholder="Return date" (dateChange)="resetStartDate($event)" disabled  >
+        <input [min]="startDate" matInput [matDatepicker]="picker2" placeholder="Return date" (dateChange)="resetStartDate($event)"
+          disabled>
         <mat-datepicker-toggle matSuffix [for]="picker2" class="datesIcons"></mat-datepicker-toggle>
         <mat-datepicker disabled="false" touchUi #picker2></mat-datepicker>
       </mat-form-field>
 
     </form>
     <div *ngIf="multiTrip === false" style="background-color: #1C2331;">
-    <button id="searchButton" mat-raised-button color="warn">
+      <button id="searchButton" mat-raised-button color="warn">
         <i class="material-icons" style="margin-bottom: 8px;">
-            search
+          search
         </i>
         SEARCH
       </button>
@@ -105,7 +111,8 @@
 </div>
 
 
-<div mdbModal #basicModal="mdbModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myBasicModalLabel" aria-hidden="true">
+<div mdbModal #basicModal="mdbModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myBasicModalLabel"
+  aria-hidden="true">
   <div class="modal-dialog modal-sm" role="document">
     <div class="modal-content">
       <div class="modal-header unique-color-dark" style="color:white;">
@@ -122,36 +129,37 @@
               <mat-icon class="passengersIcons" aria-label="Example icon-button with a heart icon">remove</mat-icon>
             </button>
             {{adults.length}}
-            <button class="passengersButtons"  mat-icon-button color="basic" [disabled]="adults.length === 9" (click)="addPassanger('Adult')">
-              <mat-icon  class="passengersIcons" aria-label="Example icon-button with a heart icon">add</mat-icon>
+            <button class="passengersButtons" mat-icon-button color="basic" [disabled]="adults.length === 9" (click)="addPassanger('Adult')">
+              <mat-icon class="passengersIcons" aria-label="Example icon-button with a heart icon">add</mat-icon>
             </button>
           </mat-list-item>
           <mat-list-item role="listitem">
             <span>Children</span>
-            <button class="passengersButtons"  mat-icon-button color="basic" [disabled]="children.length < 1" (click)="deletePassenger('Child')">
+            <button class="passengersButtons" mat-icon-button color="basic" [disabled]="children.length < 1" (click)="deletePassenger('Child')">
               <mat-icon class="passengersIcons" aria-label="Example icon-button with a heart icon">remove</mat-icon>
             </button>
             {{children.length}}
-            <button class="passengersButtons"  mat-icon-button color="basic" [disabled]="children.length === 9" (click)="addPassanger('Child')">
+            <button class="passengersButtons" mat-icon-button color="basic" [disabled]="children.length === 9" (click)="addPassanger('Child')">
               <mat-icon class="passengersIcons" aria-label="Example icon-button with a heart icon">add</mat-icon>
             </button>
           </mat-list-item>
           <mat-list-item role="listitem">
             <span>Infants</span>
-            <button  class="passengersButtons" mat-icon-button color="basic" [disabled]="infants.length < 1" (click)="deletePassenger('Infant')">
+            <button class="passengersButtons" mat-icon-button color="basic" [disabled]="infants.length < 1" (click)="deletePassenger('Infant')">
               <mat-icon class="passengersIcons" aria-label="Example icon-button with a heart icon">remove</mat-icon>
             </button>
             {{infants.length}}
-            <button class="passengersButtons"  mat-icon-button color="basic" [disabled]="infants.length === 9" (click)="addPassanger('Infant')">
+            <button class="passengersButtons" mat-icon-button color="basic" [disabled]="infants.length === 9" (click)="addPassanger('Infant')">
               <mat-icon class="passengersIcons" aria-label="Example icon-button with a heart icon">add</mat-icon>
             </button>
           </mat-list-item>
         </mat-list>
       </div>
       <div class="modal-footer">
-        <button style="width: 35%" type="button" mdbBtn color="mdb-color" class="relative waves-light" aria-label="Close" (click)="basicModal.hide()"
-          mdbWavesEffect>Close</button>
-        <button type="button" mdbBtn color="success" class="relative waves-light" mdbWavesEffect (click)="submitPassengersDialog();basicModal.hide()">Save changes</button>
+        <button style="width: 35%" type="button" mdbBtn color="mdb-color" class="relative waves-light" aria-label="Close"
+          (click)="basicModal.hide()" mdbWavesEffect>Close</button>
+        <button type="button" mdbBtn color="success" class="relative waves-light" mdbWavesEffect (click)="submitPassengersDialog();basicModal.hide()">Save
+          changes</button>
       </div>
     </div>
   </div>

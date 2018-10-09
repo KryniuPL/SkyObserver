@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { MultiFlight } from "../../model/classes/MultiFlight";
+import { MatDatepickerInputEvent } from "@angular/material";
 
 @Component({
   selector: "app-multi-travel",
@@ -14,6 +15,13 @@ export class MultiTravelComponent implements OnInit {
 
   ngOnInit() {
     this.loadMultiFlights();
+  }
+
+  setDateOfMultiTravelOption(flight: MultiFlight,event: MatDatepickerInputEvent<Date>){
+      let index = this.flights.indexOf(flight);
+      this.flights[index].departureDate = event.value;
+      console.log(this.flights);
+      
   }
 
   loadMultiFlights() {

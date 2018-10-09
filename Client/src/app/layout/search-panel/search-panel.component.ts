@@ -66,7 +66,7 @@ export class SearchPanelComponent implements OnInit {
   }
   changeStartDate(event: MatDatepickerInputEvent<Date>){
     if(this.oneWay){
-
+      
     }
     else{
       this.startDate = event.value; 

@@ -65,7 +65,12 @@ export class SearchPanelComponent implements OnInit {
     this.startDate = new Date();
   }
   changeStartDate(event: MatDatepickerInputEvent<Date>){
-    this.startDate = event.value;
+    if(this.oneWay){
+
+    }
+    else{
+      this.startDate = event.value; 
+    }
   }
 
   submitPassengersDialog(){

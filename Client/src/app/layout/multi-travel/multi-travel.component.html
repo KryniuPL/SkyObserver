@@ -1,11 +1,14 @@
 <div class="multi-trip" *ngFor="let flight of flights">
   <form>
-    <mat-form-field [color]="color" class="input" appearance="fill" [color]="warn" style="margin-left: 40px">
-      <input type="text" placeholder="Where from?" aria-label="Number" matInput  [matAutocomplete]="auto">
-      <i class="material-icons" matPrefix>flight_takeoff</i>
-      <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
-        <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
-          {{option}}
+
+    <mat-form-field [color]="color" appearance="fill" style="margin-left: 40px">
+      <input type="text" placeholder="Where from?" aria-label="Number" matInput [formControl]="flight.originAirportControl" [matAutocomplete]="auto" onClick="this.select();">
+      <i class="material-icons" matPrefix>
+        flight_takeoff
+      </i>
+      <mat-autocomplete #auto="matAutocomplete">
+        <mat-option *ngFor="let item of flight.originAirports" [value]="item.municipality + ' ' + '(' + item.iataCode + ')' ">
+          {{item.name}}
         </mat-option>
       </mat-autocomplete>
     </mat-form-field>
@@ -19,15 +22,17 @@
           display: block;">compare_arrows</i>
     </button>
 
-    <mat-form-field class="input" appearance="fill" [color]="warn">
-      <input type="text" placeholder="Where to?" aria-label="Number" matInput  [matAutocomplete]="auto">
-      <i class="material-icons" matPrefix>flight_land</i>
-      <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
-        <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
-          {{option}}
-        </mat-option>
-      </mat-autocomplete>
-    </mat-form-field>
+    <mat-form-field [color]="color" appearance="fill">
+        <input type="text" placeholder="Where to?" aria-label="Number" matInput [formControl]="flight.destinationAirportControl" [matAutocomplete]="auto2" onClick="this.select();">
+        <i class="material-icons" matPrefix>
+          flight_land
+        </i>
+        <mat-autocomplete #auto2="matAutocomplete">
+          <mat-option *ngFor="let item of flight.destinationAirports" [value]="item.municipality + ' ' + '(' + item.iataCode + ')' ">
+            {{item.name}}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
 
     <mat-form-field class="date" [style.width.%]="36" appearance="fill" style="margin-left: 20px">
       <input [min]="startDate" matInput [matDatepicker]="picker" placeholder="Departure date" (dateChange)="setDateOfMultiTravelOption(flight, $event);" disabled> 
@@ -42,7 +47,7 @@
 </div>
 
 <div id="adderDiv">
-  <button id="adderButton" *ngIf="flights.length < 5" mat-stroked-button (click)="addFlight()">Add Flight</button>
+  <button id="adderButton" *ngIf="flights.length < 5" mat-stroked-button (click)="createInstanceOfMultiFlightOptions()">Add Flight</button>
 </div>
 
 <div>

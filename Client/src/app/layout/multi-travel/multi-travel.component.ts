@@ -1,6 +1,11 @@
 import { Component, OnInit } from "@angular/core";
 import { MultiFlight } from "../../model/classes/MultiFlight";
 import { MatDatepickerInputEvent } from "@angular/material";
+import { FormControl } from "@angular/forms";
+import { Airport } from "src/app/model/interfaces/Airport";
+import { debounceTimeConst } from "src/environments/environment";
+import { AirportsService } from "src/app/services/airports-service/airports-service.service";
+import {debounceTime} from 'rxjs/internal/operators';
 
 @Component({
   selector: "app-multi-travel",
@@ -11,7 +16,7 @@ export class MultiTravelComponent implements OnInit {
   flights: MultiFlight[] = [];
   startDate = new Date();
 
-  constructor() {}
+  constructor(private airportService: AirportsService) {}
 
   ngOnInit() {
     this.loadMultiFlights();
@@ -19,22 +24,36 @@ export class MultiTravelComponent implements OnInit {
 
   setDateOfMultiTravelOption(flight: MultiFlight,event: MatDatepickerInputEvent<Date>){
       let index = this.flights.indexOf(flight);
-      this.flights[index].departureDate = event.value;
-      console.log(this.flights);
-      
+      this.flights[index].departureDate = event.value; 
   }
 
   loadMultiFlights() {
-    this.flights.push(new MultiFlight("", "", new Date()));
-    this.flights.push(new MultiFlight("", "", new Date()));
+   this.createInstanceOfMultiFlightOptions();
+   this.createInstanceOfMultiFlightOptions();
   }
 
+  createInstanceOfMultiFlightOptions(){
+    this.flights.push(new MultiFlight(new Array<Airport>(), new Array<Airport>(), new FormControl(),new FormControl(), new Date()));
+    let lastIndexOfArray = this.flights.length -1;
+
+    this.flights[lastIndexOfArray].originAirportControl.valueChanges.pipe(debounceTime(debounceTimeConst)).subscribe(data =>{
+      this.airportService.getAirportsStartingWithPhrase(data).subscribe(response => {
+        this.flights[lastIndexOfArray].originAirports = response;
+        console.log(this.flights);
+      });
+    });
+
+    this.flights[lastIndexOfArray].destinationAirportControl.valueChanges.pipe(debounceTime(debounceTimeConst)).subscribe(data =>{
+      this.airportService.getAirportsStartingWithPhrase(data).subscribe(response => {
+        this.flights[lastIndexOfArray].destinationAirports = response;
+        console.log(this.flights);
+      });
+    });
+  }
   deleteFlight(flight: MultiFlight) {
     var indexOfFlight = this.flights.indexOf(flight);
     this.flights.splice(indexOfFlight, 1);
   }
 
-  addFlight() {
-    this.flights.push(new MultiFlight("", "", new Date()));
-  }
+  
 }

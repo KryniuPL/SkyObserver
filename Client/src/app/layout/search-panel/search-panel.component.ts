@@ -18,7 +18,6 @@ import { log } from "util";
 import { MatDatepickerInputEvent } from "@angular/material";
 
 
-
 @Component({
   selector: "app-search-panel",
   templateUrl: "./search-panel.component.html",

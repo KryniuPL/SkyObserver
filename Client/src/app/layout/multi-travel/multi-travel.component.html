@@ -35,7 +35,7 @@
       </mat-form-field>
 
     <mat-form-field class="date" [style.width.%]="36" appearance="fill" style="margin-left: 20px">
-      <input [min]="startDate" matInput [matDatepicker]="picker" placeholder="Departure date" (dateChange)="setDateOfMultiTravelOption(flight, $event);" disabled> 
+      <input [min]="flight.minDate" matInput [matDatepicker]="picker" placeholder="Departure date" (dateChange)="setDateOfMultiTravelOption(flight, $event);" disabled> 
       <mat-datepicker-toggle matSuffix [for]="picker" class="datesIcons"></mat-datepicker-toggle>
       <mat-datepicker disabled="false" touchUi #picker></mat-datepicker>
     </mat-form-field>
@@ -50,6 +50,11 @@
   <button id="adderButton" *ngIf="flights.length < 5" mat-stroked-button (click)="createInstanceOfMultiFlightOptions()">Add Flight</button>
 </div>
 
-<div>
-  
-</div>
+<div style="background-color: #1C2331;">
+    <button id="searchButton" mat-raised-button color="warn">
+      <i class="material-icons" style="margin-bottom: 8px;">
+        search
+      </i>
+      SEARCH
+    </button>
+  </div>

@@ -24,7 +24,10 @@ export class MultiTravelComponent implements OnInit {
 
   setDateOfMultiTravelOption(flight: MultiFlight,event: MatDatepickerInputEvent<Date>){
       let index = this.flights.indexOf(flight);
-      this.flights[index].departureDate = event.value; 
+      this.flights[index].departureDate = event.value;
+      if(index === 0 || (this.flights.length-1 > index)){
+        this.flights[index + 1].minDate = this.flights[index].departureDate; 
+      } 
   }
 
   loadMultiFlights() {
@@ -33,23 +36,26 @@ export class MultiTravelComponent implements OnInit {
   }
 
   createInstanceOfMultiFlightOptions(){
-    this.flights.push(new MultiFlight(new Array<Airport>(), new Array<Airport>(), new FormControl(),new FormControl(), new Date()));
+    this.flights.push(new MultiFlight(new Array<Airport>(), new Array<Airport>(), new FormControl(),new FormControl(), new Date(), new Date()));
     let lastIndexOfArray = this.flights.length -1;
+
+    if(lastIndexOfArray >= 2){
+      this.flights[lastIndexOfArray].minDate = this.flights[lastIndexOfArray - 1].departureDate;
+    }
 
     this.flights[lastIndexOfArray].originAirportControl.valueChanges.pipe(debounceTime(debounceTimeConst)).subscribe(data =>{
       this.airportService.getAirportsStartingWithPhrase(data).subscribe(response => {
         this.flights[lastIndexOfArray].originAirports = response;
-        console.log(this.flights);
       });
     });
 
     this.flights[lastIndexOfArray].destinationAirportControl.valueChanges.pipe(debounceTime(debounceTimeConst)).subscribe(data =>{
       this.airportService.getAirportsStartingWithPhrase(data).subscribe(response => {
         this.flights[lastIndexOfArray].destinationAirports = response;
-        console.log(this.flights);
       });
     });
   }
+  
   deleteFlight(flight: MultiFlight) {
     var indexOfFlight = this.flights.indexOf(flight);
     this.flights.splice(indexOfFlight, 1);

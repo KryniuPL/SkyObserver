@@ -60,6 +60,20 @@ export class SearchPanelComponent implements OnInit {
 
   }
 
+  swapInputValues(){
+    let tmpSwapper = "";
+    let originAirport = this.originAirportControl.value;
+    let destinationAirport = this.desitnationAirportControl.value;
+    if(!originAirport || !destinationAirport){
+     return;
+    }
+    else{
+      tmpSwapper = this.originAirportControl.value;
+      this.originAirportControl.setValue(this.desitnationAirportControl.value);
+      this.desitnationAirportControl.setValue(tmpSwapper);
+    }
+  }
+
   resetStartDate(event: MatDatepickerInputEvent<Date>){
     this.startDate = new Date();
   }

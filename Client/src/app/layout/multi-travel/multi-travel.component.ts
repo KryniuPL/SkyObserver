@@ -22,6 +22,20 @@ export class MultiTravelComponent implements OnInit {
     this.loadMultiFlights();
   }
 
+  swapInputValues(originAirportControl: FormControl, destinationAirportControl: FormControl){
+    let tmpSwapper = "";
+    let originAirport = originAirportControl.value;
+    let destinationAirport = destinationAirportControl.value;
+    if(!originAirport || !destinationAirport){
+     return;
+    }
+    else{
+      tmpSwapper = originAirportControl.value;
+      originAirportControl.setValue(destinationAirportControl.value);
+      destinationAirportControl.setValue(tmpSwapper);
+    }
+  }
+
   setDateOfMultiTravelOption(flight: MultiFlight,event: MatDatepickerInputEvent<Date>){
       let index = this.flights.indexOf(flight);
       this.flights[index].departureDate = event.value;

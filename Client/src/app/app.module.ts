@@ -20,6 +20,8 @@ import {MatIconModule} from '@angular/material/icon';
 import { MultiTravelComponent } from './layout/multi-travel/multi-travel.component';
 import { AirportsService } from './services/airports-service/airports-service.service';
 import { HttpClientModule } from '@angular/common/http';
+import { ExploreMapComponent } from './layout/explore-map/explore-map.component';
+import { AgmCoreModule } from '@agm/core';
 
 @NgModule({
   declarations: [
@@ -30,8 +32,12 @@ import { HttpClientModule } from '@angular/common/http';
     SearchPanelComponent,
     PageNotFoundComponent,
     MultiTravelComponent,
+    ExploreMapComponent,
   ],
   imports: [
+    AgmCoreModule.forRoot({
+      apiKey: '***REMOVED***'
+    }),
     HttpClientModule,
     MatIconModule,
     MatButtonModule,

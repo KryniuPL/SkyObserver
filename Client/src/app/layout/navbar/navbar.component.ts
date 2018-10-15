@@ -21,6 +21,10 @@ export class NavbarComponent implements OnInit {
     this.setCurrencyAndLanguageUsingLanguageOfBrowser();
   }
 
+  changeStyle(){
+    console.log("FDSA");
+  }
+
   saveUserLanguageAndCurrencySettings(selectedLanguage: Language, selectedCurrency: Currency){
     this.selectedLanguage = selectedLanguage;
     this.selectedCurrency = selectedCurrency;

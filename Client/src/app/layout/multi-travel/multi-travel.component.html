@@ -48,7 +48,7 @@
 
 <div id="adderDiv">
   <button id="adderButton" *ngIf="flights.length < 5" mat-stroked-button (click)="createInstanceOfMultiFlightOptions()">Add Flight</button>
-  <button style="margin-left: 10px" mat-stroked-button color="warn" >Reset</button>
+  <button style="margin-left: 10px" mat-stroked-button color="warn" (click)="reset()">Reset</button>
 </div>
 
 <div style="background-color: #1C2331;">

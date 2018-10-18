@@ -150,7 +150,7 @@ export class SearchPanelComponent implements OnInit {
       this.multiTrip = false;
       this.startDate= new Date();
     }
-  this.originAirportControl.setValue()
+  // this.originAirportControl.setValue()
   }
 
   changeFlightClass(flightClass: FlightClass) {

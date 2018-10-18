@@ -1,6 +1,5 @@
 package com.skyobserver.util;
 
-import com.skyobserver.schedulers.AirportsUpdateScheduler;
 import org.apache.commons.io.FileUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -17,9 +16,9 @@ public class AirportsCSVSheetDownloader {
 
     public static void downloadCSV() {
         try {
-            logger.info("Downloading airports csv");
             URL downloadURL = new URL(AIRPORTS_CSV_DOWNLOAD_URL);
             FileUtils.copyURLToFile(downloadURL, AIRPORTS_CSV_FILE);
+            logger.info("Downloading airports csv");
         } catch (IOException e) {
             logger.error("Error downloading airports csv file");
         }

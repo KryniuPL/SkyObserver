@@ -24,7 +24,6 @@ import { MatDatepickerInputEvent } from "@angular/material";
   styleUrls: ["./search-panel.component.scss"]
 })
 export class SearchPanelComponent implements OnInit {
-  
 
   oneWay: boolean = false;
   multiTrip: boolean = false;
@@ -44,6 +43,8 @@ export class SearchPanelComponent implements OnInit {
 
   originAirportControl = new FormControl();
   desitnationAirportControl = new FormControl();
+
+ 
 
   constructor(private airportService: AirportsService) {
     this.originAirportControl.valueChanges.pipe(debounceTime(debounceTimeConst)).subscribe(data =>{
@@ -142,11 +143,14 @@ export class SearchPanelComponent implements OnInit {
     }
     else if(this.selectedJourney.name === 'Multi-city'){
       this.multiTrip = true;
+    
     }
     else {
       this.oneWay = false;
       this.multiTrip = false;
+      this.startDate= new Date();
     }
+  // this.originAirportControl.setValue()
   }
 
   changeFlightClass(flightClass: FlightClass) {

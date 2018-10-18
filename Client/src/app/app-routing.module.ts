@@ -6,14 +6,14 @@ import { PageNotFoundComponent } from "./pages/page-not-found/page-not-found.com
 import { ExploreMapComponent } from "./layout/explore-map/explore-map.component";
 
 const routes: Routes = [
-  { path: "", component: HomePageComponent },
+  { path: '', component: HomePageComponent },
   {
-    path: "not-found",
-    component: PageNotFoundComponent
+    path: 'explore-map',
+    component: ExploreMapComponent
   },
   {
-    path: "explore-map",
-    component: ExploreMapComponent
+    path: '**',
+    component: PageNotFoundComponent
   }
 ];
 

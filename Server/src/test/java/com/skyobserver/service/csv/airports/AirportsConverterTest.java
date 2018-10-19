@@ -11,6 +11,7 @@ import java.io.IOException;
 import java.io.Reader;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.HashSet;
 import java.util.List;
 
 import static org.junit.Assert.*;
@@ -29,11 +30,6 @@ public class AirportsConverterTest {
         assertNotNull(airport);
     }
 
-    @Test
-    public void shouldGetListOfAirportsInTheRangeOf() throws IOException {
-        Reader reader = Files.newBufferedReader(Paths.get(ACTUAL_AIRPORTS_CSV_FILE_PATH));
-        CSVParser parser = CSVFormat.DEFAULT.withHeader(AirportHeaders.class).parse(reader);
-        List<Airport> airports = AirportsConverter.getListOfAirportsInTheRangeOf(1000, 1200, parser.getRecords());
-        assertNotNull(airports);
-    }
+
+
 }

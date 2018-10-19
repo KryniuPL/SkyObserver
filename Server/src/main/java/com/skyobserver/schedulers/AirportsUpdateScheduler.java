@@ -1,5 +1,8 @@
 package com.skyobserver.schedulers;
 
+import com.skyobserver.enums.AirportHeaders;
+import com.skyobserver.model.Airport;
+import com.skyobserver.service.csv.airports.AirportsConverter;
 import com.skyobserver.util.AirportsCSVSheetDownloader;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVParser;
@@ -12,6 +15,7 @@ import java.io.IOException;
 import java.io.Reader;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.List;
 
 
 @Component
@@ -25,7 +29,9 @@ public class AirportsUpdateScheduler {
     public void scheduleUpdating() throws IOException {
         AirportsCSVSheetDownloader.downloadCSV();
         if (areNewAirportsAvailable()) {
-            //get all new objects
+            Reader reader = Files.newBufferedReader(Paths.get(NEW_AIRPORTS_CSV_FILE_PATH));
+            CSVParser parser = CSVFormat.DEFAULT.withHeader(AirportHeaders.class).parse(reader);
+            List<Airport> airports = AirportsConverter.getListOfAirportsInTheRangeOf(getNumberOfRowsFromCSVFile(ACTUAL_AIRPORTS_CSV_FILE_PATH) +1, getNumberOfRowsFromCSVFile(NEW_AIRPORTS_CSV_FILE_PATH), parser.getRecords());
             //filter them
             //save filtered to database
         } else {
@@ -34,11 +40,11 @@ public class AirportsUpdateScheduler {
         logger.info("Scheduler test");
     }
 
-    private boolean areNewAirportsAvailable() {
+    public static boolean areNewAirportsAvailable() {
         return getNumberOfRowsFromCSVFile(ACTUAL_AIRPORTS_CSV_FILE_PATH) != getNumberOfRowsFromCSVFile(NEW_AIRPORTS_CSV_FILE_PATH);
     }
 
-    public int getNumberOfRowsFromCSVFile(String pathToCSVFile) {
+    public static int getNumberOfRowsFromCSVFile(String pathToCSVFile) {
         int numberOfRows = 0;
         try {
             Reader reader = Files.newBufferedReader(Paths.get(pathToCSVFile));

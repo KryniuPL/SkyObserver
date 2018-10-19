@@ -30,6 +30,10 @@ public class AirportsConverterTest {
         assertNotNull(airport);
     }
 
+    @Test
+    public void shouldReturnNewAirports(){
+
+    }
 
 
 }

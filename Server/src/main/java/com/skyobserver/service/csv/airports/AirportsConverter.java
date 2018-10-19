@@ -2,7 +2,6 @@ package com.skyobserver.service.csv.airports;
 
 import com.skyobserver.enums.AirportHeaders;
 import com.skyobserver.model.Airport;
-import com.skyobserver.schedulers.AirportsUpdateScheduler;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVParser;
 import org.apache.commons.csv.CSVRecord;

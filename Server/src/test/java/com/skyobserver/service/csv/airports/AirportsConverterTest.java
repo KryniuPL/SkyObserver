@@ -31,8 +31,10 @@ public class AirportsConverterTest {
     }
 
     @Test
-    public void shouldReturnNewAirports(){
-
+    public void shouldReturnNewAirports() throws IOException {
+        CSVParser parser = AirportsConverter.getParserByFilePath(ACTUAL_AIRPORTS_CSV_FILE_PATH);
+        HashSet<Airport> airportHashSet = AirportsConverter.getListOfObjects(parser.getRecords());
+        assertNotNull(airportHashSet);
     }
 
 

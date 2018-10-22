@@ -23,8 +23,8 @@ public class AirportsConverter {
 
     public static HashSet<Airport> getListOfObjects(List<CSVRecord> records) {
         HashSet<Airport> convertedAirports = new HashSet<>();
-        for (CSVRecord record : records) {
-            convertedAirports.add(getSingleObject(record));
+        for (int i = 1; i < records.size(); i++) {
+            convertedAirports.add(getSingleObject(records.get(i)));
         }
         return convertedAirports;
     }
@@ -33,6 +33,7 @@ public class AirportsConverter {
         Reader reader = Files.newBufferedReader(Paths.get(path));
         return CSVFormat.DEFAULT.withHeader(AirportHeaders.class).parse(reader);
     }
+
     public static boolean areNewAirportsAvailable() {
         return getNumberOfRowsFromCSVFile(ACTUAL_AIRPORTS_CSV_FILE_PATH) != getNumberOfRowsFromCSVFile(NEW_AIRPORTS_CSV_FILE_PATH);
     }
@@ -56,7 +57,13 @@ public class AirportsConverter {
         String name = record.get("name");
         double latitudeDeg = Double.parseDouble(record.get("latitudeDeg"));
         double longitudeDeg = Double.parseDouble(record.get("longitudeDeg"));
-        long elevationFt = Long.parseLong(record.get("elevationFt"));
+        long elevationFt = 0l;
+        if(record.get("elevationFt").equals("")){
+            elevationFt = 0;
+        }
+        else {
+         elevationFt = Long.parseLong(record.get("elevationFt"));
+        }
         String continent = record.get("continent");
         String isoCountry = record.get("isoCountry");
         String isoRegion = record.get("isoRegion");

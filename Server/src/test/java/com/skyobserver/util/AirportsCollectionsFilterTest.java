@@ -29,6 +29,19 @@ public class AirportsCollectionsFilterTest {
 
         for (Airport filteredAirport : filteredAirports){
             assertTrue(filteredAirport.getType().equals("medium_airport") || filteredAirport.getType().equals("large_airport"));
+            System.out.println(filteredAirport.toString());
+        }
+    }
+
+    @Test
+    public void shouldReturnOldAirports() throws IOException {
+        HashSet<Airport> actualAirportsFromCSV = AirportsConverter.getListOfObjects(getParserByFilePath(ACTUAL_AIRPORTS_CSV_FILE_PATH).getRecords());
+        HashSet<Airport> newAirportsFromCSV = AirportsConverter.getListOfObjects(getParserByFilePath(NEW_AIRPORTS_CSV_FILE_PATH).getRecords());
+        HashSet<Airport> oldAirports = AirportsCollectionsFilter.getOldAirports(actualAirportsFromCSV, newAirportsFromCSV);
+
+        for(Airport oldAirport : oldAirports){
+            assertNotNull(oldAirport);
+            System.out.println(oldAirport.toString());
         }
     }
 }

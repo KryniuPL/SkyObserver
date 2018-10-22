@@ -5,7 +5,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.File;
-import java.io.IOException;
 import java.net.URL;
 
 public class AirportsCSVSheetDownloader {
@@ -15,12 +14,14 @@ public class AirportsCSVSheetDownloader {
     private static final File AIRPORTS_CSV_FILE = new File("src/main/resources/csv/new_airports.csv");
 
     public static void downloadCSV() {
+        logger.info("Downloading airports csv");
         try {
             URL downloadURL = new URL(AIRPORTS_CSV_DOWNLOAD_URL);
             FileUtils.copyURLToFile(downloadURL, AIRPORTS_CSV_FILE);
-            logger.info("Downloading airports csv");
-        } catch (IOException e) {
+            logger.info("Downloading file finished");
+        } catch (Exception e) {
             logger.error("Error downloading airports csv file");
+            e.printStackTrace();
         }
     }
 }

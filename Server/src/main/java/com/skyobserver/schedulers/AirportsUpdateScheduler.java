@@ -15,6 +15,9 @@ import java.io.IOException;
 import java.util.HashSet;
 import java.util.List;
 
+import static com.skyobserver.config.ServerConfiguration.ACTUAL_AIRPORTS_CSV_FILE_PATH;
+import static com.skyobserver.config.ServerConfiguration.CRON_SCHEDULE_EXPRESSION;
+import static com.skyobserver.config.ServerConfiguration.NEW_AIRPORTS_CSV_FILE_PATH;
 import static com.skyobserver.service.csv.airports.AirportsConverter.areNewAirportsAvailable;
 import static com.skyobserver.service.csv.airports.AirportsConverter.getParserByFilePath;
 
@@ -22,15 +25,12 @@ import static com.skyobserver.service.csv.airports.AirportsConverter.getParserBy
 public class AirportsUpdateScheduler {
 
     private final AirportsRepository airportsRepository;
-    private static final String ACTUAL_AIRPORTS_CSV_FILE_PATH = "src/main/resources/csv/airports.csv";
-    private static final String NEW_AIRPORTS_CSV_FILE_PATH = "src/main/resources/csv/new_airports.csv";
     private static final Logger logger = LoggerFactory.getLogger(AirportsUpdateScheduler.class);
-    private final String CRON_SCHEDULE_EXPRESSION = "0 0 12 * * ?";
+
 
     public AirportsUpdateScheduler(AirportsRepository airportsRepository) {
         this.airportsRepository = airportsRepository;
     }
-
 
     @Scheduled(cron = CRON_SCHEDULE_EXPRESSION)
     public void scheduleUpdating() throws IOException {

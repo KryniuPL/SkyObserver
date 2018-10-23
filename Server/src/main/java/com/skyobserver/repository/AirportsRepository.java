@@ -8,6 +8,5 @@ import java.util.List;
 
 public interface AirportsRepository extends CrudRepository<Airport, Long> {
 
-    List<Airport> findAll();
     List<Airport> findAirportsByMunicipalityStartingWith(String expression);
 }

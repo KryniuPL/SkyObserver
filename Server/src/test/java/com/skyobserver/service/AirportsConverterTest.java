@@ -1,7 +1,8 @@
-package com.skyobserver.service.csv.airports;
+package com.skyobserver.service;
 
 import com.skyobserver.enums.AirportHeaders;
 import com.skyobserver.model.Airport;
+import com.skyobserver.service.csv.airports.AirportsConverter;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVParser;
 import org.apache.commons.csv.CSVRecord;

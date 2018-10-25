@@ -17,11 +17,6 @@ public class AirportsController {
         this.airportsRepository = airportsRepository;
     }
 
-    @GetMapping
-    public List<Airport> getAllAirports() {
-        return airportsRepository.findAll();
-    }
-
     @GetMapping("/getAirportsStartingWith/{expression}")
     public List<Airport> getAirportsStartingWithText(@PathVariable String expression) throws AirportsNotFoundException {
         List<Airport> airports = airportsRepository.findAirportsByMunicipalityStartingWith(expression);

@@ -20,10 +20,11 @@ public class AirportsConverter {
     private static final Logger logger = LoggerFactory.getLogger(AirportsConverter.class);
     private static final String ACTUAL_AIRPORTS_CSV_FILE_PATH = "src/main/resources/csv/airports.csv";
     private static final String NEW_AIRPORTS_CSV_FILE_PATH = "src/main/resources/csv/new_airports.csv";
+    private static final int FIRST_RECORD_FROM_CSV = 1;
 
     public static HashSet<Airport> getListOfObjects(List<CSVRecord> records) {
         HashSet<Airport> convertedAirports = new HashSet<>();
-        for (int i = 1; i < records.size(); i++) {
+        for (int i = FIRST_RECORD_FROM_CSV; i < records.size(); i++) {
             convertedAirports.add(getSingleObject(records.get(i)));
         }
         return convertedAirports;

@@ -57,12 +57,12 @@ public class AirportsConverter {
         String name = record.get("name");
         double latitudeDeg = Double.parseDouble(record.get("latitudeDeg"));
         double longitudeDeg = Double.parseDouble(record.get("longitudeDeg"));
-        long elevationFt = 0l;
-        if(record.get("elevationFt").equals("")){
-            elevationFt = 0;
+        long elevationFt;
+        try{
+            elevationFt = Long.parseLong(record.get("elevationFt"));
         }
-        else {
-         elevationFt = Long.parseLong(record.get("elevationFt"));
+        catch (NumberFormatException e){
+            elevationFt = 0;
         }
         String continent = record.get("continent");
         String isoCountry = record.get("isoCountry");

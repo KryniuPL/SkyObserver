@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<OTA_AirDetailsRS
+        PrimaryLangID="eng"
+        Version="1.0"
+        TransactionIdentifier=""
+        FLSNote="This XML adds attributes not in the OTA XML spec.  All such attributes start with FLS"
+        FLSDevice="ota-xml-expanded"
+        xmlns="http://www.opentravel.org/OTA/2003/05">
+    <Success>
+    </Success>
+    <FLSResponseFields
+            FLSOriginCode="WAW"
+            FLSOriginName="Warsaw"
+            FLSDestinationCode="LHR"
+            FLSDestinationName="London Heathrow"
+            FLSStartDate="2018-11-15"
+            FLSEndDate="2018-11-15"
+
+            FLSResultCount="5"
+            FLSRoutesFound="14"
+            FLSBranchCount="1"
+            FLSTargetCount="88"
+            FLSRecordCount="7761"
+    />
+
+    <FlightDetails TotalFlightTime="PT3H00M"
+                   TotalMiles="914"
+                   TotalTripTime="PT3H00M"
+                   FLSDepartureDateTime="2018-11-15T07:35:00"
+                   FLSDepartureTimeOffset="+0100"
+                   FLSDepartureCode="WAW"
+                   FLSDepartureName="Warsaw"
+                   FLSArrivalDateTime="2018-11-15T09:35:00"
+                   FLSArrivalTimeOffset="+0000"
+                   FLSArrivalCode="LHR"
+                   FLSArrivalName="London Heathrow"
+                   FLSFlightType="NonStop"
+                   FLSFlightLegs="1"
+                   FLSFlightDays="...4..."
+                   FLSDayIndicator=""
+
+    >
+
+
+        <FlightLegDetails
+                DepartureDateTime="2018-11-15T07:35:00"
+                FLSDepartureTimeOffset="+0100"
+                ArrivalDateTime="2018-11-15T09:35:00"
+                FLSArrivalTimeOffset="+0000"
+
+                FlightNumber="281"
+                JourneyDuration="PT3H00M"
+                SequenceNumber="1"
+                LegDistance="914"
+                FLSMeals="RF"
+                FLSInflightServices="  9"
+                FLSUUID="WAWLHR20181115LO281"
+
+
+        >
+            <DepartureAirport CodeContext="IATA" LocationCode="WAW" FLSLocationName="Warsaw" Terminal=" "
+                              FLSDayIndicator=""/>
+            <ArrivalAirport CodeContext="IATA" LocationCode="LHR" FLSLocationName="London Heathrow" Terminal="2"
+                            FLSDayIndicator=""/>
+            <MarketingAirline Code="LO" CodeContext="IATA" CompanyShortName="LOT Polish Airlines"/>
+
+            <Equipment AirEquipType="7M8"/>
+        </FlightLegDetails>
+    </FlightDetails>
+    <FlightDetails TotalFlightTime="PT2H45M"
+                   TotalMiles="914"
+                   TotalTripTime="PT2H45M"
+                   FLSDepartureDateTime="2018-11-15T12:45:00"
+                   FLSDepartureTimeOffset="+0100"
+                   FLSDepartureCode="WAW"
+                   FLSDepartureName="Warsaw"
+                   FLSArrivalDateTime="2018-11-15T14:30:00"
+                   FLSArrivalTimeOffset="+0000"
+                   FLSArrivalCode="LHR"
+                   FLSArrivalName="London Heathrow"
+                   FLSFlightType="NonStop"
+                   FLSFlightLegs="1"
+                   FLSFlightDays="...4..."
+                   FLSDayIndicator=""
+
+    >
+
+
+        <FlightLegDetails
+                DepartureDateTime="2018-11-15T12:45:00"
+                FLSDepartureTimeOffset="+0100"
+                ArrivalDateTime="2018-11-15T14:30:00"
+                FLSArrivalTimeOffset="+0000"
+
+                FlightNumber="847"
+                JourneyDuration="PT2H45M"
+                SequenceNumber="1"
+                LegDistance="914"
+                FLSMeals="G"
+                FLSInflightServices=" "
+                FLSUUID="WAWLHR20181115BA847"
+
+
+        >
+            <DepartureAirport CodeContext="IATA" LocationCode="WAW" FLSLocationName="Warsaw" Terminal=" "
+                              FLSDayIndicator=""/>
+            <ArrivalAirport CodeContext="IATA" LocationCode="LHR" FLSLocationName="London Heathrow" Terminal="5"
+                            FLSDayIndicator=""/>
+            <MarketingAirline Code="BA" CodeContext="IATA" CompanyShortName="British Airways"/>
+
+            <Equipment AirEquipType="321"/>
+        </FlightLegDetails>
+    </FlightDetails>
+    <FlightDetails TotalFlightTime="PT2H50M"
+                   TotalMiles="914"
+                   TotalTripTime="PT2H50M"
+                   FLSDepartureDateTime="2018-11-15T15:30:00"
+                   FLSDepartureTimeOffset="+0100"
+                   FLSDepartureCode="WAW"
+                   FLSDepartureName="Warsaw"
+                   FLSArrivalDateTime="2018-11-15T17:20:00"
+                   FLSArrivalTimeOffset="+0000"
+                   FLSArrivalCode="LHR"
+                   FLSArrivalName="London Heathrow"
+                   FLSFlightType="NonStop"
+                   FLSFlightLegs="1"
+                   FLSFlightDays="...4..."
+                   FLSDayIndicator=""
+
+    >
+
+
+        <FlightLegDetails
+                DepartureDateTime="2018-11-15T15:30:00"
+                FLSDepartureTimeOffset="+0100"
+                ArrivalDateTime="2018-11-15T17:20:00"
+                FLSArrivalTimeOffset="+0000"
+
+                FlightNumber="279"
+                JourneyDuration="PT2H50M"
+                SequenceNumber="1"
+                LegDistance="914"
+                FLSMeals="RF"
+                FLSInflightServices="  9"
+                FLSUUID="WAWLHR20181115LO279"
+
+
+        >
+            <DepartureAirport CodeContext="IATA" LocationCode="WAW" FLSLocationName="Warsaw" Terminal=" "
+                              FLSDayIndicator=""/>
+            <ArrivalAirport CodeContext="IATA" LocationCode="LHR" FLSLocationName="London Heathrow" Terminal="2"
+                            FLSDayIndicator=""/>
+            <MarketingAirline Code="LO" CodeContext="IATA" CompanyShortName="LOT Polish Airlines"/>
+
+            <Equipment AirEquipType="7M8"/>
+        </FlightLegDetails>
+    </FlightDetails>
+    <FlightDetails TotalFlightTime="PT2H35M"
+                   TotalMiles="914"
+                   TotalTripTime="PT2H35M"
+                   FLSDepartureDateTime="2018-11-15T19:40:00"
+                   FLSDepartureTimeOffset="+0100"
+                   FLSDepartureCode="WAW"
+                   FLSDepartureName="Warsaw"
+                   FLSArrivalDateTime="2018-11-15T21:15:00"
+                   FLSArrivalTimeOffset="+0000"
+                   FLSArrivalCode="LHR"
+                   FLSArrivalName="London Heathrow"
+                   FLSFlightType="NonStop"
+                   FLSFlightLegs="1"
+                   FLSFlightDays="...4..."
+                   FLSDayIndicator=""
+
+    >
+
+
+        <FlightLegDetails
+                DepartureDateTime="2018-11-15T19:40:00"
+                FLSDepartureTimeOffset="+0100"
+                ArrivalDateTime="2018-11-15T21:15:00"
+                FLSArrivalTimeOffset="+0000"
+
+                FlightNumber="851"
+                JourneyDuration="PT2H35M"
+                SequenceNumber="1"
+                LegDistance="914"
+                FLSMeals="G"
+                FLSInflightServices=" "
+                FLSUUID="WAWLHR20181115BA851"
+
+
+        >
+            <DepartureAirport CodeContext="IATA" LocationCode="WAW" FLSLocationName="Warsaw" Terminal=" "
+                              FLSDayIndicator=""/>
+            <ArrivalAirport CodeContext="IATA" LocationCode="LHR" FLSLocationName="London Heathrow" Terminal="5"
+                            FLSDayIndicator=""/>
+            <MarketingAirline Code="BA" CodeContext="IATA" CompanyShortName="British Airways"/>
+
+            <Equipment AirEquipType="320"/>
+        </FlightLegDetails>
+    </FlightDetails>
+    <FlightDetails TotalFlightTime="PT2H45M"
+                   TotalMiles="914"
+                   TotalTripTime="PT2H45M"
+                   FLSDepartureDateTime="2018-11-15T20:05:00"
+                   FLSDepartureTimeOffset="+0100"
+                   FLSDepartureCode="WAW"
+                   FLSDepartureName="Warsaw"
+                   FLSArrivalDateTime="2018-11-15T21:50:00"
+                   FLSArrivalTimeOffset="+0000"
+                   FLSArrivalCode="LHR"
+                   FLSArrivalName="London Heathrow"
+                   FLSFlightType="NonStop"
+                   FLSFlightLegs="1"
+                   FLSFlightDays="...4..."
+                   FLSDayIndicator=""
+
+    >
+
+
+        <FlightLegDetails
+                DepartureDateTime="2018-11-15T20:05:00"
+                FLSDepartureTimeOffset="+0100"
+                ArrivalDateTime="2018-11-15T21:50:00"
+                FLSArrivalTimeOffset="+0000"
+
+                FlightNumber="285"
+                JourneyDuration="PT2H45M"
+                SequenceNumber="1"
+                LegDistance="914"
+                FLSMeals="RF"
+                FLSInflightServices="  9"
+                FLSUUID="WAWLHR20181115LO285"
+
+
+        >
+            <DepartureAirport CodeContext="IATA" LocationCode="WAW" FLSLocationName="Warsaw" Terminal=" "
+                              FLSDayIndicator=""/>
+            <ArrivalAirport CodeContext="IATA" LocationCode="LHR" FLSLocationName="London Heathrow" Terminal="2"
+                            FLSDayIndicator=""/>
+            <MarketingAirline Code="LO" CodeContext="IATA" CompanyShortName="LOT Polish Airlines"/>
+
+            <Equipment AirEquipType="7M8"/>
+        </FlightLegDetails>
+    </FlightDetails>
+</OTA_AirDetailsRS>

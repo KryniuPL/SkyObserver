@@ -2,7 +2,7 @@ package com.skyobserver.schedulers;
 
 import com.skyobserver.model.Airport;
 import com.skyobserver.repository.AirportsRepository;
-import com.skyobserver.service.csv.airports.AirportsConverter;
+import com.skyobserver.service.csv.AirportsConverter;
 import com.skyobserver.util.AirportsCSVSheetDownloader;
 import com.skyobserver.util.AirportsCollectionsFilter;
 import org.slf4j.Logger;
@@ -18,8 +18,8 @@ import java.util.List;
 import static com.skyobserver.config.ServerConfiguration.ACTUAL_AIRPORTS_CSV_FILE_PATH;
 import static com.skyobserver.config.ServerConfiguration.CRON_SCHEDULE_EXPRESSION;
 import static com.skyobserver.config.ServerConfiguration.NEW_AIRPORTS_CSV_FILE_PATH;
-import static com.skyobserver.service.csv.airports.AirportsConverter.areNewAirportsAvailable;
-import static com.skyobserver.service.csv.airports.AirportsConverter.getParserByFilePath;
+import static com.skyobserver.service.csv.AirportsConverter.areNewAirportsAvailable;
+import static com.skyobserver.service.csv.AirportsConverter.getParserByFilePath;
 
 @Component
 public class AirportsUpdateScheduler {

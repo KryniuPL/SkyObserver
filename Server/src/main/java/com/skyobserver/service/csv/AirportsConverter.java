@@ -1,4 +1,4 @@
-package com.skyobserver.service.csv.airports;
+package com.skyobserver.service.csv;
 
 import com.skyobserver.enums.AirportHeaders;
 import com.skyobserver.model.Airport;

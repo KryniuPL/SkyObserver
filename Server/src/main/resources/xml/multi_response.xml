@@ -1,0 +1,1177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<OTA_AirDetailsRS
+        PrimaryLangID="eng"
+        Version="1.0"
+        TransactionIdentifier=""
+        FLSNote="This XML adds attributes not in the OTA XML spec.  All such attributes start with FLS"
+        FLSDevice = "ota-xml-expanded"
+        xmlns="http://www.opentravel.org/OTA/2003/05">
+    <Success>
+    </Success>
+    <FLSResponseFields
+            FLSOriginCode="WAW"
+            FLSOriginName="Warsaw"
+            FLSDestinationCode="LHR"
+            FLSDestinationName="London Heathrow"
+            FLSStartDate="2018-11-15"
+            FLSEndDate="2018-11-15"
+
+            FLSResultCount="20"
+            FLSRoutesFound="193"
+            FLSBranchCount="4330"
+            FLSTargetCount="17178"
+            FLSRecordCount="5765271"
+    />
+
+    <FlightDetails TotalFlightTime="PT3H35M"
+                   TotalMiles="931"
+                   TotalTripTime="PT4H25M"
+                   FLSDepartureDateTime="2018-11-15T06:40:00"
+                   FLSDepartureTimeOffset="+0100"
+                   FLSDepartureCode="WAW"
+                   FLSDepartureName="Warsaw"
+                   FLSArrivalDateTime="2018-11-15T10:05:00"
+                   FLSArrivalTimeOffset="+0000"
+                   FLSArrivalCode="LHR"
+                   FLSArrivalName="London Heathrow"
+                   FLSFlightType="Connect"
+                   FLSFlightLegs="2"
+                   FLSFlightDays="...4..."
+                   FLSDayIndicator=""
+
+    >
+
+
+        <FlightLegDetails
+                DepartureDateTime="2018-11-15T06:40:00"
+                FLSDepartureTimeOffset="+0100"
+                ArrivalDateTime="2018-11-15T08:50:00"
+                FLSArrivalTimeOffset="+0100"
+
+                FlightNumber="2560"
+                JourneyDuration="PT2H10M"
+                SequenceNumber="1"
+                LegDistance="713"
+                FLSMeals="B"
+                FLSInflightServices="  9"
+                FLSUUID="WAWBRU20181115SN2560"
+
+
+        >
+            <DepartureAirport CodeContext="IATA" LocationCode="WAW" FLSLocationName="Warsaw" Terminal=" " FLSDayIndicator="" />
+            <ArrivalAirport CodeContext="IATA" LocationCode="BRU" FLSLocationName="Brussels" Terminal=" " FLSDayIndicator="" />
+            <MarketingAirline Code="SN" CodeContext="IATA" CompanyShortName="Brussels Airlines" />
+
+            <Equipment AirEquipType="319" />
+        </FlightLegDetails>
+        <FlightLegDetails
+                DepartureDateTime="2018-11-15T09:40:00"
+                FLSDepartureTimeOffset="+0100"
+                ArrivalDateTime="2018-11-15T10:05:00"
+                FLSArrivalTimeOffset="+0000"
+
+                FlightNumber="2093"
+                JourneyDuration="PT1H25M"
+                SequenceNumber="2"
+                LegDistance="218"
+                FLSMeals="S"
+                FLSInflightServices="  9"
+                FLSUUID="BRULHR20181115SN2093"
+
+
+        >
+            <DepartureAirport CodeContext="IATA" LocationCode="BRU" FLSLocationName="Brussels" Terminal=" " FLSDayIndicator="" />
+            <ArrivalAirport CodeContext="IATA" LocationCode="LHR" FLSLocationName="London Heathrow" Terminal="2" FLSDayIndicator="" />
+            <MarketingAirline Code="SN" CodeContext="IATA" CompanyShortName="Brussels Airlines" />
+
+            <Equipment AirEquipType="320" />
+        </FlightLegDetails>
+    </FlightDetails> <FlightDetails TotalFlightTime="PT3H00M"
+                                    TotalMiles="914"
+                                    TotalTripTime="PT3H00M"
+                                    FLSDepartureDateTime="2018-11-15T07:35:00"
+                                    FLSDepartureTimeOffset="+0100"
+                                    FLSDepartureCode="WAW"
+                                    FLSDepartureName="Warsaw"
+                                    FLSArrivalDateTime="2018-11-15T09:35:00"
+                                    FLSArrivalTimeOffset="+0000"
+                                    FLSArrivalCode="LHR"
+                                    FLSArrivalName="London Heathrow"
+                                    FLSFlightType="NonStop"
+                                    FLSFlightLegs="1"
+                                    FLSFlightDays="...4..."
+                                    FLSDayIndicator=""
+
+>
+
+
+    <FlightLegDetails
+            DepartureDateTime="2018-11-15T07:35:00"
+            FLSDepartureTimeOffset="+0100"
+            ArrivalDateTime="2018-11-15T09:35:00"
+            FLSArrivalTimeOffset="+0000"
+
+            FlightNumber="281"
+            JourneyDuration="PT3H00M"
+            SequenceNumber="1"
+            LegDistance="914"
+            FLSMeals="RF"
+            FLSInflightServices="  9"
+            FLSUUID="WAWLHR20181115LO281"
+
+
+    >
+        <DepartureAirport CodeContext="IATA" LocationCode="WAW" FLSLocationName="Warsaw" Terminal=" " FLSDayIndicator="" />
+        <ArrivalAirport CodeContext="IATA" LocationCode="LHR" FLSLocationName="London Heathrow" Terminal="2" FLSDayIndicator="" />
+        <MarketingAirline Code="LO" CodeContext="IATA" CompanyShortName="LOT Polish Airlines" />
+
+        <Equipment AirEquipType="7M8" />
+    </FlightLegDetails>
+</FlightDetails> <FlightDetails TotalFlightTime="PT3H55M"
+                                TotalMiles="1131"
+                                TotalTripTime="PT4H35M"
+                                FLSDepartureDateTime="2018-11-15T07:35:00"
+                                FLSDepartureTimeOffset="+0100"
+                                FLSDepartureCode="WAW"
+                                FLSDepartureName="Warsaw"
+                                FLSArrivalDateTime="2018-11-15T11:10:00"
+                                FLSArrivalTimeOffset="+0000"
+                                FLSArrivalCode="LHR"
+                                FLSArrivalName="London Heathrow"
+                                FLSFlightType="Connect"
+                                FLSFlightLegs="2"
+                                FLSFlightDays="...4..."
+                                FLSDayIndicator=""
+
+>
+
+
+    <FlightLegDetails
+            DepartureDateTime="2018-11-15T07:35:00"
+            FLSDepartureTimeOffset="+0100"
+            ArrivalDateTime="2018-11-15T09:40:00"
+            FLSArrivalTimeOffset="+0100"
+
+            FlightNumber="4501"
+            JourneyDuration="PT2H05M"
+            SequenceNumber="1"
+            LegDistance="641"
+            FLSMeals="RF"
+            FLSInflightServices="  9"
+            FLSUUID="WAWZRH20181115LX4501"
+            FLSUUIDActualFlight="WAWZRH20181115LO411"
+
+    >
+        <DepartureAirport CodeContext="IATA" LocationCode="WAW" FLSLocationName="Warsaw" Terminal=" " FLSDayIndicator="" />
+        <ArrivalAirport CodeContext="IATA" LocationCode="ZRH" FLSLocationName="Zurich" Terminal=" " FLSDayIndicator="" />
+        <MarketingAirline Code="LX" CodeContext="IATA" CompanyShortName="SWISS" />
+        <OperatingAirline Code="LO" CodeContext="IATA" CompanyShortName="LOT Polish Airlines" FlightNumber="411" />
+        <Equipment AirEquipType="E95" />
+    </FlightLegDetails>
+    <FlightLegDetails
+            DepartureDateTime="2018-11-15T10:20:00"
+            FLSDepartureTimeOffset="+0100"
+            ArrivalDateTime="2018-11-15T11:10:00"
+            FLSArrivalTimeOffset="+0000"
+
+            FlightNumber="318"
+            JourneyDuration="PT1H50M"
+            SequenceNumber="2"
+            LegDistance="490"
+            FLSMeals="S"
+            FLSInflightServices="  9"
+            FLSUUID="ZRHLHR20181115LX318"
+
+
+    >
+        <DepartureAirport CodeContext="IATA" LocationCode="ZRH" FLSLocationName="Zurich" Terminal=" " FLSDayIndicator="" />
+        <ArrivalAirport CodeContext="IATA" LocationCode="LHR" FLSLocationName="London Heathrow" Terminal="2" FLSDayIndicator="" />
+        <MarketingAirline Code="LX" CodeContext="IATA" CompanyShortName="SWISS" />
+
+        <Equipment AirEquipType="319" />
+    </FlightLegDetails>
+</FlightDetails> <FlightDetails TotalFlightTime="PT3H45M"
+                                TotalMiles="965"
+                                TotalTripTime="PT4H55M"
+                                FLSDepartureDateTime="2018-11-15T07:50:00"
+                                FLSDepartureTimeOffset="+0100"
+                                FLSDepartureCode="WAW"
+                                FLSDepartureName="Warsaw"
+                                FLSArrivalDateTime="2018-11-15T11:45:00"
+                                FLSArrivalTimeOffset="+0000"
+                                FLSArrivalCode="LHR"
+                                FLSArrivalName="London Heathrow"
+                                FLSFlightType="Connect"
+                                FLSFlightLegs="2"
+                                FLSFlightDays="...4..."
+                                FLSDayIndicator=""
+
+>
+
+
+    <FlightLegDetails
+            DepartureDateTime="2018-11-15T07:50:00"
+            FLSDepartureTimeOffset="+0100"
+            ArrivalDateTime="2018-11-15T09:50:00"
+            FLSArrivalTimeOffset="+0100"
+
+            FlightNumber="5863"
+            JourneyDuration="PT2H00M"
+            SequenceNumber="1"
+            LegDistance="558"
+            FLSMeals="RF"
+            FLSInflightServices="  9"
+            FLSUUID="WAWFRA20181115OU5863"
+            FLSUUIDActualFlight="WAWFRA20181115LO381"
+
+    >
+        <DepartureAirport CodeContext="IATA" LocationCode="WAW" FLSLocationName="Warsaw" Terminal=" " FLSDayIndicator="" />
+        <ArrivalAirport CodeContext="IATA" LocationCode="FRA" FLSLocationName="Frankfurt" Terminal="1" FLSDayIndicator="" />
+        <MarketingAirline Code="OU" CodeContext="IATA" CompanyShortName="Croatia Airlines" />
+        <OperatingAirline Code="LO" CodeContext="IATA" CompanyShortName="LOT Polish Airlines" FlightNumber="381" />
+        <Equipment AirEquipType="E95" />
+    </FlightLegDetails>
+    <FlightLegDetails
+            DepartureDateTime="2018-11-15T11:00:00"
+            FLSDepartureTimeOffset="+0100"
+            ArrivalDateTime="2018-11-15T11:45:00"
+            FLSArrivalTimeOffset="+0000"
+
+            FlightNumber="5480"
+            JourneyDuration="PT1H45M"
+            SequenceNumber="2"
+            LegDistance="407"
+            FLSMeals="S"
+            FLSInflightServices=" "
+            FLSUUID="FRALHR20181115OU5480"
+            FLSUUIDActualFlight="FRALHR20181115LH904"
+
+    >
+        <DepartureAirport CodeContext="IATA" LocationCode="FRA" FLSLocationName="Frankfurt" Terminal="1" FLSDayIndicator="" />
+        <ArrivalAirport CodeContext="IATA" LocationCode="LHR" FLSLocationName="London Heathrow" Terminal="2" FLSDayIndicator="" />
+        <MarketingAirline Code="OU" CodeContext="IATA" CompanyShortName="Croatia Airlines" />
+        <OperatingAirline Code="LH" CodeContext="IATA" CompanyShortName="Lufthansa" FlightNumber="904" />
+        <Equipment AirEquipType="32N" />
+    </FlightLegDetails>
+</FlightDetails> <FlightDetails TotalFlightTime="PT3H35M"
+                                TotalMiles="965"
+                                TotalTripTime="PT4H40M"
+                                FLSDepartureDateTime="2018-11-15T09:05:00"
+                                FLSDepartureTimeOffset="+0100"
+                                FLSDepartureCode="WAW"
+                                FLSDepartureName="Warsaw"
+                                FLSArrivalDateTime="2018-11-15T12:45:00"
+                                FLSArrivalTimeOffset="+0000"
+                                FLSArrivalCode="LHR"
+                                FLSArrivalName="London Heathrow"
+                                FLSFlightType="Connect"
+                                FLSFlightLegs="2"
+                                FLSFlightDays="...4..."
+                                FLSDayIndicator=""
+
+>
+
+
+    <FlightLegDetails
+            DepartureDateTime="2018-11-15T09:05:00"
+            FLSDepartureTimeOffset="+0100"
+            ArrivalDateTime="2018-11-15T10:55:00"
+            FLSArrivalTimeOffset="+0100"
+
+            FlightNumber="1347"
+            JourneyDuration="PT1H50M"
+            SequenceNumber="1"
+            LegDistance="558"
+            FLSMeals="S"
+            FLSInflightServices=" "
+            FLSUUID="WAWFRA20181115LH1347"
+
+
+    >
+        <DepartureAirport CodeContext="IATA" LocationCode="WAW" FLSLocationName="Warsaw" Terminal=" " FLSDayIndicator="" />
+        <ArrivalAirport CodeContext="IATA" LocationCode="FRA" FLSLocationName="Frankfurt" Terminal="1" FLSDayIndicator="" />
+        <MarketingAirline Code="LH" CodeContext="IATA" CompanyShortName="Lufthansa" />
+
+        <Equipment AirEquipType="319" />
+    </FlightLegDetails>
+    <FlightLegDetails
+            DepartureDateTime="2018-11-15T12:00:00"
+            FLSDepartureTimeOffset="+0100"
+            ArrivalDateTime="2018-11-15T12:45:00"
+            FLSArrivalTimeOffset="+0000"
+
+            FlightNumber="906"
+            JourneyDuration="PT1H45M"
+            SequenceNumber="2"
+            LegDistance="407"
+            FLSMeals="S"
+            FLSInflightServices=" "
+            FLSUUID="FRALHR20181115LH906"
+
+
+    >
+        <DepartureAirport CodeContext="IATA" LocationCode="FRA" FLSLocationName="Frankfurt" Terminal="1" FLSDayIndicator="" />
+        <ArrivalAirport CodeContext="IATA" LocationCode="LHR" FLSLocationName="London Heathrow" Terminal="2" FLSDayIndicator="" />
+        <MarketingAirline Code="LH" CodeContext="IATA" CompanyShortName="Lufthansa" />
+
+        <Equipment AirEquipType="32N" />
+    </FlightLegDetails>
+</FlightDetails> <FlightDetails TotalFlightTime="PT3H40M"
+                                TotalMiles="1023"
+                                TotalTripTime="PT4H55M"
+                                FLSDepartureDateTime="2018-11-15T09:10:00"
+                                FLSDepartureTimeOffset="+0100"
+                                FLSDepartureCode="WAW"
+                                FLSDepartureName="Warsaw"
+                                FLSArrivalDateTime="2018-11-15T13:05:00"
+                                FLSArrivalTimeOffset="+0000"
+                                FLSArrivalCode="LHR"
+                                FLSArrivalName="London Heathrow"
+                                FLSFlightType="Connect"
+                                FLSFlightLegs="2"
+                                FLSFlightDays="...4..."
+                                FLSDayIndicator=""
+
+>
+
+
+    <FlightLegDetails
+            DepartureDateTime="2018-11-15T09:10:00"
+            FLSDepartureTimeOffset="+0100"
+            ArrivalDateTime="2018-11-15T10:45:00"
+            FLSArrivalTimeOffset="+0100"
+
+            FlightNumber="8656"
+            JourneyDuration="PT1H35M"
+            SequenceNumber="1"
+            LegDistance="414"
+            FLSMeals="M"
+            FLSInflightServices="  9"
+            FLSUUID="WAWCPH20181115SK8656"
+            FLSUUIDActualFlight="WAWCPH20181115LO463"
+
+    >
+        <DepartureAirport CodeContext="IATA" LocationCode="WAW" FLSLocationName="Warsaw" Terminal=" " FLSDayIndicator="" />
+        <ArrivalAirport CodeContext="IATA" LocationCode="CPH" FLSLocationName="Copenhagen Kastrup" Terminal="2" FLSDayIndicator="" />
+        <MarketingAirline Code="SK" CodeContext="IATA" CompanyShortName="SAS Scandinavian Airlines" />
+        <OperatingAirline Code="LO" CodeContext="IATA" CompanyShortName="LOT Polish Airlines" FlightNumber="463" />
+        <Equipment AirEquipType="E95" />
+    </FlightLegDetails>
+    <FlightLegDetails
+            DepartureDateTime="2018-11-15T12:00:00"
+            FLSDepartureTimeOffset="+0100"
+            ArrivalDateTime="2018-11-15T13:05:00"
+            FLSArrivalTimeOffset="+0000"
+
+            FlightNumber="503"
+            JourneyDuration="PT2H05M"
+            SequenceNumber="2"
+            LegDistance="609"
+            FLSMeals="M"
+            FLSInflightServices=" "
+            FLSUUID="CPHLHR20181115SK503"
+
+
+    >
+        <DepartureAirport CodeContext="IATA" LocationCode="CPH" FLSLocationName="Copenhagen Kastrup" Terminal="3" FLSDayIndicator="" />
+        <ArrivalAirport CodeContext="IATA" LocationCode="LHR" FLSLocationName="London Heathrow" Terminal="2" FLSDayIndicator="" />
+        <MarketingAirline Code="SK" CodeContext="IATA" CompanyShortName="SAS Scandinavian Airlines" />
+
+        <Equipment AirEquipType="32A" />
+    </FlightLegDetails>
+</FlightDetails> <FlightDetails TotalFlightTime="PT3H30M"
+                                TotalMiles="1023"
+                                TotalTripTime="PT4H10M"
+                                FLSDepartureDateTime="2018-11-15T09:55:00"
+                                FLSDepartureTimeOffset="+0100"
+                                FLSDepartureCode="WAW"
+                                FLSDepartureName="Warsaw"
+                                FLSArrivalDateTime="2018-11-15T13:05:00"
+                                FLSArrivalTimeOffset="+0000"
+                                FLSArrivalCode="LHR"
+                                FLSArrivalName="London Heathrow"
+                                FLSFlightType="Connect"
+                                FLSFlightLegs="2"
+                                FLSFlightDays="...4..."
+                                FLSDayIndicator=""
+
+>
+
+
+    <FlightLegDetails
+            DepartureDateTime="2018-11-15T09:55:00"
+            FLSDepartureTimeOffset="+0100"
+            ArrivalDateTime="2018-11-15T11:20:00"
+            FLSArrivalTimeOffset="+0100"
+
+            FlightNumber="752"
+            JourneyDuration="PT1H25M"
+            SequenceNumber="1"
+            LegDistance="414"
+            FLSMeals="M"
+            FLSInflightServices=" "
+            FLSUUID="WAWCPH20181115SK752"
+
+            FLSDOTDisclosure="Owned By:EE"
+    >
+        <DepartureAirport CodeContext="IATA" LocationCode="WAW" FLSLocationName="Warsaw" Terminal=" " FLSDayIndicator="" />
+        <ArrivalAirport CodeContext="IATA" LocationCode="CPH" FLSLocationName="Copenhagen Kastrup" Terminal="3" FLSDayIndicator="" />
+        <MarketingAirline Code="SK" CodeContext="IATA" CompanyShortName="SAS Scandinavian Airlines" />
+
+        <Equipment AirEquipType="CR9" />
+    </FlightLegDetails>
+    <FlightLegDetails
+            DepartureDateTime="2018-11-15T12:00:00"
+            FLSDepartureTimeOffset="+0100"
+            ArrivalDateTime="2018-11-15T13:05:00"
+            FLSArrivalTimeOffset="+0000"
+
+            FlightNumber="503"
+            JourneyDuration="PT2H05M"
+            SequenceNumber="2"
+            LegDistance="609"
+            FLSMeals="M"
+            FLSInflightServices=" "
+            FLSUUID="CPHLHR20181115SK503"
+
+
+    >
+        <DepartureAirport CodeContext="IATA" LocationCode="CPH" FLSLocationName="Copenhagen Kastrup" Terminal="3" FLSDayIndicator="" />
+        <ArrivalAirport CodeContext="IATA" LocationCode="LHR" FLSLocationName="London Heathrow" Terminal="2" FLSDayIndicator="" />
+        <MarketingAirline Code="SK" CodeContext="IATA" CompanyShortName="SAS Scandinavian Airlines" />
+
+        <Equipment AirEquipType="32A" />
+    </FlightLegDetails>
+</FlightDetails> <FlightDetails TotalFlightTime="PT2H45M"
+                                TotalMiles="914"
+                                TotalTripTime="PT2H45M"
+                                FLSDepartureDateTime="2018-11-15T12:45:00"
+                                FLSDepartureTimeOffset="+0100"
+                                FLSDepartureCode="WAW"
+                                FLSDepartureName="Warsaw"
+                                FLSArrivalDateTime="2018-11-15T14:30:00"
+                                FLSArrivalTimeOffset="+0000"
+                                FLSArrivalCode="LHR"
+                                FLSArrivalName="London Heathrow"
+                                FLSFlightType="NonStop"
+                                FLSFlightLegs="1"
+                                FLSFlightDays="...4..."
+                                FLSDayIndicator=""
+
+>
+
+
+    <FlightLegDetails
+            DepartureDateTime="2018-11-15T12:45:00"
+            FLSDepartureTimeOffset="+0100"
+            ArrivalDateTime="2018-11-15T14:30:00"
+            FLSArrivalTimeOffset="+0000"
+
+            FlightNumber="847"
+            JourneyDuration="PT2H45M"
+            SequenceNumber="1"
+            LegDistance="914"
+            FLSMeals="G"
+            FLSInflightServices=" "
+            FLSUUID="WAWLHR20181115BA847"
+
+
+    >
+        <DepartureAirport CodeContext="IATA" LocationCode="WAW" FLSLocationName="Warsaw" Terminal=" " FLSDayIndicator="" />
+        <ArrivalAirport CodeContext="IATA" LocationCode="LHR" FLSLocationName="London Heathrow" Terminal="5" FLSDayIndicator="" />
+        <MarketingAirline Code="BA" CodeContext="IATA" CompanyShortName="British Airways" />
+
+        <Equipment AirEquipType="321" />
+    </FlightLegDetails>
+</FlightDetails> <FlightDetails TotalFlightTime="PT3H25M"
+                                TotalMiles="915"
+                                TotalTripTime="PT4H20M"
+                                FLSDepartureDateTime="2018-11-15T12:45:00"
+                                FLSDepartureTimeOffset="+0100"
+                                FLSDepartureCode="WAW"
+                                FLSDepartureName="Warsaw"
+                                FLSArrivalDateTime="2018-11-15T16:05:00"
+                                FLSArrivalTimeOffset="+0000"
+                                FLSArrivalCode="LHR"
+                                FLSArrivalName="London Heathrow"
+                                FLSFlightType="Connect"
+                                FLSFlightLegs="2"
+                                FLSFlightDays="...4..."
+                                FLSDayIndicator=""
+
+>
+
+
+    <FlightLegDetails
+            DepartureDateTime="2018-11-15T12:45:00"
+            FLSDepartureTimeOffset="+0100"
+            ArrivalDateTime="2018-11-15T14:50:00"
+            FLSArrivalTimeOffset="+0100"
+
+            FlightNumber="1364"
+            JourneyDuration="PT2H05M"
+            SequenceNumber="1"
+            LegDistance="685"
+            FLSMeals="S"
+            FLSInflightServices=" "
+            FLSUUID="WAWAMS20181115KL1364"
+
+
+    >
+        <DepartureAirport CodeContext="IATA" LocationCode="WAW" FLSLocationName="Warsaw" Terminal=" " FLSDayIndicator="" />
+        <ArrivalAirport CodeContext="IATA" LocationCode="AMS" FLSLocationName="Amsterdam" Terminal=" " FLSDayIndicator="" />
+        <MarketingAirline Code="KL" CodeContext="IATA" CompanyShortName="KLM Royal Dutch Airlines" />
+
+        <Equipment AirEquipType="73W" />
+    </FlightLegDetails>
+    <FlightLegDetails
+            DepartureDateTime="2018-11-15T15:45:00"
+            FLSDepartureTimeOffset="+0100"
+            ArrivalDateTime="2018-11-15T16:05:00"
+            FLSArrivalTimeOffset="+0000"
+
+            FlightNumber="1021"
+            JourneyDuration="PT1H20M"
+            SequenceNumber="2"
+            LegDistance="230"
+            FLSMeals="S"
+            FLSInflightServices=" "
+            FLSUUID="AMSLHR20181115KL1021"
+
+            FLSDOTDisclosure="Owned By:WA"
+    >
+        <DepartureAirport CodeContext="IATA" LocationCode="AMS" FLSLocationName="Amsterdam" Terminal=" " FLSDayIndicator="" />
+        <ArrivalAirport CodeContext="IATA" LocationCode="LHR" FLSLocationName="London Heathrow" Terminal="4" FLSDayIndicator="" />
+        <MarketingAirline Code="KL" CodeContext="IATA" CompanyShortName="KLM Royal Dutch Airlines" />
+
+        <Equipment AirEquipType="E90" />
+    </FlightLegDetails>
+</FlightDetails> <FlightDetails TotalFlightTime="PT3H55M"
+                                TotalMiles="1051"
+                                TotalTripTime="PT4H40M"
+                                FLSDepartureDateTime="2018-11-15T13:00:00"
+                                FLSDepartureTimeOffset="+0100"
+                                FLSDepartureCode="WAW"
+                                FLSDepartureName="Warsaw"
+                                FLSArrivalDateTime="2018-11-15T16:40:00"
+                                FLSArrivalTimeOffset="+0000"
+                                FLSArrivalCode="LHR"
+                                FLSArrivalName="London Heathrow"
+                                FLSFlightType="Connect"
+                                FLSFlightLegs="2"
+                                FLSFlightDays="...4..."
+                                FLSDayIndicator=""
+
+>
+
+
+    <FlightLegDetails
+            DepartureDateTime="2018-11-15T13:00:00"
+            FLSDepartureTimeOffset="+0100"
+            ArrivalDateTime="2018-11-15T15:30:00"
+            FLSArrivalTimeOffset="+0100"
+
+            FlightNumber="1147"
+            JourneyDuration="PT2H30M"
+            SequenceNumber="1"
+            LegDistance="835"
+            FLSMeals="S"
+            FLSInflightServices=" "
+            FLSUUID="WAWCDG20181115AF1147"
+
+
+    >
+        <DepartureAirport CodeContext="IATA" LocationCode="WAW" FLSLocationName="Warsaw" Terminal=" " FLSDayIndicator="" />
+        <ArrivalAirport CodeContext="IATA" LocationCode="CDG" FLSLocationName="Paris Ch. de Gaulle" Terminal="2F" FLSDayIndicator="" />
+        <MarketingAirline Code="AF" CodeContext="IATA" CompanyShortName="Air France" />
+
+        <Equipment AirEquipType="318" />
+    </FlightLegDetails>
+    <FlightLegDetails
+            DepartureDateTime="2018-11-15T16:15:00"
+            FLSDepartureTimeOffset="+0100"
+            ArrivalDateTime="2018-11-15T16:40:00"
+            FLSArrivalTimeOffset="+0000"
+
+            FlightNumber="1280"
+            JourneyDuration="PT1H25M"
+            SequenceNumber="2"
+            LegDistance="216"
+            FLSMeals="S"
+            FLSInflightServices=" "
+            FLSUUID="CDGLHR20181115AF1280"
+
+
+    >
+        <DepartureAirport CodeContext="IATA" LocationCode="CDG" FLSLocationName="Paris Ch. de Gaulle" Terminal="2E" FLSDayIndicator="" />
+        <ArrivalAirport CodeContext="IATA" LocationCode="LHR" FLSLocationName="London Heathrow" Terminal="4" FLSDayIndicator="" />
+        <MarketingAirline Code="AF" CodeContext="IATA" CompanyShortName="Air France" />
+
+        <Equipment AirEquipType="32A" />
+    </FlightLegDetails>
+</FlightDetails> <FlightDetails TotalFlightTime="PT3H30M"
+                                TotalMiles="965"
+                                TotalTripTime="PT4H15M"
+                                FLSDepartureDateTime="2018-11-15T14:30:00"
+                                FLSDepartureTimeOffset="+0100"
+                                FLSDepartureCode="WAW"
+                                FLSDepartureName="Warsaw"
+                                FLSArrivalDateTime="2018-11-15T17:45:00"
+                                FLSArrivalTimeOffset="+0000"
+                                FLSArrivalCode="LHR"
+                                FLSArrivalName="London Heathrow"
+                                FLSFlightType="Connect"
+                                FLSFlightLegs="2"
+                                FLSFlightDays="...4..."
+                                FLSDayIndicator=""
+
+>
+
+
+    <FlightLegDetails
+            DepartureDateTime="2018-11-15T14:30:00"
+            FLSDepartureTimeOffset="+0100"
+            ArrivalDateTime="2018-11-15T16:15:00"
+            FLSArrivalTimeOffset="+0100"
+
+            FlightNumber="1349"
+            JourneyDuration="PT1H45M"
+            SequenceNumber="1"
+            LegDistance="558"
+            FLSMeals="S"
+            FLSInflightServices=" "
+            FLSUUID="WAWFRA20181115LH1349"
+
+
+    >
+        <DepartureAirport CodeContext="IATA" LocationCode="WAW" FLSLocationName="Warsaw" Terminal=" " FLSDayIndicator="" />
+        <ArrivalAirport CodeContext="IATA" LocationCode="FRA" FLSLocationName="Frankfurt" Terminal="1" FLSDayIndicator="" />
+        <MarketingAirline Code="LH" CodeContext="IATA" CompanyShortName="Lufthansa" />
+
+        <Equipment AirEquipType="32A" />
+    </FlightLegDetails>
+    <FlightLegDetails
+            DepartureDateTime="2018-11-15T17:00:00"
+            FLSDepartureTimeOffset="+0100"
+            ArrivalDateTime="2018-11-15T17:45:00"
+            FLSArrivalTimeOffset="+0000"
+
+            FlightNumber="916"
+            JourneyDuration="PT1H45M"
+            SequenceNumber="2"
+            LegDistance="407"
+            FLSMeals="S"
+            FLSInflightServices=" "
+            FLSUUID="FRALHR20181115LH916"
+
+
+    >
+        <DepartureAirport CodeContext="IATA" LocationCode="FRA" FLSLocationName="Frankfurt" Terminal="1" FLSDayIndicator="" />
+        <ArrivalAirport CodeContext="IATA" LocationCode="LHR" FLSLocationName="London Heathrow" Terminal="2" FLSDayIndicator="" />
+        <MarketingAirline Code="LH" CodeContext="IATA" CompanyShortName="Lufthansa" />
+
+        <Equipment AirEquipType="32N" />
+    </FlightLegDetails>
+</FlightDetails> <FlightDetails TotalFlightTime="PT3H50M"
+                                TotalMiles="1135"
+                                TotalTripTime="PT4H30M"
+                                FLSDepartureDateTime="2018-11-15T15:10:00"
+                                FLSDepartureTimeOffset="+0100"
+                                FLSDepartureCode="WAW"
+                                FLSDepartureName="Warsaw"
+                                FLSArrivalDateTime="2018-11-15T18:40:00"
+                                FLSArrivalTimeOffset="+0000"
+                                FLSArrivalCode="LHR"
+                                FLSArrivalName="London Heathrow"
+                                FLSFlightType="Connect"
+                                FLSFlightLegs="2"
+                                FLSFlightDays="...4..."
+                                FLSDayIndicator=""
+
+>
+
+
+    <FlightLegDetails
+            DepartureDateTime="2018-11-15T15:10:00"
+            FLSDepartureTimeOffset="+0100"
+            ArrivalDateTime="2018-11-15T16:35:00"
+            FLSArrivalTimeOffset="+0100"
+
+            FlightNumber="624"
+            JourneyDuration="PT1H25M"
+            SequenceNumber="1"
+            LegDistance="341"
+            FLSMeals="S"
+            FLSInflightServices="  9"
+            FLSUUID="WAWVIE20181115OS624"
+
+
+    >
+        <DepartureAirport CodeContext="IATA" LocationCode="WAW" FLSLocationName="Warsaw" Terminal=" " FLSDayIndicator="" />
+        <ArrivalAirport CodeContext="IATA" LocationCode="VIE" FLSLocationName="Vienna" Terminal=" " FLSDayIndicator="" />
+        <MarketingAirline Code="OS" CodeContext="IATA" CompanyShortName="Austrian" />
+
+        <Equipment AirEquipType="E95" />
+    </FlightLegDetails>
+    <FlightLegDetails
+            DepartureDateTime="2018-11-15T17:15:00"
+            FLSDepartureTimeOffset="+0100"
+            ArrivalDateTime="2018-11-15T18:40:00"
+            FLSArrivalTimeOffset="+0000"
+
+            FlightNumber="455"
+            JourneyDuration="PT2H25M"
+            SequenceNumber="2"
+            LegDistance="794"
+            FLSMeals="S"
+            FLSInflightServices="  9"
+            FLSUUID="VIELHR20181115OS455"
+
+
+    >
+        <DepartureAirport CodeContext="IATA" LocationCode="VIE" FLSLocationName="Vienna" Terminal=" " FLSDayIndicator="" />
+        <ArrivalAirport CodeContext="IATA" LocationCode="LHR" FLSLocationName="London Heathrow" Terminal="2" FLSDayIndicator="" />
+        <MarketingAirline Code="OS" CodeContext="IATA" CompanyShortName="Austrian" />
+
+        <Equipment AirEquipType="321" />
+    </FlightLegDetails>
+</FlightDetails> <FlightDetails TotalFlightTime="PT2H50M"
+                                TotalMiles="914"
+                                TotalTripTime="PT2H50M"
+                                FLSDepartureDateTime="2018-11-15T15:30:00"
+                                FLSDepartureTimeOffset="+0100"
+                                FLSDepartureCode="WAW"
+                                FLSDepartureName="Warsaw"
+                                FLSArrivalDateTime="2018-11-15T17:20:00"
+                                FLSArrivalTimeOffset="+0000"
+                                FLSArrivalCode="LHR"
+                                FLSArrivalName="London Heathrow"
+                                FLSFlightType="NonStop"
+                                FLSFlightLegs="1"
+                                FLSFlightDays="...4..."
+                                FLSDayIndicator=""
+
+>
+
+
+    <FlightLegDetails
+            DepartureDateTime="2018-11-15T15:30:00"
+            FLSDepartureTimeOffset="+0100"
+            ArrivalDateTime="2018-11-15T17:20:00"
+            FLSArrivalTimeOffset="+0000"
+
+            FlightNumber="279"
+            JourneyDuration="PT2H50M"
+            SequenceNumber="1"
+            LegDistance="914"
+            FLSMeals="RF"
+            FLSInflightServices="  9"
+            FLSUUID="WAWLHR20181115LO279"
+
+
+    >
+        <DepartureAirport CodeContext="IATA" LocationCode="WAW" FLSLocationName="Warsaw" Terminal=" " FLSDayIndicator="" />
+        <ArrivalAirport CodeContext="IATA" LocationCode="LHR" FLSLocationName="London Heathrow" Terminal="2" FLSDayIndicator="" />
+        <MarketingAirline Code="LO" CodeContext="IATA" CompanyShortName="LOT Polish Airlines" />
+
+        <Equipment AirEquipType="7M8" />
+    </FlightLegDetails>
+</FlightDetails> <FlightDetails TotalFlightTime="PT3H45M"
+                                TotalMiles="965"
+                                TotalTripTime="PT4H40M"
+                                FLSDepartureDateTime="2018-11-15T17:05:00"
+                                FLSDepartureTimeOffset="+0100"
+                                FLSDepartureCode="WAW"
+                                FLSDepartureName="Warsaw"
+                                FLSArrivalDateTime="2018-11-15T20:45:00"
+                                FLSArrivalTimeOffset="+0000"
+                                FLSArrivalCode="LHR"
+                                FLSArrivalName="London Heathrow"
+                                FLSFlightType="Connect"
+                                FLSFlightLegs="2"
+                                FLSFlightDays="...4..."
+                                FLSDayIndicator=""
+
+>
+
+
+    <FlightLegDetails
+            DepartureDateTime="2018-11-15T17:05:00"
+            FLSDepartureTimeOffset="+0100"
+            ArrivalDateTime="2018-11-15T19:05:00"
+            FLSArrivalTimeOffset="+0100"
+
+            FlightNumber="5717"
+            JourneyDuration="PT2H00M"
+            SequenceNumber="1"
+            LegDistance="558"
+            FLSMeals="RF"
+            FLSInflightServices="  9"
+            FLSUUID="WAWFRA20181115LH5717"
+            FLSUUIDActualFlight="WAWFRA20181115LO379"
+
+    >
+        <DepartureAirport CodeContext="IATA" LocationCode="WAW" FLSLocationName="Warsaw" Terminal=" " FLSDayIndicator="" />
+        <ArrivalAirport CodeContext="IATA" LocationCode="FRA" FLSLocationName="Frankfurt" Terminal="1" FLSDayIndicator="" />
+        <MarketingAirline Code="LH" CodeContext="IATA" CompanyShortName="Lufthansa" />
+        <OperatingAirline Code="LO" CodeContext="IATA" CompanyShortName="LOT Polish Airlines" FlightNumber="379" />
+        <Equipment AirEquipType="738" />
+    </FlightLegDetails>
+    <FlightLegDetails
+            DepartureDateTime="2018-11-15T20:00:00"
+            FLSDepartureTimeOffset="+0100"
+            ArrivalDateTime="2018-11-15T20:45:00"
+            FLSArrivalTimeOffset="+0000"
+
+            FlightNumber="920"
+            JourneyDuration="PT1H45M"
+            SequenceNumber="2"
+            LegDistance="407"
+            FLSMeals="S"
+            FLSInflightServices=" "
+            FLSUUID="FRALHR20181115LH920"
+
+
+    >
+        <DepartureAirport CodeContext="IATA" LocationCode="FRA" FLSLocationName="Frankfurt" Terminal="1" FLSDayIndicator="" />
+        <ArrivalAirport CodeContext="IATA" LocationCode="LHR" FLSLocationName="London Heathrow" Terminal="2" FLSDayIndicator="" />
+        <MarketingAirline Code="LH" CodeContext="IATA" CompanyShortName="Lufthansa" />
+
+        <Equipment AirEquipType="32N" />
+    </FlightLegDetails>
+</FlightDetails> <FlightDetails TotalFlightTime="PT3H55M"
+                                TotalMiles="1070"
+                                TotalTripTime="PT4H45M"
+                                FLSDepartureDateTime="2018-11-15T17:10:00"
+                                FLSDepartureTimeOffset="+0100"
+                                FLSDepartureCode="WAW"
+                                FLSDepartureName="Warsaw"
+                                FLSArrivalDateTime="2018-11-15T20:55:00"
+                                FLSArrivalTimeOffset="+0000"
+                                FLSArrivalCode="LHR"
+                                FLSArrivalName="London Heathrow"
+                                FLSFlightType="Connect"
+                                FLSFlightLegs="2"
+                                FLSFlightDays="...4..."
+                                FLSDayIndicator=""
+
+>
+
+
+    <FlightLegDetails
+            DepartureDateTime="2018-11-15T17:10:00"
+            FLSDepartureTimeOffset="+0100"
+            ArrivalDateTime="2018-11-15T18:55:00"
+            FLSArrivalTimeOffset="+0100"
+
+            FlightNumber="5723"
+            JourneyDuration="PT1H45M"
+            SequenceNumber="1"
+            LegDistance="484"
+            FLSMeals="RF"
+            FLSInflightServices="  9"
+            FLSUUID="WAWMUC20181115LH5723"
+            FLSUUIDActualFlight="WAWMUC20181115LO353"
+
+    >
+        <DepartureAirport CodeContext="IATA" LocationCode="WAW" FLSLocationName="Warsaw" Terminal=" " FLSDayIndicator="" />
+        <ArrivalAirport CodeContext="IATA" LocationCode="MUC" FLSLocationName="Munich" Terminal="2" FLSDayIndicator="" />
+        <MarketingAirline Code="LH" CodeContext="IATA" CompanyShortName="Lufthansa" />
+        <OperatingAirline Code="LO" CodeContext="IATA" CompanyShortName="LOT Polish Airlines" FlightNumber="353" />
+        <Equipment AirEquipType="734" />
+    </FlightLegDetails>
+    <FlightLegDetails
+            DepartureDateTime="2018-11-15T19:45:00"
+            FLSDepartureTimeOffset="+0100"
+            ArrivalDateTime="2018-11-15T20:55:00"
+            FLSArrivalTimeOffset="+0000"
+
+            FlightNumber="2482"
+            JourneyDuration="PT2H10M"
+            SequenceNumber="2"
+            LegDistance="586"
+            FLSMeals="S"
+            FLSInflightServices=" "
+            FLSUUID="MUCLHR20181115LH2482"
+
+
+    >
+        <DepartureAirport CodeContext="IATA" LocationCode="MUC" FLSLocationName="Munich" Terminal="2" FLSDayIndicator="" />
+        <ArrivalAirport CodeContext="IATA" LocationCode="LHR" FLSLocationName="London Heathrow" Terminal="2" FLSDayIndicator="" />
+        <MarketingAirline Code="LH" CodeContext="IATA" CompanyShortName="Lufthansa" />
+
+        <Equipment AirEquipType="32A" />
+    </FlightLegDetails>
+</FlightDetails> <FlightDetails TotalFlightTime="PT3H20M"
+                                TotalMiles="931"
+                                TotalTripTime="PT4H50M"
+                                FLSDepartureDateTime="2018-11-15T17:30:00"
+                                FLSDepartureTimeOffset="+0100"
+                                FLSDepartureCode="WAW"
+                                FLSDepartureName="Warsaw"
+                                FLSArrivalDateTime="2018-11-15T21:20:00"
+                                FLSArrivalTimeOffset="+0000"
+                                FLSArrivalCode="LHR"
+                                FLSArrivalName="London Heathrow"
+                                FLSFlightType="Connect"
+                                FLSFlightLegs="2"
+                                FLSFlightDays="...4..."
+                                FLSDayIndicator=""
+
+>
+
+
+    <FlightLegDetails
+            DepartureDateTime="2018-11-15T17:30:00"
+            FLSDepartureTimeOffset="+0100"
+            ArrivalDateTime="2018-11-15T19:40:00"
+            FLSArrivalTimeOffset="+0100"
+
+            FlightNumber="2556"
+            JourneyDuration="PT2H10M"
+            SequenceNumber="1"
+            LegDistance="713"
+            FLSMeals="S"
+            FLSInflightServices="  9"
+            FLSUUID="WAWBRU20181115SN2556"
+
+
+    >
+        <DepartureAirport CodeContext="IATA" LocationCode="WAW" FLSLocationName="Warsaw" Terminal=" " FLSDayIndicator="" />
+        <ArrivalAirport CodeContext="IATA" LocationCode="BRU" FLSLocationName="Brussels" Terminal=" " FLSDayIndicator="" />
+        <MarketingAirline Code="SN" CodeContext="IATA" CompanyShortName="Brussels Airlines" />
+
+        <Equipment AirEquipType="319" />
+    </FlightLegDetails>
+    <FlightLegDetails
+            DepartureDateTime="2018-11-15T21:10:00"
+            FLSDepartureTimeOffset="+0100"
+            ArrivalDateTime="2018-11-15T21:20:00"
+            FLSArrivalTimeOffset="+0000"
+
+            FlightNumber="2103"
+            JourneyDuration="PT1H10M"
+            SequenceNumber="2"
+            LegDistance="218"
+            FLSMeals="S"
+            FLSInflightServices="  9"
+            FLSUUID="BRULHR20181115SN2103"
+
+
+    >
+        <DepartureAirport CodeContext="IATA" LocationCode="BRU" FLSLocationName="Brussels" Terminal=" " FLSDayIndicator="" />
+        <ArrivalAirport CodeContext="IATA" LocationCode="LHR" FLSLocationName="London Heathrow" Terminal="2" FLSDayIndicator="" />
+        <MarketingAirline Code="SN" CodeContext="IATA" CompanyShortName="Brussels Airlines" />
+
+        <Equipment AirEquipType="320" />
+    </FlightLegDetails>
+</FlightDetails> <FlightDetails TotalFlightTime="PT3H30M"
+                                TotalMiles="1023"
+                                TotalTripTime="PT4H35M"
+                                FLSDepartureDateTime="2018-11-15T18:00:00"
+                                FLSDepartureTimeOffset="+0100"
+                                FLSDepartureCode="WAW"
+                                FLSDepartureName="Warsaw"
+                                FLSArrivalDateTime="2018-11-15T21:35:00"
+                                FLSArrivalTimeOffset="+0000"
+                                FLSArrivalCode="LHR"
+                                FLSArrivalName="London Heathrow"
+                                FLSFlightType="Connect"
+                                FLSFlightLegs="2"
+                                FLSFlightDays="...4..."
+                                FLSDayIndicator=""
+
+>
+
+
+    <FlightLegDetails
+            DepartureDateTime="2018-11-15T18:00:00"
+            FLSDepartureTimeOffset="+0100"
+            ArrivalDateTime="2018-11-15T19:25:00"
+            FLSArrivalTimeOffset="+0100"
+
+            FlightNumber="2752"
+            JourneyDuration="PT1H25M"
+            SequenceNumber="1"
+            LegDistance="414"
+            FLSMeals="M"
+            FLSInflightServices=" "
+            FLSUUID="WAWCPH20181115SK2752"
+
+            FLSDOTDisclosure="Owned By:WX"
+    >
+        <DepartureAirport CodeContext="IATA" LocationCode="WAW" FLSLocationName="Warsaw" Terminal=" " FLSDayIndicator="" />
+        <ArrivalAirport CodeContext="IATA" LocationCode="CPH" FLSLocationName="Copenhagen Kastrup" Terminal="3" FLSDayIndicator="" />
+        <MarketingAirline Code="SK" CodeContext="IATA" CompanyShortName="SAS Scandinavian Airlines" />
+
+        <Equipment AirEquipType="CR9" />
+    </FlightLegDetails>
+    <FlightLegDetails
+            DepartureDateTime="2018-11-15T20:30:00"
+            FLSDepartureTimeOffset="+0100"
+            ArrivalDateTime="2018-11-15T21:35:00"
+            FLSArrivalTimeOffset="+0000"
+
+            FlightNumber="1501"
+            JourneyDuration="PT2H05M"
+            SequenceNumber="2"
+            LegDistance="609"
+            FLSMeals="M"
+            FLSInflightServices=" "
+            FLSUUID="CPHLHR20181115SK1501"
+
+            FLSDOTDisclosure="Owned By:SAS IRELAND"
+    >
+        <DepartureAirport CodeContext="IATA" LocationCode="CPH" FLSLocationName="Copenhagen Kastrup" Terminal="3" FLSDayIndicator="" />
+        <ArrivalAirport CodeContext="IATA" LocationCode="LHR" FLSLocationName="London Heathrow" Terminal="2" FLSDayIndicator="" />
+        <MarketingAirline Code="SK" CodeContext="IATA" CompanyShortName="SAS Scandinavian Airlines" />
+
+        <Equipment AirEquipType="32A" />
+    </FlightLegDetails>
+</FlightDetails> <FlightDetails TotalFlightTime="PT3H30M"
+                                TotalMiles="965"
+                                TotalTripTime="PT4H15M"
+                                FLSDepartureDateTime="2018-11-15T19:00:00"
+                                FLSDepartureTimeOffset="+0100"
+                                FLSDepartureCode="WAW"
+                                FLSDepartureName="Warsaw"
+                                FLSArrivalDateTime="2018-11-15T22:15:00"
+                                FLSArrivalTimeOffset="+0000"
+                                FLSArrivalCode="LHR"
+                                FLSArrivalName="London Heathrow"
+                                FLSFlightType="Connect"
+                                FLSFlightLegs="2"
+                                FLSFlightDays="...4..."
+                                FLSDayIndicator=""
+
+>
+
+
+    <FlightLegDetails
+            DepartureDateTime="2018-11-15T19:00:00"
+            FLSDepartureTimeOffset="+0100"
+            ArrivalDateTime="2018-11-15T20:45:00"
+            FLSArrivalTimeOffset="+0100"
+
+            FlightNumber="1351"
+            JourneyDuration="PT1H45M"
+            SequenceNumber="1"
+            LegDistance="558"
+            FLSMeals="S"
+            FLSInflightServices=" "
+            FLSUUID="WAWFRA20181115LH1351"
+
+
+    >
+        <DepartureAirport CodeContext="IATA" LocationCode="WAW" FLSLocationName="Warsaw" Terminal=" " FLSDayIndicator="" />
+        <ArrivalAirport CodeContext="IATA" LocationCode="FRA" FLSLocationName="Frankfurt" Terminal="1" FLSDayIndicator="" />
+        <MarketingAirline Code="LH" CodeContext="IATA" CompanyShortName="Lufthansa" />
+
+        <Equipment AirEquipType="319" />
+    </FlightLegDetails>
+    <FlightLegDetails
+            DepartureDateTime="2018-11-15T21:30:00"
+            FLSDepartureTimeOffset="+0100"
+            ArrivalDateTime="2018-11-15T22:15:00"
+            FLSArrivalTimeOffset="+0000"
+
+            FlightNumber="922"
+            JourneyDuration="PT1H45M"
+            SequenceNumber="2"
+            LegDistance="407"
+            FLSMeals="S"
+            FLSInflightServices=" "
+            FLSUUID="FRALHR20181115LH922"
+
+
+    >
+        <DepartureAirport CodeContext="IATA" LocationCode="FRA" FLSLocationName="Frankfurt" Terminal="1" FLSDayIndicator="" />
+        <ArrivalAirport CodeContext="IATA" LocationCode="LHR" FLSLocationName="London Heathrow" Terminal="2" FLSDayIndicator="" />
+        <MarketingAirline Code="LH" CodeContext="IATA" CompanyShortName="Lufthansa" />
+
+        <Equipment AirEquipType="32N" />
+    </FlightLegDetails>
+</FlightDetails> <FlightDetails TotalFlightTime="PT2H35M"
+                                TotalMiles="914"
+                                TotalTripTime="PT2H35M"
+                                FLSDepartureDateTime="2018-11-15T19:40:00"
+                                FLSDepartureTimeOffset="+0100"
+                                FLSDepartureCode="WAW"
+                                FLSDepartureName="Warsaw"
+                                FLSArrivalDateTime="2018-11-15T21:15:00"
+                                FLSArrivalTimeOffset="+0000"
+                                FLSArrivalCode="LHR"
+                                FLSArrivalName="London Heathrow"
+                                FLSFlightType="NonStop"
+                                FLSFlightLegs="1"
+                                FLSFlightDays="...4..."
+                                FLSDayIndicator=""
+
+>
+
+
+    <FlightLegDetails
+            DepartureDateTime="2018-11-15T19:40:00"
+            FLSDepartureTimeOffset="+0100"
+            ArrivalDateTime="2018-11-15T21:15:00"
+            FLSArrivalTimeOffset="+0000"
+
+            FlightNumber="851"
+            JourneyDuration="PT2H35M"
+            SequenceNumber="1"
+            LegDistance="914"
+            FLSMeals="G"
+            FLSInflightServices=" "
+            FLSUUID="WAWLHR20181115BA851"
+
+
+    >
+        <DepartureAirport CodeContext="IATA" LocationCode="WAW" FLSLocationName="Warsaw" Terminal=" " FLSDayIndicator="" />
+        <ArrivalAirport CodeContext="IATA" LocationCode="LHR" FLSLocationName="London Heathrow" Terminal="5" FLSDayIndicator="" />
+        <MarketingAirline Code="BA" CodeContext="IATA" CompanyShortName="British Airways" />
+
+        <Equipment AirEquipType="320" />
+    </FlightLegDetails>
+</FlightDetails> <FlightDetails TotalFlightTime="PT2H45M"
+                                TotalMiles="914"
+                                TotalTripTime="PT2H45M"
+                                FLSDepartureDateTime="2018-11-15T20:05:00"
+                                FLSDepartureTimeOffset="+0100"
+                                FLSDepartureCode="WAW"
+                                FLSDepartureName="Warsaw"
+                                FLSArrivalDateTime="2018-11-15T21:50:00"
+                                FLSArrivalTimeOffset="+0000"
+                                FLSArrivalCode="LHR"
+                                FLSArrivalName="London Heathrow"
+                                FLSFlightType="NonStop"
+                                FLSFlightLegs="1"
+                                FLSFlightDays="...4..."
+                                FLSDayIndicator=""
+
+>
+
+
+    <FlightLegDetails
+            DepartureDateTime="2018-11-15T20:05:00"
+            FLSDepartureTimeOffset="+0100"
+            ArrivalDateTime="2018-11-15T21:50:00"
+            FLSArrivalTimeOffset="+0000"
+
+            FlightNumber="285"
+            JourneyDuration="PT2H45M"
+            SequenceNumber="1"
+            LegDistance="914"
+            FLSMeals="RF"
+            FLSInflightServices="  9"
+            FLSUUID="WAWLHR20181115LO285"
+
+
+    >
+        <DepartureAirport CodeContext="IATA" LocationCode="WAW" FLSLocationName="Warsaw" Terminal=" " FLSDayIndicator="" />
+        <ArrivalAirport CodeContext="IATA" LocationCode="LHR" FLSLocationName="London Heathrow" Terminal="2" FLSDayIndicator="" />
+        <MarketingAirline Code="LO" CodeContext="IATA" CompanyShortName="LOT Polish Airlines" />
+
+        <Equipment AirEquipType="7M8" />
+    </FlightLegDetails>
+</FlightDetails>
+</OTA_AirDetailsRS>

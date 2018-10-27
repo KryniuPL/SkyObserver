@@ -1,14 +1,14 @@
 package com.skyobserver.util;
 
 import com.skyobserver.model.Airport;
-import com.skyobserver.service.csv.airports.AirportsConverter;
+import com.skyobserver.service.csv.AirportsConverter;
 import org.junit.Test;
 
 import java.io.IOException;
 import java.util.HashSet;
 import java.util.List;
 import static org.junit.Assert.*;
-import static com.skyobserver.service.csv.airports.AirportsConverter.getParserByFilePath;
+import static com.skyobserver.service.csv.AirportsConverter.getParserByFilePath;
 
 public class AirportsCollectionsFilterTest {
 

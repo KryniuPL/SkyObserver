@@ -47,7 +47,6 @@
                 FLSDepartureTimeOffset="+0100"
                 ArrivalDateTime="2018-11-15T08:50:00"
                 FLSArrivalTimeOffset="+0100"
-
                 FlightNumber="2560"
                 JourneyDuration="PT2H10M"
                 SequenceNumber="1"
@@ -55,8 +54,6 @@
                 FLSMeals="B"
                 FLSInflightServices="  9"
                 FLSUUID="WAWBRU20181115SN2560"
-
-
         >
             <DepartureAirport CodeContext="IATA" LocationCode="WAW" FLSLocationName="Warsaw" Terminal=" " FLSDayIndicator="" />
             <ArrivalAirport CodeContext="IATA" LocationCode="BRU" FLSLocationName="Brussels" Terminal=" " FLSDayIndicator="" />

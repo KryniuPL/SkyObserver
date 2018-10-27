@@ -37,6 +37,18 @@ public class FlightLegDetails {
     @JacksonXmlProperty(localName = "FLSUUID", isAttribute = true)
     private String flsuuid;
 
+    @JacksonXmlProperty(localName = "DepartureAirport")
+    private DepartureAirport departureAirport;
+
+    @JacksonXmlProperty(localName = "ArrivalAirport")
+    private ArrivalAirport arrivalAirport;
+
+    @JacksonXmlProperty(localName = "MarketingAirline")
+    private MarketingAirline marketingAirline;
+
+    @JacksonXmlProperty(localName = "Equipment")
+    private Equipment equipment;
+
     public String getDepartureDateTime() {
         return departureDateTime;
     }
@@ -123,5 +135,58 @@ public class FlightLegDetails {
 
     public void setFlsuuid(String flsuuid) {
         this.flsuuid = flsuuid;
+    }
+
+    public DepartureAirport getDepartureAirport() {
+        return departureAirport;
+    }
+
+    public void setDepartureAirport(DepartureAirport departureAirport) {
+        this.departureAirport = departureAirport;
+    }
+
+    public ArrivalAirport getArrivalAirport() {
+        return arrivalAirport;
+    }
+
+    public void setArrivalAirport(ArrivalAirport arrivalAirport) {
+        this.arrivalAirport = arrivalAirport;
+    }
+
+    public MarketingAirline getMarketingAirline() {
+        return marketingAirline;
+    }
+
+    public void setMarketingAirline(MarketingAirline marketingAirline) {
+        this.marketingAirline = marketingAirline;
+    }
+
+    public Equipment getEquipment() {
+        return equipment;
+    }
+
+    public void setEquipment(Equipment equipment) {
+        this.equipment = equipment;
+    }
+
+    @Override
+    public String toString() {
+        return "FlightLegDetails{" +
+                "departureDateTime='" + departureDateTime + '\'' +
+                ", flsDepartureTimeOffset='" + flsDepartureTimeOffset + '\'' +
+                ", arrivalDateTime='" + arrivalDateTime + '\'' +
+                ", flsArrivalTimeOffset='" + flsArrivalTimeOffset + '\'' +
+                ", flightNumber='" + flightNumber + '\'' +
+                ", journeyDuration='" + journeyDuration + '\'' +
+                ", sequenceNumber='" + sequenceNumber + '\'' +
+                ", legDistance='" + legDistance + '\'' +
+                ", flsMeals='" + flsMeals + '\'' +
+                ", flsInflightServices='" + flsInflightServices + '\'' +
+                ", flsuuid='" + flsuuid + '\'' +
+                ", departureAirport=" + departureAirport.toString() +
+                ", arrivalAirport=" + arrivalAirport.toString() +
+                ", marketingAirline=" + marketingAirline.toString() +
+                ", equipment=" + equipment.toString() +
+                '}';
     }
 }

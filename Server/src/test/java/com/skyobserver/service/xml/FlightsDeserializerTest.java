@@ -4,7 +4,10 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.dataformat.xml.JacksonXmlModule;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 import com.skyobserver.model.xml.FlightDetails;
+import com.skyobserver.model.xml.OTA_AirDetailsRS;
 import org.junit.Test;
+
+import java.io.File;
 import java.io.IOException;
 
 import static org.junit.Assert.*;
@@ -74,6 +77,8 @@ public class FlightsDeserializerTest {
             "            <Equipment AirEquipType=\"320\" />\n" +
             "        </FlightLegDetails>\n" +
             "    </FlightDetails>";
+    private static final String MULTI_RESPONSE_XML_FILE = "src/main/resources/xml/multi_response.xml";
+
 
     @Test
     public void shouldConvertXmlNodeToObject() throws IOException {
@@ -82,5 +87,14 @@ public class FlightsDeserializerTest {
         FlightDetails flighDetails = objectMapper.readValue(flightLegDetailsXmlObject, FlightDetails.class);
         System.out.println(flighDetails.toString());
         assertNotNull(flightLegDetailsXmlObject);
+    }
+
+    @Test
+    public void shouldConvertXmlFile() throws IOException {
+        xmlModule.setDefaultUseWrapper(false);
+        ObjectMapper objectMapper = new XmlMapper(xmlModule);
+        OTA_AirDetailsRS flights = objectMapper.readValue(new File(MULTI_RESPONSE_XML_FILE), OTA_AirDetailsRS.class);
+        System.out.println(flights);
+        assertNotNull(flights);
     }
 }

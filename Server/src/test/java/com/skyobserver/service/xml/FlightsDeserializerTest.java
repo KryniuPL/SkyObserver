@@ -3,8 +3,7 @@ package com.skyobserver.service.xml;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.dataformat.xml.JacksonXmlModule;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
-import com.skyobserver.model.xml.DepartureAirport;
-import com.skyobserver.model.xml.FlightLegDetails;
+import com.skyobserver.model.xml.FlightDetails;
 import org.junit.Test;
 import java.io.IOException;
 
@@ -73,14 +72,15 @@ public class FlightsDeserializerTest {
             "            <MarketingAirline Code=\"SN\" CodeContext=\"IATA\" CompanyShortName=\"Brussels Airlines\" />\n" +
             "\n" +
             "            <Equipment AirEquipType=\"320\" />\n" +
-            "        </FlightLegDetails>";
+            "        </FlightLegDetails>\n" +
+            "    </FlightDetails>";
 
     @Test
     public void shouldConvertXmlNodeToObject() throws IOException {
         xmlModule.setDefaultUseWrapper(false);
         ObjectMapper objectMapper = new XmlMapper(xmlModule);
-        FlightLegDetails flightLegDetails = objectMapper.readValue(flightLegDetailsXmlObject, FlightLegDetails.class);
-        System.out.println(flightLegDetails.toString());
+        FlightDetails flighDetails = objectMapper.readValue(flightLegDetailsXmlObject, FlightDetails.class);
+        System.out.println(flighDetails.toString());
         assertNotNull(flightLegDetailsXmlObject);
     }
 }

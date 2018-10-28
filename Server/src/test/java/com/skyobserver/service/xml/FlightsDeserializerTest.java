@@ -14,7 +14,7 @@ import static org.junit.Assert.*;
 
 public class FlightsDeserializerTest {
 
-    JacksonXmlModule xmlModule = new JacksonXmlModule();
+    private JacksonXmlModule xmlModule = new JacksonXmlModule();
 
     private String flightLegDetailsXmlObject= "<FlightDetails TotalFlightTime=\"PT3H35M\"\n" +
             "                   TotalMiles=\"931\"\n" +

@@ -2,7 +2,7 @@ package com.skyobserver.model;
 
 public class Airline {
 
-    private Long id;
+    private Long airlineId;
     private String nameAirline;
     private String codeIataAirline;
     private String iataPrefixAccounting;
@@ -16,11 +16,11 @@ public class Airline {
     private String codeIso2Country;
 
     public Long getId() {
-        return id;
+        return airlineId;
     }
 
     public void setId(Long id) {
-        this.id = id;
+        this.airlineId = id;
     }
 
     public String getNameAirline() {
@@ -109,5 +109,23 @@ public class Airline {
 
     public void setCodeIso2Country(String codeIso2Country) {
         this.codeIso2Country = codeIso2Country;
+    }
+
+    @Override
+    public String toString() {
+        return "Airline{" +
+                "airlineId=" + airlineId +
+                ", nameAirline='" + nameAirline + '\'' +
+                ", codeIataAirline='" + codeIataAirline + '\'' +
+                ", iataPrefixAccounting='" + iataPrefixAccounting + '\'' +
+                ", codeIcaoAirline='" + codeIcaoAirline + '\'' +
+                ", callsign='" + callsign + '\'' +
+                ", type='" + type + '\'' +
+                ", statusAirline='" + statusAirline + '\'' +
+                ", founding='" + founding + '\'' +
+                ", codeHub='" + codeHub + '\'' +
+                ", nameCountry='" + nameCountry + '\'' +
+                ", codeIso2Country='" + codeIso2Country + '\'' +
+                '}';
     }
 }

@@ -6,6 +6,7 @@ import com.skyobserver.model.xml.OTA_AirDetailsRS;
 import com.skyobserver.service.xml.FlightsDeserializer;
 import okhttp3.Headers;
 import okhttp3.Response;
+import okhttp3.ResponseBody;
 
 import java.io.IOException;
 import java.util.List;
@@ -23,8 +24,8 @@ public class FlightsRepository {
 
 
     public List<Flight> searchForFlights(String originAirportIATA, String destinationAirportIATA, String departureDate, String typeOfConnection) throws IOException {
-        Response flightsDataXML = httpClient.doGet(buildRequestUrl(originAirportIATA, destinationAirportIATA, departureDate, typeOfConnection), Headers.of(Map.of(NAME_OF_FLIGHT_LOOKUP_SERVICE_HEADER, FLIGHT_LOOKUP_API_KEY)));
-        OTA_AirDetailsRS deserializedFlights = flightsDeserializer.getDeserializedXML(flightsDataXML.toString());
+        String flightsDataXML = httpClient.doGet(buildRequestUrl(originAirportIATA, destinationAirportIATA, departureDate, typeOfConnection), Headers.of(Map.of(NAME_OF_FLIGHT_LOOKUP_SERVICE_HEADER, FLIGHT_LOOKUP_API_KEY)));
+        OTA_AirDetailsRS deserializedFlights = flightsDeserializer.getDeserializedXML(flightsDataXML);
 
         return null;
     }

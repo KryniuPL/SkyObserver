@@ -12,12 +12,12 @@ public class HttpClient {
         client = new OkHttpClient();
     }
 
-    public Response doGet(String url, Headers headers) throws IOException {
+    public String doGet(String url, Headers headers) throws IOException {
         Request request = new Request.Builder()
                 .url(url)
                 .get()
                 .headers(headers)
                 .build();
-        return client.newCall(request).execute();
+        return client.newCall(request).execute().body().string();
     }
 }

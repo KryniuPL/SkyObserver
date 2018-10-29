@@ -19,8 +19,8 @@ public class AirlineRepository {
     private HttpClient httpClient = new HttpClient();
 
     public Airline getAirlineByCodeIataAirline(String iataCodeAirline) throws IOException {
-        String responseFromAPI = httpClient.doGet(buildAirlineRequestURL(iataCodeAirline), Headers.of(Map.of()));
-        return airlineParser.getAirlineObjectFromJSONResponse(responseFromAPI);
+        ResponseBody responseFromAPI = httpClient.doGet(buildAirlineRequestURL(iataCodeAirline), Headers.of(Map.of()));
+        return airlineParser.getAirlineObjectFromJSONResponse(responseFromAPI.string());
     }
 
     public String buildAirlineRequestURL(String iataCodeAirline){

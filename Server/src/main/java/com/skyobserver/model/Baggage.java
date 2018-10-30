@@ -2,7 +2,8 @@ package com.skyobserver.model;
 
 public class Baggage {
 
-    public static Baggage NOT_FOUND = new Baggage("Information about Baggage not found", "", "");
+    public static final String INFORMATION_ABOUT_BAGGAGE_NOT_FOUND = "Information about Baggage not found";
+    public static Baggage NOT_FOUND = new Baggage(INFORMATION_ABOUT_BAGGAGE_NOT_FOUND, "", "");
     private String freeBaggageAllowance;
     private String extraBaggageAllowance;
     private String technicalParameters;
@@ -35,5 +36,14 @@ public class Baggage {
 
     public void setTechnicalParameters(String technicalParameters) {
         this.technicalParameters = technicalParameters;
+    }
+
+    @Override
+    public String toString() {
+        return "Baggage{" +
+                "freeBaggageAllowance='" + freeBaggageAllowance + '\'' +
+                ", extraBaggageAllowance='" + extraBaggageAllowance + '\'' +
+                ", technicalParameters='" + technicalParameters + '\'' +
+                '}';
     }
 }

@@ -14,8 +14,8 @@ import java.util.List;
 @RequestMapping("/flights")
 public class FlightsController {
 
-    @GetMapping("/flights/{from}/{to}/{date}/{connection}")
-    public List<Flight> getAirportsStartingWithText(@PathVariable String expression) throws AirportsNotFoundException {
+    @GetMapping("/flights/{from}/{to}/{date}/{connection}/{currency}")
+    public List<Flight> getAirportsStartingWithText(@PathVariable String from, @PathVariable String to, @PathVariable String date, @PathVariable String connection, @PathVariable String currency) throws AirportsNotFoundException {
         return null;
     }
 

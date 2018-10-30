@@ -29,7 +29,7 @@ public class BaggageRepository {
         Baggage baggage = Baggage.NOT_FOUND;
         String htmlFile = readFileContentToString();
         Document htmlDocument = Jsoup.parse(htmlFile);
-        Element table = htmlDocument.selectFirst("tftable");
+        Element table = htmlDocument.selectFirst("table");
         Elements rows = table.select("tr");
 
         for (int i = 1; i < rows.size(); i++) {

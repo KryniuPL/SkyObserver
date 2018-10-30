@@ -5,6 +5,7 @@ import java.time.Duration;
 import java.time.LocalDateTime;
 import java.util.List;
 
+
 public class Flight {
 
     //must have parameters
@@ -14,7 +15,7 @@ public class Flight {
     private Airport originAirport;
     private Airport destinationAirport;
     private Duration duration;
-    private FlightPrice price;
+    private Price price;
     private Airline airline;
     private Baggage baggage;
 

@@ -1,6 +1,7 @@
 package com.skyobserver.repository;
 
 import com.skyobserver.http.HttpClient;
+import com.skyobserver.model.Airport;
 import com.skyobserver.model.Flight;
 import com.skyobserver.model.xml.FlightDetails;
 import com.skyobserver.model.xml.FlightLegDetails;
@@ -16,25 +17,24 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Map;
 
-import static com.skyobserver.config.ServerConfiguration.FLIGHT_LOOKUP_API_KEY;
-import static com.skyobserver.config.ServerConfiguration.FLIGHT_LOOKUP_HOST_URL;
-import static com.skyobserver.config.ServerConfiguration.NAME_OF_FLIGHT_LOOKUP_SERVICE_HEADER;
+import static com.skyobserver.config.ServerConfiguration.*;
 
 public class FlightsRepository {
 
     private static final String REQUEST_SEPARATOR = "/";
     private HttpClient httpClient = new HttpClient();
     private FlightsDeserializer flightsDeserializer = new FlightsDeserializer();
-    private AirportsRepository airportsRepository;
 
+    @Autowired
+    private AirportsRepository airportsRepository;
+    private PricesRepository pricesRepository = new PricesRepository();
+    private AirlineRepository airlineRepository = new AirlineRepository();
+    private BaggageRepository baggageRepository = new BaggageRepository();
 
     public List<Flight> searchForFlights(String originAirportIATA, String destinationAirportIATA, String departureDate, String typeOfConnection) throws IOException {
         ResponseBody flightsDataXML = httpClient.doGet(buildRequestUrl(originAirportIATA, destinationAirportIATA, departureDate, typeOfConnection), Headers.of(Map.of(NAME_OF_FLIGHT_LOOKUP_SERVICE_HEADER, FLIGHT_LOOKUP_API_KEY)));
         OTA_AirDetailsRS deserializedFlights = flightsDeserializer.getDeserializedXML(flightsDataXML.string());
         List<FlightDetails> flightDetailsList = deserializedFlights.getFlightDetailsList();
-
-
-
 
 
         return null;
@@ -45,39 +45,34 @@ public class FlightsRepository {
     }
 
 
-    public Flight buildFlightObject(FlightDetails flightDetails){
-        List<FlightLegDetails> flightLegDetailsList = flightDetails.getFlightLegDetailsList();
+    public Flight buildDirectFlightObject(FlightDetails flightDetails, String currency) throws IOException {
+        FlightLegDetails directFlight = flightDetails.getFlightLegDetailsList().get(0);
+        Airport originAirport = airportsRepository.findAirportByIataCode(directFlight.getDepartureAirport().getLocationCode());
+        Airport destinationAirport = airportsRepository.findAirportByIataCode(directFlight.getArrivalAirport().getLocationCode());
 
-        if(flightLegDetailsList.size() == 1){
-            FlightLegDetails directFlight = flightLegDetailsList.get(0);
+        return new Flight.Builder()
+                .setDepartureTime(formatDateFromStringToLocalDateTime(directFlight.getDepartureDateTime()))
+                .setArrivalTime(formatDateFromStringToLocalDateTime(directFlight.getArrivalDateTime()))
+                .setOriginAirport(originAirport)
+                .setDestinationAirport(destinationAirport)
+                .setDuration(getDurationObjectFromStringExpression(directFlight.getJourneyDuration()))
+                .setPrice(pricesRepository.getFlightPrice(currency, originAirport.getIataCode(), destinationAirport.getIataCode(), formatDateWithDashes(directFlight.getDepartureDateTime()), formatDateWithDashes(directFlight.getArrivalDateTime())))
+                .setAirline(airlineRepository.getAirlineByCodeIataAirline(directFlight.getMarketingAirline().getCode()))
+                .setBaggage(baggageRepository.getBaggageObjectByAirlineName(directFlight.getMarketingAirline().getCode()))
+                .build();
+    }
 
-            Flight dsa = new Flight.Builder()
-                    .setDepartureTime(formatDateFromStringToLocalDateTime(directFlight.getDepartureDateTime()))
-                    .setArrivalTime(formatDateFromStringToLocalDateTime(directFlight.getArrivalDateTime()))
-                    .setOriginAirport(airportsRepository.findAirportByIataCode(directFlight.getDepartureAirport().getLocationCode()))
-                    .setDestinationAirport(airportsRepository.findAirportByIataCode(directFlight.getArrivalAirport().getLocationCode()))
-                    .build();
-
-
-        }
-        else if(flightLegDetailsList.size() > 1){
-            //build flight object with stops
-            //index will be from 1 to end
-        }
-
-     return null;
+    public String formatDateWithDashes(String date) {
+        String[] strings = date.split("T");
+        return strings[0];
     }
 
     public LocalDateTime formatDateFromStringToLocalDateTime(String date) {
         return LocalDateTime.parse(date);
     }
 
-    public Duration getDurationObjectFromStringExpression(String duration){
-        char hours = duration.charAt(2)
-        System.out.println("HOURS: " + hours);
-        int minutes = Integer.parseInt(duration.substring(4,6));
-        System.out.println("MINUTES : " + minutes);
-        return Duration.ofHours(hours).plusMinutes(minutes);
+    public Duration getDurationObjectFromStringExpression(String duration) {
+        return Duration.parse(duration);
     }
 
 }

@@ -18,13 +18,6 @@ public class PricesRepositoryTest {
         assertEquals(validURL , pricesRepository.buildPriceRequestURL("PLN", "WAW", "LHR", "20181101", "20181102"));
     }
 
-
-    @Test
-    public void shouldReturnValidFormattedDate(){
-        String date = "2018-11-20";
-        assertEquals(date, pricesRepository.formatDateWithDashSeparators("20181120"));
-    }
-
     @Test
     public void shouldReturnValidPriceObject() throws IOException {
         Price price = pricesRepository.getFlightPrice("PLN", "WAW", "LHR", "20181110", "20181112");

@@ -49,12 +49,8 @@ public class PricesRepository {
 
 
     public String buildPriceRequestURL(String currency, String originAirportIATA, String destinationAirportIATA, String departureDate, String returnDate){
-        departureDate = formatDateWithDashSeparators(departureDate);
-        returnDate = formatDateWithDashSeparators(returnDate);
         return SKYSCANNER_BROWSE_QUOTES_API_URL + currency + "/en-US/" + originAirportIATA + AIRPORTS_POSTFIX + destinationAirportIATA + AIRPORTS_POSTFIX + departureDate + "/" + returnDate;
     }
 
-    public String formatDateWithDashSeparators(String date){
-        return date.substring(0, 4) + DATE_SEPARATOR + date.substring(4, 6) + DATE_SEPARATOR + date.substring(6, 8);
-    }
+
 }

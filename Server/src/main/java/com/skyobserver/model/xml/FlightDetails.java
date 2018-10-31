@@ -46,7 +46,7 @@ public class FlightDetails {
     private String flsFlightLegs;
 
     @JacksonXmlProperty(localName = "FLSFlightDays", isAttribute = true)
-    private String flsFligtDays;
+    private String flsFlightDays;
 
     @JacksonXmlProperty(localName = "FLSDayIndicator", isAttribute = true)
     private String flsDayIndicator;
@@ -158,12 +158,12 @@ public class FlightDetails {
         this.flsFlightLegs = flsFlightLegs;
     }
 
-    public String getFlsFligtDays() {
-        return flsFligtDays;
+    public String getFlsFlightDays() {
+        return flsFlightDays;
     }
 
     public void setFlsFligtDays(String flsFligtDays) {
-        this.flsFligtDays = flsFligtDays;
+        this.flsFlightDays = flsFlightDays;
     }
 
     public String getFlsDayIndicator() {
@@ -198,7 +198,7 @@ public class FlightDetails {
                 ", flsArrivalName='" + flsArrivalName + '\'' +
                 ", flsFlightType='" + flsFlightType + '\'' +
                 ", flsFlightLegs='" + flsFlightLegs + '\'' +
-                ", flsFligtDays='" + flsFligtDays + '\'' +
+                ", flsFligtDays='" + flsFlightDays + '\'' +
                 ", flsDayIndicator='" + flsDayIndicator + '\'' +
                 ", flightLegDetailsList=" + flightLegDetailsList +
                 '}';

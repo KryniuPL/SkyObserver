@@ -10,4 +10,12 @@ public class OTA_AirDetailsRS {
 
     @JacksonXmlProperty(localName = "FlightDetails")
     private List<FlightDetails> flightDetailsList;
+
+    public List<FlightDetails> getFlightDetailsList() {
+        return flightDetailsList;
+    }
+
+    public void setFlightDetailsList(List<FlightDetails> flightDetailsList) {
+        this.flightDetailsList = flightDetailsList;
+    }
 }

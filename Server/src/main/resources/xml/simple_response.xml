@@ -48,7 +48,6 @@
                 FLSDepartureTimeOffset="+0100"
                 ArrivalDateTime="2018-11-15T09:35:00"
                 FLSArrivalTimeOffset="+0000"
-
                 FlightNumber="281"
                 JourneyDuration="PT3H00M"
                 SequenceNumber="1"
@@ -56,8 +55,6 @@
                 FLSMeals="RF"
                 FLSInflightServices="  9"
                 FLSUUID="WAWLHR20181115LO281"
-
-
         >
             <DepartureAirport CodeContext="IATA" LocationCode="WAW" FLSLocationName="Warsaw" Terminal=" "
                               FLSDayIndicator=""/>

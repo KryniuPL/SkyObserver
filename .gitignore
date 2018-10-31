@@ -26,7 +26,7 @@
 .idea/**/libraries
 
 # Custom
-.src/main/resources/baggagesInfo.html
+Server/src/main/resources/baggagesInfo.html
 baggagesInfo.html
 
 

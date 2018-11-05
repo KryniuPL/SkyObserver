@@ -1,5 +1,8 @@
 package com.skyobserver.model;
 
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+
+@JsonSerialize
 public class Baggage {
 
     public static final String INFORMATION_ABOUT_BAGGAGE_NOT_FOUND = "Information about Baggage not found";

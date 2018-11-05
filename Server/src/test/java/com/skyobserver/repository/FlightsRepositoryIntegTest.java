@@ -6,6 +6,11 @@ import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 import com.skyobserver.model.Flight;
 import com.skyobserver.model.xml.FlightDetails;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+
 
 import java.io.IOException;
 import java.time.Duration;
@@ -14,9 +19,12 @@ import java.time.Month;
 
 import static org.junit.Assert.*;
 
-public class FlightsRepositoryTest {
+@RunWith(SpringJUnit4ClassRunner.class)
+@SpringBootTest
+public class FlightsRepositoryIntegTest {
 
-    private FlightsRepository flightsRepository = new FlightsRepository();
+    @Autowired
+    private FlightsRepository flightsRepository;
     private JacksonXmlModule xmlModule = new JacksonXmlModule();
     private String flightDetailsString = "<FlightDetails TotalFlightTime=\"PT2H45M\"\n" +
             "                   TotalMiles=\"914\"\n" +
@@ -65,16 +73,16 @@ public class FlightsRepositoryTest {
 
 
     @Test
-    public void shouldReturnValidRequestUrl(){
+    public void shouldReturnValidRequestUrl() {
         String originAirportIATA = "WAW";
         String destinationAirportIATA = "LHR";
         String departureDate = "20181120";
         String typeOfConnection = "DIRECT";
-        assertEquals(FlightsRepository.buildRequestUrl(originAirportIATA,destinationAirportIATA,departureDate,typeOfConnection), "https://flightlookup.azure-api.net/v1/xml/TimeTable/WAW/LHR/20181120/?7Day=N&Connection=DIRECT&Compression=ALL&Sort=Departure&Time=ANY&Interline=N&NoFilter=N&ExpandResults=Y");
+        assertEquals(FlightsRepository.buildRequestUrl(originAirportIATA, destinationAirportIATA, departureDate, typeOfConnection), "https://flightlookup.azure-api.net/v1/xml/TimeTable/WAW/LHR/20181120/?7Day=N&Connection=DIRECT&Compression=ALL&Sort=Departure&Time=ANY&Interline=N&NoFilter=N&ExpandResults=Y");
     }
 
     @Test
-    public void shouldReturnValidLocalDateTimeFromString(){
+    public void shouldReturnValidLocalDateTimeFromString() {
         String date = "2018-11-15T07:35:00";
         LocalDateTime formattedDate = flightsRepository.formatDateFromStringToLocalDateTime(date);
         assertEquals(formattedDate.getDayOfMonth(), 15);
@@ -86,25 +94,19 @@ public class FlightsRepositoryTest {
     }
 
     @Test
-    public void shouldReturnValidDurationTime(){
+    public void shouldReturnValidDurationTime() {
         Duration calculatedDuration = flightsRepository.getDurationObjectFromStringExpression("PT3H20M");
         assertEquals(calculatedDuration.toHours(), 3);
         assertEquals(calculatedDuration.toMinutes(), 200);
     }
 
     @Test
-    public void shouldReturnValidDateWithDashes(){
-        String date = flightsRepository.formatDateWithDashes("2018-11-15");
-        assertEquals(date, "20181115");
-    }
-
-    @Test
-    public void shouldReturnFlightObject() throws IOException {
+    public void shouldReturnFlightObject() throws IOException, InterruptedException {
         xmlModule.setDefaultUseWrapper(false);
         ObjectMapper objectMapper = new XmlMapper(xmlModule);
         FlightDetails flightDetails = objectMapper.readValue(flightDetailsString, FlightDetails.class);
-        System.out.println(flightDetails.toString());
         Flight flight = flightsRepository.buildDirectFlightObject(flightDetails, "PLN");
+        System.out.println(flight.toString());
         assertNotNull(flight);
     }
 }

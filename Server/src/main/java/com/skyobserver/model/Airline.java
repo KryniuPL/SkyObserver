@@ -1,5 +1,8 @@
 package com.skyobserver.model;
 
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+
+@JsonSerialize
 public class Airline {
 
     private Long airlineId;

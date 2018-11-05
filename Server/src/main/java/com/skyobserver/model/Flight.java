@@ -1,19 +1,18 @@
 package com.skyobserver.model;
 
 
-import java.time.Duration;
-import java.time.LocalDateTime;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import java.util.List;
 
-
+@JsonSerialize
 public class Flight {
 
     //must have parameters
-    private LocalDateTime departureTime;
-    private LocalDateTime arrivalTime;
+    private String departureTime;
+    private String arrivalTime;
     private Airport originAirport;
     private Airport destinationAirport;
-    private Duration duration;
+    private String duration;
     private Price price;
     private Airline airline;
     private Baggage baggage;
@@ -34,11 +33,11 @@ public class Flight {
     }
 
 
-    public LocalDateTime getDepartureTime() {
+    public String getDepartureTime() {
         return departureTime;
     }
 
-    public LocalDateTime getArrivalTime() {
+    public String getArrivalTime() {
         return arrivalTime;
     }
 
@@ -50,7 +49,7 @@ public class Flight {
         return destinationAirport;
     }
 
-    public Duration getDuration() {
+    public String getDuration() {
         return duration;
     }
 
@@ -70,23 +69,39 @@ public class Flight {
         return stops;
     }
 
+    @Override
+    public String toString() {
+        return "Flight{" +
+                "departureTime=" + departureTime +
+                ", arrivalTime=" + arrivalTime +
+                ", originAirport=" + originAirport.toString() +
+                ", destinationAirport=" + destinationAirport.toString() +
+                ", duration=" + duration +
+                ", price=" + price.toString() +
+                ", airline=" + airline.toString() +
+                ", baggage=" + baggage.toString() +
+                ", stops=" + stops +
+                '}';
+    }
+
+    @JsonSerialize
     public static class Builder{
-        private LocalDateTime departureTime;
-        private LocalDateTime arrivalTime;
+        private String departureTime;
+        private String arrivalTime;
         private Airport originAirport;
         private Airport destinationAirport;
-        private Duration duration;
+        private String duration;
         private Price price;
         private Airline airline;
         private Baggage baggage;
         private List<Flight> stops;
 
-        public Builder setDepartureTime(LocalDateTime departureTime) {
+        public Builder setDepartureTime(String departureTime) {
             this.departureTime = departureTime;
             return this;
         }
 
-        public Builder setArrivalTime(LocalDateTime arrivalTime) {
+        public Builder setArrivalTime(String arrivalTime) {
             this.arrivalTime = arrivalTime;
             return this;
         }
@@ -101,7 +116,7 @@ public class Flight {
             return this;
         }
 
-        public Builder setDuration(Duration duration) {
+        public Builder setDuration(String duration) {
             this.duration = duration;
             return this;
         }

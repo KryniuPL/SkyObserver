@@ -19,7 +19,7 @@ public class PricesRepositoryTest {
     }
 
     @Test
-    public void shouldReturnValidPriceObject() throws IOException {
+    public void shouldReturnValidPriceObject() throws IOException, InterruptedException {
         Price price = pricesRepository.getFlightPrice("PLN", "WAW", "LHR", "20181110", "20181112");
         System.out.println(price.toString());
         assertNotNull(price);

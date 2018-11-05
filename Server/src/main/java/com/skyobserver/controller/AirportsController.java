@@ -3,6 +3,7 @@ package com.skyobserver.controller;
 import com.skyobserver.exceptions.AirportsNotFoundException;
 import com.skyobserver.model.Airport;
 import com.skyobserver.repository.AirportsRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,11 +13,8 @@ import java.util.List;
 @RequestMapping("/airports")
 public class AirportsController {
 
-    private final AirportsRepository airportsRepository;
-
-    public AirportsController(AirportsRepository airportsRepository) {
-        this.airportsRepository = airportsRepository;
-    }
+    @Autowired
+    private AirportsRepository airportsRepository;
 
     @GetMapping("/getAirportsStartingWith/{expression}")
     public List<Airport> getAirportsStartingWithText(@PathVariable String expression) throws AirportsNotFoundException {

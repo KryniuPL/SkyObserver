@@ -1,5 +1,10 @@
 package com.skyobserver.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+
+@JsonSerialize
+@JsonFormat
 public class Price {
     private double value;
     private String currency;

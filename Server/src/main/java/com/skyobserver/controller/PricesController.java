@@ -1,6 +1,7 @@
 package com.skyobserver.controller;
 
 
+import com.google.gson.JsonObject;
 import com.skyobserver.exceptions.PricesNotFoundException;
 import com.skyobserver.model.Price;
 import com.skyobserver.repository.PricesRepository;
@@ -21,8 +22,8 @@ public class PricesController {
     private PricesRepository pricesRepository = new PricesRepository();
 
     @GetMapping(value = "/{currency}/{from}/{to}/{departureDate}/{returnDate}",produces = MediaType.APPLICATION_JSON_VALUE)
-    public Price searchForFlights(@PathVariable String currency, @PathVariable String from, @PathVariable String to, @PathVariable String departureDate, @PathVariable String returnDate) throws PricesNotFoundException, IOException, InterruptedException {
-        Price price = pricesRepository.getFlightPrice(currency, from, to, departureDate, returnDate);
+    public JsonObject searchForFlights(@PathVariable String currency, @PathVariable String from, @PathVariable String to, @PathVariable String departureDate, @PathVariable String returnDate) throws PricesNotFoundException, IOException, InterruptedException {
+        JsonObject price = pricesRepository.getFlightPrice(currency, from, to, departureDate, returnDate);
         if (price==null){
             throw new PricesNotFoundException();
         }

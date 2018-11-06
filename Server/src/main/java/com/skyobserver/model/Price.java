@@ -1,18 +1,20 @@
 package com.skyobserver.model;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonRootName;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 @JsonSerialize
-@JsonFormat
+@JsonRootName(value = "price")
+@JsonPropertyOrder({ "value", "currency" })
 public class Price {
 
-    private String value;
+    private double value;
     private String currency;
 
     @JsonCreator
-    public Price(String value, String currency) {
+    public Price(double value, String currency) {
         this.value = value;
         this.currency = currency;
     }

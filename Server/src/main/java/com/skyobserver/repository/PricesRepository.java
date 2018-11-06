@@ -27,10 +27,10 @@ public class PricesRepository {
     private HttpClient httpClient = new HttpClient();
     private static final Logger logger = LoggerFactory.getLogger(PricesRepository.class);
 
-    public JsonObject getFlightPrice(String currency, String originAirportIATA, String destinationAirportIATA, String departureDate, String returnDate) throws IOException {
+    public Price getFlightPrice(String currency, String originAirportIATA, String destinationAirportIATA, String departureDate, String returnDate) throws IOException {
         String responseJson = httpClient.doGet(buildPriceRequestURL(currency, originAirportIATA, destinationAirportIATA, departureDate, returnDate),
                 Headers.of(Map.of(X_MASHAPE_KEY_HEADER, SKYSCANNER_API_KEY, X_MASHAPE_HOST_HEADER, SKYSCANNER_HOST_NAME))).string();
-        logger.info(responseJson);
+
         JsonElement element = new JsonParser().parse(responseJson);
         JsonObject jsonObject = element.getAsJsonObject();
         JsonArray jsonArray = jsonObject.getAsJsonArray(NAME_OF_QUOTES_JSON_ARRAY);
@@ -46,13 +46,7 @@ public class PricesRepository {
                 .mapToDouble(v -> v)
                 .min().orElseThrow(NoSuchElementException::new);
 
-        Price price = new Price(String.valueOf(minimumValue), currency);
-        logger.info("Price Object:" + price.toString());
-
-        JsonObject returnJsonObject = new JsonObject();
-        returnJsonObject.addProperty("price", minimumValue);
-        returnJsonObject.addProperty("currency", currency);
-        return returnJsonObject;
+        return new Price(minimumValue, currency);
     }
 
     public String formatDateWithDashes(String date) {

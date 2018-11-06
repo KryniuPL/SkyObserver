@@ -1,5 +1,7 @@
 package com.skyobserver.repository;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.google.gson.*;
 import com.skyobserver.http.HttpClient;
 import com.skyobserver.model.Price;
@@ -25,9 +27,10 @@ public class PricesRepository {
     private static final String FIELD_NAME_WITH_QUOTE_INFORMATION = "MinPrice";
     private static final String AIRPORTS_POSTFIX = "-sky/";
     private HttpClient httpClient = new HttpClient();
+    private ObjectMapper mapper = new ObjectMapper();
     private static final Logger logger = LoggerFactory.getLogger(PricesRepository.class);
 
-    public Price getFlightPrice(String currency, String originAirportIATA, String destinationAirportIATA, String departureDate, String returnDate) throws IOException {
+    public ObjectNode getFlightPrice(String currency, String originAirportIATA, String destinationAirportIATA, String departureDate, String returnDate) throws IOException {
         String responseJson = httpClient.doGet(buildPriceRequestURL(currency, originAirportIATA, destinationAirportIATA, departureDate, returnDate),
                 Headers.of(Map.of(X_MASHAPE_KEY_HEADER, SKYSCANNER_API_KEY, X_MASHAPE_HOST_HEADER, SKYSCANNER_HOST_NAME))).string();
 
@@ -46,7 +49,11 @@ public class PricesRepository {
                 .mapToDouble(v -> v)
                 .min().orElseThrow(NoSuchElementException::new);
 
-        return new Price(minimumValue, currency);
+        Price price = new Price(minimumValue, currency);
+        ObjectNode objectNode = mapper.createObjectNode();
+        objectNode.put("value",price.getValue());
+        objectNode.put("currency", price.getCurrency());
+        return objectNode;
     }
 
     public String formatDateWithDashes(String date) {

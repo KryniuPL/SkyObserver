@@ -2,6 +2,7 @@ package com.skyobserver.model;
 
 
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.google.gson.JsonObject;
 
 import java.util.List;
@@ -15,7 +16,7 @@ public class Flight {
     private Airport originAirport;
     private Airport destinationAirport;
     private String duration;
-    private JsonObject price;
+    private ObjectNode price;
     private Airline airline;
     private Baggage baggage;
 
@@ -55,7 +56,7 @@ public class Flight {
         return duration;
     }
 
-    public JsonObject getPrice() {
+    public ObjectNode getPrice() {
         return price;
     }
 
@@ -93,7 +94,7 @@ public class Flight {
         private Airport originAirport;
         private Airport destinationAirport;
         private String duration;
-        private JsonObject price;
+        private ObjectNode price;
         private Airline airline;
         private Baggage baggage;
         private List<Flight> stops;
@@ -123,7 +124,7 @@ public class Flight {
             return this;
         }
 
-        public Builder setPrice(JsonObject price) {
+        public Builder setPrice(ObjectNode price) {
             this.price = price;
             return this;
         }

@@ -63,7 +63,7 @@ public class FlightsRepository {
                 .setDuration(getDurationObjectFromStringExpression(directFlight.getJourneyDuration()).toString())
                 .setPrice(pricesRepository.getFlightPrice(currency, originAirport.getIataCode(), destinationAirport.getIataCode(), directFlight.getDepartureDateTime(), directFlight.getArrivalDateTime()))
                 .setAirline(airlineRepository.getAirlineByCodeIataAirline(directFlight.getMarketingAirline().getCode()))
-                .setBaggage(baggageRepository.getBaggageObjectByAirlineName(directFlight.getMarketingAirline().getCode()))
+                .setBaggage(baggageRepository.getBaggageObjectByAirlineName(directFlight.getMarketingAirline().getCompanyShortName()))
                 .setStops(Collections.emptyList())
                 .build();
     }

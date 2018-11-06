@@ -2,6 +2,8 @@ package com.skyobserver.controller;
 
 
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.skyobserver.exceptions.PricesNotFoundException;
 import com.skyobserver.model.Price;
 import com.skyobserver.repository.PricesRepository;
@@ -19,14 +21,15 @@ import java.io.IOException;
 public class PricesController {
 
     private PricesRepository pricesRepository = new PricesRepository();
+    private ObjectMapper mapper = new ObjectMapper();
 
     @GetMapping(value = "/{currency}/{from}/{to}/{departureDate}/{returnDate}",produces = MediaType.APPLICATION_JSON_VALUE)
-    public Price searchForFlights(@PathVariable String currency, @PathVariable String from, @PathVariable String to, @PathVariable String departureDate, @PathVariable String returnDate) throws PricesNotFoundException, IOException, InterruptedException {
-        Price price = pricesRepository.getFlightPrice(currency, from, to, departureDate, returnDate);
+    public ObjectNode searchForFlights(@PathVariable String currency, @PathVariable String from, @PathVariable String to, @PathVariable String departureDate, @PathVariable String returnDate) throws PricesNotFoundException, IOException, InterruptedException {
+        ObjectNode price = pricesRepository.getFlightPrice(currency, from, to, departureDate, returnDate);
         if (price==null){
             throw new PricesNotFoundException();
         }
-        else return price;
+        return price;
     }
 
 }

@@ -20,9 +20,6 @@ public class Flight {
     private Airline airline;
     private Baggage baggage;
 
-    //optional parameters
-    private List<Flight> stops;
-
     private Flight(Builder flightBuilder){
         this.departureTime = flightBuilder.departureTime;
         this.arrivalTime = flightBuilder.arrivalTime;
@@ -32,7 +29,6 @@ public class Flight {
         this.price = flightBuilder.price;
         this.airline = flightBuilder.airline;
         this.baggage = flightBuilder.baggage;
-        this.stops = flightBuilder.stops;
     }
 
 
@@ -68,10 +64,6 @@ public class Flight {
         return baggage;
     }
 
-    public List<Flight> getStops() {
-        return stops;
-    }
-
     @Override
     public String toString() {
         return "Flight{" +
@@ -83,7 +75,6 @@ public class Flight {
                 ", price=" + price.toString() +
                 ", airline=" + airline.toString() +
                 ", baggage=" + baggage.toString() +
-                ", stops=" + stops +
                 '}';
     }
 
@@ -97,7 +88,7 @@ public class Flight {
         private ObjectNode price;
         private Airline airline;
         private Baggage baggage;
-        private List<Flight> stops;
+
 
         public Builder setDepartureTime(String departureTime) {
             this.departureTime = departureTime;
@@ -136,11 +127,6 @@ public class Flight {
 
         public Builder setBaggage(Baggage baggage) {
             this.baggage = baggage;
-            return this;
-        }
-
-        public Builder setStops(List<Flight> stops) {
-            this.stops = stops;
             return this;
         }
 

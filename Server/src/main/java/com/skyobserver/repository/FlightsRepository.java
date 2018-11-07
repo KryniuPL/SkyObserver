@@ -29,9 +29,18 @@ public class FlightsRepository {
         return FLIGHT_LOOKUP_HOST_URL + originAirportIATA + REQUEST_SEPARATOR + destinationAirportIATA + REQUEST_SEPARATOR + departureDate + "/?7Day=N&Connection=" + typeOfConnection + "&Compression=ALL&Sort=Departure&Time=ANY&Interline=N&NoFilter=N&ExpandResults=Y";
     }
 
+    public void validateAirportObject(Airport airport){
+        if(airport == null){
+            airport = Airport.AIRPORT_EMPTY_OBJECT;
+        }
+    }
+
     public Flight buildDirectFlightObject(FlightLegDetails directFlight, String currency) throws IOException {
         Airport originAirport = airportsRepository.findAirportByIataCode(directFlight.getDepartureAirport().getLocationCode());
         Airport destinationAirport = airportsRepository.findAirportByIataCode(directFlight.getArrivalAirport().getLocationCode());
+
+        validateAirportObject(originAirport);
+        validateAirportObject(destinationAirport);
 
         return new Flight.Builder()
                 .setDepartureTime(directFlight.getDepartureDateTime())

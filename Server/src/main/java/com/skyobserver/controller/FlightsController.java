@@ -1,9 +1,11 @@
 package com.skyobserver.controller;
 
 
+import com.fasterxml.jackson.databind.exc.UnrecognizedPropertyException;
 import com.skyobserver.exceptions.AirportsNotFoundException;
-import com.skyobserver.model.Flight;
-import com.skyobserver.repository.FlightsRepository;
+import com.skyobserver.exceptions.FlightsNotFoundException;
+import com.skyobserver.model.MultiFlight;
+import com.skyobserver.repository.MultiFlightsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,17 +21,17 @@ import java.util.List;
 public class FlightsController {
 
     @Autowired
-    private FlightsRepository flightsRepository;
+    private MultiFlightsRepository multiFlightsRepository;
 
     @GetMapping(value = "/{from}/{to}/{date}/{connection}/{currency}",produces = MediaType.APPLICATION_JSON_VALUE)
-    public List<Flight> searchForFlights(@PathVariable String from, @PathVariable String to, @PathVariable String date, @PathVariable String connection, @PathVariable String currency) throws AirportsNotFoundException, IOException, InterruptedException {
-        if (connection.equals("DIRECT")){
-            return flightsRepository.searchForDirectFlights(from,to, date, currency);
+    public List<MultiFlight> searchForFlights(@PathVariable String from, @PathVariable String to, @PathVariable String date, @PathVariable String connection, @PathVariable String currency) throws AirportsNotFoundException, IOException, InterruptedException {
+        List<MultiFlight> flights;
+        try {
+            flights = multiFlightsRepository.searchForMultiFlights(from, to, date, connection, currency);
         }
-        else {
-            return null;
+        catch (Exception e){
+            throw new FlightsNotFoundException();
         }
+        return flights;
     }
-
-
 }

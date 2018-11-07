@@ -100,13 +100,13 @@ public class FlightsRepositoryIntegTest {
         assertEquals(calculatedDuration.toMinutes(), 200);
     }
 
-    @Test
-    public void shouldReturnFlightObject() throws IOException, InterruptedException {
-        xmlModule.setDefaultUseWrapper(false);
-        ObjectMapper objectMapper = new XmlMapper(xmlModule);
-        FlightDetails flightDetails = objectMapper.readValue(flightDetailsString, FlightDetails.class);
-        Flight flight = flightsRepository.buildDirectFlightObject(flightDetails, "PLN");
-        System.out.println(flight.toString());
-        assertNotNull(flight);
-    }
+//    @Test
+//    public void shouldReturnFlightObject() throws IOException, InterruptedException {
+//        xmlModule.setDefaultUseWrapper(false);
+//        ObjectMapper objectMapper = new XmlMapper(xmlModule);
+//        FlightDetails flightDetails = objectMapper.readValue(flightDetailsString, FlightDetails.class);
+//        Flight flight = flightsRepository.buildDirectFlightObject(flightDetails, "PLN");
+//        System.out.println(flight.toString());
+//        assertNotNull(flight);
+//    }
 }

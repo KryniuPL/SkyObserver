@@ -8,6 +8,9 @@ import com.skyobserver.model.xml.OTA_AirDetailsRS;
 import com.skyobserver.service.xml.FlightsDeserializer;
 import okhttp3.Headers;
 import okhttp3.ResponseBody;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -18,9 +21,11 @@ import static com.skyobserver.config.ServerConfiguration.FLIGHT_LOOKUP_API_KEY;
 import static com.skyobserver.config.ServerConfiguration.NAME_OF_FLIGHT_LOOKUP_SERVICE_HEADER;
 import static com.skyobserver.repository.FlightsRepository.buildRequestUrl;
 
+@Component
 public class MultiFlightsRepository {
 
-    private FlightsRepository flightsRepository = new FlightsRepository();
+    @Autowired
+    private FlightsRepository flightsRepository;
     private HttpClient httpClient = new HttpClient();
     private FlightsDeserializer flightsDeserializer = new FlightsDeserializer();
 

@@ -11,8 +11,6 @@ import javax.persistence.Id;
 @JsonSerialize
 public class Airport {
 
-  public static final Airport AIRPORT_EMPTY_OBJECT = new Airport("Information about Airport not found");
-
   @Id
   @GeneratedValue(strategy= GenerationType.AUTO)
   private long id;

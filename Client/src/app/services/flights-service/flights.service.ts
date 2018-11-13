@@ -12,7 +12,7 @@ export class FlightsService {
   }
 
   getAirportsStartingWithPhrase(originAirport: string, destinationAirport: string, departureDate: string, typeOfConnection: string, currency: string): Observable<MultiFlight[]>{
-    return this.http.get<MultiFlight[]>(this.getFlightsURL + '/'phrase);   
+    return this.http.get<MultiFlight[]>(this.getFlightsURL + originAirport + '/' + destinationAirport + '/' + departureDate + '/' + typeOfConnection + '/' + currency);   
   }
 
 

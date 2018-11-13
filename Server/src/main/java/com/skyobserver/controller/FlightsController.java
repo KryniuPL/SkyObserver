@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -25,12 +26,12 @@ public class FlightsController {
 
     @GetMapping(value = "/{from}/{to}/{date}/{connection}/{currency}",produces = MediaType.APPLICATION_JSON_VALUE)
     public List<MultiFlight> searchForFlights(@PathVariable String from, @PathVariable String to, @PathVariable String date, @PathVariable String connection, @PathVariable String currency) throws AirportsNotFoundException, IOException, InterruptedException {
-        List<MultiFlight> flights;
+        List<MultiFlight> flights = new ArrayList<>();
         try {
             flights = multiFlightsRepository.searchForMultiFlights(from, to, date, connection, currency);
         }
         catch (Exception e){
-            throw new FlightsNotFoundException();
+            e.printStackTrace();
         }
         return flights;
     }

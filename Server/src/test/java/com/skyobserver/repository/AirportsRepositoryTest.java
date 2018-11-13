@@ -1,7 +1,6 @@
 package com.skyobserver.repository;
 
 import com.skyobserver.model.Airport;
-import com.skyobserver.schedulers.AirportsUpdateScheduler;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;

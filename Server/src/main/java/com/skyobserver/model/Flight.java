@@ -10,7 +10,6 @@ import java.util.List;
 @JsonSerialize
 public class Flight {
 
-    //must have parameters
     private String departureTime;
     private String arrivalTime;
     private Airport originAirport;

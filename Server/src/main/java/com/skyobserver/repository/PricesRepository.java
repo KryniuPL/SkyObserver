@@ -7,6 +7,7 @@ import com.skyobserver.http.HttpClient;
 import com.skyobserver.model.Price;
 import com.skyobserver.schedulers.AirportsUpdateScheduler;
 import okhttp3.Headers;
+import okhttp3.ResponseBody;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -31,8 +32,11 @@ public class PricesRepository {
     private static final Logger logger = LoggerFactory.getLogger(PricesRepository.class);
 
     public ObjectNode getFlightPrice(String currency, String originAirportIATA, String destinationAirportIATA, String departureDate, String returnDate) throws IOException {
-        String responseJson = httpClient.doGet(buildPriceRequestURL(currency, originAirportIATA, destinationAirportIATA, departureDate, returnDate),
-                Headers.of(Map.of(X_MASHAPE_KEY_HEADER, SKYSCANNER_API_KEY, X_MASHAPE_HOST_HEADER, SKYSCANNER_HOST_NAME))).string();
+        ResponseBody responseBody = httpClient.doGet(buildPriceRequestURL(currency, originAirportIATA, destinationAirportIATA, departureDate, returnDate),
+                Headers.of(Map.of(X_MASHAPE_KEY_HEADER, SKYSCANNER_API_KEY, X_MASHAPE_HOST_HEADER, SKYSCANNER_HOST_NAME)));
+        logger.info(String.valueOf(responseBody.toString()));
+
+        String responseJson = responseBody.string();
 
         JsonElement element = new JsonParser().parse(responseJson);
         JsonObject jsonObject = element.getAsJsonObject();
@@ -47,12 +51,15 @@ public class PricesRepository {
         double minimumValue = pricesList
                 .stream()
                 .mapToDouble(v -> v)
-                .min().orElseThrow(NoSuchElementException::new);
+                .min().orElse(0);
 
         Price price = new Price(minimumValue, currency);
         ObjectNode objectNode = mapper.createObjectNode();
         objectNode.put("value",price.getValue());
-        objectNode.put("currency", price.getCurrency());
+        if(minimumValue == 0){
+            objectNode.put("currency", "No data");
+        }
+        else objectNode.put("currency", price.getCurrency());
         return objectNode;
     }
 

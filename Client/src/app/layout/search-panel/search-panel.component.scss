@@ -53,23 +53,28 @@ button.mat-icon-button[disabled]{
 .dropdown-divider{
     margin: 0;
 }
-
+.modal-body{
+    font-size: 120% !important;
+}
 .dropdown-menu a:hover{
     color: white;
     background-color: #4B515D;
+}
+::ng-deep .mat-form-field-ripple{
+    background-color: white !important;
 }
 
 .container{
     border-radius: 25px !important;
     background-color: #1C2331;
     top: 100px;
-    min-height: 23%;
-    width: 100%;
+    min-height: 25%;
+    min-width: 80% !important;
     position: absolute;
     z-index: 2;
 }
 .input{
-    width: 22%;
+    width: 26%;
 }
 .settings {
     border: 0;

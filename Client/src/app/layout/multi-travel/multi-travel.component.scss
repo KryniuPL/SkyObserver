@@ -38,6 +38,10 @@ span{
 .mat-input-element {
     color: white;
 }
+
+button[disabled]{
+    background-color: gray !important;
+}
 button.mat-icon-button{
     font-size: 20px;
     margin-right: 20px;
@@ -125,6 +129,19 @@ button.mat-icon-button[disabled]{
     color: white;
 }
 
+::ng-deep .mat-checkbox-checked.mat-accent .mat-checkbox-background, .mat-checkbox-indeterminate.mat-accent .mat-checkbox-background {
+    color: white !important;
+}
+::ng-deep .mat-ripple-element {
+    color: white !important;
+}
+
+::ng-deep .mat-checkbox-frame{
+    border-color: white !important;
+}
+::ng-deep .mat-checkbox-checked.mat-warn .mat-checkbox-background, .mat-checkbox-indeterminate.mat-warn .mat-checkbox-background{
+    background-color: #ee4b5e !important;
+}
 
 
 

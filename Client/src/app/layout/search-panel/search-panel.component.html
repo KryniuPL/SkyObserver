@@ -65,7 +65,7 @@
       </button>
 
       <mat-form-field class="input" appearance="fill">
-        <input  type="text" placeholder="Where from?" aria-label="Number" matInput [formControl]="desitnationAirportControl"
+        <input  type="text" placeholder="Where to?" aria-label="Number" matInput [formControl]="desitnationAirportControl"
           [matAutocomplete]="auto2" onClick="this.select();">
         <i class="material-icons" matPrefix>flight_land</i>
         <mat-autocomplete #auto2="matAutocomplete">
@@ -78,7 +78,7 @@
         </mat-autocomplete>
       </mat-form-field>
 
-      <mat-form-field class="date" [style.width.%]="oneWay ? 42 : 20" appearance="fill" style="margin-left: 20px">
+      <mat-form-field class="date" [style.width.%]="oneWay ? 30 : 18" appearance="fill" style="margin-left: 20px;">
         <input [min]="startDate" matInput [matDatepicker]="picker" placeholder="Departure date" (dateChange)="changeStartDate($event);" disabled>
         <mat-datepicker-toggle matSuffix [for]="picker" class="datesIcons"></mat-datepicker-toggle>
         <mat-datepicker disabled="false" touchUi #picker></mat-datepicker>
@@ -116,7 +116,7 @@
 
 <div mdbModal #basicModal="mdbModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myBasicModalLabel"
   aria-hidden="true">
-  <div class="modal-dialog modal-sm" role="document">
+  <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header unique-color-dark" style="color:white;">
         <p class="heading lead">Passengers on trip</p>
@@ -158,6 +158,16 @@
           </mat-list-item>
         </mat-list>
       </div>
+    
+      <p style="margin: 10px;font-family:verdana;font-size:110%;color: #1C2331">
+        Your age at time of travel must be valid for the age category booked.
+        <br>
+        <br>
+         Airlines have restrictions on under 18s travelling alone.
+         <br>
+        Age limits and policies for travelling with children may vary so please check with the airline before booking.
+      </p>
+
       <div class="modal-footer">
         <button style="width: 35%" type="button" mdbBtn color="mdb-color" class="relative waves-light" aria-label="Close"
           (click)="basicModal.hide()" mdbWavesEffect>Close</button>

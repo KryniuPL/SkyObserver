@@ -13,6 +13,7 @@ import {debounceTime} from 'rxjs/internal/operators';
   styleUrls: ["./multi-travel.component.scss"]
 })
 export class MultiTravelComponent implements OnInit {
+  checked = true;
   flights: MultiFlight[] = [];
   startDate = new Date();
 

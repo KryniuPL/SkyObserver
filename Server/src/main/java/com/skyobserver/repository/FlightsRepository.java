@@ -8,12 +8,10 @@ import com.skyobserver.model.xml.FlightLegDetails;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import java.io.IOException;
-import java.time.Duration;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.skyobserver.config.ServerConfiguration.*;
+import static com.skyobserver.config.ServerConfiguration.FLIGHT_LOOKUP_HOST_URL;
 
 @Component
 public class FlightsRepository {
@@ -48,7 +46,7 @@ public class FlightsRepository {
     public List<Flight> buildFlightsList(FlightDetails flightDetails, String currency) throws IOException {
         List<FlightLegDetails> flightLegDetailsList = flightDetails.getFlightLegDetailsList();
         List<Flight> flights = new ArrayList<>();
-        for (FlightLegDetails flightLegDetail: flightLegDetailsList){
+        for (FlightLegDetails flightLegDetail : flightLegDetailsList) {
             flights.add(buildDirectFlightObject(flightLegDetail, currency));
         }
         return flights;

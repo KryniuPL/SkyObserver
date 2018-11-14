@@ -23,6 +23,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ExploreMapComponent } from './layout/explore-map/explore-map.component';
 import { AgmCoreModule } from '@agm/core';
 import { FlightsService } from './services/flights-service/flights.service';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import { FlightsService } from './services/flights-service/flights.service';
     AgmCoreModule.forRoot({
       apiKey: '***REMOVED***'
     }),
+    MatCheckboxModule,
     HttpClientModule,
     MatIconModule,
     MatButtonModule,

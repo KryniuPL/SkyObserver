@@ -16,6 +16,7 @@ import {debounceTime} from 'rxjs/internal/operators';
 import { debounceTimeConst } from "../../../environments/environment";
 import { log } from "util";
 import { MatDatepickerInputEvent } from "@angular/material";
+import { FlightsService } from "src/app/services/flights-service/flights.service";
 
 
 @Component({
@@ -24,7 +25,7 @@ import { MatDatepickerInputEvent } from "@angular/material";
   styleUrls: ["./search-panel.component.scss"]
 })
 export class SearchPanelComponent implements OnInit {
-
+  checked = true;
   oneWay: boolean = false;
   multiTrip: boolean = false;
   selectedJourney: JourneyOption;
@@ -46,7 +47,7 @@ export class SearchPanelComponent implements OnInit {
 
  
 
-  constructor(private airportService: AirportsService) {
+  constructor(private airportService: AirportsService, private flightsService: FlightsService) {
     this.originAirportControl.valueChanges.pipe(debounceTime(debounceTimeConst)).subscribe(data =>{
       this.airportService.getAirportsStartingWithPhrase(data).subscribe(response => {
         this.airports = response;
@@ -59,6 +60,13 @@ export class SearchPanelComponent implements OnInit {
       });
     });
 
+  }
+
+  searchForFlights(){
+    this.flightsService.getFlights('WAW', 'LHR', '20181210', 'DIRECT' , 'PLN')
+    .subscribe(res => {
+      console.log(res);
+    })
   }
 
   swapInputValues(){

@@ -37,7 +37,6 @@
         </a>
       </div>
     </div>
-
   </div>
 
   <div class="round-trip" *ngIf="multiTrip === false">
@@ -91,15 +90,22 @@
         <mat-datepicker disabled="false" touchUi #picker2></mat-datepicker>
       </mat-form-field>
 
+
     </form>
-    <div *ngIf="multiTrip === false" style="background-color: #1C2331;">
-      <button id="searchButton" mat-raised-button color="warn">
+
+    <div style="left: 20; margin-left: 40px">
+      <mat-checkbox color="warn" style="color: white; " class="example-margin" [(ngModel)]="checked">Direct flights only</mat-checkbox>
+    </div>
+
+    <div *ngIf="multiTrip === false" style="background-color: #1C2331;height: 10px;" >
+      <button id="searchButton" mat-raised-button color="warn" (click)="searchForFlights()">
         <i class="material-icons" style="margin-bottom: 8px;">
           search
         </i>
         SEARCH
       </button>
     </div>
+
   </div>
   <app-multi-travel *ngIf="multiTrip === true">
 

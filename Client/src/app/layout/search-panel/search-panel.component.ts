@@ -11,7 +11,6 @@ import { JourneyOption } from "../../model/classes/JourneyOption";
 import { FlightClass } from "../../model/classes/FlightClass";
 import { Passenger } from "../../model/classes/Passenger";
 import { AirportsService } from "../../services/airports-service/airports-service.service";
-import {FlightsService } from "../../services/flights-service/flights.service.ts";
 import { Airport } from "../../model/interfaces/Airport";
 import {debounceTime} from 'rxjs/internal/operators';
 import { debounceTimeConst } from "../../../environments/environment";
@@ -47,7 +46,7 @@ export class SearchPanelComponent implements OnInit {
 
  
 
-  constructor(private airportService: AirportsService, private flightService: FlightsService) {
+  constructor(private airportService: AirportsService) {
     this.originAirportControl.valueChanges.pipe(debounceTime(debounceTimeConst)).subscribe(data =>{
       this.airportService.getAirportsStartingWithPhrase(data).subscribe(response => {
         this.airports = response;

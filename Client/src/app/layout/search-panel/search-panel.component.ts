@@ -17,6 +17,7 @@ import { debounceTimeConst } from "../../../environments/environment";
 import { log } from "util";
 import { MatDatepickerInputEvent } from "@angular/material";
 import { FlightsService } from "src/app/services/flights-service/flights.service";
+import { Router } from "@angular/router";
 
 
 @Component({
@@ -47,7 +48,7 @@ export class SearchPanelComponent implements OnInit {
 
  
 
-  constructor(private airportService: AirportsService, private flightsService: FlightsService) {
+  constructor(private airportService: AirportsService, private flightsService: FlightsService, private router: Router) {
     this.originAirportControl.valueChanges.pipe(debounceTime(debounceTimeConst)).subscribe(data =>{
       this.airportService.getAirportsStartingWithPhrase(data).subscribe(response => {
         this.airports = response;
@@ -63,10 +64,11 @@ export class SearchPanelComponent implements OnInit {
   }
 
   searchForFlights(){
-    this.flightsService.getFlights('WAW', 'LHR', '20181210', 'DIRECT' , 'PLN')
-    .subscribe(res => {
-      console.log(res);
-    })
+    this.router.navigate(['/result']);
+    // this.flightsService.getFlights('WAW', 'LHR', '20181210', 'DIRECT' , 'PLN')
+    // .subscribe(res => {
+    //   console.log(res);
+    // })
   }
 
   swapInputValues(){

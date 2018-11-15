@@ -24,6 +24,7 @@ import { ExploreMapComponent } from './layout/explore-map/explore-map.component'
 import { AgmCoreModule } from '@agm/core';
 import { FlightsService } from './services/flights-service/flights.service';
 import {MatCheckboxModule} from '@angular/material/checkbox';
+import { ResultComponent } from './layout/result/result.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
     PageNotFoundComponent,
     MultiTravelComponent,
     ExploreMapComponent,
+    ResultComponent,
   ],
   imports: [
     AgmCoreModule.forRoot({

@@ -78,13 +78,13 @@
         </mat-autocomplete>
       </mat-form-field>
 
-      <mat-form-field class="date" [style.width.%]="oneWay ? 30 : 18" appearance="fill" style="margin-left: 20px;">
+      <mat-form-field class="date" [style.width.%]="oneWay ? 36 : 18" appearance="fill" style="margin-left: 20px;">
         <input [min]="startDate" matInput [matDatepicker]="picker" placeholder="Departure date" (dateChange)="changeStartDate($event);" disabled>
         <mat-datepicker-toggle matSuffix [for]="picker" class="datesIcons"></mat-datepicker-toggle>
         <mat-datepicker disabled="false" touchUi #picker></mat-datepicker>
       </mat-form-field>
 
-      <mat-form-field *ngIf="selectedJourney.name === 'Round Trip'" appearance="fill" style="margin-left: 10px">
+      <mat-form-field *ngIf="selectedJourney.name === 'Round Trip'" appearance="fill" style="margin-left: 10px;width: 18%">
         <input [min]="startDate" matInput [matDatepicker]="picker2" placeholder="Return date" (dateChange)="resetStartDate($event)" disabled>
         <mat-datepicker-toggle matSuffix [for]="picker2" class="datesIcons"></mat-datepicker-toggle>
         <mat-datepicker disabled="false" touchUi #picker2></mat-datepicker>

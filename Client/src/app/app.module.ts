@@ -25,6 +25,7 @@ import { AgmCoreModule } from '@agm/core';
 import { FlightsService } from './services/flights-service/flights.service';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import { ResultComponent } from './layout/result/result.component';
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 @NgModule({
   declarations: [
@@ -42,6 +43,7 @@ import { ResultComponent } from './layout/result/result.component';
     AgmCoreModule.forRoot({
       apiKey: '***REMOVED***'
     }),
+    NgxSpinnerModule,
     MatCheckboxModule,
     HttpClientModule,
     MatIconModule,

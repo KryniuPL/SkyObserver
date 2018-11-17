@@ -65,10 +65,7 @@ export class SearchPanelComponent implements OnInit {
 
   searchForFlights(){
     this.router.navigate(['/result']);
-    // this.flightsService.getFlights('WAW', 'LHR', '20181210', 'DIRECT' , 'PLN')
-    // .subscribe(res => {
-    //   console.log(res);
-    // })
+    
   }
 
   swapInputValues(){

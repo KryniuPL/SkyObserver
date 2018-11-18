@@ -1,0 +1,377 @@
+[
+    {
+        "totalMiles": 914,
+        "journeyDuration": "PT3H00M",
+        "journeyPrice": 1180,
+        "flights": [
+            {
+                "departureTime": "2018-12-10T07:35:00",
+                "arrivalTime": "2018-12-10T09:35:00",
+                "originAirport": {
+                    "id": 2637,
+                    "ident": "EPWA",
+                    "type": "large_airport",
+                    "name": "Warsaw Chopin Airport",
+                    "latitudeDeg": 52.1656990051,
+                    "longitudeDeg": 20.967100143399996,
+                    "elevationFt": 362,
+                    "continent": "EU",
+                    "isoCountry": "PL",
+                    "isoRegion": "PL-MZ",
+                    "municipality": "Warsaw",
+                    "scheduledService": "yes",
+                    "gpsCode": "EPWA",
+                    "iataCode": "WAW",
+                    "localCode": "",
+                    "homeLink": "http://www.lotnisko-chopina.pl/?lang=en",
+                    "wikipediaLink": "http://en.wikipedia.org/wiki/Warsaw_Frederic_Chopin_Airport",
+                    "keywords": "Okęcie"
+                },
+                "destinationAirport": {
+                    "id": 2434,
+                    "ident": "EGLL",
+                    "type": "large_airport",
+                    "name": "London Heathrow Airport",
+                    "latitudeDeg": 51.4706,
+                    "longitudeDeg": -0.461941,
+                    "elevationFt": 83,
+                    "continent": "EU",
+                    "isoCountry": "GB",
+                    "isoRegion": "GB-ENG",
+                    "municipality": "London",
+                    "scheduledService": "yes",
+                    "gpsCode": "EGLL",
+                    "iataCode": "LHR",
+                    "localCode": "",
+                    "homeLink": "http://www.heathrowairport.com/",
+                    "wikipediaLink": "https://en.wikipedia.org/wiki/Heathrow_Airport",
+                    "keywords": "LON, Londres"
+                },
+                "duration": "PT3H00M",
+                "price": {
+                    "value": 1180,
+                    "currency": "PLN"
+                },
+                "airline": {
+                    "nameAirline": "LOT Polish Airlines",
+                    "codeIataAirline": "LO",
+                    "iataPrefixAccounting": "80",
+                    "codeIcaoAirline": "LOT",
+                    "callsign": "LOT",
+                    "type": "scheduled",
+                    "statusAirline": "active",
+                    "founding": "1929",
+                    "codeHub": "WAW",
+                    "nameCountry": "Poland",
+                    "codeIso2Country": "PL",
+                    "id": 130
+                },
+                "baggage": {
+                    "freeBaggageAllowance": "Information about Baggage not found",
+                    "extraBaggageAllowance": "",
+                    "technicalParameters": ""
+                }
+            }
+        ]
+    },
+    {
+        "totalMiles": 914,
+        "journeyDuration": "PT2H45M",
+        "journeyPrice": 1180,
+        "flights": [
+            {
+                "departureTime": "2018-12-10T12:45:00",
+                "arrivalTime": "2018-12-10T14:30:00",
+                "originAirport": {
+                    "id": 2637,
+                    "ident": "EPWA",
+                    "type": "large_airport",
+                    "name": "Warsaw Chopin Airport",
+                    "latitudeDeg": 52.1656990051,
+                    "longitudeDeg": 20.967100143399996,
+                    "elevationFt": 362,
+                    "continent": "EU",
+                    "isoCountry": "PL",
+                    "isoRegion": "PL-MZ",
+                    "municipality": "Warsaw",
+                    "scheduledService": "yes",
+                    "gpsCode": "EPWA",
+                    "iataCode": "WAW",
+                    "localCode": "",
+                    "homeLink": "http://www.lotnisko-chopina.pl/?lang=en",
+                    "wikipediaLink": "http://en.wikipedia.org/wiki/Warsaw_Frederic_Chopin_Airport",
+                    "keywords": "Okęcie"
+                },
+                "destinationAirport": {
+                    "id": 2434,
+                    "ident": "EGLL",
+                    "type": "large_airport",
+                    "name": "London Heathrow Airport",
+                    "latitudeDeg": 51.4706,
+                    "longitudeDeg": -0.461941,
+                    "elevationFt": 83,
+                    "continent": "EU",
+                    "isoCountry": "GB",
+                    "isoRegion": "GB-ENG",
+                    "municipality": "London",
+                    "scheduledService": "yes",
+                    "gpsCode": "EGLL",
+                    "iataCode": "LHR",
+                    "localCode": "",
+                    "homeLink": "http://www.heathrowairport.com/",
+                    "wikipediaLink": "https://en.wikipedia.org/wiki/Heathrow_Airport",
+                    "keywords": "LON, Londres"
+                },
+                "duration": "PT2H45M",
+                "price": {
+                    "value": 1180,
+                    "currency": "PLN"
+                },
+                "airline": {
+                    "nameAirline": "British Airways",
+                    "codeIataAirline": "BA",
+                    "iataPrefixAccounting": "125",
+                    "codeIcaoAirline": "BAW",
+                    "callsign": "SPEEDBIRD",
+                    "type": "scheduled",
+                    "statusAirline": "active",
+                    "founding": "1974",
+                    "codeHub": "LHR",
+                    "nameCountry": "United Kingdom",
+                    "codeIso2Country": "GB",
+                    "id": 14
+                },
+                "baggage": {
+                    "freeBaggageAllowance": "2 bags",
+                    "extraBaggageAllowance": "€50-€75 per bag on flights within Europe €70-€150 per bag on international flights",
+                    "technicalParameters": "90 x 75 x 43cm 32kg per bag"
+                }
+            }
+        ]
+    },
+    {
+        "totalMiles": 914,
+        "journeyDuration": "PT2H50M",
+        "journeyPrice": 1180,
+        "flights": [
+            {
+                "departureTime": "2018-12-10T15:30:00",
+                "arrivalTime": "2018-12-10T17:20:00",
+                "originAirport": {
+                    "id": 2637,
+                    "ident": "EPWA",
+                    "type": "large_airport",
+                    "name": "Warsaw Chopin Airport",
+                    "latitudeDeg": 52.1656990051,
+                    "longitudeDeg": 20.967100143399996,
+                    "elevationFt": 362,
+                    "continent": "EU",
+                    "isoCountry": "PL",
+                    "isoRegion": "PL-MZ",
+                    "municipality": "Warsaw",
+                    "scheduledService": "yes",
+                    "gpsCode": "EPWA",
+                    "iataCode": "WAW",
+                    "localCode": "",
+                    "homeLink": "http://www.lotnisko-chopina.pl/?lang=en",
+                    "wikipediaLink": "http://en.wikipedia.org/wiki/Warsaw_Frederic_Chopin_Airport",
+                    "keywords": "Okęcie"
+                },
+                "destinationAirport": {
+                    "id": 2434,
+                    "ident": "EGLL",
+                    "type": "large_airport",
+                    "name": "London Heathrow Airport",
+                    "latitudeDeg": 51.4706,
+                    "longitudeDeg": -0.461941,
+                    "elevationFt": 83,
+                    "continent": "EU",
+                    "isoCountry": "GB",
+                    "isoRegion": "GB-ENG",
+                    "municipality": "London",
+                    "scheduledService": "yes",
+                    "gpsCode": "EGLL",
+                    "iataCode": "LHR",
+                    "localCode": "",
+                    "homeLink": "http://www.heathrowairport.com/",
+                    "wikipediaLink": "https://en.wikipedia.org/wiki/Heathrow_Airport",
+                    "keywords": "LON, Londres"
+                },
+                "duration": "PT2H50M",
+                "price": {
+                    "value": 1180,
+                    "currency": "PLN"
+                },
+                "airline": {
+                    "nameAirline": "LOT Polish Airlines",
+                    "codeIataAirline": "LO",
+                    "iataPrefixAccounting": "80",
+                    "codeIcaoAirline": "LOT",
+                    "callsign": "LOT",
+                    "type": "scheduled",
+                    "statusAirline": "active",
+                    "founding": "1929",
+                    "codeHub": "WAW",
+                    "nameCountry": "Poland",
+                    "codeIso2Country": "PL",
+                    "id": 130
+                },
+                "baggage": {
+                    "freeBaggageAllowance": "Information about Baggage not found",
+                    "extraBaggageAllowance": "",
+                    "technicalParameters": ""
+                }
+            }
+        ]
+    },
+    {
+        "totalMiles": 914,
+        "journeyDuration": "PT2H35M",
+        "journeyPrice": 1180,
+        "flights": [
+            {
+                "departureTime": "2018-12-10T19:40:00",
+                "arrivalTime": "2018-12-10T21:15:00",
+                "originAirport": {
+                    "id": 2637,
+                    "ident": "EPWA",
+                    "type": "large_airport",
+                    "name": "Warsaw Chopin Airport",
+                    "latitudeDeg": 52.1656990051,
+                    "longitudeDeg": 20.967100143399996,
+                    "elevationFt": 362,
+                    "continent": "EU",
+                    "isoCountry": "PL",
+                    "isoRegion": "PL-MZ",
+                    "municipality": "Warsaw",
+                    "scheduledService": "yes",
+                    "gpsCode": "EPWA",
+                    "iataCode": "WAW",
+                    "localCode": "",
+                    "homeLink": "http://www.lotnisko-chopina.pl/?lang=en",
+                    "wikipediaLink": "http://en.wikipedia.org/wiki/Warsaw_Frederic_Chopin_Airport",
+                    "keywords": "Okęcie"
+                },
+                "destinationAirport": {
+                    "id": 2434,
+                    "ident": "EGLL",
+                    "type": "large_airport",
+                    "name": "London Heathrow Airport",
+                    "latitudeDeg": 51.4706,
+                    "longitudeDeg": -0.461941,
+                    "elevationFt": 83,
+                    "continent": "EU",
+                    "isoCountry": "GB",
+                    "isoRegion": "GB-ENG",
+                    "municipality": "London",
+                    "scheduledService": "yes",
+                    "gpsCode": "EGLL",
+                    "iataCode": "LHR",
+                    "localCode": "",
+                    "homeLink": "http://www.heathrowairport.com/",
+                    "wikipediaLink": "https://en.wikipedia.org/wiki/Heathrow_Airport",
+                    "keywords": "LON, Londres"
+                },
+                "duration": "PT2H35M",
+                "price": {
+                    "value": 1180,
+                    "currency": "PLN"
+                },
+                "airline": {
+                    "nameAirline": "British Airways",
+                    "codeIataAirline": "BA",
+                    "iataPrefixAccounting": "125",
+                    "codeIcaoAirline": "BAW",
+                    "callsign": "SPEEDBIRD",
+                    "type": "scheduled",
+                    "statusAirline": "active",
+                    "founding": "1974",
+                    "codeHub": "LHR",
+                    "nameCountry": "United Kingdom",
+                    "codeIso2Country": "GB",
+                    "id": 14
+                },
+                "baggage": {
+                    "freeBaggageAllowance": "2 bags",
+                    "extraBaggageAllowance": "€50-€75 per bag on flights within Europe €70-€150 per bag on international flights",
+                    "technicalParameters": "90 x 75 x 43cm 32kg per bag"
+                }
+            }
+        ]
+    },
+    {
+        "totalMiles": 914,
+        "journeyDuration": "PT2H45M",
+        "journeyPrice": 1180,
+        "flights": [
+            {
+                "departureTime": "2018-12-10T20:05:00",
+                "arrivalTime": "2018-12-10T21:50:00",
+                "originAirport": {
+                    "id": 2637,
+                    "ident": "EPWA",
+                    "type": "large_airport",
+                    "name": "Warsaw Chopin Airport",
+                    "latitudeDeg": 52.1656990051,
+                    "longitudeDeg": 20.967100143399996,
+                    "elevationFt": 362,
+                    "continent": "EU",
+                    "isoCountry": "PL",
+                    "isoRegion": "PL-MZ",
+                    "municipality": "Warsaw",
+                    "scheduledService": "yes",
+                    "gpsCode": "EPWA",
+                    "iataCode": "WAW",
+                    "localCode": "",
+                    "homeLink": "http://www.lotnisko-chopina.pl/?lang=en",
+                    "wikipediaLink": "http://en.wikipedia.org/wiki/Warsaw_Frederic_Chopin_Airport",
+                    "keywords": "Okęcie"
+                },
+                "destinationAirport": {
+                    "id": 2434,
+                    "ident": "EGLL",
+                    "type": "large_airport",
+                    "name": "London Heathrow Airport",
+                    "latitudeDeg": 51.4706,
+                    "longitudeDeg": -0.461941,
+                    "elevationFt": 83,
+                    "continent": "EU",
+                    "isoCountry": "GB",
+                    "isoRegion": "GB-ENG",
+                    "municipality": "London",
+                    "scheduledService": "yes",
+                    "gpsCode": "EGLL",
+                    "iataCode": "LHR",
+                    "localCode": "",
+                    "homeLink": "http://www.heathrowairport.com/",
+                    "wikipediaLink": "https://en.wikipedia.org/wiki/Heathrow_Airport",
+                    "keywords": "LON, Londres"
+                },
+                "duration": "PT2H45M",
+                "price": {
+                    "value": 1180,
+                    "currency": "PLN"
+                },
+                "airline": {
+                    "nameAirline": "LOT Polish Airlines",
+                    "codeIataAirline": "LO",
+                    "iataPrefixAccounting": "80",
+                    "codeIcaoAirline": "LOT",
+                    "callsign": "LOT",
+                    "type": "scheduled",
+                    "statusAirline": "active",
+                    "founding": "1929",
+                    "codeHub": "WAW",
+                    "nameCountry": "Poland",
+                    "codeIso2Country": "PL",
+                    "id": 130
+                },
+                "baggage": {
+                    "freeBaggageAllowance": "Information about Baggage not found",
+                    "extraBaggageAllowance": "",
+                    "technicalParameters": ""
+                }
+            }
+        ]
+    }
+]

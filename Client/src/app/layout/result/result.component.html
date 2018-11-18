@@ -7,10 +7,62 @@
 
 <div class="view">
   <div class="full-bg-img">
-    <div class="mask rgba-black-light flex-center">
+    <div class="flex-center">
 
-        <div>
+        <div class="container">
+
           
+              <mat-horizontal-stepper [linear]="isLinear" #stepper>
+                <mat-step [stepControl]="firstFormGroup">
+                  
+                    <ng-template matStepLabel>Choose trip to somewhere</ng-template>
+                    <mat-accordion>
+                        <mat-expansion-panel>
+                          <mat-expansion-panel-header>
+                            <mat-panel-title>
+                              Personal data
+                            </mat-panel-title>
+                            <mat-panel-description>
+                              Type your name and age
+                            </mat-panel-description>
+                          </mat-expansion-panel-header>
+                          <div>
+                              dane
+                              <br>
+                              dane
+                              <br>
+                              dane
+                              <br>
+                          </div>
+                        </mat-expansion-panel>
+                        <mat-expansion-panel>
+                          <mat-expansion-panel-header>
+                            <mat-panel-title>
+                              Self aware panel
+                            </mat-panel-title>
+                            <mat-panel-description>
+                              Currently I am {{panelOpenState ? 'open' : 'closed'}}
+                            </mat-panel-description>
+                          </mat-expansion-panel-header>
+                          <div>
+                              dane
+                              <br>
+                              dane
+                              <br>
+                              dane
+                              <br>
+                          </div>
+                        </mat-expansion-panel>
+                      </mat-accordion>
+                  
+                </mat-step>
+                <mat-step>
+                  <ng-template matStepLabel>Trip summary</ng-template>
+                 
+                  
+                </mat-step>
+              </mat-horizontal-stepper>
+
         </div>
 
     </div>

@@ -1,6 +1,29 @@
 .view {
-    opacity: 0.3;
-    background-color: rgba(28, 35, 49, 1);
+    background-color: white;
     background-size: cover;
     height: 100vh;
+}
+.container{
+    top: 100px;
+    position: absolute;
+    z-index: 2;
+}
+
+::ng-deep .mat-horizontal-stepper-header-container{
+    border: 1px solid blue;
+}
+
+::ng-deep .mat-horizontal-content-container{
+    border-radius: 25px !important;
+    margin-top: 100px;
+    border: 1px solid gray;
+    padding: 0 !important;
+}
+
+::ng-deep .mat-expansion-panel{
+    margin: 0 !important;
+}
+
+::ng-deep .mat-expansion-panel-header{
+    height: 70px !important;
 }

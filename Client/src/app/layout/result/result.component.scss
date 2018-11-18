@@ -14,7 +14,7 @@
 }
 
 ::ng-deep .mat-horizontal-content-container{
-    border-radius: 25px !important;
+    border-radius: 15px !important;
     margin-top: 100px;
     border: 1px solid gray;
     padding: 0 !important;
@@ -25,5 +25,9 @@
 }
 
 ::ng-deep .mat-expansion-panel-header{
-    height: 70px !important;
+    height: 90px !important;
+}
+.material-icons{
+    margin-right: 10px;
+    font-size: 35px
 }

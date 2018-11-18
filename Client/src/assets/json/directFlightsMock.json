@@ -1,8 +1,13 @@
 [
     {
+        "departureAirportCode": "WAW",
+        "arrivalAirportCode": "LHR",
+        "currency": "PLN",
+        "departureDate": "2018-12-10T07:35:00",
+        "arrivalDate": "2018-12-10T09:35:00",
         "totalMiles": 914,
         "journeyDuration": "PT3H00M",
-        "journeyPrice": 1180,
+        "journeyPrice": 1177,
         "flights": [
             {
                 "departureTime": "2018-12-10T07:35:00",
@@ -49,7 +54,7 @@
                 },
                 "duration": "PT3H00M",
                 "price": {
-                    "value": 1180,
+                    "value": 1177,
                     "currency": "PLN"
                 },
                 "airline": {
@@ -75,9 +80,14 @@
         ]
     },
     {
+        "departureAirportCode": "WAW",
+        "arrivalAirportCode": "LHR",
+        "currency": "PLN",
+        "departureDate": "2018-12-10T12:45:00",
+        "arrivalDate": "2018-12-10T14:30:00",
         "totalMiles": 914,
         "journeyDuration": "PT2H45M",
-        "journeyPrice": 1180,
+        "journeyPrice": 1177,
         "flights": [
             {
                 "departureTime": "2018-12-10T12:45:00",
@@ -124,7 +134,7 @@
                 },
                 "duration": "PT2H45M",
                 "price": {
-                    "value": 1180,
+                    "value": 1177,
                     "currency": "PLN"
                 },
                 "airline": {
@@ -150,9 +160,14 @@
         ]
     },
     {
+        "departureAirportCode": "WAW",
+        "arrivalAirportCode": "LHR",
+        "currency": "PLN",
+        "departureDate": "2018-12-10T15:30:00",
+        "arrivalDate": "2018-12-10T17:20:00",
         "totalMiles": 914,
         "journeyDuration": "PT2H50M",
-        "journeyPrice": 1180,
+        "journeyPrice": 1177,
         "flights": [
             {
                 "departureTime": "2018-12-10T15:30:00",
@@ -199,7 +214,7 @@
                 },
                 "duration": "PT2H50M",
                 "price": {
-                    "value": 1180,
+                    "value": 1177,
                     "currency": "PLN"
                 },
                 "airline": {
@@ -225,9 +240,14 @@
         ]
     },
     {
+        "departureAirportCode": "WAW",
+        "arrivalAirportCode": "LHR",
+        "currency": "PLN",
+        "departureDate": "2018-12-10T19:40:00",
+        "arrivalDate": "2018-12-10T21:15:00",
         "totalMiles": 914,
         "journeyDuration": "PT2H35M",
-        "journeyPrice": 1180,
+        "journeyPrice": 1177,
         "flights": [
             {
                 "departureTime": "2018-12-10T19:40:00",
@@ -274,7 +294,7 @@
                 },
                 "duration": "PT2H35M",
                 "price": {
-                    "value": 1180,
+                    "value": 1177,
                     "currency": "PLN"
                 },
                 "airline": {
@@ -300,9 +320,14 @@
         ]
     },
     {
+        "departureAirportCode": "WAW",
+        "arrivalAirportCode": "LHR",
+        "currency": "PLN",
+        "departureDate": "2018-12-10T20:05:00",
+        "arrivalDate": "2018-12-10T21:50:00",
         "totalMiles": 914,
         "journeyDuration": "PT2H45M",
-        "journeyPrice": 1180,
+        "journeyPrice": 1177,
         "flights": [
             {
                 "departureTime": "2018-12-10T20:05:00",
@@ -349,7 +374,7 @@
                 },
                 "duration": "PT2H45M",
                 "price": {
-                    "value": 1180,
+                    "value": 1177,
                     "currency": "PLN"
                 },
                 "airline": {

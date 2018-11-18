@@ -2,12 +2,14 @@ import { Airport } from "../interfaces/Airport";
 import { FormControl } from "@angular/forms";
 
 export class MultiFlight {
+  [x: string]: any;
     originAirports: Airport[];
     destinationAirports: Airport[];
     originAirportControl: FormControl;
     destinationAirportControl: FormControl;
     departureDate: Date;
     minDate:Date;
+  arrivalDate: Date;
 
     constructor(originAirports: Airport[],destinationAirports: Airport[],originAirportControl: FormControl, destinationAirportControl: FormControl, departureDate: Date, minDate:Date){
         this.originAirports = originAirports;

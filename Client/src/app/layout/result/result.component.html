@@ -15,34 +15,56 @@
               <mat-horizontal-stepper [linear]="isLinear" #stepper>
                 <mat-step [stepControl]="firstFormGroup">
                   
-                    <ng-template matStepLabel>Choose trip to somewhere</ng-template>
+                    <ng-template matStepLabel>Choose trip to London</ng-template>
                     <mat-accordion>
-                        <mat-expansion-panel>
+                        <mat-expansion-panel *ngFor="let flight of mockFlights">
                           <mat-expansion-panel-header>
                             <mat-panel-title>
-                              Personal data
+
+                                <i class="material-icons">
+                                    flight_takeoff
+                                </i>
+
+                              <span *ngFor="let subFlight of flight.flights" style="width: 160px">
+                                  {{subFlight.airline.nameAirline}}
+                                  <br>
+                              </span>
+
+                              <span style="margin-left:80px; width: 100px;" >
+                                <span *ngIf="flight.departureDate.getMinutes()<10">
+                                  {{flight.departureDate.getHours()}}:0{{flight.departureDate.getMinutes()}}
+                                </span>
+                                <span *ngIf="flight.departureDate.getMinutes()>10">
+                                  {{flight.departureDate.getHours()}}:{{flight.departureDate.getMinutes()}}
+                                </span> 
+                                  -
+                                
+
+                                  {{flight.arrivalDate.getHours()}}:{{flight.arrivalDate.getMinutes()}}
+                              </span>
+
+                              <span style="margin-left: 90px">
+                                {{flight.journeyDuration}}
+                                <p style="color: grey">
+                                  {{flight.departureAirportCode}}-{{flight.arrivalAirportCode}}
+                                </p>
+                              </span>
+
+
+                              <span style="margin-left: 100px">
+                                  <span *ngIf="flight.flights.length === 1">
+                                      Nonstop
+                                  </span>
+                                  <span *ngIf="flight.flights.length > 1">
+                                    {{flight.flights.length - 1}}
+                                  </span>
+                              </span>
+
+                              <span style="margin-left: 160px">
+                                average {{flight.currency}} {{flight.journeyPrice}}
+                              </span>
                             </mat-panel-title>
-                            <mat-panel-description>
-                              Type your name and age
-                            </mat-panel-description>
-                          </mat-expansion-panel-header>
-                          <div>
-                              dane
-                              <br>
-                              dane
-                              <br>
-                              dane
-                              <br>
-                          </div>
-                        </mat-expansion-panel>
-                        <mat-expansion-panel>
-                          <mat-expansion-panel-header>
-                            <mat-panel-title>
-                              Self aware panel
-                            </mat-panel-title>
-                            <mat-panel-description>
-                              Currently I am {{panelOpenState ? 'open' : 'closed'}}
-                            </mat-panel-description>
+                        
                           </mat-expansion-panel-header>
                           <div>
                               dane
@@ -68,3 +90,7 @@
     </div>
   </div>
 </div>
+
+<app-footer>
+
+</app-footer>

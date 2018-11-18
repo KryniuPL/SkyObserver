@@ -44,10 +44,13 @@ public class MultiFlightsRepository {
 
     public MultiFlight buildMultiFlightObject(FlightDetails flightDetails, String currency) throws IOException {
         List<Flight> flights = flightsRepository.buildFlightsList(flightDetails,currency);
+
         int totalMiles = Integer.parseInt(flightDetails.getTotalMiles());
         String journeyDuration = flightDetails.getTotalFlightTime();
         int totalJourneyPrice = calculateTotalFlightPrice(flights);
-        return new MultiFlight(totalMiles, journeyDuration, totalJourneyPrice, flights);
+        String departureDate = flightDetails.getFlsDepartureDateTime();
+        String arrivalDate = flightDetails.getFlsArrivalDateTime();
+        return new MultiFlight(flightDetails.getFlsDepartureCode(),flightDetails.getFlsArrivalCode(),currency, departureDate, arrivalDate, totalMiles, journeyDuration, totalJourneyPrice, flights);
     }
 
     int calculateTotalFlightPrice(List<Flight> flights){

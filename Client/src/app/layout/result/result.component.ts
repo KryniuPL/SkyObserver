@@ -3,7 +3,7 @@ import { NgxSpinnerService } from 'ngx-spinner';
 import { FlightsService } from 'src/app/services/flights-service/flights.service';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { MultiFlight } from 'src/app/model/classes/MultiFlight';
-import flightsJson from '../../../assets/json/directFlightsMock.json';
+declare function require(url: string);
 
 @Component({
   selector: 'app-result',
@@ -16,16 +16,32 @@ export class ResultComponent implements OnInit {
   firstFormGroup: FormGroup;
   secondFormGroup: FormGroup;
   panelOpenState = false;
-  flights: MultiFlight[];
+  mockFlights: MultiFlight[];
 
   constructor(private spinner: NgxSpinnerService,private flightsService: FlightsService, private _formBuilder: FormBuilder) 
   {
 
   }
- 
+  formatDurationExpression(expression: string){
+    //PT3H00M
+    let parts = expression.split("H");
+    let hours = parts[0].replace("PT","");
+    let minutes = parts[1].replace("M","");
+    return hours + 'h ' + minutes + 'm'; 
+  }
+
   ngOnInit() {
-    this.flights = flightsJson;
-    
+    let json = require('../../../assets/json/directFlightsMock.json');
+    this.mockFlights = json;
+
+    this.mockFlights.forEach(element => {
+      element.journeyDuration = this.formatDurationExpression(element.journeyDuration);
+      element.departureDate = new Date(element.departureDate);
+      element.arrivalDate = new Date(element.arrivalDate);
+    });
+
+    console.log(this.mockFlights);
+    console.log(this.mockFlights[4].departureDate.getMinutes());
     
     this.firstFormGroup = this._formBuilder.group({
       firstCtrl: ['', Validators.required]
@@ -52,3 +68,4 @@ export class ResultComponent implements OnInit {
   }
 
 }
+

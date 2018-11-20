@@ -23,18 +23,21 @@ public class BaggageRepository {
     private static final String SKYSCANNER_BAGGAGE_INFORMATION_WEBSITE = "https://www.skyscanner.net/news/tips/check-in-luggage-size-and-weight-restrictions";
     private static final Logger logger = LoggerFactory.getLogger(BaggageRepository.class);
     private static final File baggageHtmlFile = new File(BAGGAGE_HTML_FILE_PATH);
-    private HttpClient httpClient = new HttpClient();
+    public static final String TABLE_CSS_ELEMENT = "table";
+    public static final String HTML_ROWS = "tr";
+    public static final String HTML_COLUMN = "td";
+    private static HttpClient httpClient = new HttpClient();
 
     public Baggage getBaggageObjectByAirlineName(String airlineName) throws IOException {
         Baggage baggage = Baggage.NOT_FOUND;
         String htmlFile = readFileContentToString();
         Document htmlDocument = Jsoup.parse(htmlFile);
-        Element table = htmlDocument.selectFirst("table");
-        Elements rows = table.select("tr");
+        Element table = htmlDocument.selectFirst(TABLE_CSS_ELEMENT);
+        Elements rows = table.select(HTML_ROWS);
 
         for (int i = 1; i < rows.size(); i++) {
             Element row = rows.get(i);
-            Elements cols = row.select("td");
+            Elements cols = row.select(HTML_COLUMN);
             if(cols.get(0).text().equals(airlineName)){
                 baggage = new Baggage(cols.get(1).text(), cols.get(2).text(), cols.get(3).text());
             }
@@ -43,7 +46,7 @@ public class BaggageRepository {
     }
 
 
-    public void initializeRepository() throws IOException {
+    public static void initializeRepository() throws IOException {
         logger.info("Downloading baggage information file");
         ResponseBody responseBody = httpClient.doGet(SKYSCANNER_BAGGAGE_INFORMATION_WEBSITE, Headers.of());
         FileUtils.writeStringToFile(baggageHtmlFile, responseBody.string(), ENCODING);

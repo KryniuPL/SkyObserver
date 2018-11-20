@@ -53,12 +53,10 @@ public class MultiFlightsRepository {
         return new MultiFlight(flightDetails.getFlsDepartureCode(),flightDetails.getFlsArrivalCode(),currency, departureDate, arrivalDate, totalMiles, journeyDuration, totalJourneyPrice, flights);
     }
 
-    int calculateTotalFlightPrice(List<Flight> flights){
-        int sum = 0;
-        for(Flight flight : flights){
-            sum += flight.getPrice().get("value").asInt();
-        }
-        return sum;
+    public int calculateTotalFlightPrice(List<Flight> flights){
+        return flights.stream()
+                .mapToInt(flight -> flight.getPrice().get("value").asInt())
+                .sum();
     }
 
 }

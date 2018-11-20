@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.io.IOException;
 
 @RestController
-@RequestMapping("baggages")
+@RequestMapping("/baggages")
 public class BaggagesController {
 
     private BaggageRepository baggageRepository = new BaggageRepository();

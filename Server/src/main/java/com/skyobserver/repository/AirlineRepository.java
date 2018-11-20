@@ -5,11 +5,8 @@ import com.skyobserver.model.Airline;
 import com.skyobserver.service.json.AirlineParser;
 import okhttp3.Headers;
 import okhttp3.ResponseBody;
-
-
 import java.io.IOException;
 import java.util.Map;
-
 
 public class AirlineRepository {
 

@@ -2,7 +2,6 @@ package com.skyobserver.util;
 
 import com.skyobserver.model.Airport;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -16,12 +15,12 @@ public class AirportsCollectionsFilter {
                 .collect(Collectors.toCollection(ArrayList::new));
     }
 
-    public static HashSet<Airport> getNewAirports(HashSet<Airport> oldAirports, HashSet<Airport> newAirports) throws IOException {
+    public static HashSet<Airport> getNewAirports(HashSet<Airport> oldAirports, HashSet<Airport> newAirports) {
         newAirports.removeAll(oldAirports);
         return newAirports;
     }
 
-    public static HashSet<Airport> getOldAirports(HashSet<Airport> oldAirports, HashSet<Airport> newAirports) throws IOException {
+    public static HashSet<Airport> getOldAirports(HashSet<Airport> oldAirports, HashSet<Airport> newAirports) {
         oldAirports.removeAll(newAirports);
         return oldAirports;
     }

@@ -11,10 +11,8 @@ import static com.skyobserver.config.ServerConfiguration.BAGGAGE_SCHEDULE_CRON_E
 @Component
 public class BaggageUpdateScheduler {
 
-    private BaggageRepository baggageRepository = new BaggageRepository();
-
     @Scheduled(cron = BAGGAGE_SCHEDULE_CRON_EXPRESSION)
     public void scheduleUpdating() throws IOException {
-        baggageRepository.initializeRepository();
+        BaggageRepository.initializeRepository();
     }
 }

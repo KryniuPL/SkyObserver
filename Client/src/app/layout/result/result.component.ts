@@ -22,8 +22,12 @@ export class ResultComponent implements OnInit {
   {
 
   }
+
+  changeStyleOfBorderTop(element: MultiFlight){
+    element.style = '1px solid #ee4b5e'
+  }
+  
   formatDurationExpression(expression: string){
-    //PT3H00M
     let parts = expression.split("H");
     let hours = parts[0].replace("PT","");
     let minutes = parts[1].replace("M","");
@@ -35,20 +39,21 @@ export class ResultComponent implements OnInit {
     this.mockFlights = json;
 
     this.mockFlights.forEach(element => {
+      element.style = 'none';
       element.journeyDuration = this.formatDurationExpression(element.journeyDuration);
       element.departureDate = new Date(element.departureDate);
       element.arrivalDate = new Date(element.arrivalDate);
     });
 
-    console.log(this.mockFlights);
-    console.log(this.mockFlights[4].departureDate.getMinutes());
-    
     this.firstFormGroup = this._formBuilder.group({
       firstCtrl: ['', Validators.required]
     });
     this.secondFormGroup = this._formBuilder.group({
       secondCtrl: ['', Validators.required]
     });
+
+    console.log(this.mockFlights);
+    
     // this.spinner.show();
  
     // // setTimeout(() => {

@@ -18,12 +18,12 @@
                     <ng-template matStepLabel>Choose trip to London</ng-template>
                     <mat-accordion>
                         <mat-expansion-panel *ngFor="let flight of mockFlights">
-                          <mat-expansion-panel-header>
+                          <mat-expansion-panel-header [collapsedHeight]="'75px'">
                             <mat-panel-title>
-
-                                <i class="material-icons">
-                                    flight_takeoff
-                                </i>
+                              
+                              <i class="material-icons">
+                                airplanemode_active
+                              </i>
 
                               <span *ngFor="let subFlight of flight.flights" style="width: 160px">
                                   {{subFlight.airline.nameAirline}}
@@ -43,9 +43,9 @@
                                   {{flight.arrivalDate.getHours()}}:{{flight.arrivalDate.getMinutes()}}
                               </span>
 
-                              <span style="margin-left: 90px">
+                              <span style="margin-left: 90px;">
                                 {{flight.journeyDuration}}
-                                <p style="color: grey">
+                                <p style="color: grey;width: max-content">
                                   {{flight.departureAirportCode}}-{{flight.arrivalAirportCode}}
                                 </p>
                               </span>
@@ -56,17 +56,35 @@
                                       Nonstop
                                   </span>
                                   <span *ngIf="flight.flights.length > 1">
-                                    {{flight.flights.length - 1}}
+                                    {{flight.flights.length - 1}} stops
                                   </span>
                               </span>
 
+                              
+
                               <span style="margin-left: 160px">
-                                average {{flight.currency}} {{flight.journeyPrice}}
+                            
+                                  average {{flight.currency}} 
+                                  <span style="color: rgb(93, 165, 111);">
+                                    {{flight.journeyPrice}}
+                                  </span>
                               </span>
                             </mat-panel-title>
                         
                           </mat-expansion-panel-header>
-                          <div>
+                          <div *ngFor="let stop of let subFlight of flight.flights" class="flightBody">
+                              dane
+                              <br>
+                              dane
+                              <br>
+                              dane
+                              <br>
+                              dane
+                              <br>
+                              dane
+                              <br>
+                              dane
+                              <br>
                               dane
                               <br>
                               dane

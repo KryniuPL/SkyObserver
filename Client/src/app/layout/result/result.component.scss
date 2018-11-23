@@ -10,13 +10,13 @@
 }
 
 ::ng-deep .mat-horizontal-stepper-header-container{
-    border: 1px solid blue;
+    border: 1px solid #ee4b5e;
 }
 
 ::ng-deep .mat-horizontal-content-container{
     border-radius: 15px !important;
     margin-top: 100px;
-    border: 1px solid gray;
+    border: 1px solid #ee4b5e;
     padding: 0 !important;
 }
 
@@ -24,10 +24,19 @@
     margin: 0 !important;
 }
 
-::ng-deep .mat-expansion-panel-header{
-    height: 90px !important;
+::ng-deep mat-expansion-panel-header{
+    border-bottom: 1px solid #ee4b5e;
+
+}
+::ng-deep .mat-expansion-panel-body{
+    border-bottom: 1px solid #ee4b5e;
 }
 .material-icons{
-    margin-right: 10px;
-    font-size: 35px
+    margin-right: 14px;
+    color: #ee4b5e;
+}
+.flightBody{
+    margin-top: 30px;
+    margin-bottom: 30px;
+    margin-left: 80px;
 }

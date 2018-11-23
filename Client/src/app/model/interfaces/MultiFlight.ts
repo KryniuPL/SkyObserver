@@ -1,6 +1,7 @@
 import { Flight } from "./Flight";
 
 export interface MultiFlight {
+    style: string;
     departureAirportCode: string;
     arrivalAirportCode: string;
     currency: string;

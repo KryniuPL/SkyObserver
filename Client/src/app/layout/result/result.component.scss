@@ -1,22 +1,20 @@
 .view {
-    background-color: white;
+    background-color: antiquewhite;
     background-size: cover;
     height: 100vh;
 }
 .container{
-    top: 100px;
-    position: absolute;
-    z-index: 2;
+    top: 50px !important;
+   
 }
 
-::ng-deep .mat-horizontal-stepper-header-container{
-    border: 1px solid #ee4b5e;
-}
-
+// ::ng-deep .mat-horizontal-stepper-header-container{
+//     border: 1px solid #ee4b5e;
+// }
 ::ng-deep .mat-horizontal-content-container{
     border-radius: 15px !important;
     margin-top: 100px;
-    border: 1px solid #ee4b5e;
+    // border: 1px solid #ee4b5e;
     padding: 0 !important;
 }
 
@@ -24,19 +22,18 @@
     margin: 0 !important;
 }
 
-::ng-deep mat-expansion-panel-header{
-    border-bottom: 1px solid #ee4b5e;
-
-}
-::ng-deep .mat-expansion-panel-body{
-    border-bottom: 1px solid #ee4b5e;
-}
+// ::ng-deep mat-expansion-panel-header{
+//     border-bottom: 1px solid #ee4b5e;
+// }
+// ::ng-deep .mat-expansion-panel-body{
+//     border-bottom: 1px solid #ee4b5e;
+// }
 .material-icons{
     margin-right: 14px;
     color: #ee4b5e;
 }
 .flightBody{
-    margin-top: 30px;
-    margin-bottom: 30px;
+    margin-top: 15px;
+    margin-bottom: 15px;
     margin-left: 80px;
 }

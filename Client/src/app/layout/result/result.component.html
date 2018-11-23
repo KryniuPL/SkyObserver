@@ -39,7 +39,6 @@
                                 </span> 
                                   -
                                 
-
                                   {{flight.arrivalDate.getHours()}}:{{flight.arrivalDate.getMinutes()}}
                               </span>
 
@@ -50,7 +49,6 @@
                                 </p>
                               </span>
 
-
                               <span style="margin-left: 100px">
                                   <span *ngIf="flight.flights.length === 1">
                                       Nonstop
@@ -59,8 +57,6 @@
                                     {{flight.flights.length - 1}} stops
                                   </span>
                               </span>
-
-                              
 
                               <span style="margin-left: 160px">
                             
@@ -73,24 +69,69 @@
                         
                           </mat-expansion-panel-header>
                           <div *ngFor="let stop of let subFlight of flight.flights" class="flightBody">
-                              dane
-                              <br>
-                              dane
-                              <br>
-                              dane
-                              <br>
-                              dane
-                              <br>
-                              dane
-                              <br>
-                              dane
-                              <br>
-                              dane
-                              <br>
-                              dane
-                              <br>
-                              dane
-                              <br>
+                            <p>
+                            <i class="material-icons">
+                              flight_takeoff
+                            </i>
+                            <span>
+                              <span *ngIf="subFlight.departureTime.getMinutes()>10">
+                                  {{subFlight.departureTime.getHours()}}:{{subFlight.departureTime.getMinutes()}}
+                              </span>
+                              <span *ngIf="subFlight.departureTime.getMinutes()<10">
+                                  {{subFlight.departureTime.getHours()}}:0{{subFlight.departureTime.getMinutes()}}
+                              </span>
+                              <span *ngIf="subFlight.departureTime.getHours()<12">
+                                AM
+                              </span>
+                              <span *ngIf="subFlight.departureTime.getHours()>=12">
+                                  PM
+                              </span>
+                            </span>
+                            .
+                            <span>
+                              {{subFlight.originAirport.name}} ({{subFlight.originAirport.iataCode}})
+                            </span>
+                          </p>
+                          <p>
+                              <i class="material-icons">
+                                  more_vert
+                              </i>
+                            Travel time: {{formatDurationExpression(subFlight.duration)}}
+                          </p>
+                          <p>
+                              <i class="material-icons">
+                                  flight_land
+                              </i>
+                              <span>
+                                  <span *ngIf="subFlight.arrivalTime.getMinutes()>10">
+                                      {{subFlight.arrivalTime.getHours()}}:{{subFlight.arrivalTime.getMinutes()}}
+                                  </span>
+    
+                                  <span *ngIf="subFlight.arrivalTime.getMinutes()<10">
+                                      {{subFlight.arrivalTime.getHours()}}:0{{subFlight.arrivalTime.getMinutes()}}
+                                  </span>
+    
+                                  <span *ngIf="subFlight.arrivalTime.getHours()<12">
+                                      AM
+                                    </span>
+                                 <span *ngIf="subFlight.arrivalTime.getHours()>=12">
+                                        PM
+                                </span>
+                              </span>
+                              .
+                              <span>
+                                  {{subFlight.destinationAirport.name}} ({{subFlight.destinationAirport.iataCode}})
+                              </span>
+                            
+                          </p>
+
+
+
+
+
+
+
+
                           </div>
                         </mat-expansion-panel>
                       </mat-accordion>

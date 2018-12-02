@@ -1,85 +1,111 @@
-\documentclass[a4paper,12pt]{article}
-\title{Praca inżynierska}
+\documentclass[12pt]{extarticle}
 
+\usepackage{polski}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage{times}
 \usepackage{cite}
-\usepackage{titlesec}
+\usepackage{amsmath}
 \usepackage{graphicx}
-\usepackage[top=2.5cm, bottom=2.5cm, left=3.5cm, right=2.5cm]{geometry}
+\usepackage{blindtext}
+\usepackage{hyperref}
+\usepackage{microtype}
+\usepackage{afterpage}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{listings}
+\usepackage{chngcntr}
+\usepackage[final]{pdfpages}
+
+\lstset{frame=Trbl,numbers=left}
+
+\renewcommand{\thefigure}{\thesection.\arabic{figure}}
+
+\lstdefinelanguage{Java}{
+  keywords={package, as, as?, typealias, this, super, val, var, fun, for, null, true, false, is, in, throw, return, break, continue, object, if, try, else, while, do, when, class, interface, enum, object, companion, override, public, private, get, set, import, abstract, vararg, expect, actual, where, suspend, data, internal, dynamic, final, by},
+  keywordstyle=\color{NavyBlue}\bfseries,
+  ndkeywords={@Deprecated, @JvmName, @JvmStatic, @JvmOverloads, @JvmField, @JvmSynthetic, Iterable, Int, Long, Integer, Short, Byte, Float, Double, String, Runnable, Array},
+  ndkeywordstyle=\color{BurntOrange}\bfseries,
+  emph={println, return@, forEach, map, mapNotNull, first, filter, firstOrNull, lazy, delegate},
+  emphstyle={\color{OrangeRed}},
+  identifierstyle=\color{black},
+  sensitive=true,
+  commentstyle=\color{gray}\ttfamily,
+  comment=[l]{//},
+  morecomment=[s]{/*}{*/},
+  stringstyle=\color{ForestGreen}\ttfamily,
+  morestring=[b]",
+  morestring=[s]{"""*}{*"""},
+}
+
+
+\usepackage[left=3.5cm, right=2.5cm, top=2.5cm]{geometry}
+
+\newcommand\tab[1][1cm]{\hspace*{#1}}
 
 \linespread{1.5}
-\titleformat*{\section}{\fontsize{14}{12}\selectfont\bfseries}
-\titleformat*{\subsection}{\fontsize{12}{12}\selectfont\bfseries}
 
+\author{Krzysztof Dragan}
+
+\title{%
+  Praca dyplomowa \\
+  \large Aplikacja internetowa do wyszukiwania połączeń lotniczych}
+  
+\newcommand\blankpage{%
+	\null
+    \thispagestyle{empty}%
+    \newpage}
 
 \begin{document}
-\begin{titlepage}
-	\begin{center}
-	\fontsize{20pt}{12pt}\selectfont
-	\textbf{Politechnika Świętokrzyska}
-	\vskip 0.5cm
-	\fontsize{16pt}{12pt}\selectfont
-	\textbf{WYDZIAŁ , AUTOMATYKI I INFORMATYKI}
-	\end{center}
-	
-	\vskip 0.25cm	
-	
-	\begin{flushleft}
-	\fontsize{14pt}{12pt}\selectfont
-	Kierunek – Informatyka\\
-	Specjalność – Systemy Informacyjne
-	\end{flushleft}
-	
-	\vskip 2.5cm	
-	
-	\begin{center}
-	\fontsize{18pt}{12pt}\selectfont
-		\textbf{Praca Dyplomowa Inżynierska}
-	
-	\vskip 1.5cm	
 
-	\fontsize{18pt}{12pt}\selectfont
-	\textbf{Aplikacja internetowa do wyszukiwania połączeń lotniczych}
-		
-	\end{center}
-	
-	\vskip 4cm
-	\begin{flushleft}
-	\fontsize{18pt}{12pt}\selectfont
-	\textbf{Krzysztof Dragan}\\
-	\fontsize{14pt}{12pt}\selectfont
-	083524
-	\end{flushleft}
-	
-	\vskip 3cm
-	\begin{flushright}
-	\fontsize{14pt}{12pt}\selectfont
-	Opiekun pracy: dr inż. Arkadiusz Chrobot
-	\end{flushright}
+  \afterpage{\blankpage}
+  \includepdf[pages=-]{docs/strona_tytulowa.pdf}
+  
+  \afterpage{\blankpage}
+  \includepdf[pages=-]{docs/zadanie.pdf}
 
-	\vfill
-	\begin{center}
-	\fontsize{16pt}{12pt}\selectfont
-		Kielce 2018
-	\end{center}
-\end{titlepage}
-\thispagestyle{empty}
+  \afterpage{\blankpage}
+  \includepdf[pages=-]{docs/streszczenie.pdf}
 
 \newpage
+
 \tableofcontents
-\thispagestyle{empty}
-
 \newpage
-\clearpage
-\pagenumbering{arabic} 
-\fontsize{14pt}{12pt}\selectfont
-\section{Rozdział 1}
-\subsection{Podrozdział 1.1}
-
+	
+\section{Wstęp}
+	\subsection{Example}
+	\newpage
+	
+\section{Opis rozwiązywanego zagadnienia}
+\subsection{Example}
 \newpage
-\bibliography{inz-blx}
+
+\section{Przegląd istniejących rozwiązań}
+\subsection{Example}
+\newpage
+
+
+\section{Projekt aplikacji}
+\subsection{Example}
+\newpage
+
+
+\section{Implementacja}
+\subsection{Example}
+\newpage
+
+
+\section{Testy}
+\subsection{Example}
+\newpage
+
+
+\section{Uwagi i wnioski}
+	\subsection{Example}
+	\newpage
+
+
+
+\bibliography{Dokumentacja-blx}
 \bibliographystyle{plain}
 
 \end{document}

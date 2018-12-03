@@ -35,5 +35,19 @@
 .flightBody{
     margin-top: 15px;
     margin-bottom: 15px;
-    margin-left: 80px;
+    margin-left: 30px;
+}
+.baggageInfo{
+    margin-top: 25px;
+}
+.column {
+    float: left;
+    width: 35%;
+}
+
+/* Clear floats after the columns */
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
 }

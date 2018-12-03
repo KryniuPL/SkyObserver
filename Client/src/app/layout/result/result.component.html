@@ -68,7 +68,8 @@
                             </mat-panel-title>
                         
                           </mat-expansion-panel-header>
-                          <div *ngFor="let stop of let subFlight of flight.flights" class="flightBody">
+                          <div class="row" *ngFor="let subFlight of flight.flights" >
+                          <div class="column flightBody">
                             <p>
                             <i class="material-icons">
                               flight_takeoff
@@ -133,6 +134,24 @@
 
 
                           </div>
+                          <div class="baggageInfo">
+                            <div *ngIf="isBlank(subFlight.baggage.extraBaggageAllowance)">
+                              <i class="material-icons">
+                                  work_off
+                              </i>
+                              {{subFlight.baggage.freeBaggageAllowance}}
+                            </div>
+                            <div *ngIf="isBlank(subFlight.baggage.extraBaggageAllowance) === false">
+                              <p>Free baggage Allowance: {{subFlight.baggage.freeBaggageAllowance}}</p>
+                              <p style="width:53%">Extra baggage Allowance: {{subFlight.baggage.extraBaggageAllowance}}</p>
+                              <p>Technical Parameters: {{subFlight.baggage.technicalParameters}}</p>
+                            </div>
+                          </div>
+
+                        </div>
+
+                        <button style="left: 80%" mat-stroked-button color="warn">Select this flight</button>
+
                         </mat-expansion-panel>
                       </mat-accordion>
                   

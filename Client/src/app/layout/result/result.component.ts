@@ -34,6 +34,9 @@ export class ResultComponent implements OnInit {
     return hours + 'h ' + minutes + 'm'; 
   }
 
+  isBlank(string): boolean{
+    return (!string || /^\s*$/.test(string));
+  }
   ngOnInit() {
     let json = require('../../../assets/json/directFlightsMock.json');
     this.mockFlights = json;
@@ -46,6 +49,7 @@ export class ResultComponent implements OnInit {
       element.flights.forEach(subFlight => {
         subFlight.departureTime = new Date(subFlight.departureTime);
         subFlight.arrivalTime = new Date(subFlight.arrivalTime);
+        console.log(this.isBlank(subFlight.baggage.extraBaggageAllowance));
       });
     });
 

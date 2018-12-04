@@ -1,7 +1,7 @@
 import { Airport } from "../interfaces/Airport";
 import { FormControl } from "@angular/forms";
 
-export class MultiFlight {
+export class MultiFlightOption {
   [x: string]: any;
     originAirports: Airport[];
     destinationAirports: Airport[];

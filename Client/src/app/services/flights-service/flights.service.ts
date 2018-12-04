@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { baseUrl } from '../../../environments/environment';
 import { HttpClient } from '@angular/common/http';
-import { MultiFlight } from 'src/app/model/classes/MultiFlight';
+
 import { Observable } from 'rxjs';
+import { MultiFlight } from 'src/app/model/interfaces/MultiFlight';
 
 
 @Injectable({

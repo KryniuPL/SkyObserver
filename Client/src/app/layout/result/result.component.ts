@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { FlightsService } from 'src/app/services/flights-service/flights.service';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import { MultiFlight } from 'src/app/model/classes/MultiFlight';
+import { MultiFlight } from 'src/app/model/interfaces/MultiFlight';
+
 declare function require(url: string);
 
 @Component({
@@ -17,6 +18,12 @@ export class ResultComponent implements OnInit {
   secondFormGroup: FormGroup;
   panelOpenState = false;
   mockFlights: MultiFlight[];
+  choosedFlights: MultiFlight[] = [];
+
+  selectFlight(flight: MultiFlight){
+    this.choosedFlights.push(flight)
+    console.log(this.choosedFlights);
+  }
 
   constructor(private spinner: NgxSpinnerService,private flightsService: FlightsService, private _formBuilder: FormBuilder) 
   {
@@ -49,7 +56,6 @@ export class ResultComponent implements OnInit {
       element.flights.forEach(subFlight => {
         subFlight.departureTime = new Date(subFlight.departureTime);
         subFlight.arrivalTime = new Date(subFlight.arrivalTime);
-        console.log(this.isBlank(subFlight.baggage.extraBaggageAllowance));
       });
     });
 
@@ -59,9 +65,6 @@ export class ResultComponent implements OnInit {
     this.secondFormGroup = this._formBuilder.group({
       secondCtrl: ['', Validators.required]
     });
-
-
-    console.log(this.mockFlights);
     
     // this.spinner.show();
  

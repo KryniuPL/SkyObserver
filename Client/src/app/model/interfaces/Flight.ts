@@ -4,8 +4,8 @@ import { Baggage } from "./Baggage";
 
 
 export interface Flight {
-    departureTime: string;
-    arrivalTime: string
+    departureTime: Date;
+    arrivalTime: Date
     originAirport: Airport;
     destinationAirport: Airport;
     duration: string;

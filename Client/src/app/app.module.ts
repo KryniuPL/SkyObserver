@@ -28,6 +28,7 @@ import { ResultComponent } from './layout/result/result.component';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import {MatStepperModule} from '@angular/material/stepper';
 import {MatExpansionModule} from '@angular/material/expansion';
+import { DataService } from './services/data-service/data.service';
 
 @NgModule({
   declarations: [
@@ -68,6 +69,7 @@ import {MatExpansionModule} from '@angular/material/expansion';
   ],
   schemas: [ NO_ERRORS_SCHEMA ],
   providers: [
+    DataService,
     AirportsService,
     FlightsService,
     { 

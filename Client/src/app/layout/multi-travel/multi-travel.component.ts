@@ -1,11 +1,13 @@
 import { Component, OnInit } from "@angular/core";
-import { MultiFlight } from "../../model/classes/MultiFlight";
+
 import { MatDatepickerInputEvent } from "@angular/material";
 import { FormControl } from "@angular/forms";
 import { Airport } from "src/app/model/interfaces/Airport";
 import { debounceTimeConst } from "src/environments/environment";
 import { AirportsService } from "src/app/services/airports-service/airports-service.service";
 import {debounceTime} from 'rxjs/internal/operators';
+import { MultiFlight } from "src/app/model/interfaces/MultiFlight";
+import { MultiFlightOption } from "src/app/model/classes/MultiFlightOption";
 
 @Component({
   selector: "app-multi-travel",
@@ -14,7 +16,7 @@ import {debounceTime} from 'rxjs/internal/operators';
 })
 export class MultiTravelComponent implements OnInit {
   checked = true;
-  flights: MultiFlight[] = [];
+  flights: MultiFlightOption[] = [];
   startDate = new Date();
 
   constructor(private airportService: AirportsService) {}
@@ -40,7 +42,7 @@ export class MultiTravelComponent implements OnInit {
     this.flights=[];
     this.loadMultiFlights();
   }
-  setDateOfMultiTravelOption(flight: MultiFlight,event: MatDatepickerInputEvent<Date>){
+  setDateOfMultiTravelOption(flight: MultiFlightOption,event: MatDatepickerInputEvent<Date>){
       let index = this.flights.indexOf(flight);
       this.flights[index].departureDate = event.value;
       if(index === 0 || (this.flights.length-1 > index)){
@@ -54,7 +56,7 @@ export class MultiTravelComponent implements OnInit {
   }
 
   createInstanceOfMultiFlightOptions(){
-    this.flights.push(new MultiFlight(new Array<Airport>(), new Array<Airport>(), new FormControl(),new FormControl(), new Date(), new Date()));
+    this.flights.push(new MultiFlightOption(new Array<Airport>(), new Array<Airport>(), new FormControl(),new FormControl(), new Date(), new Date()));
     let lastIndexOfArray = this.flights.length -1;
 
     if(lastIndexOfArray >= 2){
@@ -74,7 +76,7 @@ export class MultiTravelComponent implements OnInit {
     });
   }
   
-  deleteFlight(flight: MultiFlight) {
+  deleteFlight(flight: MultiFlightOption) {
     var indexOfFlight = this.flights.indexOf(flight);
     this.flights.splice(indexOfFlight, 1);
   }

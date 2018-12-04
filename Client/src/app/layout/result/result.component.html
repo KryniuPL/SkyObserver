@@ -125,14 +125,6 @@
                               </span>
                             
                           </p>
-
-
-
-
-
-
-
-
                           </div>
                           <div class="baggageInfo">
                             <div *ngIf="isBlank(subFlight.baggage.extraBaggageAllowance)">
@@ -150,7 +142,7 @@
 
                         </div>
 
-                        <button style="left: 80%" mat-stroked-button color="warn">Select this flight</button>
+                        <button style="left: 80%" mat-stroked-button color="warn" (click)="selectFlight(flight)">Select this flight</button>
 
                         </mat-expansion-panel>
                       </mat-accordion>

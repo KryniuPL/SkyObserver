@@ -18,6 +18,8 @@ import { log } from "util";
 import { MatDatepickerInputEvent } from "@angular/material";
 import { FlightsService } from "src/app/services/flights-service/flights.service";
 import { Router } from "@angular/router";
+import { DataService } from "src/app/services/data-service/data.service";
+import { FlightForm } from "src/app/model/classes/FlightForm";
 
 
 @Component({
@@ -46,9 +48,17 @@ export class SearchPanelComponent implements OnInit {
   originAirportControl = new FormControl();
   desitnationAirportControl = new FormControl();
 
- 
+  selectedFlightForm: FlightForm = new FlightForm();
 
-  constructor(private airportService: AirportsService, private flightsService: FlightsService, private router: Router) {
+  setOriginAirport(airport: string){
+    this.selectedFlightForm.$originAirport = airport;
+  }
+
+  setDestinationAirport(airport: string){
+    this.selectedFlightForm.$destinationAirport = airport;
+  }
+
+  constructor(private airportService: AirportsService, private flightsService: FlightsService, private router: Router, private data: DataService) {
     this.originAirportControl.valueChanges.pipe(debounceTime(debounceTimeConst)).subscribe(data =>{
       this.airportService.getAirportsStartingWithPhrase(data).subscribe(response => {
         this.airports = response;
@@ -64,8 +74,14 @@ export class SearchPanelComponent implements OnInit {
   }
 
   searchForFlights(){
-    this.router.navigate(['/result']);
-    
+    //this.router.navigate(['/result']);
+    this.selectedFlightForm.$type = this.selectedJourney.name;
+    var formToPass = new Array<FlightForm>();
+    formToPass.push(this.selectedFlightForm);
+    this.data.changeMessage(formToPass);
+    this.data.currentMessage.subscribe(mess => {
+      console.log(mess);
+    })
   }
 
   swapInputValues(){
@@ -84,13 +100,15 @@ export class SearchPanelComponent implements OnInit {
 
   resetStartDate(event: MatDatepickerInputEvent<Date>){
     this.startDate = new Date();
+    this.selectedFlightForm.$returnDate = event.value.toString();
   }
   changeStartDate(event: MatDatepickerInputEvent<Date>){
     if(this.oneWay){
-      
+      this.selectedFlightForm.$departureDate = event.value.toString();
     }
     else{
       this.startDate = event.value; 
+      this.selectedFlightForm.$departureDate = event.value.toString();
     }
   }
 

@@ -9,7 +9,7 @@ export class MultiFlightOption {
     destinationAirportControl: FormControl;
     departureDate: Date;
     minDate:Date;
-  arrivalDate: Date;
+    arrivalDate: Date;
 
     constructor(originAirports: Airport[],destinationAirports: Airport[],originAirportControl: FormControl, destinationAirportControl: FormControl, departureDate: Date, minDate:Date){
         this.originAirports = originAirports;

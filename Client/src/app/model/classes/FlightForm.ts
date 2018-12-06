@@ -12,6 +12,7 @@ export class FlightForm{
 	}
 
 
+
     /**
      * Getter $type
      * @return {string}

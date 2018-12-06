@@ -46,11 +46,11 @@ export class MultiTravelComponent implements OnInit {
     // 20181120 format for 20-11-2018
     const year = date.getFullYear();
     const month = date.getMonth();
-    let day = date.getDay();
+    let day = date.getDate();
     if (day < 10) {
-      day = '0' + day;
+      return year.toString() + month.toString() + '0' + day.toString();
     }
-    return year.toString() + month.toString() + day.toString();
+    else return year.toString() + month.toString() + day.toString();
   }
 
   swapInputValues(originAirportControl: FormControl, destinationAirportControl: FormControl) {
@@ -83,7 +83,6 @@ export class MultiTravelComponent implements OnInit {
   }
 
   createInstanceOfMultiFlightOptions() {
-    // tslint:disable-next-line:max-line-length
     this.flights.push(new MultiFlightOption(new Array<Airport>(), new Array<Airport>(), new FormControl(), new FormControl(), new Date(), new Date()));
     const lastIndexOfArray = this.flights.length - 1;
 

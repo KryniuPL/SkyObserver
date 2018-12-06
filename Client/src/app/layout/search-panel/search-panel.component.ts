@@ -74,14 +74,14 @@ export class SearchPanelComponent implements OnInit {
   }
 
   searchForFlights(){
-    //this.router.navigate(['/result']);
-    this.selectedFlightForm.$type = this.selectedJourney.name;
-    var formToPass = new Array<FlightForm>();
-    formToPass.push(this.selectedFlightForm);
-    this.data.changeMessage(formToPass);
-    this.data.currentMessage.subscribe(mess => {
-      console.log(mess);
-    })
+    this.router.navigate(['/result']);
+    // this.selectedFlightForm.$type = this.selectedJourney.name;
+    // var formToPass = new Array<FlightForm>();
+    // formToPass.push(this.selectedFlightForm);
+    // this.data.changeMessage(formToPass);
+    // this.data.currentMessage.subscribe(mess => {
+    //   console.log(mess);
+    // })
   }
 
   swapInputValues(){

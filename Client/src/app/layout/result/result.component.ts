@@ -22,7 +22,6 @@ export class ResultComponent implements OnInit {
 
   selectFlight(flight: MultiFlight){
     this.choosedFlights.push(flight)
-    console.log(this.choosedFlights);
   }
 
   constructor(private spinner: NgxSpinnerService,private flightsService: FlightsService, private _formBuilder: FormBuilder) 
@@ -66,6 +65,7 @@ export class ResultComponent implements OnInit {
       secondCtrl: ['', Validators.required]
     });
     
+
     // this.spinner.show();
  
     // // setTimeout(() => {

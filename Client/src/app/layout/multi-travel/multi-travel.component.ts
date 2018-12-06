@@ -9,6 +9,7 @@ import {debounceTime} from 'rxjs/internal/operators';
 import { MultiFlight } from 'src/app/model/interfaces/MultiFlight';
 import { FlightForm } from 'src/app/model/classes/FlightForm';
 import { MultiFlightOption } from 'src/app/model/classes/MultiFlightOption';
+import { DataService } from 'src/app/services/data-service/data.service';
 
 @Component({
   selector: 'app-multi-travel',
@@ -20,14 +21,14 @@ export class MultiTravelComponent implements OnInit {
   flights: MultiFlightOption[] = [];
   startDate = new Date();
 
-  constructor(private airportService: AirportsService) {}
+  constructor(private airportService: AirportsService, private data: DataService) {}
 
   ngOnInit() {
     this.loadMultiFlights();
   }
 
   search() {
-    const flightsOptions = new Array<FlightForm>();
+    var flightsOptions = new Array<FlightForm>();
     this.flights.forEach(element => {
       const flightFormObject = new FlightForm();
       flightFormObject.$type = 'Multi-Flight';
@@ -36,10 +37,8 @@ export class MultiTravelComponent implements OnInit {
       flightFormObject.$departureDate = this.formatDateObjectToApiFormat(element.departureDate);
       flightsOptions.push(flightFormObject);
     });
-
-    flightsOptions.forEach(element => {
-      console.log(element);
-    });
+    this.data.changeIsDirectOnlyMessage(this.checked);
+    this.data.changeMessage(flightsOptions);
   }
 
   formatDateObjectToApiFormat(date: Date) {

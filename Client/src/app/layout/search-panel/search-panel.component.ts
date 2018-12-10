@@ -76,8 +76,11 @@ export class SearchPanelComponent implements OnInit {
   searchForFlights(){
     this.router.navigate(['/result']);
     this.selectedFlightForm.$type = this.selectedJourney.name;
+
     var formToPass = new Array<FlightForm>();
+    this.selectedFlightForm.$isDirectOnly = this.checked;
     formToPass.push(this.selectedFlightForm);
+    
     this.data.changeMessage(formToPass);
   }
 
@@ -184,6 +187,7 @@ export class SearchPanelComponent implements OnInit {
   }
 
   ngOnInit() {
+
     this.loadJourneyOptions();
     this.loadFlightsClasses(); 
     this.loadPassengers();

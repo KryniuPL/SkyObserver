@@ -6,12 +6,10 @@ export class FlightForm{
     private destinationAirport: string;
     private departureDate: string;
     private returnDate: string
-
+    private isDirectOnly: boolean;
 
 	constructor() {
 	}
-
-
 
     /**
      * Getter $type
@@ -85,4 +83,22 @@ export class FlightForm{
     public set $returnDate(value: string){
         this.returnDate = value;
     }
+
+
+    /**
+     * Getter $isDirectOnly
+     * @return {boolean}
+     */
+	public get $isDirectOnly(): boolean {
+		return this.isDirectOnly;
+	}
+
+    /**
+     * Setter $isDirectOnly
+     * @param {boolean} value
+     */
+	public set $isDirectOnly(value: boolean) {
+		this.isDirectOnly = value;
+	}
+
 }

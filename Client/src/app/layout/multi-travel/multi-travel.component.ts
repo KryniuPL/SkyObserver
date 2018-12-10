@@ -35,9 +35,9 @@ export class MultiTravelComponent implements OnInit {
       flightFormObject.$originAirport = element.originAirportControl.value;
       flightFormObject.$destinationAirport = element.destinationAirportControl.value;
       flightFormObject.$departureDate = this.formatDateObjectToApiFormat(element.departureDate);
+      flightFormObject.$isDirectOnly = this.checked;
       flightsOptions.push(flightFormObject);
     });
-    this.data.changeIsDirectOnlyMessage(this.checked);
     this.data.changeMessage(flightsOptions);
   }
 

@@ -1,15 +1,18 @@
 import { Airport } from "../interfaces/Airport";
+import { MultiFlight } from "../interfaces/MultiFlight";
 
 export class FlightForm{
-    private type: string;
-    private originAirport: string;
-    private destinationAirport: string;
-    private departureDate: string;
-    private returnDate: string
-    private isDirectOnly: boolean;
+     type: string;
+     originAirport: string;
+     destinationAirport: string;
+     departureDate: string;
+     returnDate: string
+     isDirectOnly: boolean;
+     displayedFlights: MultiFlight[]
 
 	constructor() {
 	}
+
 
     /**
      * Getter $type

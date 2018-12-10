@@ -72,6 +72,17 @@ export class SearchPanelComponent implements OnInit {
     });
 
   }
+  formatDateObjectToApiFormat(dateInString: string) {
+    var date = new Date(dateInString);
+    // 20181120 format for 20-11-2018
+    const year = date.getFullYear();
+    const month = date.getMonth() + 1;
+    let day = date.getDate();
+    if (day < 10) {
+      return year.toString() + month.toString() + '0' + day.toString();
+    }
+    else return year.toString() + month.toString() + day.toString();
+  }
 
   searchForFlights(){
     this.router.navigate(['/result']);
@@ -79,8 +90,20 @@ export class SearchPanelComponent implements OnInit {
 
     var formToPass = new Array<FlightForm>();
     this.selectedFlightForm.$isDirectOnly = this.checked;
-    formToPass.push(this.selectedFlightForm);
     
+    if(this.oneWay === true){
+      formToPass.push(this.selectedFlightForm);
+    }
+    else {
+      var returnObject = new FlightForm();
+      returnObject.type = this.selectedFlightForm.type;
+      returnObject.originAirport = this.selectedFlightForm.destinationAirport;
+      returnObject.destinationAirport = this.selectedFlightForm.originAirport;
+      returnObject.departureDate = this.selectedFlightForm.returnDate;
+      returnObject.isDirectOnly = this.checked;
+      formToPass.push(this.selectedFlightForm);
+      formToPass.push(returnObject);
+    }
     this.data.changeMessage(formToPass);
   }
 
@@ -100,15 +123,16 @@ export class SearchPanelComponent implements OnInit {
 
   resetStartDate(event: MatDatepickerInputEvent<Date>){
     this.startDate = new Date();
-    this.selectedFlightForm.$returnDate = event.value.toString();
+    this.selectedFlightForm.$returnDate = this.formatDateObjectToApiFormat(event.value.toString());
   }
+
   changeStartDate(event: MatDatepickerInputEvent<Date>){
     if(this.oneWay){
-      this.selectedFlightForm.$departureDate = event.value.toString();
+      this.selectedFlightForm.$departureDate = this.formatDateObjectToApiFormat(event.value.toString());
     }
     else{
       this.startDate = event.value; 
-      this.selectedFlightForm.$departureDate = event.value.toString();
+      this.selectedFlightForm.$departureDate = this.formatDateObjectToApiFormat(event.value.toString());
     }
   }
 
@@ -168,7 +192,6 @@ export class SearchPanelComponent implements OnInit {
     }
     else if(this.selectedJourney.name === 'Multi-city'){
       this.multiTrip = true;
-    
     }
     else {
       this.oneWay = false;

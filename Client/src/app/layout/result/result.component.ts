@@ -5,6 +5,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MultiFlight } from 'src/app/model/interfaces/MultiFlight';
 import { FlightForm } from 'src/app/model/classes/FlightForm';
 import { DataService } from 'src/app/services/data-service/data.service';
+import { Router } from '@angular/router';
+import { element } from '@angular/core/src/render3/instructions';
 
 declare function require(url: string);
 
@@ -27,7 +29,7 @@ export class ResultComponent implements OnInit {
     this.choosedFlights.push(flight)
   }
 
-  constructor(private spinner: NgxSpinnerService, private flightsService: FlightsService, private _formBuilder: FormBuilder, private data: DataService) {
+  constructor(private spinner: NgxSpinnerService, private flightsService: FlightsService, private _formBuilder: FormBuilder, private data: DataService, private router: Router) {
 
   }
 
@@ -40,22 +42,57 @@ export class ResultComponent implements OnInit {
     let hours = parts[0].replace("PT", "");
     let minutes = parts[1].replace("M", "");
     expression = hours + 'h ' + minutes + 'm';
-    console.log("ppp");
   }
 
   isBlank(string): boolean {
     return (!string || /^\s*$/.test(string));
   }
+
   ngOnInit() {
+    this.spinner.show();
+
     this.data.currentMessage.subscribe(message => {
       this.flightForms = message;
+      this.flightForms.forEach(element => {
+        this.flightsService.getFlights(this.formatAirportFormDataToIataCode(element.originAirport), this.formatAirportFormDataToIataCode(element.destinationAirport), element.departureDate, element.isDirectOnly ? 'DIRECT' : 'MANY', 'PLN')
+          .subscribe(res => {
+            element.displayedFlights = res;
+            this.formatFlightDataToDisplay(element.displayedFlights);
+            this.spinner.hide();
+          })
+      });
+
       console.log(this.flightForms);
     })
+    if (this.flightForms.length === 0) {
+      this.router.navigate(['']);
+    }
 
-    let json = require('../../../assets/json/directFlightsMock.json');
-    this.mockFlights = json;
-    
-    this.mockFlights.forEach(element => {
+    // let json = require('../../../assets/json/directFlightsMock.json');
+    // this.mockFlights = json;
+
+    this.firstFormGroup = this._formBuilder.group({
+      firstCtrl: ['', Validators.required]
+    });
+    this.secondFormGroup = this._formBuilder.group({
+      secondCtrl: ['', Validators.required]
+    });
+  }
+
+  formatAirportFormDataToIataCode(airportInfo: string){
+    var dividedParts = airportInfo.split(" ");
+    var lastPart = dividedParts[1].split('');
+    var iataCodeWithBraces = lastPart.slice(1,lastPart.length-1);
+    let iataCode = '';
+    iataCodeWithBraces.forEach(element => {
+      iataCode += element;
+    });
+    return iataCode;
+  }
+
+
+  formatFlightDataToDisplay(flightsArray: MultiFlight[]) {
+    flightsArray.forEach(element => {
       element.style = 'none';
       this.formatDurationExpression(element.journeyDuration);
       element.departureDate = new Date(element.departureDate);
@@ -65,25 +102,9 @@ export class ResultComponent implements OnInit {
         subFlight.arrivalTime = new Date(subFlight.arrivalTime);
       });
     });
-
-    this.firstFormGroup = this._formBuilder.group({
-      firstCtrl: ['', Validators.required]
-    });
-    this.secondFormGroup = this._formBuilder.group({
-      secondCtrl: ['', Validators.required]
-    });
-    // this.spinner.show();
-
-    // // setTimeout(() => {
-    // //   this.spinner.hide();
-    // // }, 10);
-
-    // this.flightsService.getFlights('WAW', 'LHR', '20181210', 'DIRECT' , 'PLN')
-    // .subscribe(res => {
-    //   console.log(res);
-    //   this.spinner.hide();
-    // })
   }
+
+
 
 }
 

@@ -8,6 +8,8 @@ import com.skyobserver.model.xml.OTA_AirDetailsRS;
 import com.skyobserver.service.xml.FlightsDeserializer;
 import okhttp3.Headers;
 import okhttp3.ResponseBody;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

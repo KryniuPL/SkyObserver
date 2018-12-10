@@ -5,7 +5,7 @@ import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 
 import java.util.List;
 
-@JsonIgnoreProperties({"PrimaryLangID","Version","TransactionIdentifier", "FLSNote", "FLSDevice", "xmlns", "Success","FLSResponseFields"})
+@JsonIgnoreProperties({"PrimaryLangID","Version","TransactionIdentifier", "FLSNote", "FLSDevice", "xmlns", "Success","FLSResponseFields","FLSWarning"})
 public class OTA_AirDetailsRS {
 
     @JacksonXmlProperty(localName = "FlightDetails")

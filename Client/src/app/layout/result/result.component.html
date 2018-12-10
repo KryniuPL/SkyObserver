@@ -13,11 +13,11 @@
 
           
               <mat-horizontal-stepper [linear]="isLinear" #stepper>
-                <mat-step [stepControl]="firstFormGroup">
+                <mat-step [stepControl]="firstFormGroup" *ngFor="let flightForm of flightForms">
                   
-                    <ng-template matStepLabel>Choose trip to London</ng-template>
+                    <ng-template matStepLabel>Choose trip to {{flightForm.destinationAirport}}</ng-template>
                     <mat-accordion>
-                        <mat-expansion-panel *ngFor="let flight of mockFlights">
+                        <mat-expansion-panel *ngFor="let flight of flightForm.displayedFlights">
                           <mat-expansion-panel-header [collapsedHeight]="'75px'">
                             <mat-panel-title>
                               

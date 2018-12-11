@@ -1,5 +1,6 @@
 import { Airport } from "../interfaces/Airport";
 import { MultiFlight } from "../interfaces/MultiFlight";
+import { FormGroup } from "@angular/forms";
 
 export class FlightForm{
      type: string;
@@ -9,7 +10,8 @@ export class FlightForm{
      returnDate: string
      isDirectOnly: boolean;
      displayedFlights: MultiFlight[]
-
+     stepFormGroup: FormGroup;
+     
 	constructor() {
 	}
 

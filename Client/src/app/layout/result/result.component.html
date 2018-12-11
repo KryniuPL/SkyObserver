@@ -11,9 +11,8 @@
 
         <div class="container">
 
-          
-              <mat-horizontal-stepper [linear]="isLinear" #stepper>
-                <mat-step [stepControl]="firstFormGroup" *ngFor="let flightForm of flightForms">
+              <mat-horizontal-stepper [linear]="true" #stepper>
+                <mat-step [stepControl]="flightForm.stepFormGroup" *ngFor="let flightForm of flightForms">
                   
                     <ng-template matStepLabel>Choose trip to {{flightForm.destinationAirport}}</ng-template>
                     <mat-accordion>
@@ -38,8 +37,12 @@
                                   {{flight.departureDate.getHours()}}:{{flight.departureDate.getMinutes()}}
                                 </span> 
                                   -
-                                
-                                  {{flight.arrivalDate.getHours()}}:{{flight.arrivalDate.getMinutes()}}
+                                  <span *ngIf="flight.arrivalDate.getMinutes()<10">
+                                    {{flight.arrivalDate.getHours()}}:0{{flight.arrivalDate.getMinutes()}}
+                                  </span>
+                                  <span *ngIf="flight.arrivalDate.getMinutes()>10">
+                                    {{flight.arrivalDate.getHours()}}:{{flight.arrivalDate.getMinutes()}}
+                                  </span> 
                               </span>
 
                               <span style="margin-left: 90px;">
@@ -58,12 +61,15 @@
                                   </span>
                               </span>
 
-                              <span style="margin-left: 160px">
+                              <span style="margin-left: 160px" *ngIf="flight.journeyPrice != 0">
                             
                                   average {{flight.currency}} 
                                   <span style="color: rgb(93, 165, 111);">
                                     {{flight.journeyPrice}}
                                   </span>
+                              </span>
+                              <span style="margin-left: 160px" *ngIf="flight.journeyPrice === 0">
+                                No price data found
                               </span>
                             </mat-panel-title>
                         
@@ -142,7 +148,7 @@
 
                         </div>
 
-                        <button style="left: 80%" mat-stroked-button color="warn" (click)="selectFlight(flight)">Select this flight</button>
+                        <button style="left: 80%" mat-stroked-button color="warn" (click)="selectFlight(flight)" matStepperNext>Select this flight</button>
 
                         </mat-expansion-panel>
                       </mat-accordion>

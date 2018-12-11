@@ -2,10 +2,11 @@ package com.skyobserver.repository;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
-import com.google.gson.*;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 import com.skyobserver.http.HttpClient;
-import com.skyobserver.model.Price;
-import com.skyobserver.schedulers.AirportsUpdateScheduler;
 import okhttp3.Headers;
 import okhttp3.ResponseBody;
 import org.slf4j.Logger;
@@ -13,9 +14,9 @@ import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
-import java.util.NoSuchElementException;
 
 public class PricesRepository {
 
@@ -34,41 +35,46 @@ public class PricesRepository {
     public ObjectNode getFlightPrice(String currency, String originAirportIATA, String destinationAirportIATA, String departureDate, String returnDate) throws IOException {
         ResponseBody responseBody = httpClient.doGet(buildPriceRequestURL(currency, originAirportIATA, destinationAirportIATA, departureDate, returnDate),
                 Headers.of(Map.of(X_MASHAPE_KEY_HEADER, SKYSCANNER_API_KEY, X_MASHAPE_HOST_HEADER, SKYSCANNER_HOST_NAME)));
-        logger.info(String.valueOf(responseBody.toString()));
-
         String responseJson = responseBody.string();
 
         JsonElement element = new JsonParser().parse(responseJson);
         JsonObject jsonObject = element.getAsJsonObject();
         JsonArray jsonArray = jsonObject.getAsJsonArray(NAME_OF_QUOTES_JSON_ARRAY);
 
-        List<Double> pricesList = new ArrayList<>();
-        for(JsonElement singleElement : jsonArray){
-            JsonObject quoteObject = singleElement.getAsJsonObject();
-            pricesList.add(quoteObject.get(FIELD_NAME_WITH_QUOTE_INFORMATION).getAsDouble());
-        }
+        List<Double> pricesList = getPricesFromApiResponse(jsonArray);
 
         double minimumValue = pricesList
                 .stream()
                 .mapToDouble(v -> v)
                 .min().orElse(0);
 
-        Price price = new Price(minimumValue, currency);
         ObjectNode objectNode = mapper.createObjectNode();
-        objectNode.put("value",price.getValue());
-        if(minimumValue == 0){
-            objectNode.put("currency", "No data");
-        }
-        else objectNode.put("currency", price.getCurrency());
+        logger.info(String.valueOf(minimumValue));
+        objectNode.put("value", minimumValue);
+        objectNode.put("currency", currency);
         return objectNode;
     }
+
+    private List<Double> getPricesFromApiResponse(JsonArray jsonArray) {
+        List<Double> pricesList = new ArrayList<>();
+        try {
+            for (JsonElement singleElement : jsonArray) {
+                JsonObject quoteObject = singleElement.getAsJsonObject();
+                pricesList.add(quoteObject.get(FIELD_NAME_WITH_QUOTE_INFORMATION).getAsDouble());
+            }
+        } catch (NullPointerException e) {
+            pricesList = Collections.emptyList();
+        }
+        return pricesList;
+    }
+
 
     public String formatDateWithDashes(String date) {
         String[] strings = date.split("T");
         return strings[0];
     }
 
-    public String buildPriceRequestURL(String currency, String originAirportIATA, String destinationAirportIATA, String departureDate, String returnDate){
+    public String buildPriceRequestURL(String currency, String originAirportIATA, String destinationAirportIATA, String departureDate, String returnDate) {
         departureDate = formatDateWithDashes(departureDate);
         returnDate = formatDateWithDashes(returnDate);
         return SKYSCANNER_BROWSE_QUOTES_API_URL + currency + "/en-US/" + originAirportIATA + AIRPORTS_POSTFIX + destinationAirportIATA + AIRPORTS_POSTFIX + departureDate + "/" + returnDate;

@@ -7,6 +7,7 @@ import { FlightForm } from 'src/app/model/classes/FlightForm';
 import { DataService } from 'src/app/services/data-service/data.service';
 import { Router } from '@angular/router';
 import { element } from '@angular/core/src/render3/instructions';
+import { HttpErrorResponse } from '@angular/common/http';
 
 declare function require(url: string);
 
@@ -17,7 +18,6 @@ declare function require(url: string);
 })
 export class ResultComponent implements OnInit {
 
-  isLinear = false;
   firstFormGroup: FormGroup;
   secondFormGroup: FormGroup;
   panelOpenState = false;
@@ -41,7 +41,14 @@ export class ResultComponent implements OnInit {
     let parts = expression.split("H");
     let hours = parts[0].replace("PT", "");
     let minutes = parts[1].replace("M", "");
-    expression = hours + 'h ' + minutes + 'm';
+    return hours + 'h ' + minutes + 'm';
+  }
+
+  initializeStepFormGroups(){
+    this.flightForms.forEach(element => {
+      element.stepFormGroup = this._formBuilder.group({
+      })
+    });
   }
 
   isBlank(string): boolean {
@@ -50,18 +57,23 @@ export class ResultComponent implements OnInit {
 
   ngOnInit() {
     this.spinner.show();
-
     this.data.currentMessage.subscribe(message => {
       this.flightForms = message;
+      this.initializeStepFormGroups();
       this.flightForms.forEach(element => {
         this.flightsService.getFlights(this.formatAirportFormDataToIataCode(element.originAirport), this.formatAirportFormDataToIataCode(element.destinationAirport), element.departureDate, element.isDirectOnly ? 'DIRECT' : 'MANY', 'PLN')
           .subscribe(res => {
             element.displayedFlights = res;
             this.formatFlightDataToDisplay(element.displayedFlights);
-            this.spinner.hide();
+            if(this.flightForms.indexOf(element) === this.flightForms.length -1){
+              this.spinner.hide();
+            }
+          }
+          ,error => {
+            console.error("NO FLIGHTS WITH GIVEN PARAMETERS" + error);
+            element.displayedFlights = [];
           })
       });
-
       console.log(this.flightForms);
     })
     if (this.flightForms.length === 0) {
@@ -70,13 +82,6 @@ export class ResultComponent implements OnInit {
 
     // let json = require('../../../assets/json/directFlightsMock.json');
     // this.mockFlights = json;
-
-    this.firstFormGroup = this._formBuilder.group({
-      firstCtrl: ['', Validators.required]
-    });
-    this.secondFormGroup = this._formBuilder.group({
-      secondCtrl: ['', Validators.required]
-    });
   }
 
   formatAirportFormDataToIataCode(airportInfo: string){
@@ -94,7 +99,7 @@ export class ResultComponent implements OnInit {
   formatFlightDataToDisplay(flightsArray: MultiFlight[]) {
     flightsArray.forEach(element => {
       element.style = 'none';
-      this.formatDurationExpression(element.journeyDuration);
+      element.journeyDuration = this.formatDurationExpression(element.journeyDuration);
       element.departureDate = new Date(element.departureDate);
       element.arrivalDate = new Date(element.arrivalDate);
       element.flights.forEach(subFlight => {

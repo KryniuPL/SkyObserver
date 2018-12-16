@@ -1,1 +1,8 @@
 \contentsline {section}{\numberline {1}Wst\IeC {\k e}p}{10}{section.1}
+\contentsline {section}{\numberline {2}Opis rozwi\IeC {\k a}zywanego zagadnienia}{12}{section.2}
+\contentsline {subsection}{\numberline {2.1}\IeC {\'Z}r\IeC {\'o}d\IeC {\l }a danych o po\IeC {\l }\IeC {\k a}czeniach lotniczych}{12}{subsection.2.1}
+\contentsline {subsection}{\numberline {2.2}Parsowanie r\IeC {\'o}\IeC {\.z}nych rodzaj\IeC {\'o}w danych}{13}{subsection.2.2}
+\contentsline {subsection}{\numberline {2.3}Wydajno\IeC {\'s}\IeC {\'c} wyszukiwania}{14}{subsection.2.3}
+\contentsline {section}{\numberline {3}Przegl\IeC {\k a}d istniej\IeC {\k a}cych rozwi\IeC {\k a}za\IeC {\'n}}{15}{section.3}
+\contentsline {subsection}{\numberline {3.1}Wyszukiwarka lot\IeC {\'o}w Skyscanner}{15}{subsection.3.1}
+\contentsline {subsection}{\numberline {3.2}Wyszukiwarka lot\IeC {\'o}w Google Flights}{17}{subsection.3.2}

@@ -1,16 +1,14 @@
 .view {
-    background-color: antiquewhite;
+    background-color: #537895;
+    background-image: linear-gradient(315deg, #537895 0%, #09203f 74%);
+
     background-size: cover;
     height: 100vh;
 }
 .container{
-    top: 50px !important;
-   
+    margin-top: 10%;
 }
 
-// ::ng-deep .mat-horizontal-stepper-header-container{
-//     border: 1px solid #ee4b5e;
-// }
 ::ng-deep .mat-horizontal-content-container{
     border-radius: 15px !important;
     margin-top: 100px;
@@ -22,12 +20,6 @@
     margin: 0 !important;
 }
 
-// ::ng-deep mat-expansion-panel-header{
-//     border-bottom: 1px solid #ee4b5e;
-// }
-// ::ng-deep .mat-expansion-panel-body{
-//     border-bottom: 1px solid #ee4b5e;
-// }
 .material-icons{
     margin-right: 14px;
     color: #ee4b5e;
@@ -50,4 +42,8 @@
     content: "";
     display: table;
     clear: both;
+}
+.flights-handler{
+     margin-left: 38% !important;
+     width: 400px;
 }

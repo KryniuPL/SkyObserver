@@ -7,7 +7,7 @@
 
 <div class="view">
   <div class="full-bg-img">
-    <div class="flex-center">
+    <div>
 
         <div class="container">
 
@@ -16,6 +16,16 @@
                   
                     <ng-template matStepLabel>Choose trip to {{flightForm.destinationAirport}}</ng-template>
                     <mat-accordion>
+
+                      <!-- <div *ngIf="flightForm.displayedFlights.length === 0" class="flights-handler">
+                          <i class="material-icons" style="font-size: 68px; margin-left: 25%">
+                              sentiment_very_dissatisfied
+                          </i>
+                          <p style="font-size: 40px; ">
+                            Flights not found
+                          </p>  
+                      </div> -->
+
                         <mat-expansion-panel *ngFor="let flight of flightForm.displayedFlights">
                           <mat-expansion-panel-header [collapsedHeight]="'75px'">
                             <mat-panel-title>
@@ -81,7 +91,7 @@
                               flight_takeoff
                             </i>
                             <span>
-                              <span *ngIf="subFlight.departureTime.getMinutes()>10">
+                              <span *ngIf="subFlight.departureTime.getMinutes()>=10">
                                   {{subFlight.departureTime.getHours()}}:{{subFlight.departureTime.getMinutes()}}
                               </span>
                               <span *ngIf="subFlight.departureTime.getMinutes()<10">
@@ -110,7 +120,7 @@
                                   flight_land
                               </i>
                               <span>
-                                  <span *ngIf="subFlight.arrivalTime.getMinutes()>10">
+                                  <span *ngIf="subFlight.arrivalTime.getMinutes()>=10">
                                       {{subFlight.arrivalTime.getHours()}}:{{subFlight.arrivalTime.getMinutes()}}
                                   </span>
     
@@ -156,6 +166,7 @@
                 </mat-step>
                 <mat-step>
                   <ng-template matStepLabel>Trip summary</ng-template>
+
                  
                   
                 </mat-step>

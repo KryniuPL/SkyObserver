@@ -1,6 +1,6 @@
 package com.skyobserver.service.csv;
 
-import com.skyobserver.enums.AirportHeaders;
+import com.skyobserver.enums.AirportCSVFileHeaders;
 import com.skyobserver.model.Airport;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVParser;
@@ -32,7 +32,7 @@ public class AirportsConverter {
 
     public static CSVParser getParserByFilePath(String path) throws IOException {
         Reader reader = Files.newBufferedReader(Paths.get(path));
-        return CSVFormat.DEFAULT.withHeader(AirportHeaders.class).parse(reader);
+        return CSVFormat.DEFAULT.withHeader(AirportCSVFileHeaders.class).parse(reader);
     }
 
     public static boolean areNewAirportsAvailable() {

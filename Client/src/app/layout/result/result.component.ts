@@ -9,7 +9,6 @@ import { Router } from '@angular/router';
 import { element } from '@angular/core/src/render3/instructions';
 import { HttpErrorResponse } from '@angular/common/http';
 
-declare function require(url: string);
 
 @Component({
   selector: 'app-result',
@@ -72,6 +71,7 @@ export class ResultComponent implements OnInit {
           ,error => {
             console.error("NO FLIGHTS WITH GIVEN PARAMETERS" + error);
             element.displayedFlights = [];
+            this.spinner.hide();
           })
       });
       console.log(this.flightForms);

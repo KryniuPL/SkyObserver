@@ -7,25 +7,20 @@ import com.skyobserver.model.xml.FlightDetails;
 import com.skyobserver.model.xml.FlightLegDetails;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.skyobserver.config.ServerConfiguration.FLIGHT_LOOKUP_HOST_URL;
-
 @Component
 public class FlightsRepository {
 
-    private static final String REQUEST_SEPARATOR = "/";
     @Autowired
     private AirportsRepository airportsRepository;
     private PricesRepository pricesRepository = new PricesRepository();
     private AirlineRepository airlineRepository = new AirlineRepository();
     private BaggageRepository baggageRepository = new BaggageRepository();
 
-    public static String buildRequestUrl(String originAirportIATA, String destinationAirportIATA, String departureDate, String typeOfConnection) {
-        return FLIGHT_LOOKUP_HOST_URL + originAirportIATA + REQUEST_SEPARATOR + destinationAirportIATA + REQUEST_SEPARATOR + departureDate + "/?7Day=N&Connection=" + typeOfConnection + "&Compression=ALL&Sort=Departure&Time=ANY&Interline=N&NoFilter=N&ExpandResults=Y&Max_Results=25";
-    }
 
     public Flight buildDirectFlightObject(FlightLegDetails directFlight, String currency) throws IOException {
         Airport originAirport = airportsRepository.findAirportByIataCode(directFlight.getDepartureAirport().getLocationCode());

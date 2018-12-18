@@ -155,7 +155,9 @@ button.mat-icon-button[disabled]{
 ::ng-deep .mat-checkbox-checked.mat-warn .mat-checkbox-background, .mat-checkbox-indeterminate.mat-warn .mat-checkbox-background{
     background-color: #ee4b5e !important;
 }
-
+:ng-deep .mat-option-text{
+    margin-bottom: 15px !important;
+}
 
 
 

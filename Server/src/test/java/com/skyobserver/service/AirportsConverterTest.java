@@ -1,6 +1,6 @@
 package com.skyobserver.service;
 
-import com.skyobserver.enums.AirportHeaders;
+import com.skyobserver.enums.AirportCSVFileHeaders;
 import com.skyobserver.model.Airport;
 import com.skyobserver.service.csv.AirportsConverter;
 import org.apache.commons.csv.CSVFormat;
@@ -25,7 +25,7 @@ public class AirportsConverterTest {
     @Test
     public void shouldReturnNotNullAirportObject() throws IOException {
         Reader reader = Files.newBufferedReader(Paths.get(ACTUAL_AIRPORTS_CSV_FILE_PATH));
-        CSVParser parser = CSVFormat.DEFAULT.withHeader(AirportHeaders.class).parse(reader);
+        CSVParser parser = CSVFormat.DEFAULT.withHeader(AirportCSVFileHeaders.class).parse(reader);
         List<CSVRecord> recordList = parser.getRecords();
         Airport airport = converter.getSingleObject(recordList.get(1));
         assertNotNull(airport);

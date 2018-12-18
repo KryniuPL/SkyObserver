@@ -46,16 +46,9 @@ public class MultiFlightsRepository {
             }
         }
         catch (Exception e){
-            logErrorResponse(flightsDataXML.string());
             multiFlights = Collections.emptyList();
         }
         return multiFlights;
-    }
-
-    private void logErrorResponse(String badResponse) throws IOException {
-        LocalDateTime now = LocalDateTime.now();
-        String path = "src/main/resources/logger/" + "apiResponse" + "_" + now.getHour() + ":" + now.getMinute();
-        FileUtils.writeStringToFile(new File(path), badResponse, "UTF-8");
     }
 
     public MultiFlight buildMultiFlightObject(FlightDetails flightDetails, String currency) throws IOException {

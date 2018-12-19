@@ -3,10 +3,12 @@
     background-image: linear-gradient(315deg, #537895 0%, #09203f 74%);
 
     background-size: cover;
-    height: 100vh;
+    min-height: 100vh;
+
 }
 .container{
     margin-top: 10%;
+    margin-bottom: 10%;
 }
 
 ::ng-deep .mat-horizontal-content-container{

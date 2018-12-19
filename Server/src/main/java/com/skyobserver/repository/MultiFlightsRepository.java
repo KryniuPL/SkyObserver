@@ -43,7 +43,6 @@ public class MultiFlightsRepository {
                 multiFlights.add(buildMultiFlightObject(flightDetail, currency));
             }
         } catch (Exception e) {
-            //logger.error(e.getCause().toString());
             multiFlights = Collections.emptyList();
         }
         return multiFlights;

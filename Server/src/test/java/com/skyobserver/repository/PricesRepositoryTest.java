@@ -2,6 +2,7 @@ package com.skyobserver.repository;
 
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import org.junit.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.io.IOException;
 
@@ -10,7 +11,8 @@ import static org.junit.Assert.*;
 public class PricesRepositoryTest {
 
 
-    private PricesRepository pricesRepository = new PricesRepository();
+    @Autowired
+    private PricesRepository pricesRepository;
 
     @Test
     public void shouldReturnValidRequestURL(){

@@ -4,6 +4,7 @@ package com.skyobserver.controller;
 import com.skyobserver.exceptions.PricesNotFoundException;
 import com.skyobserver.model.CachedPrice;
 import com.skyobserver.repository.PricesRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -16,6 +17,7 @@ import java.io.IOException;
 @RestController
 @RequestMapping("/prices")
 public class PricesController {
+
 
     private PricesRepository pricesRepository = new PricesRepository();
 

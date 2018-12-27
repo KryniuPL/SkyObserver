@@ -1,11 +1,16 @@
 package com.skyobserver.repository;
 
 import com.google.gson.JsonArray;
+import com.skyobserver.config.CacheConfiguration;
 import com.skyobserver.http.HttpClient;
 import com.skyobserver.model.CachedPrice;
 import com.skyobserver.service.json.PricesParser;
 import okhttp3.Headers;
 import okhttp3.ResponseBody;
+import org.ehcache.Cache;
+import org.ehcache.CacheManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
 
 import java.io.IOException;
@@ -21,10 +26,29 @@ public class PricesRepository {
     private static final String SKYSCANNER_API_KEY = "***REMOVED***";
     private static final String SKYSCANNER_HOST_NAME = "skyscanner-skyscanner-flight-search-v1.p.mashape.com";
     private static final String AIRPORTS_POSTFIX = "-sky/";
+    private static final String CACHE_KEY_SEPARATOR = "-";
     private HttpClient httpClient = new HttpClient();
     private PricesParser pricesParser = new PricesParser();
+    private final Cache<String, CachedPrice> priceCache;
+    private static final Logger logger = LoggerFactory.getLogger(PricesRepository.class);
+
+    public PricesRepository() {
+        CacheManager cacheManager = CacheConfiguration.pricesCacheManager();
+        this.priceCache = cacheManager.getCache("cachedFlightPrices", String.class, CachedPrice.class);
+    }
 
     public CachedPrice getFlightPrice(String currency, String originAirportIATA, String destinationAirportIATA, String departureDate, String returnDate) throws IOException {
+        CachedPrice cachedPrice = priceCache.get(originAirportIATA + CACHE_KEY_SEPARATOR + destinationAirportIATA);
+        if (cachedPrice == null) {
+            cachedPrice = getFlightPriceFromApi(currency, originAirportIATA, destinationAirportIATA, departureDate, returnDate);
+            if (cachedPrice.getValue() > 0){
+                priceCache.put(cachedPrice.getOriginPointOfRoute() + CACHE_KEY_SEPARATOR + cachedPrice.getDestinationPointOfRoute(), cachedPrice);
+            }
+        }
+        return cachedPrice;
+    }
+
+    private CachedPrice getFlightPriceFromApi(String currency, String originAirportIATA, String destinationAirportIATA, String departureDate, String returnDate) throws IOException {
         ResponseBody responseBody = httpClient.doGet(buildPriceRequestURL(currency, originAirportIATA, destinationAirportIATA, departureDate, returnDate),
                 Headers.of(Map.of(X_MASHAPE_KEY_HEADER, SKYSCANNER_API_KEY, X_MASHAPE_HOST_HEADER, SKYSCANNER_HOST_NAME)));
 

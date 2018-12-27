@@ -15,7 +15,7 @@ public class Flight {
     private Airport originAirport;
     private Airport destinationAirport;
     private String duration;
-    private ObjectNode price;
+    private CachedPrice price;
     private Airline airline;
     private Baggage baggage;
 
@@ -51,7 +51,7 @@ public class Flight {
         return duration;
     }
 
-    public ObjectNode getPrice() {
+    public CachedPrice getPrice() {
         return price;
     }
 
@@ -84,7 +84,7 @@ public class Flight {
         private Airport originAirport;
         private Airport destinationAirport;
         private String duration;
-        private ObjectNode price;
+        private CachedPrice price;
         private Airline airline;
         private Baggage baggage;
 
@@ -114,7 +114,7 @@ public class Flight {
             return this;
         }
 
-        public Builder setPrice(ObjectNode price) {
+        public Builder setPrice(CachedPrice price) {
             this.price = price;
             return this;
         }

@@ -8,12 +8,13 @@ import okhttp3.ResponseBody;
 import org.apache.commons.io.FileUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.cache.annotation.Cacheable;
+
 import java.io.IOException;
 import static com.skyobserver.service.html.BaggageParser.BAGGAGE_HTML_FILE;
 import static com.skyobserver.service.html.BaggageParser.ENCODING;
 
 public class BaggageRepository {
-
 
     private static final String SKYSCANNER_BAGGAGE_INFORMATION_WEBSITE = "https://www.skyscanner.net/news/tips/check-in-luggage-size-and-weight-restrictions";
     private static final Logger logger = LoggerFactory.getLogger(BaggageRepository.class);
@@ -24,7 +25,6 @@ public class BaggageRepository {
     public Baggage getBaggageObjectByAirlineName(String airlineName) throws IOException {
         return baggageParser.getBaggageObjectFromHTMLFile(airlineName);
     }
-
 
     public static void initializeRepository() throws IOException {
         logger.info("Downloading baggage information file");

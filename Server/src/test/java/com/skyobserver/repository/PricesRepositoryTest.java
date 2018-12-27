@@ -1,7 +1,6 @@
 package com.skyobserver.repository;
 
 import com.fasterxml.jackson.databind.node.ObjectNode;
-import com.skyobserver.model.Price;
 import org.junit.Test;
 
 import java.io.IOException;
@@ -19,10 +18,10 @@ public class PricesRepositoryTest {
         assertEquals(validURL , pricesRepository.buildPriceRequestURL("PLN", "WAW", "LHR", "20181101", "20181102"));
     }
 
-    @Test
-    public void shouldReturnValidPriceObject() throws IOException, InterruptedException {
-        ObjectNode price = pricesRepository.getFlightPrice("PLN", "WAW", "LHR", "20181110", "20181112");
-        System.out.println(price.toString());
-        assertNotNull(price);
-    }
+//    @Test
+//    public void shouldReturnValidPriceObject() throws IOException, InterruptedException {
+//        ObjectNode price = pricesRepository.getFlightPrice("PLN", "WAW", "LHR", "20181110", "20181112");
+//        System.out.println(price.toString());
+//        assertNotNull(price);
+//    }
 }

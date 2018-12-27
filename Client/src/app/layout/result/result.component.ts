@@ -60,7 +60,7 @@ export class ResultComponent implements OnInit {
       this.flightForms = message;
       this.initializeStepFormGroups();
       this.flightForms.forEach(element => {
-        this.flightsService.getFlights(this.formatAirportFormDataToIataCode(element.originAirport), this.formatAirportFormDataToIataCode(element.destinationAirport), element.departureDate, element.isDirectOnly ? 'DIRECT' : 'MANY', 'PLN')
+        this.flightsService.getFlights(this.formatAirportFormDataToIataCode(element.originAirport), this.formatAirportFormDataToIataCode(element.destinationAirport), element.departureDate, element.isDirectOnly ? 'DIRECT' : 'MORE', 'PLN')
           .subscribe(res => {
             element.displayedFlights = res;
             this.formatFlightDataToDisplay(element.displayedFlights);

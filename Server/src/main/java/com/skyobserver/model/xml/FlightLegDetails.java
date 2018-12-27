@@ -3,7 +3,7 @@ package com.skyobserver.model.xml;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 
-@JsonIgnoreProperties({"FLSUUIDActualFlight", "FLSDOTDisclosure"})
+@JsonIgnoreProperties({"FLSUUIDActualFlight", "FLSDOTDisclosure", "DateChangeNbr"})
 public class FlightLegDetails {
 
     @JacksonXmlProperty(localName = "DepartureDateTime", isAttribute = true)

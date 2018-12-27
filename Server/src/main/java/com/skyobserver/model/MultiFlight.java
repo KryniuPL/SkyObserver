@@ -14,10 +14,10 @@ public class MultiFlight {
     private String arrivalDate;
     private int totalMiles;
     private String journeyDuration;
-    private int journeyPrice;
+    private double journeyPrice;
     private List<Flight> flights;
 
-    public MultiFlight(String departureAirportCode, String arrivalAirportCode, String currency, String departureDate, String arrivalDate, int totalMiles, String journeyDuration, int journeyPrice, List<Flight> flights) {
+    public MultiFlight(String departureAirportCode, String arrivalAirportCode, String currency, String departureDate, String arrivalDate, int totalMiles, String journeyDuration, double journeyPrice, List<Flight> flights) {
         this.departureAirportCode = departureAirportCode;
         this.arrivalAirportCode = arrivalAirportCode;
         this.currency = currency;
@@ -85,11 +85,11 @@ public class MultiFlight {
         this.journeyDuration = journeyDuration;
     }
 
-    public int getJourneyPrice() {
+    public double getJourneyPrice() {
         return journeyPrice;
     }
 
-    public void setJourneyPrice(int journeyPrice) {
+    public void setJourneyPrice(double journeyPrice) {
         this.journeyPrice = journeyPrice;
     }
 

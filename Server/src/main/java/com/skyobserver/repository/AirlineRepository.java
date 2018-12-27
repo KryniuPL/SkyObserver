@@ -8,9 +8,6 @@ import okhttp3.Headers;
 import okhttp3.ResponseBody;
 import org.ehcache.Cache;
 import org.ehcache.CacheManager;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import java.io.IOException;
 import java.util.Map;
 
@@ -21,7 +18,6 @@ public class AirlineRepository {
     private AirlineParser airlineParser = new AirlineParser();
     private HttpClient httpClient = new HttpClient();
     private final Cache<String, Airline> airlineCache;
-    private static final Logger logger = LoggerFactory.getLogger(AirlineRepository.class);
 
     public AirlineRepository() {
         CacheManager cacheManager = CacheConfiguration.airlinesCacheManager();
@@ -36,7 +32,6 @@ public class AirlineRepository {
         }
         return airline;
     }
-
 
     public Airline getAirlineFromApi(String iataAirlineCode) throws IOException {
         ResponseBody responseFromAPI = httpClient.doGet(buildAirlineRequestURL(iataAirlineCode), Headers.of(Map.of()));

@@ -21,7 +21,8 @@ public class CacheConfiguration {
         return newCacheManagerBuilder()
                 .withCache("cachedFlightPrices", newCacheConfigurationBuilder(String.class, CachedPrice.class, heap(10))
                         .withExpiry(Expirations.timeToIdleExpiration(Duration.of(6, TimeUnit.HOURS)))
-                        .withSizeOfMaxObjectSize(400, MemoryUnit.MB))
+                        .withSizeOfMaxObjectSize(400, MemoryUnit.MB)
+                )
                 .build(true);
     }
 

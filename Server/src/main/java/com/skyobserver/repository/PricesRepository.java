@@ -1,25 +1,14 @@
 package com.skyobserver.repository;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
 import com.skyobserver.http.HttpClient;
 import com.skyobserver.model.CachedPrice;
 import com.skyobserver.service.json.PricesParser;
 import okhttp3.Headers;
 import okhttp3.ResponseBody;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Repository;
 
-
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
@@ -34,7 +23,6 @@ public class PricesRepository {
     private static final String AIRPORTS_POSTFIX = "-sky/";
     private HttpClient httpClient = new HttpClient();
     private PricesParser pricesParser = new PricesParser();
-    private static final Logger logger = LoggerFactory.getLogger(PricesRepository.class);
 
     public CachedPrice getFlightPrice(String currency, String originAirportIATA, String destinationAirportIATA, String departureDate, String returnDate) throws IOException {
         ResponseBody responseBody = httpClient.doGet(buildPriceRequestURL(currency, originAirportIATA, destinationAirportIATA, departureDate, returnDate),
@@ -50,7 +38,6 @@ public class PricesRepository {
 
         return new CachedPrice(originAirportIATA, destinationAirportIATA, minimumValue, currency);
     }
-
 
     public String formatDateWithDashes(String date) {
         String[] strings = date.split("T");

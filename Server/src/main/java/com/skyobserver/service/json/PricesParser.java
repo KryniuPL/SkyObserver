@@ -14,7 +14,7 @@ public class PricesParser {
     private static final String NAME_OF_QUOTES_JSON_ARRAY = "Quotes";
     private static final String FIELD_NAME_WITH_QUOTE_INFORMATION = "MinPrice";
 
-    public JsonArray convertApiResponseToJsonArray(String apiResponse){
+    public JsonArray convertApiResponseToJsonArray(String apiResponse) {
         JsonElement element = new JsonParser().parse(apiResponse);
         JsonObject jsonObject = element.getAsJsonObject();
         return jsonObject.getAsJsonArray(NAME_OF_QUOTES_JSON_ARRAY);

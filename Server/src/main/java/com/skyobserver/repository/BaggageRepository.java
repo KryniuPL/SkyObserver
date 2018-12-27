@@ -8,9 +8,9 @@ import okhttp3.ResponseBody;
 import org.apache.commons.io.FileUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.cache.annotation.Cacheable;
 
 import java.io.IOException;
+
 import static com.skyobserver.service.html.BaggageParser.BAGGAGE_HTML_FILE;
 import static com.skyobserver.service.html.BaggageParser.ENCODING;
 

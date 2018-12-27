@@ -5,7 +5,6 @@ import com.skyobserver.model.Airline;
 import com.skyobserver.service.json.AirlineParser;
 import okhttp3.Headers;
 import okhttp3.ResponseBody;
-import org.springframework.cache.annotation.Cacheable;
 
 import java.io.IOException;
 import java.util.Map;
@@ -22,7 +21,7 @@ public class AirlineRepository {
         return airlineParser.getAirlineObjectFromJSONResponse(responseFromAPI.string());
     }
 
-    public String buildAirlineRequestURL(String iataCodeAirline){
+    public String buildAirlineRequestURL(String iataCodeAirline) {
         return AVIATION_EDGE_HOST_URL + "airlineDatabase?key=" + AVIATION_EDGE_API_KEY + "&codeIataAirline=" + iataCodeAirline;
     }
 }

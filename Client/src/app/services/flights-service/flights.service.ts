@@ -19,7 +19,9 @@ export class FlightsService {
   }
 
   getFlights(originAirport: string, destinationAirport: string, departureDate: string, typeOfConnection: string, currency: string) : Observable<MultiFlight[]>{
-    return this.http.get<MultiFlight[]>(this.getFlightsURL + originAirport + '/' + destinationAirport + '/' + departureDate + '/' + typeOfConnection + '/' + currency);   
+    var requestUrl = this.getFlightsURL + originAirport + '/' + destinationAirport + '/' + departureDate + '/' + typeOfConnection + '/' + currency;
+    console.log(requestUrl);
+    return this.http.get<MultiFlight[]>(requestUrl);   
   }
 
 }

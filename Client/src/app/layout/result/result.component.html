@@ -33,12 +33,18 @@
                               <i class="material-icons">
                                 airplanemode_active
                               </i>
+ 
+                                <span style="width: 100px" *ngIf="checkIfThereAreSameAirlinesOnFlight(flight.flights) === true">
+                                  {{flight.flights[0].airline.nameAirline}}
+                                </span>
 
-                              <span *ngFor="let subFlight of flight.flights" style="width: 160px">
-                                  {{subFlight.airline.nameAirline}}
-                                  <br>
-                              </span>
-
+                                <span style="width: 150px;" *ngIf="!checkIfThereAreSameAirlinesOnFlight(flight.flights) === false">
+                                  <p style="color: grey; width: max-content" *ngFor="let subFlight of flight.flights">
+                                    {{subFlight.airline.nameAirline}}
+                                    <br>
+                                  </p>
+                                </span>
+                            
                               <span style="margin-left:80px; width: 100px;" >
                                 <span *ngIf="flight.departureDate.getMinutes()<10">
                                   {{flight.departureDate.getHours()}}:0{{flight.departureDate.getMinutes()}}
@@ -143,11 +149,17 @@
                           </p>
                           </div>
                           <div class="baggageInfo">
-                            <div *ngIf="isBlank(subFlight.baggage.extraBaggageAllowance)">
+                            <div *ngIf="isBlank(subFlight.baggage.extraBaggageAllowance)" style="height: 50%">
                               <i class="material-icons">
                                   work_off
                               </i>
                               {{subFlight.baggage.freeBaggageAllowance}}
+                              <br>
+                              <br>
+                              <i class="material-icons">
+                                  whatshot
+                              </i>
+                              {{subFlight.airline.nameAirline}}
                             </div>
                             <div *ngIf="isBlank(subFlight.baggage.extraBaggageAllowance) === false">
                               <p>Free baggage Allowance: {{subFlight.baggage.freeBaggageAllowance}}</p>

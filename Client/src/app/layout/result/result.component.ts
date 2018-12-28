@@ -8,6 +8,7 @@ import { DataService } from 'src/app/services/data-service/data.service';
 import { Router } from '@angular/router';
 import { element } from '@angular/core/src/render3/instructions';
 import { HttpErrorResponse } from '@angular/common/http';
+import { Flight } from 'src/app/model/interfaces/Flight';
 
 
 @Component({
@@ -53,6 +54,19 @@ export class ResultComponent implements OnInit {
   isBlank(string): boolean {
     return (!string || /^\s*$/.test(string));
   }
+
+  checkIfThereAreSameAirlinesOnFlight(flights: Flight[]): boolean{
+    let airlineName = flights[0].airline.nameAirline;
+    let conditionToReturn = false;
+    flights.forEach(element => {
+      if(element.airline.nameAirline === airlineName){
+          conditionToReturn = true;
+      }
+      else conditionToReturn = false;
+    });
+    return conditionToReturn;
+  }
+
 
   ngOnInit() {
     this.spinner.show();

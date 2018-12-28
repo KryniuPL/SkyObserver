@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.io.IOException;
+import java.util.Collection;
 import java.util.List;
 
 @RestController
@@ -26,8 +27,8 @@ public class FlightsController {
     private static final Logger logger = LoggerFactory.getLogger(PricesRepository.class);
 
     @GetMapping(value = "/{from}/{to}/{date}/{connection}/{currency}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public List<MultiFlight> searchForFlights(@PathVariable String from, @PathVariable String to, @PathVariable String date, @PathVariable String connection, @PathVariable String currency) throws AirportsNotFoundException, IOException {
-        List<MultiFlight> flights = multiFlightsRepository.searchForMultiFlights(from, to, date, connection, currency);
+    public Collection<MultiFlight> searchForFlights(@PathVariable String from, @PathVariable String to, @PathVariable String date, @PathVariable String connection, @PathVariable String currency) throws AirportsNotFoundException, IOException {
+        Collection<MultiFlight> flights = multiFlightsRepository.searchForMultiFlights(from, to, date, connection, currency);
         if (flights.isEmpty()){
             throw new FlightsNotFoundException();
         }

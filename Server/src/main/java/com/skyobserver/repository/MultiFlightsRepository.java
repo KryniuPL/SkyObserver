@@ -17,10 +17,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import static com.skyobserver.config.ServerConfiguration.*;
 
@@ -59,8 +56,11 @@ public class MultiFlightsRepository {
         OTA_AirDetailsRS deserializeFlights = flightsDeserializer.getDeserializedXML(flightsDataXML.string());
         List<FlightDetails> flightDetailsList = deserializeFlights.getFlightDetailsList();
 
-        List<MultiFlight> multiFlights = new ArrayList<>();
+        if(flightDetailsList == null){
+            return Collections.emptyList();
+        }
 
+        List<MultiFlight> multiFlights = new ArrayList<>();
         for (FlightDetails flightDetail : flightDetailsList) {
             multiFlights.add(buildMultiFlightObject(flightDetail, currency));
         }

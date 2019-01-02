@@ -232,7 +232,7 @@ Dodatkowymi źródłami danych były:
 \item Aviation Edge - usługa chmurowa udostępniające dane o liniach lotniczych 
 \item ourairport.com - strona internetowa umożliwiające pobranie danych o większości lotnisk na świecie
 \end{itemize}
-
+\newpage
 \section{Parsowanie różnych rodzajów danych}
 Dane dostarczone przez zewnętrzne serwisy prezentowały swoją treść w różnych formatach. Aby zebrać pełną odpowiedź serwera należało w pierwszym kroku sparsować pojedyncze elementy a następnie zbudować z nich obiekt języka Java. Parsowanie zaczynało się od odebrania danych z serwisu FlightLookup w postaci XML (eXtensible Markup Language). Do zrealizowania tej czynności posłużono się zewnętrzną biblioteką jackson-dataformat-xml która efektywnie przełożyła obiekty XML na odpowiedni obiekty Javy.
 %tutaj załączyć kod xml z odpowiedzą serwera FlightLookup
@@ -259,7 +259,7 @@ Dane dostarczone przez zewnętrzne serwisy prezentowały swoją treść w różn
 \newpage
 Informacje o liniach lotniczych dostarczane były w postaci JSON (JavaScript Object Notation). Do sparsowania ich posłużono się biblioteką Gson organizacji Google. Dzięki niej konwersja obiektu JSON do obiektu Java odbywała się w jednej linii kodu. W ten sam sposób odbywało się parsowanie danych zawierających ceny przelotów.\\
 Ostatnim formatem danych który wymagał sparsowania był HTML (Hypertext Markup Language). Informacje przez niego opisane dotyczyły wymiarów oraz wagi bagażów dozwolonych na określonej linii lotniczej. Do wykonania tego zadania posłużyła zewnętrzna biblioteka Jsoup. Dedykowana dla języka Java, z gotowym pakietem oprogramowania bardzo dobrze poradziła sobie z parsowaniem treści HTML.
-
+\newpage
 \section{Wydajność wyszukiwania}
 Wyszukiwanie tak złożonych jak informacje o połączeniach lotniczych a następnie parsowanie ich niesie za sobą pewne konsekwencje. Są to konsekwencje czasownik, użytkownik powinien otrzymać interesującą go treść w czasie jak najkrótszym. W celu optymalizacji wydajności aplikacji wprowadzono mechanizmy skracające czas odpowiedzi części serwerowej. Dla zbierania danych dotyczących lotnisk oraz bagażów wprowadzono rozwiązania polegające na pobieraniu pełnych zasobów tych danów do bazy danych lub do pliku znajdującego się na serwerze. Pozwoliło to na pominięcie opóźnienia sieciowego związanego z potencjalną koniecznością pobierania tych danych ze stron lub zewnętrznych baz danych. \\
 Kolejnym rozwiązaniem było wprowadzenia stylu programowania funkcyjnego w kluczowych elementach części serwerowej które odpowiadały za wyszukiwanie połączeń lotniczych. Programowanie funkcyjne wprowadzone w Javie 8 pozwala skrócić operacje po stronie wirtualnej maszyny Javy a więc też zaoszczędzić cenne milisekundy w trakcie wyszukiwania lotów.
@@ -286,7 +286,9 @@ Na swojej stronie internetowej na pierwszy rzut oka można zauważyć panel wysz
 
 \newpage
 \section{Wyszukiwarka lotów Google Flights}
-
-
-
+text
+\newpage
+\section{Porównanie aplikacji}
+text
+\newpage
 \end{document}

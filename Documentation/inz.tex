@@ -1,4 +1,4 @@
-\documentclass[a4paper, 12pt, twoside]{article}
+\documentclass[12pt, twoside]{report}
 \usepackage[a4paper, top=2.5cm, bottom=2.5cm, left=2.5cm, right=2.5cm]{geometry}
 
 \usepackage[MeX]{polski} 
@@ -6,7 +6,24 @@
 \usepackage[utf8]{inputenc}
 \usepackage{times}
 \usepackage{color}
- 
+\usepackage{comment}
+\usepackage{indentfirst}
+\usepackage{graphicx}
+\usepackage{mathptmx}
+\usepackage{amsmath}
+\usepackage{tikz}
+\usepackage{hyperref}
+\usepackage[final]{pdfpages}
+\usepackage{afterpage}
+\usepackage{titlesec}
+\usepackage{microtype}
+\usepackage{enumitem}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{listings}
+\usepackage{chngcntr}
+
+\graphicspath{{images/}}
 \definecolor{dkgreen}{rgb}{0,0.6,0}
 \definecolor{gray}{rgb}{0.5,0.5,0.5}
 \definecolor{mauve}{rgb}{0.58,0,0.82}
@@ -15,41 +32,9 @@
 \definecolor{lightblue}{rgb}{0.0,0.0,0.9}
 \definecolor{cyan}{rgb}{0.0,0.6,0.6}
 \definecolor{darkred}{rgb}{0.6,0.0,0.0}
-\usepackage{comment}
-% Polish language pack
-\usepackage{indentfirst}
-% Indent first paragraph after section header
-\usepackage{graphicx}
-% Enhanced support for graphics
-\graphicspath{{images/}}
-% Set default graphics path
-\usepackage{mathptmx}
-% Use Times as default text font, and provide maths support
-\usepackage{amsmath}
-%  AMS mathematical facilities
-\usepackage{tikz}
-% Create PostScript and PDF graphics
-\usepackage{hyperref}
-% Extensive support for hypertext
-\usepackage[final]{pdfpages}
-% Include PDF documents
-\usepackage{afterpage}
-% Execute command after the next page break
-\usepackage{titlesec}
-% Select alternative section titles
-\usepackage{microtype}
-% Ad­just­ment of in­ter­word spac­ing and ad­di­tional kern­ing, etc.
-\usepackage{enumitem}
-% Control layout of itemize, enumerate, description
-\usepackage{caption}
-\usepackage{subcaption}
-% Customising captions
-\usepackage{listings}
-% Typeset source code listings
-\usepackage{chngcntr}
-% Change the resetting of counters
+
 \counterwithin{figure}{section}
-% Ustawia numerację obrazków
+
 
 \lstset{
   basicstyle=\ttfamily\footnotesize,
@@ -89,14 +74,14 @@
 % Ustawia styl listingów
 
 \frenchspacing
-% Ustawia francuski spacing tekstu
+
 \linespread{1.5}
-% Ustawia odstęp linii na 1.5cm
+
 \newcommand\tab[1][0.5cm]{\hspace*{#1}}
-% Ustawia skrót na akapit 1cm do komendy \tab
+
 \titleformat*{\section}{\fontsize{14}{12}\selectfont\bfseries}
 \titleformat*{\subsection}{\fontsize{12}{12}\selectfont\bfseries}
-% Ustawia styl nagłówków rozdziałów i podrozdziałów
+
 
 \hypersetup{
     colorlinks,
@@ -105,13 +90,11 @@
     linkcolor=black,
     urlcolor=black
 }
-% Ustawia kolory linków
 
 \newcommand\blankpage{%
 	\null
     \thispagestyle{empty}%
     \newpage}
-% Ustawia komendę do wyświetlania pustej strony
 
 \pdfinfo{
    /Author (Krzysztof Dragan)
@@ -119,9 +102,9 @@
    /CreationDate (\today)
    /Keywords (Praca;dyplomowa;inzynierska;modyfikacja;stfc)
 }
-% Ustawianie metadanych pliku PDF
+
   
-% --------------------------------------------
+
 % ------------ Początek dokumentu ------------
 \begin{document}
 \counterwithin{lstlisting}{section}

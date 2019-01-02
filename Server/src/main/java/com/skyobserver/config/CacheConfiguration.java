@@ -39,7 +39,7 @@ public class CacheConfiguration {
     public static CacheManager flightsCacheManager(){
         return newCacheManagerBuilder()
                 .withCache("cachedFlights", newCacheConfigurationBuilder(String.class, Collection.class, heap(20))
-                        .withExpiry(Expirations.timeToIdleExpiration(Duration.of(10, TimeUnit.MINUTES)))
+                        .withExpiry(Expirations.timeToIdleExpiration(Duration.of(10, TimeUnit.HOURS)))
                         .withSizeOfMaxObjectSize(300, MemoryUnit.MB))
                 .build(true);
     }

@@ -9,15 +9,15 @@
   <div class="full-bg-img">
     <div>
 
-        <div class="container">
+      <div class="container">
 
-              <mat-horizontal-stepper [linear]="true" #stepper>
-                <mat-step [stepControl]="flightForm.stepFormGroup" *ngFor="let flightForm of flightForms">
-                  
-                    <ng-template matStepLabel>Choose trip to {{flightForm.destinationAirport}}</ng-template>
-                    <mat-accordion>
+        <mat-horizontal-stepper [linear]="true" #stepper>
+          <mat-step [stepControl]="flightForm.stepFormGroup" *ngFor="let flightForm of flightForms">
 
-                      <!-- <div *ngIf="flightForm.displayedFlights.length === 0" class="flights-handler">
+            <ng-template matStepLabel>Choose trip to {{flightForm.destinationAirport}}</ng-template>
+            <mat-accordion>
+
+              <!-- <div *ngIf="flightForm.displayedFlights.length === 0" class="flights-handler">
                           <i class="material-icons" style="font-size: 68px; margin-left: 25%">
                               sentiment_very_dissatisfied
                           </i>
@@ -26,235 +26,88 @@
                           </p>  
                       </div> -->
 
-                        <mat-expansion-panel *ngFor="let flight of flightForm.displayedFlights">
-                          <mat-expansion-panel-header [collapsedHeight]="'75px'">
-                            <mat-panel-title>
-                              
-                              <i class="material-icons">
-                                airplanemode_active
-                              </i>
- 
-                                <span style="width: 100px" *ngIf="checkIfThereAreSameAirlinesOnFlight(flight.flights) === true">
-                                  {{flight.flights[0].airline.nameAirline}}
-                                </span>
+              <mat-expansion-panel *ngFor="let flight of flightForm.displayedFlights">
+                <mat-expansion-panel-header [collapsedHeight]="'75px'">
+                  <mat-panel-title>
 
-                                <span style="width: 150px;" *ngIf="!checkIfThereAreSameAirlinesOnFlight(flight.flights) === false">
+                    <i class="material-icons">
+                      airplanemode_active
+                    </i>
+
+                    <span style="width: 150px">
+                      {{flight.flights[0].airline.nameAirline}}
+                    </span>
+
+                    <!-- <span style="width: 150px; font-size: 10px" *ngIf="!checkIfThereAreSameAirlinesOnFlight(flight.flights) === false">
                                   <p style="color: grey; width: max-content" *ngFor="let subFlight of flight.flights">
                                     {{subFlight.airline.nameAirline}}
                                     <br>
                                   </p>
-                                </span>
-                            
-                              <span style="margin-left:80px; width: 100px;" >
-                                <span *ngIf="flight.departureDate.getMinutes()<10">
-                                  {{flight.departureDate.getHours()}}:0{{flight.departureDate.getMinutes()}}
-                                </span>
-                                <span *ngIf="flight.departureDate.getMinutes()>10">
-                                  {{flight.departureDate.getHours()}}:{{flight.departureDate.getMinutes()}}
-                                </span> 
-                                  -
-                                  <span *ngIf="flight.arrivalDate.getMinutes()<10">
-                                    {{flight.arrivalDate.getHours()}}:0{{flight.arrivalDate.getMinutes()}}
-                                  </span>
-                                  <span *ngIf="flight.arrivalDate.getMinutes()>10">
-                                    {{flight.arrivalDate.getHours()}}:{{flight.arrivalDate.getMinutes()}}
-                                  </span> 
-                              </span>
+                                </span> -->
 
-                              <span style="margin-left: 90px;">
-                                {{flight.journeyDuration}}
-                                <p style="color: grey;width: max-content">
-                                  {{flight.departureAirportCode}}-{{flight.arrivalAirportCode}}
-                                </p>
-                              </span>
+                    <span style="margin-left:80px; width: 100px;">
+                      <span *ngIf="flight.departureDate.getMinutes()<10">
+                        {{flight.departureDate.getHours()}}:0{{flight.departureDate.getMinutes()}}
+                      </span>
+                      <span *ngIf="flight.departureDate.getMinutes()>=10">
+                        {{flight.departureDate.getHours()}}:{{flight.departureDate.getMinutes()}}
+                      </span>
+                      -
+                      <span *ngIf="flight.arrivalDate.getMinutes()<10">
+                        {{flight.arrivalDate.getHours()}}:0{{flight.arrivalDate.getMinutes()}}
+                      </span>
+                      <span *ngIf="flight.arrivalDate.getMinutes()>=10">
+                        {{flight.arrivalDate.getHours()}}:{{flight.arrivalDate.getMinutes()}}
+                      </span>
+                    </span>
 
-                              <span style="margin-left: 100px">
-                                  <span *ngIf="flight.flights.length === 1">
-                                      Nonstop
-                                  </span>
-                                  <span *ngIf="flight.flights.length > 1">
-                                    {{flight.flights.length - 1}} stops
-                                  </span>
-                              </span>
+                    <span style="margin-left: 90px;">
+                      {{flight.journeyDuration}}
+                      <p style="color: grey;width: max-content">
+                        {{flight.departureAirportCode}}-{{flight.arrivalAirportCode}}
+                      </p>
+                    </span>
 
-                              <span style="margin-left: 160px" *ngIf="flight.journeyPrice != 0">
-                            
-                                  average {{flight.currency}} 
-                                  <span style="color: rgb(93, 165, 111);">
-                                    {{flight.journeyPrice}}
-                                  </span>
-                              </span>
-                              <span style="margin-left: 160px" *ngIf="flight.journeyPrice === 0">
-                                No price data found
-                              </span>
-                            </mat-panel-title>
-                        
-                          </mat-expansion-panel-header>
-                          <div class="row" *ngFor="let subFlight of flight.flights" >
-                          <div class="column flightBody">
-                            <p>
-                            <i class="material-icons">
-                              flight_takeoff
-                            </i>
-                            <span>
-                              <span *ngIf="subFlight.departureTime.getMinutes()>=10">
-                                  {{subFlight.departureTime.getHours()}}:{{subFlight.departureTime.getMinutes()}}
-                              </span>
-                              <span *ngIf="subFlight.departureTime.getMinutes()<10">
-                                  {{subFlight.departureTime.getHours()}}:0{{subFlight.departureTime.getMinutes()}}
-                              </span>
-                              <span *ngIf="subFlight.departureTime.getHours()<12">
-                                AM
-                              </span>
-                              <span *ngIf="subFlight.departureTime.getHours()>=12">
-                                  PM
-                              </span>
-                            </span>
-                            .
-                            <span>
-                              {{subFlight.originAirport.name}} ({{subFlight.originAirport.iataCode}})
-                            </span>
-                          </p>
-                          <p>
-                              <i class="material-icons">
-                                  more_vert
-                              </i>
-                            Travel time: {{formatDurationExpression(subFlight.duration)}}
-                          </p>
-                          <p>
-                              <i class="material-icons">
-                                  flight_land
-                              </i>
-                              <span>
-                                  <span *ngIf="subFlight.arrivalTime.getMinutes()>=10">
-                                      {{subFlight.arrivalTime.getHours()}}:{{subFlight.arrivalTime.getMinutes()}}
-                                  </span>
-    
-                                  <span *ngIf="subFlight.arrivalTime.getMinutes()<10">
-                                      {{subFlight.arrivalTime.getHours()}}:0{{subFlight.arrivalTime.getMinutes()}}
-                                  </span>
-    
-                                  <span *ngIf="subFlight.arrivalTime.getHours()<12">
-                                      AM
-                                    </span>
-                                 <span *ngIf="subFlight.arrivalTime.getHours()>=12">
-                                        PM
-                                </span>
-                              </span>
-                              .
-                              <span>
-                                  {{subFlight.destinationAirport.name}} ({{subFlight.destinationAirport.iataCode}})
-                              </span>
-                            
-                          </p>
-                          </div>
-                          <div class="baggageInfo">
-                            <div *ngIf="isBlank(subFlight.baggage.extraBaggageAllowance)" style="height: 50%">
-                              <i class="material-icons">
-                                  work_off
-                              </i>
-                              {{subFlight.baggage.freeBaggageAllowance}}
-                              <br>
-                              <br>
-                              <i class="material-icons">
-                                  whatshot
-                              </i>
-                              {{subFlight.airline.nameAirline}}
-                            </div>
-                            <div *ngIf="isBlank(subFlight.baggage.extraBaggageAllowance) === false">
-                              <p>Free baggage Allowance: {{subFlight.baggage.freeBaggageAllowance}}</p>
-                              <p style="width:53%">Extra baggage Allowance: {{subFlight.baggage.extraBaggageAllowance}}</p>
-                              <p>Technical Parameters: {{subFlight.baggage.technicalParameters}}</p>
-                            </div>
-                          </div>
+                    <span style="margin-left: 100px">
+                      <span *ngIf="flight.flights.length === 1">
+                        Nonstop
+                      </span>
+                      <span *ngIf="flight.flights.length > 1">
+                        {{flight.flights.length - 1}} stops
+                      </span>
+                    </span>
 
-                        </div>
+                    <span style="margin-left: 160px" *ngIf="flight.journeyPrice != 0">
 
-                        <button style="left: 80%" mat-stroked-button color="warn" (click)="selectFlight(flight)" matStepperNext>Select this flight</button>
+                      average {{flight.currency}}
+                      <span style="color: rgb(93, 165, 111);">
+                        {{flight.journeyPrice}}
+                      </span>
+                    </span>
+                    <span style="margin-left: 160px" *ngIf="flight.journeyPrice === 0">
+                      No price data found
+                    </span>
+                  </mat-panel-title>
 
-                        </mat-expansion-panel>
-                      </mat-accordion>
-                  
-                </mat-step>
-                <mat-step>
-                  <ng-template matStepLabel>Trip summary</ng-template>
-
-                  <mat-expansion-panel *ngFor="let flight of choosedFlights">
-                    <mat-expansion-panel-header [collapsedHeight]="'75px'">
-                      <mat-panel-title>
-                        
-                        <i class="material-icons">
-                          airplanemode_active
-                        </i>
-
-                        <span *ngFor="let subFlight of flight.flights" style="width: 160px">
-                            {{subFlight.airline.nameAirline}}
-                            <br>
-                        </span>
-
-                        <span style="margin-left:80px; width: 100px;" >
-                          <span *ngIf="flight.departureDate.getMinutes()<10">
-                            {{flight.departureDate.getHours()}}:0{{flight.departureDate.getMinutes()}}
-                          </span>
-                          <span *ngIf="flight.departureDate.getMinutes()>10">
-                            {{flight.departureDate.getHours()}}:{{flight.departureDate.getMinutes()}}
-                          </span> 
-                            -
-                            <span *ngIf="flight.arrivalDate.getMinutes()<10">
-                              {{flight.arrivalDate.getHours()}}:0{{flight.arrivalDate.getMinutes()}}
-                            </span>
-                            <span *ngIf="flight.arrivalDate.getMinutes()>10">
-                              {{flight.arrivalDate.getHours()}}:{{flight.arrivalDate.getMinutes()}}
-                            </span> 
-                        </span>
-
-                        <span style="margin-left: 90px;">
-                          {{flight.journeyDuration}}
-                          <p style="color: grey;width: max-content">
-                            {{flight.departureAirportCode}}-{{flight.arrivalAirportCode}}
-                          </p>
-                        </span>
-
-                        <span style="margin-left: 100px">
-                            <span *ngIf="flight.flights.length === 1">
-                                Nonstop
-                            </span>
-                            <span *ngIf="flight.flights.length > 1">
-                              {{flight.flights.length - 1}} stops
-                            </span>
-                        </span>
-
-                        <span style="margin-left: 160px" *ngIf="flight.journeyPrice != 0">
-                      
-                            average {{flight.currency}} 
-                            <span style="color: rgb(93, 165, 111);">
-                              {{flight.journeyPrice}}
-                            </span>
-                        </span>
-                        <span style="margin-left: 160px" *ngIf="flight.journeyPrice === 0">
-                          No price data found
-                        </span>
-                      </mat-panel-title>
-                  
-                    </mat-expansion-panel-header>
-                    <div class="row" *ngFor="let subFlight of flight.flights" >
-                    <div class="column flightBody">
-                      <p>
+                </mat-expansion-panel-header>
+                <div class="row" *ngFor="let subFlight of flight.flights">
+                  <div class="column flightBody">
+                    <p>
                       <i class="material-icons">
                         flight_takeoff
                       </i>
                       <span>
                         <span *ngIf="subFlight.departureTime.getMinutes()>=10">
-                            {{subFlight.departureTime.getHours()}}:{{subFlight.departureTime.getMinutes()}}
+                          {{subFlight.departureTime.getHours()}}:{{subFlight.departureTime.getMinutes()}}
                         </span>
                         <span *ngIf="subFlight.departureTime.getMinutes()<10">
-                            {{subFlight.departureTime.getHours()}}:0{{subFlight.departureTime.getMinutes()}}
+                          {{subFlight.departureTime.getHours()}}:0{{subFlight.departureTime.getMinutes()}}
                         </span>
                         <span *ngIf="subFlight.departureTime.getHours()<12">
                           AM
                         </span>
                         <span *ngIf="subFlight.departureTime.getHours()>=12">
-                            PM
+                          PM
                         </span>
                       </span>
                       .
@@ -263,61 +116,222 @@
                       </span>
                     </p>
                     <p>
-                        <i class="material-icons">
-                            more_vert
-                        </i>
+                      <i class="material-icons">
+                        more_vert
+                      </i>
                       Travel time: {{formatDurationExpression(subFlight.duration)}}
                     </p>
                     <p>
-                        <i class="material-icons">
-                            flight_land
-                        </i>
-                        <span>
-                            <span *ngIf="subFlight.arrivalTime.getMinutes()>=10">
-                                {{subFlight.arrivalTime.getHours()}}:{{subFlight.arrivalTime.getMinutes()}}
-                            </span>
-
-                            <span *ngIf="subFlight.arrivalTime.getMinutes()<10">
-                                {{subFlight.arrivalTime.getHours()}}:0{{subFlight.arrivalTime.getMinutes()}}
-                            </span>
-
-                            <span *ngIf="subFlight.arrivalTime.getHours()<12">
-                                AM
-                              </span>
-                           <span *ngIf="subFlight.arrivalTime.getHours()>=12">
-                                  PM
-                          </span>
+                      <i class="material-icons">
+                        flight_land
+                      </i>
+                      <span>
+                        <span *ngIf="subFlight.arrivalTime.getMinutes()>=10">
+                          {{subFlight.arrivalTime.getHours()}}:{{subFlight.arrivalTime.getMinutes()}}
                         </span>
-                        .
-                        <span>
-                            {{subFlight.destinationAirport.name}} ({{subFlight.destinationAirport.iataCode}})
+
+                        <span *ngIf="subFlight.arrivalTime.getMinutes()<10">
+                          {{subFlight.arrivalTime.getHours()}}:0{{subFlight.arrivalTime.getMinutes()}}
                         </span>
-                      
+
+                        <span *ngIf="subFlight.arrivalTime.getHours()<12">
+                          AM
+                        </span>
+                        <span *ngIf="subFlight.arrivalTime.getHours()>=12">
+                          PM
+                        </span>
+                      </span>
+                      .
+                      <span>
+                        {{subFlight.destinationAirport.name}} ({{subFlight.destinationAirport.iataCode}})
+                      </span>
+
                     </p>
-                    </div>
-                    <div class="baggageInfo">
-                      <div *ngIf="isBlank(subFlight.baggage.extraBaggageAllowance)">
+                  </div>
+                  <div class="baggageInfo">
+                    <div *ngIf="isBlank(subFlight.baggage.extraBaggageAllowance)" style="height: 50%; margin-left: 30px">
+                      <i class="material-icons">
+                        work_off
+                      </i>
+                      {{subFlight.baggage.freeBaggageAllowance}}
+                      <br>
+                      <br>
+                      <div>
                         <i class="material-icons">
-                            work_off
+                          airplanemode_active
                         </i>
-                        {{subFlight.baggage.freeBaggageAllowance}}
-                      </div>
-                      <div *ngIf="isBlank(subFlight.baggage.extraBaggageAllowance) === false">
-                        <p>Free baggage Allowance: {{subFlight.baggage.freeBaggageAllowance}}</p>
-                        <p style="width:53%">Extra baggage Allowance: {{subFlight.baggage.extraBaggageAllowance}}</p>
-                        <p>Technical Parameters: {{subFlight.baggage.technicalParameters}}</p>
+                        Airline: {{subFlight.airline.nameAirline}}
                       </div>
                     </div>
+                    <div *ngIf="isBlank(subFlight.baggage.extraBaggageAllowance) === false" style="margin-left: 30px">
+                      <p>Free baggage Allowance: {{subFlight.baggage.freeBaggageAllowance}}</p>
+                      <p style="width:53%">Extra baggage Allowance: {{subFlight.baggage.extraBaggageAllowance}}</p>
+                      <p>Technical Parameters: {{subFlight.baggage.technicalParameters}}</p>
+
+
+                      <div>
+                        <i class="material-icons">
+                          airplanemode_active
+                        </i>
+                        Airline: {{subFlight.airline.nameAirline}}
+                      </div>
+
+                    </div>
+
 
                   </div>
 
-                  </mat-expansion-panel>
-                 
-                  
-                </mat-step>
-              </mat-horizontal-stepper>
+                </div>
 
-        </div>
+                <button style="left: 80%" mat-stroked-button color="warn" (click)="selectFlight(flight)" matStepperNext>Select
+                  this flight</button>
+
+              </mat-expansion-panel>
+            </mat-accordion>
+
+          </mat-step>
+          <mat-step>
+            <ng-template matStepLabel>Trip summary</ng-template>
+
+            <mat-expansion-panel *ngFor="let flight of choosedFlights">
+              <mat-expansion-panel-header [collapsedHeight]="'75px'">
+                <mat-panel-title>
+
+                  <i class="material-icons">
+                    airplanemode_active
+                  </i>
+
+                  <span *ngFor="let subFlight of flight.flights" style="width: 160px">
+                    {{subFlight.airline.nameAirline}}
+                    <br>
+                  </span>
+
+                  <span style="margin-left:80px; width: 100px;">
+                    <span *ngIf="flight.departureDate.getMinutes()<10">
+                      {{flight.departureDate.getHours()}}:0{{flight.departureDate.getMinutes()}}
+                    </span>
+                    <span *ngIf="flight.departureDate.getMinutes()>10">
+                      {{flight.departureDate.getHours()}}:{{flight.departureDate.getMinutes()}}
+                    </span>
+                    -
+                    <span *ngIf="flight.arrivalDate.getMinutes()<10">
+                      {{flight.arrivalDate.getHours()}}:0{{flight.arrivalDate.getMinutes()}}
+                    </span>
+                    <span *ngIf="flight.arrivalDate.getMinutes()>10">
+                      {{flight.arrivalDate.getHours()}}:{{flight.arrivalDate.getMinutes()}}
+                    </span>
+                  </span>
+
+                  <span style="margin-left: 90px;">
+                    {{flight.journeyDuration}}
+                    <p style="color: grey;width: max-content">
+                      {{flight.departureAirportCode}}-{{flight.arrivalAirportCode}}
+                    </p>
+                  </span>
+
+                  <span style="margin-left: 100px">
+                    <span *ngIf="flight.flights.length === 1">
+                      Nonstop
+                    </span>
+                    <span *ngIf="flight.flights.length > 1">
+                      {{flight.flights.length - 1}} stops
+                    </span>
+                  </span>
+
+                  <span style="margin-left: 160px" *ngIf="flight.journeyPrice != 0">
+
+                    average {{flight.currency}}
+                    <span style="color: rgb(93, 165, 111);">
+                      {{flight.journeyPrice}}
+                    </span>
+                  </span>
+                  <span style="margin-left: 160px" *ngIf="flight.journeyPrice === 0">
+                    No price data found
+                  </span>
+                </mat-panel-title>
+
+              </mat-expansion-panel-header>
+              <div class="row" *ngFor="let subFlight of flight.flights">
+                <div class="column flightBody">
+                  <p>
+                    <i class="material-icons">
+                      flight_takeoff
+                    </i>
+                    <span>
+                      <span *ngIf="subFlight.departureTime.getMinutes()>=10">
+                        {{subFlight.departureTime.getHours()}}:{{subFlight.departureTime.getMinutes()}}
+                      </span>
+                      <span *ngIf="subFlight.departureTime.getMinutes()<10">
+                        {{subFlight.departureTime.getHours()}}:0{{subFlight.departureTime.getMinutes()}}
+                      </span>
+                      <span *ngIf="subFlight.departureTime.getHours()<12">
+                        AM
+                      </span>
+                      <span *ngIf="subFlight.departureTime.getHours()>=12">
+                        PM
+                      </span>
+                    </span>
+                    .
+                    <span>
+                      {{subFlight.originAirport.name}} ({{subFlight.originAirport.iataCode}})
+                    </span>
+                  </p>
+                  <p>
+                    <i class="material-icons">
+                      more_vert
+                    </i>
+                    Travel time: {{formatDurationExpression(subFlight.duration)}}
+                  </p>
+                  <p>
+                    <i class="material-icons">
+                      flight_land
+                    </i>
+                    <span>
+                      <span *ngIf="subFlight.arrivalTime.getMinutes()>=10">
+                        {{subFlight.arrivalTime.getHours()}}:{{subFlight.arrivalTime.getMinutes()}}
+                      </span>
+
+                      <span *ngIf="subFlight.arrivalTime.getMinutes()<10">
+                        {{subFlight.arrivalTime.getHours()}}:0{{subFlight.arrivalTime.getMinutes()}}
+                      </span>
+
+                      <span *ngIf="subFlight.arrivalTime.getHours()<12">
+                        AM
+                      </span>
+                      <span *ngIf="subFlight.arrivalTime.getHours()>=12">
+                        PM
+                      </span>
+                    </span>
+                    .
+                    <span>
+                      {{subFlight.destinationAirport.name}} ({{subFlight.destinationAirport.iataCode}})
+                    </span>
+
+                  </p>
+                </div>
+                <div class="baggageInfo">
+                  <div *ngIf="isBlank(subFlight.baggage.extraBaggageAllowance)">
+                    <i class="material-icons">
+                      work_off
+                    </i>
+                    {{subFlight.baggage.freeBaggageAllowance}}
+                  </div>
+                  <div *ngIf="isBlank(subFlight.baggage.extraBaggageAllowance) === false">
+                    <p>Free baggage Allowance: {{subFlight.baggage.freeBaggageAllowance}}</p>
+                    <p style="width:53%">Extra baggage Allowance: {{subFlight.baggage.extraBaggageAllowance}}</p>
+                    <p>Technical Parameters: {{subFlight.baggage.technicalParameters}}</p>
+                  </div>
+                </div>
+
+              </div>
+
+            </mat-expansion-panel>
+
+
+          </mat-step>
+        </mat-horizontal-stepper>
+
+      </div>
 
     </div>
   </div>

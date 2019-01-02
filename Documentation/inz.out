@@ -1,8 +1,8 @@
-\BOOKMARK [1][-]{section.0.1}{Wstep}{}% 1
-\BOOKMARK [1][-]{section.0.2}{Opis rozwiazywanego zagadnienia}{}% 2
-\BOOKMARK [2][-]{subsection.0.2.1}{Zr\363d\233a danych o po\233aczeniach lotniczych}{section.0.2}% 3
-\BOOKMARK [2][-]{subsection.0.2.2}{Parsowanie r\363znych rodzaj\363w danych}{section.0.2}% 4
-\BOOKMARK [2][-]{subsection.0.2.3}{Wydajnosc wyszukiwania}{section.0.2}% 5
-\BOOKMARK [1][-]{section.0.3}{Przeglad istniejacych rozwiazan}{}% 6
-\BOOKMARK [2][-]{subsection.0.3.1}{Wyszukiwarka lot\363w Skyscanner}{section.0.3}% 7
-\BOOKMARK [2][-]{subsection.0.3.2}{Wyszukiwarka lot\363w Google Flights}{section.0.3}% 8
+\BOOKMARK [0][-]{chapter*.2}{Wstep}{}% 1
+\BOOKMARK [0][-]{chapter.1}{Opis rozwiazywanego zagadnienia}{}% 2
+\BOOKMARK [1][-]{section.1.1}{Zr\363d\233a danych o po\233aczeniach lotniczych}{chapter.1}% 3
+\BOOKMARK [1][-]{section.1.2}{Parsowanie r\363znych rodzaj\363w danych}{chapter.1}% 4
+\BOOKMARK [1][-]{section.1.3}{Wydajnosc wyszukiwania}{chapter.1}% 5
+\BOOKMARK [0][-]{chapter.2}{Przeglad istniejacych rozwiazan}{}% 6
+\BOOKMARK [1][-]{section.2.1}{Wyszukiwarka lot\363w Skyscanner}{chapter.2}% 7
+\BOOKMARK [1][-]{section.2.2}{Wyszukiwarka lot\363w Google Flights}{chapter.2}% 8

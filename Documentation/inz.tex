@@ -1,5 +1,5 @@
 \documentclass[12pt, twoside]{report}
-\usepackage[a4paper, top=2.5cm, bottom=2.5cm, left=2.5cm, right=2.5cm]{geometry}
+\usepackage[a4paper, top=2.0cm, bottom=2.0cm, left=2.5cm, right=2.5cm]{geometry}
 
 \usepackage[MeX]{polski} 
 \usepackage[T1]{fontenc}
@@ -34,8 +34,15 @@
 \definecolor{darkred}{rgb}{0.6,0.0,0.0}
 
 \counterwithin{figure}{section}
-
-
+\setlength{\parindent}{4em}
+\titlespacing{\chapter}{0pt}{-35px}{5px}
+\titlespacing*{\subsection}{0pt}{0px}{0px}
+\titlespacing*{\subsubsection}{0pt}{0px}{0px}
+\titlespacing*{\section}{0pt}{0px}{0px}
+       
+\titleformat{\chapter}[block]
+       {\normalfont\huge\bfseries}{ \thechapter}{15pt}{\Huge}
+       
 \lstset{
   basicstyle=\ttfamily\footnotesize,
   columns=fullflexible,
@@ -59,7 +66,6 @@
   commentstyle=\color{gray}\upshape
 }
 
-
 \lstdefinelanguage{XML}
 {
   morestring=[s][\color{mauve}]{"}{"},
@@ -71,16 +77,10 @@
   keywordstyle=\color{red},
   morekeywords={xmlns,xsi,noNamespaceSchemaLocation,type,id,x,y,source,target,version,tool,transRef,roleRef,objective,eventually}% list your attributes here
 }
-% Ustawia styl listingów
-
-\frenchspacing
-
 \linespread{1.5}
 
 \newcommand\tab[1][0.5cm]{\hspace*{#1}}
 
-\titleformat*{\section}{\fontsize{14}{12}\selectfont\bfseries}
-\titleformat*{\subsection}{\fontsize{12}{12}\selectfont\bfseries}
 
 
 \hypersetup{
@@ -103,8 +103,7 @@
    /Keywords (Praca;dyplomowa;inzynierska;modyfikacja;stfc)
 }
 
-  
-
+ 
 % ------------ Początek dokumentu ------------
 \begin{document}
 \counterwithin{lstlisting}{section}
@@ -187,7 +186,6 @@ Słowa kluczowe: Java, Angular 6, REST, programowanie obiektowe, protokół HTTP
 Keywords: - Java, Angular 6, REST, Object Oriented Programming, HTTP Protocol, Functional Programming
 \afterpage{\blankpage}
 
-% --------------------------------------------
 % ---------------- Spis Treści ---------------
 \renewcommand{\contentsname}{Spis treści}
 \newpage
@@ -195,10 +193,10 @@ Keywords: - Java, Angular 6, REST, Object Oriented Programming, HTTP Protocol, F
 \setcounter{page}{9}
 % Ustawia numerację strony od aktualnej na numer 9
 \tableofcontents
-% --------------------------------------------
 % ------------------- Wstęp ------------------
 \newpage
-\section{Wstęp}
+\chapter*{Wstęp}
+\addcontentsline{toc}{chapter}{Wstęp}
 Celem pracy było stworzenie aplikacji internetowej umożliwiającej wyszukiwanie połączeń lotniczych. Do zrealizowania tego celu potrzebne było dogłębne zbadanie problemów związanych z tym zagadnieniem. Pierwszym krokiem była analiza dostępnych źródeł danych o połączeniach lotniczych. Nie było to zadanie łatwe, tylko niektórzy przewoźnicy udostępniają swoje dane lotnicze na zewnątrz. Oprócz stron przewoźników istnieją też specjalne centra chmurowe gromadzące informacje o połączeniach lotniczych, jednakże w przeważającej części firmy reprezentujące te centra pobierały opłaty za możliwość korzystania z ich serwisów. Do zrealizowania celu wymienionego w pierwszym zadaniu posłużyła usługa chmurowa firmy FlightLookup która udostępniała zarejestrowanemu użytkownikowi jej dane w limicie 500 żądań protokołu HTTP na miesiąc. Oprócz tego do zrealizowania pracy zgodnie z założonymi wymaganiami potrzebne były źródła udostępniające informacje o liniach lotniczych, wymiarach i wagi bagażu podróżnego oraz cen przelotów. Kolejnym problem było poradzenie sobie z różnymi formatami danych które pozyskiwała część serwerowa. Deserializacja i serializacja danych odbywała się pomiędzy formatami: XML, JSON, HTML, CSV oraz obiektem języka Java. Dokładniejszy opis tego problemu znajduje się w rodziale Implementacja. Ważną kwestią była też wydajność aplikacji, czas odpowiedzi powinien być dla użytkownika jak najmniejszy. Kod źródłowy modułu zbierającego dane był odpowiednio przygotowany do wykonania tego zadania z jak najlepszym efektem. Zadbano o wyeliminowanie fragmentów kodu które mogłyby opóźnić odpowiedź aplikacji. Ponadto w pracy został zaimplementowanie mechanizm cachowania danych aby w przypadku gdy na przykład konkretny lot był wyszukiwany wiele razy, informacja o nim została zwrócona o wiele szybciej niż standardowo. \\
 Aplikacja została podzielona na dwie części: część serwerową oraz kliencką.
 Pierwsza część została stworzona w języku programowania Java w wersji 10.
@@ -208,7 +206,7 @@ Oprócz samego rozwiązania zbierającego dane o połączeniach lotniczych potrz
 Kolejnym ważnym krokiem w pisaniu tej pracy było zaimplementowanie testów jednostkowych oraz integracyjnych które pozwoliłby na automatyczne sprawdzenie aplikacji pod względem wymaganych funkcjonalności zawartych w założeniach. Dopiero poprawne zakończenie wszystkich testów pozwoliło uznanie części praktycznej pracy za skończoną.
 
 \newpage
-\section{Opis rozwiązywanego zagadnienia}
+\chapter{Opis rozwiązywanego zagadnienia}
 Głównym zagadnieniem podjętym w pracy było znalezienie sposobu na pozyskanie realnych danych o połączeniach lotniczych które można by było zaprezentować w kompleksowym interfejsie oraz we względnie optymalnym czasie dla użytkownika powstałej aplikacji.
 Zagadnienie to można podzielić na 3 części:
 \begin{itemize}[noitemsep,topsep=0pt]
@@ -218,7 +216,7 @@ Zagadnienie to można podzielić na 3 części:
 \end{itemize}
 Części te zostaną opisane w podrozdziałach bieżącego rozdziału.
 
-\subsection{Źródła danych o połączeniach lotniczych}
+\section{Źródła danych o połączeniach lotniczych}
 Największą trudnością podczas pisania pracy było znalezienie odpowiednich zasobów danych który nie byłyby płatne oraz które zapewniałyby rzetelne i sprawdzone dane lotnicze. Poszukiwania zaczęto od złożenia podań do centr danych o dostęp do ich zasobów. Większość z nich wymagała opłaty za swoje usługi które sięgały nawet 10000\$. Niektóre z nich oferowały jednak darmowy dostęp do ich zasobów jednak był to dostęp limitowany. Na potrzeby pracy wybrano serwis FlightLookup jako głównego dostawcę danych, informacje przez niego dostarczone stanowiły lwią część odpowiedzi serwera. Darmowy dostęp jest limitowany 500 zapytaniami w trakcie miesiąca.
 \vspace{1.0cm}
 \begin{figure}[!ht]
@@ -235,7 +233,7 @@ Dodatkowymi źródłami danych były:
 \item ourairport.com - strona internetowa umożliwiające pobranie danych o większości lotnisk na świecie
 \end{itemize}
 
-\subsection{Parsowanie różnych rodzajów danych}
+\section{Parsowanie różnych rodzajów danych}
 Dane dostarczone przez zewnętrzne serwisy prezentowały swoją treść w różnych formatach. Aby zebrać pełną odpowiedź serwera należało w pierwszym kroku sparsować pojedyncze elementy a następnie zbudować z nich obiekt języka Java. Parsowanie zaczynało się od odebrania danych z serwisu FlightLookup w postaci XML (eXtensible Markup Language). Do zrealizowania tej czynności posłużono się zewnętrzną biblioteką jackson-dataformat-xml która efektywnie przełożyła obiekty XML na odpowiedni obiekty Javy.
 %tutaj załączyć kod xml z odpowiedzą serwera FlightLookup
 
@@ -262,14 +260,14 @@ Dane dostarczone przez zewnętrzne serwisy prezentowały swoją treść w różn
 Informacje o liniach lotniczych dostarczane były w postaci JSON (JavaScript Object Notation). Do sparsowania ich posłużono się biblioteką Gson organizacji Google. Dzięki niej konwersja obiektu JSON do obiektu Java odbywała się w jednej linii kodu. W ten sam sposób odbywało się parsowanie danych zawierających ceny przelotów.\\
 Ostatnim formatem danych który wymagał sparsowania był HTML (Hypertext Markup Language). Informacje przez niego opisane dotyczyły wymiarów oraz wagi bagażów dozwolonych na określonej linii lotniczej. Do wykonania tego zadania posłużyła zewnętrzna biblioteka Jsoup. Dedykowana dla języka Java, z gotowym pakietem oprogramowania bardzo dobrze poradziła sobie z parsowaniem treści HTML.
 
-\subsection{Wydajność wyszukiwania}
+\section{Wydajność wyszukiwania}
 Wyszukiwanie tak złożonych jak informacje o połączeniach lotniczych a następnie parsowanie ich niesie za sobą pewne konsekwencje. Są to konsekwencje czasownik, użytkownik powinien otrzymać interesującą go treść w czasie jak najkrótszym. W celu optymalizacji wydajności aplikacji wprowadzono mechanizmy skracające czas odpowiedzi części serwerowej. Dla zbierania danych dotyczących lotnisk oraz bagażów wprowadzono rozwiązania polegające na pobieraniu pełnych zasobów tych danów do bazy danych lub do pliku znajdującego się na serwerze. Pozwoliło to na pominięcie opóźnienia sieciowego związanego z potencjalną koniecznością pobierania tych danych ze stron lub zewnętrznych baz danych. \\
 Kolejnym rozwiązaniem było wprowadzenia stylu programowania funkcyjnego w kluczowych elementach części serwerowej które odpowiadały za wyszukiwanie połączeń lotniczych. Programowanie funkcyjne wprowadzone w Javie 8 pozwala skrócić operacje po stronie wirtualnej maszyny Javy a więc też zaoszczędzić cenne milisekundy w trakcie wyszukiwania lotów.
 Ostatnim mechanizmem był moduł cachowania danych. Jego przeznaczeniem jest skracanie czasu odpowiedzi dla określonych zapytań do części serwerowej które są zwielokrotnione i wywoływane przez wielu użytkowników. Wykonując operacje wyszukiwania lotów, moduł wyszukiwania sprawdza czy w cache'u znajdują się poszukiwanie operacje. Jeśli tak zwraca je użytkownikowi, jeśli nie wyszukuje loty standardowym sposobem a wynik zapisuje do cache'u. Cache przetrzymuje w sobie do 100 zapytań.
 \newpage
-\section{Przegląd istniejących rozwiązań}
+\chapter{Przegląd istniejących rozwiązań}
 Analiza istniejących rozwiązań aplikacji wyszukujących połączeń lotniczych pozwoliła nadać pracy bardziej precyzyjne wymagania oraz zaprojektować jej ogólny przebieg. W internecie można znaleźć wiele aplikacji o podobnych lub takich samych funkcjonalnościach jak tworzona praca. W tym rodziale zostaną opisane najbardziej znane wyszukiwarki lotów dostępnych na rynku. 
-\subsection{Wyszukiwarka lotów Skyscanner}
+\section{Wyszukiwarka lotów Skyscanner}
 Pierwszym przykładem została aplikacja internetowa Skyscanner. Jest to wyszukiwarka lotów, która umożliwia użytkownikom szukanie lotów według ceny i lokalizacji. Oprócz funkcji wyszukiwania lotów, Skyscanner oferuje opcje wyszukiwania hotelów blisko lotnisk oraz wypożyczenia auta w pobliżu lotniska docelowego. Aplikacja ta została stworzona oraz wdrożona w 2002 roku. Od tego czasu firma Ctrip która jest właścicielem tego produktu zatrudnia ponad 200 pracowników. Warto wspomnieć o jej innej usłudze która udostępnia dane o połączeniach lotniczym zewnętrznym firmom i deweloperom. Jej dane były brane pod uwagę w czasie szukania źródeł danych lecz Skyscanner wymaga dużych opłat za swoje usługi, w warunkach akademickich niemożliwe było z ich skorzystanie.
  Aplikacja ta jest dostępna w ponad 30 językach oraz używana przez 60 milionów użytkowników miesięcznie. Aplikacja wiele razy nagradzana była za swoją funkcjonalność i użyteczność użytkownikom. Skyscanner znajduje się pod adresem: \url{https://www.skyscanner.net/}
 
@@ -287,7 +285,7 @@ Na swojej stronie internetowej na pierwszy rzut oka można zauważyć panel wysz
 
 
 \newpage
-\subsection{Wyszukiwarka lotów Google Flights}
+\section{Wyszukiwarka lotów Google Flights}
 
 
 

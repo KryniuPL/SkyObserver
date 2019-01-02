@@ -1,8 +1,8 @@
-\contentsline {section}{\numberline {0.1}Wst\IeC {\k e}p}{10}{section.0.1}
-\contentsline {section}{\numberline {0.2}Opis rozwi\IeC {\k a}zywanego zagadnienia}{12}{section.0.2}
-\contentsline {subsection}{\numberline {0.2.1}\IeC {\'Z}r\IeC {\'o}d\IeC {\l }a danych o po\IeC {\l }\IeC {\k a}czeniach lotniczych}{12}{subsection.0.2.1}
-\contentsline {subsection}{\numberline {0.2.2}Parsowanie r\IeC {\'o}\IeC {\.z}nych rodzaj\IeC {\'o}w danych}{13}{subsection.0.2.2}
-\contentsline {subsection}{\numberline {0.2.3}Wydajno\IeC {\'s}\IeC {\'c} wyszukiwania}{14}{subsection.0.2.3}
-\contentsline {section}{\numberline {0.3}Przegl\IeC {\k a}d istniej\IeC {\k a}cych rozwi\IeC {\k a}za\IeC {\'n}}{15}{section.0.3}
-\contentsline {subsection}{\numberline {0.3.1}Wyszukiwarka lot\IeC {\'o}w Skyscanner}{15}{subsection.0.3.1}
-\contentsline {subsection}{\numberline {0.3.2}Wyszukiwarka lot\IeC {\'o}w Google Flights}{17}{subsection.0.3.2}
+\contentsline {chapter}{Wst\IeC {\k e}p}{10}{chapter*.2}
+\contentsline {chapter}{\numberline {1}Opis rozwi\IeC {\k a}zywanego zagadnienia}{12}{chapter.1}
+\contentsline {section}{\numberline {1.1}\IeC {\'Z}r\IeC {\'o}d\IeC {\l }a danych o po\IeC {\l }\IeC {\k a}czeniach lotniczych}{12}{section.1.1}
+\contentsline {section}{\numberline {1.2}Parsowanie r\IeC {\'o}\IeC {\.z}nych rodzaj\IeC {\'o}w danych}{13}{section.1.2}
+\contentsline {section}{\numberline {1.3}Wydajno\IeC {\'s}\IeC {\'c} wyszukiwania}{14}{section.1.3}
+\contentsline {chapter}{\numberline {2}Przegl\IeC {\k a}d istniej\IeC {\k a}cych rozwi\IeC {\k a}za\IeC {\'n}}{15}{chapter.2}
+\contentsline {section}{\numberline {2.1}Wyszukiwarka lot\IeC {\'o}w Skyscanner}{15}{section.2.1}
+\contentsline {section}{\numberline {2.2}Wyszukiwarka lot\IeC {\'o}w Google Flights}{17}{section.2.2}

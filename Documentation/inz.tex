@@ -344,7 +344,7 @@ Do zrealizowania tej czynności posłużono się zewnętrzną biblioteką jackso
     private String totalTripTime;
     
     ...
-    
+
     }
 \end{lstlisting}
 Każde pole zostało oznaczone odpowiednią adnotacją biblioteki Jackson w celu poprawnej operacji parsowania.
@@ -354,16 +354,9 @@ Notacja JSON\footnote{JavaScript Object Notation} jest modernistycznym sposobem 
 \item Kolekcji par nazwa/wartość, w zależności od języka programowania zrealizowana jako obiekt, rekord, struktura, słownik bądź kolekcja
 \item Posortowana lista wartości. W większości języków zrealizowana jako tablica, wektor, lista lub sekwencja
 \end{itemize}
-Są to uniwersalne struktury danych. Wirtualnie wszystkie nowoczesne języki programowania wspierają je w specyficznej dla siebie formie. Notacja JSON jest to format danych, który jest wymienny z językami programowania. Ta właściwość czyni ją najpopularniejszym formatem wymiany danych między aplikacjami oraz mikroserwisami. 
-
-
-
-
-
-
+Są to uniwersalne struktury danych. Wirtualnie wszystkie nowoczesne języki programowania wspierają je w specyficznej dla siebie formie. Notacja JSON jest to format danych, który jest wymienny z językami programowania. Ta właściwość czyni ją najpopularniejszym formatem wymiany danych między aplikacjami oraz mikroserwisami. W stworzonej aplikacji dane w tym formacie dotyczyły liniach lotniczych oraz cen przelotów. W pierwszym przypadku obiekt JSON można było w prosty sposób skonwertować na obiekt języka Java. Przykładową strukturę zaprezentowano na listingu 1.2.3\\
+Kod odpowiedzialny za konwersję tego obiektu zostanie przedstawiony w rozdziale piątym.
 \newpage
-W tym formacie dostarczane były informacje o liniach lotniczych oraz o cenach lotów. Do sparsowania ich posłużono się biblioteką Gson firmy Google. W pierwszym przypadku konwersja obiektu JSON na obiekt 
-Dzięki niej konwersja obiektu JSON do obiektu Java odbywała się w jednej linii kodu. W ten sam sposób odbywało się parsowanie danych zawierających ceny przelotów.\\
 \begin{lstlisting}[language=JSON, caption= Przykładowy obiekt w notacji JSON]
    [
     {
@@ -382,7 +375,7 @@ Dzięki niej konwersja obiektu JSON do obiektu Java odbywała się w jednej lini
     }
 ]
 \end{lstlisting}
-
+\subsection{Język HTML}
 
 
 Ostatnim formatem danych który wymagał sparsowania był HTML (Hypertext Markup Language). Informacje przez niego opisane dotyczyły wymiarów oraz wagi bagażów dozwolonych na określonej linii lotniczej. Do wykonania tego zadania posłużyła zewnętrzna biblioteka Jsoup. Dedykowana dla języka Java, z gotowym pakietem oprogramowania bardzo dobrze poradziła sobie z parsowaniem treści HTML.
@@ -419,6 +412,9 @@ text
 text
 \newpage
 
+\chapter{Projekt aplikacji}
+test
+\newpage
 
 \begin{thebibliography}{9}
 

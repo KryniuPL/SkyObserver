@@ -4,8 +4,10 @@
 \BOOKMARK [1][-]{section.1.2}{Parsowanie r\363znych rodzaj\363w danych}{chapter.1}% 4
 \BOOKMARK [2][-]{subsection.1.2.1}{Jezyk znacznik\363w XML}{section.1.2}% 5
 \BOOKMARK [2][-]{subsection.1.2.2}{Notacja JSON}{section.1.2}% 6
-\BOOKMARK [1][-]{section.1.3}{Wydajnosc wyszukiwania}{chapter.1}% 7
-\BOOKMARK [0][-]{chapter.2}{Przeglad istniejacych rozwiazan}{}% 8
-\BOOKMARK [1][-]{section.2.1}{Wyszukiwarka lot\363w Skyscanner}{chapter.2}% 9
-\BOOKMARK [1][-]{section.2.2}{Wyszukiwarka lot\363w Google Flights}{chapter.2}% 10
-\BOOKMARK [1][-]{section.2.3}{Por\363wnanie aplikacji}{chapter.2}% 11
+\BOOKMARK [2][-]{subsection.1.2.3}{Jezyk HTML}{section.1.2}% 7
+\BOOKMARK [1][-]{section.1.3}{Wydajnosc wyszukiwania}{chapter.1}% 8
+\BOOKMARK [0][-]{chapter.2}{Przeglad istniejacych rozwiazan}{}% 9
+\BOOKMARK [1][-]{section.2.1}{Wyszukiwarka lot\363w Skyscanner}{chapter.2}% 10
+\BOOKMARK [1][-]{section.2.2}{Wyszukiwarka lot\363w Google Flights}{chapter.2}% 11
+\BOOKMARK [1][-]{section.2.3}{Por\363wnanie aplikacji}{chapter.2}% 12
+\BOOKMARK [0][-]{chapter.3}{Projekt aplikacji}{}% 13

@@ -16,12 +16,6 @@
             FLSDestinationName="London Heathrow"
             FLSStartDate="2018-11-15"
             FLSEndDate="2018-11-15"
-
-            FLSResultCount="5"
-            FLSRoutesFound="14"
-            FLSBranchCount="1"
-            FLSTargetCount="88"
-            FLSRecordCount="7761"
     />
 
     <FlightDetails TotalFlightTime="PT3H00M"

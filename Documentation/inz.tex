@@ -230,14 +230,23 @@ Dodatkowymi źródłami danych były:
 \begin{itemize}[noitemsep,topsep=0pt]
 \item Skyscanner - serwis udostępniające średnie ceny przelotów w określonym przedziale czasowym oraz informacje dotyczące dozwolonego bagażu
 \item Aviation Edge - usługa chmurowa udostępniające dane o liniach lotniczych 
-\item ourairport.com - strona internetowa umożliwiające pobranie danych o większości lotnisk na świecie
+\item ourairports.com - strona internetowa umożliwiające pobranie danych o większości lotnisk na świecie
 \end{itemize}
+
+Skyscanner jest komercyjną aplikacją zbierającą wiele rodzajów danych lotniczych. Jej szczegółowa funkcjonalność zostanie opisana w następnym rozdziale z przeglądem istniejących rozwiązań. W tej części pracy zostanie opisane użycie zasobów tego produktu. Zasoby Skyscanner'a dostarczyły danych o aktualnych cenach wyszukiwanych lotów oraz danych dotyczących dozwolonego bagażu podczas podróży. Ceny lotów zostały pobrane z serwisu RapidApi korzystającego wewnętrznie z zasobów aplikacji Skyscanner. Znajduje się on pod adresem sieciowym: \url{https://rapidapi.com/skyscanner/api/skyscanner-flight-search}.\\
+Użycie jego serwisów wymagało podania miejsca jak i daty wylotu oraz przylotu. Dodatkowym wymaganym parametrem był unikalny kod walutowy który umożliwiał zwrócenie poprawnych wyników. Oprócz cen przelotów Skyscanner posiada też stronę internetową z tabelą opisującą dozwolone wymiary oraz wagę bagażu podczas przelotu. Adres tej strony to: \url{www.skyscanner.net/news/tips/check-in-luggage-size-and-weight-restrictions}\\
+Zawartość tej strony jest parsowana przez część serwerową jednak to zagadnienie zostanie opisane szerzej w następnym podrozdziale.\\ \indent
+Kolejnym ważnym źródłem danych jest usługa chmurowa Aviation Edge. Serwis ten w prosty sposób udostępnia dane o liniach lotniczych wykorzystując do tego interfejs REST. Do użycia tej usługi wymagane było podanie unikalnego kodu linii lotniczej w celu jej zidentyfikowania oraz zwrócenia danych w postaci JSON. Aviation Edge jest bezpłatnym serwisem, do korzystania z jego zasobów wymagane jest tylko założenia konta w celu uzyskania klucza identyfikującego użytkownika. \\ \indent
+Ostatnim źródłem danych jest strona internetowa ourairport.com znajdująca się pod adresem internetowm: \url{http://ourairports.com/}. Jej zasobem który został wykorzystany jako źródło danych jest plik csv zawierający ponad 50000 rekordów lotnisk. Zawiera dane z szerokiego przekroju typów lotnisk począwszy od małych lotnisk dla awionetek aż po największe lotniska świata takie jak London Heathrow Airport. Dane te zabrane są w całości w postaci pliku CSV który jest pobierany przez część serwerową. Poddawane są procesowi filtracji w celu wyeliminowania lotnisk obsługujących poniżej 4 tysięcy pasażerów rocznie.
+
+
+
+
 \newpage
 \section{Parsowanie różnych rodzajów danych}
-Dane dostarczone przez zewnętrzne serwisy prezentowały swoją treść w różnych formatach. Aby zebrać pełną odpowiedź serwera należało w pierwszym kroku sparsować pojedyncze elementy a następnie zbudować z nich obiekt języka Java. Parsowanie zaczynało się od odebrania danych z serwisu FlightLookup w postaci XML (eXtensible Markup Language). Do zrealizowania tej czynności posłużono się zewnętrzną biblioteką jackson-dataformat-xml która efektywnie przełożyła obiekty XML na odpowiedni obiekty Javy.
-%tutaj załączyć kod xml z odpowiedzą serwera FlightLookup
+Dane dostarczone przez zewnętrzne serwisy prezentowały swoją treść w różnych formatach. Aby zebrać pełną odpowiedź serwera należało w pierwszym kroku sparsować pojedyncze elementy a następnie zbudować z nich obiekt języka Java. Parsowanie zaczynało się od odebrania danych z serwisu FlightLookup w postaci XML\footnote{eXtensible Markup Language}. Do zrealizowania tej czynności posłużono się zewnętrzną biblioteką jackson-dataformat-xml która efektywnie przełożyła obiekty XML na odpowiedni obiekty języka Java.
 
-\begin{lstlisting}[language=XML, caption=Przykładowe dane w XML]
+\begin{lstlisting}[language=XML, caption=Przykładowe dane w formacie XML]
     <FlightDetails TotalFlightTime="PT3H35M"
                    TotalMiles="931"
                    TotalTripTime="PT4H25M"

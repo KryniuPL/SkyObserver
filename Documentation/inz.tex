@@ -115,6 +115,30 @@
   numberstyle=\color{gray}
 }
 
+\lstdefinelanguage{HTML5}{
+    sensitive=true,
+    keywords={%
+    % JavaScript
+    typeof, new, true, false, catch, function, return, null, catch, switch, var, if, in, while, do, else, case, break,
+    % HTML
+    html, title, meta, style, head, body, script, canvas,
+    % CSS
+    border:, transform:, -moz-transform:, transition-duration:, transition-property:,
+    transition-timing-function:
+    },
+    % http://texblog.org/tag/otherkeywords/
+    otherkeywords={<, >, \/},   
+    ndkeywords={class, export, boolean, throw, implements, import, this},   
+    comment=[l]{//},
+    % morecomment=[s][keywordstyle]{<}{>},  
+    morecomment=[s]{/*}{*/},
+    morecomment=[s]{<!}{>},
+    morestring=[b]',
+    morestring=[b]",    
+    alsoletter={-},
+    alsodigit={:}
+}
+
 \lstdefinelanguage{JSON}{%
     numbers=left,
     showstringspaces=true,
@@ -309,8 +333,7 @@ Ostatnim źródłem danych jest strona internetowa ourairport.com znajdująca si
 
 Dane dostarczone przez zewnętrzne serwisy prezentowały swoją treść w różnych formatach. Aby zebrać pełną odpowiedź serwera należało w pierwszym kroku sparsować pojedyncze elementy a następnie zbudować z nich obiekt języka Java.
 \subsection{Język znaczników XML}
-Parsowanie zaczynało się od odebrania danych z serwisu FlightLookup w postaci XML\footnote{eXtensible Markup Language}. Jest to najważniejsza operacja podczas procesu wyszukiwania połączeń lotniczych. Dane zebrane w tej części są parametrami wyszukiwania podczas korzystania z dalszych źródeł danych.
-Do zrealizowania tej czynności posłużono się zewnętrzną biblioteką jackson-dataformat-xml która efektywnie przełożyła obiekty XML na odpowiedni obiekty języka Java. Załączony poniżej obrazek przedstawia jeden z elementów danych XML o nazwie \textit{FlightDetails}. Zawiera on przykładowe pola takie jak: \textit{TotalMiles} czy \textit{FLSFlightDays}. Elementy te zostały odwzorowane w postaci klas języka Java o takich samych nazwach jak nazwa elementu. Powstała klasa posiada też takie same pola jak obiekt w XML.\\Przykładowa implementacja ukazana jest na listingu 1.2.2
+XML\footnote{eXtensible Markup Language} to standard oznaczeń popierany przez W3C. Definiuje on ogólną składnię, stosowaną przy oznaczaniu danych za pomocą prostych znaczników.\cite{xml} Ponadto oferuje standardowy format dokumentów komputerowych. Format ten można dostosowywać do dziedzin tak odmiennych jak witryny WWW, wymiana danych elektronicznych, grafika wektorowa, serializacja obiektów czy systemy poczty głosowej. Dane w dokumentach XML są zapisywane w postaci ciągów tekstowych, zawartych w oznaczeniu tekstowym opisującym te dane. Poszczególne jednostki danych i oznaczenia nazywane są elementami. Specyfikacja XML określa, jakie wymogi składniowe musi spełniać takie oznaczenie: w jaki sposób elementy są rozgraniczane przez znaczniki, jak wygląda znacznik, jakie nazwy elementów są akceptowanie, gdzie trzeba umieszczać atrybuty i tak dalej. Oznaczenia dokumentu XML są bardzo podobne do oznaczać dokumentów HTML, choć występują między nimi pewne różnice.
 
 \begin{lstlisting}[language=XML, caption=Fragment danych w formacie XML]
     <FlightDetails TotalFlightTime="PT3H35M"
@@ -331,23 +354,11 @@ Do zrealizowania tej czynności posłużono się zewnętrzną biblioteką jackso
     >
 \end{lstlisting}
 \newpage
-\begin{lstlisting}[language=java, caption=Fragment odwzorowanego obiektu XML w postaci klasy Java]
-   public class FlightDetails {
+XML jest wyłącznie językiem znaczników, nie jest on ani językiem programowania, protokołem transportu sieciowego czy też bazą danych. XML oferuje możliwość formatowania danych, zapewnia to ich prawdziwą wieloplatformowość i odporność na upływ czasu. Dotychczas dokument zapisany za pomocą jakiegoś oprogramowania na jednej platformie nie dawał się odczytywać na innej platformie ani na zbliżonej platformie za pomocą innego rodzaju oprogramowania. 
 
-    @JacksonXmlProperty(localName = "TotalFlightTime", isAttribute = true)
-    private String totalFlightTime;
+Wyszukiwanie informacji o połączeniach lotniczych zaczynało się od odebrania danych z serwisu FlightLookup w postaci XML. Jest to najważniejsza operacja podczas procesu wyszukiwania połączeń lotniczych. Dane zebrane w tej części są parametrami wyszukiwania podczas korzystania z dalszych źródeł danych. Przykład odebranej treści znajduje się na listingu 1.2.1 załączonym na poprzedniej stronie.
 
-    @JacksonXmlProperty(localName = "TotalMiles", isAttribute = true)
-    private String totalMiles;
-
-    @JacksonXmlProperty(localName = "TotalTripTime", isAttribute = true)
-    private String totalTripTime;
-    
-    ...
-
-    }
-\end{lstlisting}
-Każde pole zostało oznaczone odpowiednią adnotacją biblioteki Jackson w celu poprawnej operacji parsowania.
+Operacja parsowania obiektów XML na obiekty języka Java zostanie szerzej opisana w rodziale o implementacji. Załączony listing 1.2.1 przedstawia jeden z elementów danych XML o nazwie \textit{FlightDetails}. Zawiera on przykładowe pola takie jak: \textit{TotalMiles} czy \textit{FLSFlightDays}. Elementy te zostały odwzorowane w postaci klas języka Java o takich samych nazwach jak nazwa elementu. Powstała klasa posiada też takie same pola jak obiekt w XML.
 \subsection{Notacja JSON}
 Notacja JSON\footnote{JavaScript Object Notation} jest modernistycznym sposobem prezentacji danych. Wywodzi się ona z języka JavaScript gdzie została głównym formatem prezentacji obiektów tej technologii. Notacja Json jest zbudowana na dwóch strukturach\cite{json}:
 \begin{itemize}[noitemsep,topsep=0pt]
@@ -376,14 +387,28 @@ Kod odpowiedzialny za konwersję tego obiektu zostanie przedstawiony w rozdziale
 ]
 \end{lstlisting}
 \subsection{Język HTML}
+HTML\footnote{Hypertext Markup Language} jest standardowym językiem znaczników dla tworzenia stron internetowych\cite{html}. Dokumenty HTML są podstawową treścią jaką generują przeglądarki internetowe. W pracy dyplomowej źródłem danych o wymiarach i wadze dozwolonych bagaży była strona internetowa aplikacji Skyscanner. Poniżej przedstawiono fragment danych zapisanych w formacie HTML które posłużyły do celów pracy.
+\begin{lstlisting}[language=HTML5, caption= Fragment dokumentu HTML]
+<table class="tftable" style="height: 3990px" border="1" width="578">
+<tbody>
+<td><a href="https://www.skyscanner.net/news/tips/aer-lingus-baggage-allowance-explained/">Aer Lingus</a></td>
+<td>No free allowance</td>
+<td>No size restriction
+<p>&nbsp;</p>
+<p><strong>32kg</strong> per bag, or<br>40kg across 2 bags</p>
+</td>
+</tr>
+<tr>
+\end{lstlisting}
 
-
-Ostatnim formatem danych który wymagał sparsowania był HTML (Hypertext Markup Language). Informacje przez niego opisane dotyczyły wymiarów oraz wagi bagażów dozwolonych na określonej linii lotniczej. Do wykonania tego zadania posłużyła zewnętrzna biblioteka Jsoup. Dedykowana dla języka Java, z gotowym pakietem oprogramowania bardzo dobrze poradziła sobie z parsowaniem treści HTML.
 \newpage
 \section{Wydajność wyszukiwania}
-Wyszukiwanie tak złożonych jak informacje o połączeniach lotniczych a następnie parsowanie ich niesie za sobą pewne konsekwencje. Są to konsekwencje czasownik, użytkownik powinien otrzymać interesującą go treść w czasie jak najkrótszym. W celu optymalizacji wydajności aplikacji wprowadzono mechanizmy skracające czas odpowiedzi części serwerowej. Dla zbierania danych dotyczących lotnisk oraz bagażów wprowadzono rozwiązania polegające na pobieraniu pełnych zasobów tych danów do bazy danych lub do pliku znajdującego się na serwerze. Pozwoliło to na pominięcie opóźnienia sieciowego związanego z potencjalną koniecznością pobierania tych danych ze stron lub zewnętrznych baz danych. \\
-Kolejnym rozwiązaniem było wprowadzenia stylu programowania funkcyjnego w kluczowych elementach części serwerowej które odpowiadały za wyszukiwanie połączeń lotniczych. Programowanie funkcyjne wprowadzone w Javie 8 pozwala skrócić operacje po stronie wirtualnej maszyny Javy a więc też zaoszczędzić cenne milisekundy w trakcie wyszukiwania lotów.
-Ostatnim mechanizmem był moduł cachowania danych. Jego przeznaczeniem jest skracanie czasu odpowiedzi dla określonych zapytań do części serwerowej które są zwielokrotnione i wywoływane przez wielu użytkowników. Wykonując operacje wyszukiwania lotów, moduł wyszukiwania sprawdza czy w cache'u znajdują się poszukiwanie operacje. Jeśli tak zwraca je użytkownikowi, jeśli nie wyszukuje loty standardowym sposobem a wynik zapisuje do cache'u. Cache przetrzymuje w sobie do 100 zapytań.
+Wyszukiwanie tak złożonych jak informacje o połączeniach lotniczych a następnie parsowanie ich niesie za sobą pewne konsekwencje. Są to konsekwencje czasownik, użytkownik powinien otrzymać interesującą go treść w czasie jak najkrótszym. W celu optymalizacji wydajności aplikacji wprowadzono mechanizmy skracające czas odpowiedzi części serwerowej.
+Dla zbierania danych dotyczących lotnisk oraz bagażów wprowadzono rozwiązania polegające na pobieraniu pełnych zasobów tych danów do bazy danych lub do pliku znajdującego się na serwerze. Pozwoliło to na pominięcie opóźnienia sieciowego związanego z potencjalną koniecznością pobierania tych danych ze stron lub zewnętrznych baz danych.\\ \indent
+Kolejnym rozwiązaniem było wprowadzenia stylu programowania funkcyjnego w kluczowych elementach części serwerowej które odpowiadały za wyszukiwanie połączeń lotniczych.  Programowanie funkcyjne wprowadzone w Javie 8 pozwala skrócić operacje po stronie wirtualnej maszyny Javy a więc też zaoszczędzić cenne milisekundy w trakcie wyszukiwania lotów.
+Implementacje tych rozwiązań znajdują się w rodziale Implementacja.\\ \indent
+Ostatnim mechanizmem był rozwiązanie cachowania danych. Caching jest mechanizmem przyspieszającym działanie aplikacji oraz zwiększającym ogólną wydajność. Część danych która jest gromadzona w aplikacji o długich czasach dostępu i niższej przepustowości jest dodatkowo przechowywana w pamięci RAM o lepszych parametrach\cite{ehcache}. Pamięć RAM inaczej nazywana jest też pamięcią podręczną jest podstawą wszystkich nowoczesnych systemów informatycznych. Odczytywanie danych z tej pamięci jest najszybsze porównując go na przykład z odczytywaniem z dokumentów XML, JSON, bazy danych czy też zasobów sieciowych.Jego przeznaczeniem jest skracanie czasu odpowiedzi dla określonych zapytań do części serwerowej które są zwielokrotnione i wywoływane przez wielu użytkowników. Wykonując operacje wyszukiwania lotów, moduł wyszukiwania sprawdza czy w cache'u znajdują się poszukiwanie operacje. Jeśli tak zwraca je użytkownikowi, jeśli nie wyszukuje loty standardowym sposobem a wynik zapisuje do cache'u. Dla danych o liniach lotniczych, bagażach oraz dla całego obiektu lotu w części serwerowej stworzono 3 kontenery cache'u. Czas przetrzymywanie danych w tych kontenerach wynosi odpowiednio: 7 dni, 3 dni oraz 3 godziny. Przy wyborze informacji które powinny znaleźć się w pamięci podręcznej sugerowano się temperaturą danych. Trzy wcześniej wymienione zasoby oceniono z największym prawdopodobieństem na ich użycie przez użytkowników aplikacji.
+Jednostki te wybrano uwzględniając wrażliwość tych danych na ciągłe zmiany w systemach lotniczych. Implementacja tych mechanizmów wraz z kodem źródłowym znajduje się w rodziale czwartym.
 \newpage
 \chapter{Przegląd istniejących rozwiązań}
 Analiza istniejących rozwiązań aplikacji wyszukujących połączeń lotniczych pozwoliła nadać pracy bardziej precyzyjne wymagania oraz zaprojektować jej ogólny przebieg. W internecie można znaleźć wiele aplikacji o podobnych lub takich samych funkcjonalnościach jak tworzona praca. W tym rodziale zostaną opisane najbardziej znane wyszukiwarki lotów dostępnych na rynku. 
@@ -391,13 +416,7 @@ Analiza istniejących rozwiązań aplikacji wyszukujących połączeń lotniczyc
 Pierwszym przykładem została aplikacja internetowa Skyscanner. Jest to wyszukiwarka lotów, która umożliwia użytkownikom szukanie lotów według ceny i lokalizacji. Oprócz funkcji wyszukiwania lotów, Skyscanner oferuje opcje wyszukiwania hotelów blisko lotnisk oraz wypożyczenia auta w pobliżu lotniska docelowego. Aplikacja ta została stworzona oraz wdrożona w 2002 roku. Od tego czasu firma Ctrip która jest właścicielem tego produktu zatrudnia ponad 200 pracowników. Warto wspomnieć o jej innej usłudze która udostępnia dane o połączeniach lotniczym zewnętrznym firmom i deweloperom. Jej dane były brane pod uwagę w czasie szukania źródeł danych lecz Skyscanner wymaga dużych opłat za swoje usługi, w warunkach akademickich niemożliwe było z ich skorzystanie.
  Aplikacja ta jest dostępna w ponad 30 językach oraz używana przez 60 milionów użytkowników miesięcznie. Aplikacja wiele razy nagradzana była za swoją funkcjonalność i użyteczność użytkownikom. Skyscanner znajduje się pod adresem: \url{https://www.skyscanner.net/}
 
-\vspace{1.0cm}
-\begin{figure}[!ht]
-\centering
-\includegraphics[scale=0.4, keepaspectratio]{skyscanner.png}
-\caption{Logo aplikacji Skyscanner}
-\label{fig:skyscanner}
-\end{figure}
+
 
  
 \newpage
@@ -417,12 +436,18 @@ test
 \newpage
 
 \begin{thebibliography}{9}
+\bibitem{xml}
+XML. Almanach, Elliotte Rusty Harold, W.Scott Means, Wydawnictwo O'REILLY
 
 \bibitem{json}
   \url{https://www.json.org/} \\
   Stan na dzień 03.01.2019
 
-  
+\bibitem{html}
+	\url{https://en.wikipedia.org/wiki/HTML} \\
+	Stan na dzień 04.01.2019
+\bibitem{ehcache}
+Instant Effective Caching with Ehcache, Daniel Wind, Packt Publishing
 \end{thebibliography}
 
 

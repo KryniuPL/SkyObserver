@@ -9,5 +9,5 @@
 \contentsline {chapter}{\numberline {2}Przegl\IeC {\k a}d istniej\IeC {\k a}cych rozwi\IeC {\k a}za\IeC {\'n}}{17}{chapter.2}
 \contentsline {section}{\numberline {2.1}Wyszukiwarka lot\IeC {\'o}w Skyscanner}{17}{section.2.1}
 \contentsline {section}{\numberline {2.2}Wyszukiwarka lot\IeC {\'o}w Google Flights}{19}{section.2.2}
-\contentsline {section}{\numberline {2.3}Por\IeC {\'o}wnanie aplikacji}{20}{section.2.3}
-\contentsline {chapter}{\numberline {3}Projekt aplikacji}{21}{chapter.3}
+\contentsline {section}{\numberline {2.3}Por\IeC {\'o}wnanie aplikacji}{21}{section.2.3}
+\contentsline {chapter}{\numberline {3}Projekt aplikacji}{22}{chapter.3}

@@ -418,9 +418,6 @@ Aplikacja ta jest dostępna w ponad 30 językach oraz używana przez 60 milionó
 \url{https://www.skyscanner.net/}.\\ \indent
 Opisywana aplikacja ma dla swoich użytkowników szereg przydatnych funkcjonalności. Korzystające z jej osoby mogą korzystać z kompleksowego modułu wyszukiwania połączeń lotniczych. W panelu wyboru parametrów lotów można wybrać lotnisko wylotu, lotnisko docelowe jak i daty wylotu. Skyscanner oferuje wyszukiwanie lotów na 3 sposoby: lot powrotny, lot w jedną stronę oraz podróż wieloetapowa. Dodatkowo użytkownik jest w stanie sprecyzować liczbę osób podczas podróży jak i klasę biletu lotniczego. Ciekawą funkcjonalnością jest możliwość dodanie pobliskich lotnisk do tych wybranych przez użytkownika. Znajduje ona zastosowanie gdy na przykład aplikacja nie może znaleźć lotów z wybranego lotniska, następuje wtedy wyszukiwanie lotów z pobliskich lotnisk o zadanym promieniu odległości.
 Oprócz bogatego interfejsu do wyboru parametrów lotów Skyscanner oferuje bardzo dobrą wydajność podczas wyszukiwania. Loty bezpośrednie wyszukiwane są natychmiastowo. Na loty z zaznaczoną z przesiadkami trzeba poczekać kilka sekund. Interfejs aplikacji Skyscanner zostanie zaprezentowany na następnej stronie.
-
-
- 
 \newpage
 \begin{figure}[!ht]
 \centering
@@ -428,11 +425,53 @@ Oprócz bogatego interfejsu do wyboru parametrów lotów Skyscanner oferuje bard
 \caption{Panel wyszukiwania lotów aplikacji Skyscanner}
 \label{fig:skyscanner_main}
 \end{figure}
+Po wybraniu odpowiednich parametrów należy nacisnąć zielony przycisk po prawej aby rozpocząć 
+proces wyszukiwania lotów. Jego przykładowe wyniki zaprezentowano na rysunku 2.1.2, można na nim zauważyć wyszukane loty z dokładnymi informacjami o linii lotniczej obsługującej lot, miejsca wylotu oraz przylotu, czasie podróży jak i liczbie przesiadek. Z lewej strony dostępny jest panel dzięki któremu można dokonać różnego rodzaju filtracji na otrzymanych wynikach.
+\begin{figure}[!ht]
+\centering
+\includegraphics[scale=0.45, keepaspectratio]{skyscanner_result.png}
+\caption{Wyniki wyszukiwania lotów aplikacji Skyscanner}
+\label{fig:skyscanner_result}
+\end{figure}
 
 
 \newpage
+Warto zwrócić uwagę na panel podróży wieloetapowej który jest dostępny po kliknięciu  odpowiedniego przycisku powyżej pola do wyboru lotniska wylotowego. Można w nim wybrać do siedmiu osobnych połączeń lotniczych i na ich podstawie zaplanować swoją podróż. Każde z tych połączeń jest domyślnie połączeniem w jedną stronę. 
+\begin{figure}[!ht]
+\centering
+\includegraphics[scale=0.50, keepaspectratio]{skyscanner_multi.png}
+\caption{Komponent podróży wieloetapowej}
+\label{fig:skyscanner_multi}
+\end{figure}
+
 \section{Wyszukiwarka lotów Google Flights}
-text
+Kolejnym przedstawianym rozwiązaniem jest aplikacja internetowa Google Flights firmy Google. Jest to jeden z głównych internetowych produktów giganta Google, w pełni integruje się z innymi usługami tej firmy co czyni go bardzo praktycznym systemem. Google Flights zostało wdrożone 13 października 2011 roku. Ma zbliżone funkcjonalności do wcześniej opisywanego konkurenta Skyscanner. Oferuje jednak pewne innowacje. Pozwala użytkownikowi na wyszukiwanie lotów określając okres czasowy go interesujący oraz budżet na jaki pozwala jego portfel. Największą zaletą tej aplikacji jest jej szybkość. Dzięki spokrewnieniu z silnikiem Google Search szybkość wyszukiwania połączeń lotniczych jest bezkonkurencyjna na rynku wyszukiwarek lotów. Szybkość ta została uzyskana przez użycie wyspecjalizowanych algorytmów szukających firmy Google oraz specjalnemu indeksowaniu danych.
+Oprócz samej funkcjonalności aplikacja prezentuje czytelny i resposywny interfejs który zyskał aprobatę ze strony użytkowników.
+
+
+\begin{figure}[!ht]
+\centering
+\includegraphics[scale=0.50, keepaspectratio]{google_flights_search_panel.png}
+\caption{Panel wyszukiwania lotów aplikacji Google Flights}
+\label{fig:google_flights_search_panel}
+\end{figure}
+Na rysunku 2.2.1 przedstawiono panel wyszukiwania lotów oferowany przez opisywaną aplikację. Dostępny jest też komponent podróży wieloetapowej który znalazł się też w poprzednio opisywanej aplikacji oraz w części praktycznej tej pracy.
+
+\begin{figure}[!ht]
+\centering
+\includegraphics[scale=0.60, keepaspectratio]{google_flights_multi.png}
+\caption{Komponent podróży wieloetapowej aplikacji Google Flights}
+\label{fig:google_flights_multi}
+\end{figure}
+Wszystkie produkty firmy Google które można zobaczyć w przeglądarce internetowej charakteryzują się specyficznym stylem interfejsu. Jest to platforma Material Design która wyznacza specyfikację pojedynczych elementów aplikacji Google'a. Rysunek 2.2.3 przedstawia przykładowe wyniki wyszukiwania lotów. Wyszukane loty znajduje się rozwijanej liście. Po kliknięciu w wybrany element listy rozwija się panel z dokładniejszymi informacjami o locie. Każdy element zaprezentowany na poniższym rysunku jest zgodny z wcześniej wspomnianą platformą Material Design. Widać na przykład zaokręglenia przycisków charakterystyczne dla produktów marki Google.
+ 
+\begin{figure}[!ht]
+\centering
+\includegraphics[scale=0.50, keepaspectratio]{google_flights_result.png}
+\caption{Komponent podróży wieloetapowej aplikacji Google Flights}
+\label{fig:google_flights_multi}
+\end{figure}
+
 \newpage
 \section{Porównanie aplikacji}
 text

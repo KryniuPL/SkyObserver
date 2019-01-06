@@ -481,9 +481,54 @@ Wyszukiwarka Google Flights prezentuje się lepiej od aplikacji Skyscanner jedna
 \newpage
 
 \chapter{Projekt aplikacji}
-test
-\newpage
+Następnym krokiem po analizie zagadnienia oraz zaznajomieniem się z przykładami istniejących rozwiązań było opracowanie projektu aplikacji. Zadanie to jest mocno związane z dziedziną architektury oprogramowania. Dobrze zaprojektowany system pozwala na uniknięcie wielu kosztownych problemów w przyszłości. Projektowanie aplikacji wymusza na osobie to wykonującej dostatecznie wczesne rozważenia najważniejszych aspektów projektowania w odniesieniu do całego tworzonego systemu.\cite{architektura}Wynikiem zrealizowania zadań analitycznych są wymagania postawione tworzonemu systemowi. Wynikiem tych działań mogą być takie elementy jak model dziedziny, model wymagań czy model organizacyjny. No podstawie projektu aplikacji ukierunkowuje się zadania implementacyjne, łącznie z projektowaniem detalicznym, tworzeniem kodu, scalaniem oraz testowaniem.
 
+
+\section{Ogólna architektura aplikacji}
+Projektowanie aplikacji wymagało stworzenia czytelnego schematu obrazującego poszczególne części aplikacji oraz sposoby komunikacji między nimi.
+Aplikację można podzielić na 3 logiczne części: 
+\begin{itemize}[noitemsep,topsep=0pt]
+\item Część serwerowa
+\item Część kliencka
+\item Baza danych 
+\end{itemize}
+Każda część posiada unikalną dla siebie funkcjonalność. 
+Ze względu na rozmiar pracy włożony w każde z nich, w tym rozdziale zostaną one krótko opisane.
+Część serwerowa w całym systemie jest odpowiedzialna za dostarczenie danych do interfejsu użytkownika inaczej nazywanego częścią kliencką. Znajduje się w nim złożony moduł wyszukiwania połączeń lotniczych. Moduł ten sam w sobie posiada złożoną architekturę, zostanie mu poświęcony dedykowany podrozdział.
+Część kliencka to internetowy interfejs użytkownika. Osadzony jest on w przeglądarce internetowej. W aplikacji nie zdecydowano się na podział względem ról użytkownika. Wynika to z braku takiej potrzeby, każdy użytkownik ją odwiedzający posiada takie same uprawnienia do jej zasobów.
+Oprócz dwóch wspomnianych wcześniej modułów w skład architektury aplikacji wchodzi relacyjna baza danych która jest nośnikiem danych dla tabeli lotnisk.
+Kluczowym zagadnieniem jest komunikacja między powyższymi komponentami. W stworzonej aplikacji istnieje kilka rodzajów transportu danych między częściami aplikacji. Każdy z nich zostanie szczegółowo opisany w dalszej części tego rozdziału.
+
+
+\begin{figure}[!ht]
+\centering
+\includegraphics[scale=0.60, keepaspectratio]{architecure_diagram.png}
+\caption{Schemat architektury stworzonej aplikacji}
+\label{fig:architecure_diagram}
+\end{figure}
+
+\newpage
+Na rysunku 3.1.1 zamieszczony został schemat architektury stworzonego systemu. Przedstawia on rozdział strukturalny aplikacji oraz drogę jaką musi odbyć żądanie użytkownika w celu uzyskania pożądanej odpowiedzi. Użytkownik po wypełnieniu odpowiednich formularzy w części klienckiej rozpoczyna proces wyszukiwania połączeń lotniczych. Oprogramowanie klienta po pobraniu od użytkownika niezbędnych parametrów takich jak miejsce wylotu czy rodzaj lotu zwraca się do części serwerowej o wyszukanie lotów zgodnych z podanymi parametrami. Komunikacja między tymi modułami odbywa się protokołem HTTP. Po wywołaniu, część serwerowa zwraca się do modułu wyszukiwania lotów. Moduł ten sprawdza wszystkie źródła danych zamieszczone na schemacie 3.1.1 . Zebrane dane są odpowiednio parsowane i przekazywane modułowi wyszukiwania który z kolei zwraca je kontrolerowi wywołanemu przez użytkownika. Kontroler następnie przekazuje dane do części klienckiej która wyświetla je w  graficznym interfejsie użytkownika. 
+\section{Baza danych}
+Baza danych nie była sprecyzowana w wymaganiach pracy dyplomowej. Została ona użyta opcjonalnie jako miejsce dające szybki dostęp do danych o lotniskach. Użyto darmowego rozwiązania bazodanowego MySQL. MySQL to system zarządzania bazami danych rozwijany w przeszłości przez firmę MySQL AB, a obecnie przez korporację Oracle. Jest to szybki i obecnie jeden z popularniejszych serwerów baz danych dostępny na licencji GPL\footnote{General Public License} jak i w wersjach komercyjnych \cite{mysql}.
+
+\begin{figure}[!ht]
+\centering
+\includegraphics[scale=0.80, keepaspectratio]{database.png}
+\caption{Tabela danych o lotniskach}
+\label{fig:database}
+\end{figure}
+Jedyna tabela znajdująca się w bazie danych to tabela lotnisk z parametrami wskazanymi powyżej.
+
+\section{Część kliencka}
+
+\newpage
+\section{Część serwerowa}
+
+\newpage
+\section{Moduł wyszukiwania połączeń lotniczych}
+
+\newpage
 \chapter{Implementacja}
 test
 \newpage
@@ -501,8 +546,14 @@ XML. Almanach, Elliotte Rusty Harold, W.Scott Means, Wydawnictwo O'REILLY
 	Stan na dzień 04.01.2019
 \bibitem{ehcache}
 Instant Effective Caching with Ehcache, Daniel Wind, Packt Publishing
+
+
+\bibitem{architektura}
+tworzenie architektury oprogramowania, Christine Hofmeister, Robert Nord, Wydawnictwo Naukowo-Techniczne Warszawa
+
+\bibitem{mysql}
+MySQL Darmowa baza danych - Ćwiczenia praktyczne, Marcin Lis, Wydawnictwo Helion
+
+
 \end{thebibliography}
-
-
-
 \end{document}

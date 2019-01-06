@@ -11,4 +11,9 @@
 \BOOKMARK [1][-]{section.2.2}{Wyszukiwarka lot\363w Google Flights}{chapter.2}% 11
 \BOOKMARK [1][-]{section.2.3}{Por\363wnanie aplikacji}{chapter.2}% 12
 \BOOKMARK [0][-]{chapter.3}{Projekt aplikacji}{}% 13
-\BOOKMARK [0][-]{chapter.4}{Implementacja}{}% 14
+\BOOKMARK [1][-]{section.3.1}{Og\363lna architektura aplikacji}{chapter.3}% 14
+\BOOKMARK [1][-]{section.3.2}{Baza danych}{chapter.3}% 15
+\BOOKMARK [1][-]{section.3.3}{Czesc kliencka}{chapter.3}% 16
+\BOOKMARK [1][-]{section.3.4}{Czesc serwerowa}{chapter.3}% 17
+\BOOKMARK [1][-]{section.3.5}{Modu\233 wyszukiwania po\233aczen lotniczych}{chapter.3}% 18
+\BOOKMARK [0][-]{chapter.4}{Implementacja}{}% 19

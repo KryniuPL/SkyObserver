@@ -521,13 +521,36 @@ Baza danych nie była sprecyzowana w wymaganiach pracy dyplomowej. Została ona 
 Jedyna tabela znajdująca się w bazie danych to tabela lotnisk z parametrami wskazanymi powyżej.
 
 \section{Część kliencka}
-
+Aplikacja kliencka została zaimplementowana w technologii Angular 6, otwartym framework'u i platformie do tworzenia SPA\footnote{Single Page Application}. Angular został w całości napisany w języku TypeScript, opiekę nad jego rozwojem sprawuje firma Google. Platforma ta umożliwia tworzenia stron internetowych których treść jest dynamicznie zmieniana bez przeładowywania strony. Przynosi to ogromne korzyści w wydajności aplikacji. Całość kodu napisanego w tym framework'u jest kompilowana do języka JavaScript a następnie renderowana w przeglądarce internetowej. W skład stworzonej aplikacji klienckiej wchodzą dodatkowo dodane zewnętrzne biblioteki.\\ Są to: 
+\begin{itemize}[noitemsep,topsep=0pt]
+\item Material Design - pakiet oprogramowania od firmy Google do edytowania wyglądu strony
+\item MDBootstrap - zestaw narzędzi z gotowymi komponentami do tworzenia stron internetowych
+\item NgxSpinner - zewnętrzna biblioteka dodająca komponenty ładowania efektów wizualnych
+\item Bootstrap - pakiet oprogramowania do tworzenia responsywnego interfejsu
+\end{itemize}
+Implementacja częśći klienckiej jak i jej logiczny podział strukturalny znajdzie się w następnym rodziale.
 \newpage
 \section{Część serwerowa}
+Do opracowania aplikacji serwerowej posłużono się językiem programowania Java w wersji 11 oraz pakietami oprogramowania Spring oraz Hibernate. Java jest w pełni obiektowym językiem programowania z ponad 20 letnią historią. Pierwotnie stworzona i rozwijana przez James Goslinga została przejęta przez korporację Oracle. Głównym założeniem tego języka jest sentencja \textit{"Napisz raz, uruchom wszędzie"}. Te słowa przemawiają za specjalnym mechanizmem kompilowania i uruchamiania kodu przez Javę. Proces zaczyna się od skompilowania plików o rozszerzeniu java do bytecode'u czyli specjalnej sekwencji bajtów rozumianej przez różne systemy operacyjne. Następnym krokiem jest uruchomienie bytecode'u przez virtualną maszynę Javy nazywaną JVM\footnote{Java Virtual Machine}.\cite{jvm} \\ \indent
+Powstałe oprogramowanie serwerowe jest w dużej mierze oparte na zewnętrznych bibliotekach platformy Spring Framework w wersji 5. Spring jest otwartym źródłowo frameworkiem bazującym na wirtualnej maszynie Javy. Jest zbiorem bibliotek których głównym celem jest rozwiązanie popularnych problemów programistycznych. Został stworzony w roku 2002 jako kandydat do zastąpienia oprogramowania spod znaku JavyEE\footnote{Java Enterprise Edition}. W dzisiejszych czasach Spring jest rozwijany przez setki programistów z całego świata co czyni go stale nowoczesną technologią. W części serwerowej Sping Framework odpowiada za komunikację z bazą danych, udostępnienie danych o połączeniach lotniczych aplikacji klienckiej oraz za zabezpieczenia całej aplikacji. \\ \indent
+W części serwerowej w celu przyspieszenia prac programistycznych użyto szereg zewnętrznego oprogramowania. Należą do nich biblioteki:
+\begin{itemize}[noitemsep,topsep=0pt]
+\item okhttp - klient protokołu HTTP do pobierania zasobów internetowych
+\item gson - biblioteka do parsowania obiektów w notacji JSON
+\item jackson-dataformat-xml - biblioteka do parsowania języka znaczników XML
+\item jsoup - biblioteka do parsowania dokumentów HTML
+\item ehcache - oprogramowanie zarządzające danymi w pamięci podręcznej aplikacji
+\item commons-csv - biblioteka do parsowania plików CSV
+\item jaxb-api - biblioteka języka Java usunięta z głównej ścieżki modułowej w wersji JDK\footnote{Java Development Kit} 9  
+\end{itemize}
 
+W skład części serwerowej wchodzi też cały moduł wyszukiwania połączeń lotniczych. Ze względu na jego znaczenie zostanie mu poświęcony osobny podrozdział. Implementacja części serwerowej  zostanie zaprezentowana w następnym rozdziale.
 \newpage
 \section{Moduł wyszukiwania połączeń lotniczych}
 
+\newpage
+
+\section{Komunikacja między komponentami aplikacji}
 \newpage
 \chapter{Implementacja}
 test
@@ -554,6 +577,7 @@ tworzenie architektury oprogramowania, Christine Hofmeister, Robert Nord, Wydawn
 \bibitem{mysql}
 MySQL Darmowa baza danych - Ćwiczenia praktyczne, Marcin Lis, Wydawnictwo Helion
 
-
+\bibitem{jvm}
+Java Programming Basics, Simon Roberts, Addison-Wesley Professional
 \end{thebibliography}
 \end{document}

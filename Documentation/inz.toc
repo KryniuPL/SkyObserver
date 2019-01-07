@@ -17,4 +17,7 @@
 \contentsline {section}{\numberline {3.4}Cz\IeC {\k e}\IeC {\'s}\IeC {\'c} serwerowa}{25}{section.3.4}
 \contentsline {section}{\numberline {3.5}Modu\IeC {\l } wyszukiwania po\IeC {\l }\IeC {\k a}cze\IeC {\'n} lotniczych}{26}{section.3.5}
 \contentsline {section}{\numberline {3.6}Komunikacja mi\IeC {\k e}dzy komponentami aplikacji}{27}{section.3.6}
-\contentsline {chapter}{\numberline {4}Implementacja}{28}{chapter.4}
+\contentsline {subsection}{\numberline {3.6.1}HTTP}{27}{subsection.3.6.1}
+\contentsline {subsection}{\numberline {3.6.2}JDBC}{28}{subsection.3.6.2}
+\contentsline {subsection}{\numberline {3.6.3}I/O}{28}{subsection.3.6.3}
+\contentsline {chapter}{\numberline {4}Implementacja}{29}{chapter.4}

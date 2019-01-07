@@ -17,4 +17,7 @@
 \BOOKMARK [1][-]{section.3.4}{Czesc serwerowa}{chapter.3}% 17
 \BOOKMARK [1][-]{section.3.5}{Modu\233 wyszukiwania po\233aczen lotniczych}{chapter.3}% 18
 \BOOKMARK [1][-]{section.3.6}{Komunikacja miedzy komponentami aplikacji}{chapter.3}% 19
-\BOOKMARK [0][-]{chapter.4}{Implementacja}{}% 20
+\BOOKMARK [2][-]{subsection.3.6.1}{HTTP}{section.3.6}% 20
+\BOOKMARK [2][-]{subsection.3.6.2}{JDBC}{section.3.6}% 21
+\BOOKMARK [2][-]{subsection.3.6.3}{I/O}{section.3.6}% 22
+\BOOKMARK [0][-]{chapter.4}{Implementacja}{}% 23

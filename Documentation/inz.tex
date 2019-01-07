@@ -559,19 +559,32 @@ Rozwiązanie problemu wyszukiwania połączeń lotniczych było zadaniem trudnym
 Na rysunku 3.5.1 przedstawiono schemat zaprojektowanego modułu wyszukiwania połączeń lotniczych. Zobrazowano na nim przebieg procesu wyszukiwania z uwzględnieniem źródeł danych, sposobów ich uzyskania oraz rodzajów odpowiedzi. Górny opis strzałek oznacza metodę zwrócenia się o dane, natomiast dolna opisuje rodzaj zwróconej treści. Wyszukiwanie rozpoczynało się od wysłania żądania z kontrolera serwerowego do omawianego modułu. Żądanie to musiało uwzględniać w sobie parametry wyszukiwania. Moduł swoją pracę rozpoczyna od pozyskania danych lotniczych z serwisu FlightLookup. Treść odpowiedzi stanowi lwią część całego obiektu lotu który ma zostać zwrócony. Po otrzymaniu tych danych moduł zwraca się do lokalnej bazy danych o udostępnienie danych lotnisk podając przy tym ich unikalne kody IATA. Następnym krokiem jest pozyskanie cenu lotu. Czynność ta rozpoczyna się od sprawdzenia czy poszukiwana informacja nie znajduje się w cache'u. Jeśli takie dane są zwrócone, cache natychmiastowo zwraca odpowiedni zasób. Jeśli natomiast taka informacja nie jest dostępna, moduł zwraca się do serwisów firmy Skyscanner o udostępnienie cen na poszukiwany przelot. Analogiczna sytuacja dokonuje się w przypadku pozyskiwania danych o linii lotniczej obsługującej lot. Ostatnim etapem jest wyszukanie informacji o dozwolonym bagażu podczas lotu. Jest to zrealizowane przez zwrócenie się do strony internetowej aplikacji Skyscanner posiadającej aktualne i rzetelne dane. Jej adres został wspomniany w rodziale drugim. Po zebraniu wszystkich poszukiwanych informacji oraz sparsowaniu ich, obiekt lotu zwracany jest przez moduł wyszukiwania do kontrolera a następnie do części klienckiej gdzie użytkownik może obejrzeć wyniki całego procesu wyszukiwania.
 \section{Komunikacja między komponentami aplikacji}
 Opisane we wcześniejszych podrozdziałach komponenty narzucały sposoby komunikacji między nimi. Każde z nich zostanie w tym podrozdziale stosownie przedstawione. 
-\subsection{HTTP}
+\subsection{Protokół HTTP}
 Protokół HTTP\footnote{Hypertext Transfer Protocol} to jeden z najpopularniejszych i powszechnie przyjętych protokołów aplikacji w świecie internetu. Jest to wspólny język między serwerami a klientami umożliwiający modernistyczną sieć. Od prostego początku jako pojedynczego słowa i ścieżki dokumentu stał się protokołem nie tylko dla przeglądarek internetowych ale praktycznie też dla każdego oprogramowania i aplikacji sprzętowych\cite{http}. Cechą protokołu HTTP jest pisanie i negocjowanie reprezentacji danych, co umożliwia budowę systemów niezależnych od przesyłanych danych.
  Początkowo protokół ten powstał z oznaczeniem wersji 0.9. Jest to obecnie dość stara wersja, używana jednak jeszcze przez niektóre serwery. HTTP 0.9 zostało podniesione do wersji 1.1 który jest najczęściej wykorzystywanym protokołem w internecie. Standard HTTP/1.1 rozwiązał wiele niejednoznaczności protokołu, które znaleziono we wcześniejszych wersjach i wdrożył szereg kluczowych optymalizacji wydajnościowych, dodatkowe mechanizmy buforowania oraz enkrypcję transferu. Jako odpowiedż na ciągle zwiekszajacą się liczbę urządzeń podłączonych do internetu oraz wymagnia wobec niego, w 2012 roku zainicjowano protokół HTTP/2. Głównym jego celem jest poprawa wydajności transportu i osiągnięcie zarówno mniejszych opóźnień i wyższej przepustowości.
 \subsection{JDBC}
-JDBC\footnote{Java Database Connectivity} to standardowy, niezależny od bazy danych interfejs do interakcji z dowolnym źródłem danych opartym na tabelaryczności. Przeważnie jest używany do współdziałania z relacyjnym systemem zarządzania bazami danych.
+JDBC\footnote{Java Database Connectivity} to standardowy, niezależny od bazy danych interfejs do interakcji z dowolnym źródłem danych opartym na tabelaryczności. Przeważnie jest używany do współdziałania z relacyjnym systemem zarządzania bazami danych. Za pomocą tego interfejsu można też korzystać z dowolnego tabelarycznego źródła danych, takiego jak arkusz csv, plik tekstowy itd. Zazwyczaj używa się go do łączenia z bazą danych, wyszukiwania danych i ich aktualizowania. Umożliwia także wykonywanie procedur SQL w bazie danych przy użyciu składniej niezależnej od bazy danych.\cite{jdbc} Używanie JDBC zwalnia użytkownika z konieczności uczenia się nowej składni za każdym razem pracy na innej bazie danych. JDBC dostarcza zestaw oprogramowania w języku Java do przetwarzania zestawu wyników zapytań SQL w sposób niezależny od bazy danych. W opracowanej aplikacji interfejs JDBC pośredniczył pomiędzy relacyjną bazą danych MySQL a częścią serwerową aplikacji.
 \subsection{I/O}
 test
 
 \newpage
 \chapter{Implementacja}
 test
+
+\section{Oprogramowanie po stronie klienta}
+test
 \newpage
 
+\section{Oprogramowanie po stronie serwera}
+test
+\newpage
+
+\chapter{Testy}
+test
+\newpage
+
+\chapter{Uwagi i wnioski}
+test
 \begin{thebibliography}{9}
 \bibitem{xml}
 XML. Almanach, Elliotte Rusty Harold, W.Scott Means, Wydawnictwo O'REILLY
@@ -598,5 +611,8 @@ Java Programming Basics, Simon Roberts, Addison-Wesley Professional
 
 \bibitem{http}
 HTTP Protocols, Ilya Grigorik, wydawnictwo O'REILLY
+
+\bibitem{jdbc}
+Beginning Java 8 APIs, Extensions and Libraries Swing, JavaFX, JavaScript, JDBC and Network Programming APIs, Altamash Shaikh
 \end{thebibliography}
 \end{document}

@@ -89,8 +89,6 @@ export class SearchPanelComponent implements OnInit {
       monthInString = "0" + month.toString();
     }
     else monthInString = month.toString();
-
-    console.log(year.toString() + monthInString + dayInString);
     return year.toString() + monthInString + dayInString;
   }
 

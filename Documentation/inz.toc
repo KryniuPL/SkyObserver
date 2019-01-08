@@ -22,6 +22,7 @@
 \contentsline {subsection}{\numberline {3.6.3}I/O}{28}{subsection.3.6.3}
 \contentsline {chapter}{\numberline {4}Implementacja}{29}{chapter.4}
 \contentsline {section}{\numberline {4.1}Oprogramowanie po stronie klienta}{29}{section.4.1}
+\contentsline {subsection}{\numberline {4.1.1}Podzia\IeC {\l } strukturalny}{29}{subsection.4.1.1}
 \contentsline {section}{\numberline {4.2}Oprogramowanie po stronie serwera}{30}{section.4.2}
 \contentsline {chapter}{\numberline {5}Testy}{31}{chapter.5}
 \contentsline {chapter}{\numberline {6}Uwagi i wnioski}{32}{chapter.6}

@@ -22,6 +22,7 @@
 \BOOKMARK [2][-]{subsection.3.6.3}{I/O}{section.3.6}% 22
 \BOOKMARK [0][-]{chapter.4}{Implementacja}{}% 23
 \BOOKMARK [1][-]{section.4.1}{Oprogramowanie po stronie klienta}{chapter.4}% 24
-\BOOKMARK [1][-]{section.4.2}{Oprogramowanie po stronie serwera}{chapter.4}% 25
-\BOOKMARK [0][-]{chapter.5}{Testy}{}% 26
-\BOOKMARK [0][-]{chapter.6}{Uwagi i wnioski}{}% 27
+\BOOKMARK [2][-]{subsection.4.1.1}{Podzia\233 strukturalny}{section.4.1}% 25
+\BOOKMARK [1][-]{section.4.2}{Oprogramowanie po stronie serwera}{chapter.4}% 26
+\BOOKMARK [0][-]{chapter.5}{Testy}{}% 27
+\BOOKMARK [0][-]{chapter.6}{Uwagi i wnioski}{}% 28

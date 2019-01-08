@@ -13,7 +13,7 @@ public class FlightDetails {
     private String totalMiles;
 
     @JacksonXmlProperty(localName = "TotalTripTime", isAttribute = true)
-    private String totalTripTime;l
+    private String totalTripTime;
 
     @JacksonXmlProperty(localName = "FLSDepartureDateTime", isAttribute = true)
     private String flsDepartureDateTime;

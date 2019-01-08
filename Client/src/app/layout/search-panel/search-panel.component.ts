@@ -77,11 +77,21 @@ export class SearchPanelComponent implements OnInit {
     // 20181120 format for 20-11-2018
     const year = date.getFullYear();
     const month = date.getMonth() + 1;
-    let day = date.getDate();
-    if (day < 10) {
-      return year.toString() + month.toString() + '0' + day.toString();
+    var day = date.getDate();
+    var dayInString = "";
+    var monthInString = "";
+    if(day < 10){
+      dayInString = "0" + day.toString()
     }
-    else return year.toString() + month.toString() + day.toString();
+    else dayInString = day.toString();
+
+    if(month < 10){
+      monthInString = "0" + month.toString();
+    }
+    else monthInString = month.toString();
+
+    console.log(year.toString() + monthInString + dayInString);
+    return year.toString() + monthInString + dayInString;
   }
 
   searchForFlights(){

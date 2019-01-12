@@ -114,7 +114,20 @@
   stringstyle=\color{darkred},
   numberstyle=\color{gray}
 }
-
+\lstdefinelanguage{JavaScript}{
+  keywords={typeof, new, true, false, catch, function, return, null, catch, switch, var, if, in, while, do, else, case, break},
+  keywordstyle=\color{blue}\bfseries,
+  ndkeywords={class, export, boolean, throw, implements, import, this},
+  ndkeywordstyle=\color{darkgray}\bfseries,
+  identifierstyle=\color{black},
+  sensitive=false,
+  comment=[l]{//},
+  morecomment=[s]{/*}{*/},
+  commentstyle=\color{purple}\ttfamily,
+  stringstyle=\color{red}\ttfamily,
+  morestring=[b]',
+  morestring=[b]"
+}
 \lstdefinelanguage{HTML5}{
     sensitive=true,
     keywords={%
@@ -569,12 +582,12 @@ Operacje zapisu oraz odczytu są podstawowymi częściami systemów operacyjnych
 
 \newpage
 \chapter{Implementacja}
-Następstwem stworzenia projektu aplikacji jest implementacja całej aplikacji. Zostanie ona szczegółowo opisana w tym rozdziale. Jego treść została stworzona na podstawie projektu aplikacji oraz zagadnień poruszonych w poprzednich rozdziałach. Stworzona aplikacja została podzielona według założonych wymagań opisanych na stronie 3. Została podzielona na dwie logiczne części: stronę serwerową oraz kliencką. Zostały one ogólnie opisane w poprzednim rozdziale, w tej części pracy skupiono się zagadnieniach związanych z implementacją zaimplementowanego oprogramowania.
+Następstwem stworzenia projektu aplikacji jest implementacja oprogramowania zawartego w założeniach pracy dyplomowej. Zostanie ona szczegółowo opisana w tym rozdziale. Jego treść została stworzona na podstawie projektu aplikacji oraz zagadnień poruszonych w poprzednich rozdziałach. Stworzona aplikacja została podzielona według założonych wymagań opisanych na stronie 3. Została podzielona na dwie logiczne części: stronę serwerową oraz kliencką. Zostały one ogólnie opisane w poprzednim rozdziale, w tej części pracy skupiono się zagadnieniach związanych z implementacją zaimplementowanego oprogramowania.
 
 \section{Oprogramowanie po stronie klienta}
 Część kliencka to osobna aplikacja osadzona w przeglądarce internetowej. Został w niej stworzony graficzny interfejs użytkownika oraz serwis odbierający dane od części serwerowej.
 \subsection{Podział strukturalny}
-Aplikacja kliencka została logicznie podzielona na cztery pakiety. Zostaną one krótko omówione w bieżącym podrozdziale.
+Aplikacja kliencka została logicznie podzielona na cztery pakiety: 
 
 \begin{figure}[!ht]
 \centering
@@ -582,9 +595,56 @@ Aplikacja kliencka została logicznie podzielona na cztery pakiety. Zostaną one
 \caption{Struktura plików części klienckiej}
 \label{fig:client_structuresearch_module}
 \end{figure}
-
+\noindent Pakiet \textit{layout} przechowuje komponenty o wielokrotnym użyciu w aplikacji klienckiej. Katalog \textit{model} zawiera odpowiedniki klas modelowych z części serwerowej. Kolejnym elementem jest pakiet \textit{pages}. Znajdują się w nim komponenty renderujące kompletne strony internetowe. Zostały zbudowane z segmentów stworzonych w katalogu \textit{layout}. Ostatnią częścią aplikacji klienckiej jest pakiet \textit{services}. Zawiera on oprogramowanie odpowiedzialne za komunikowanie się z serwerem. 
 \newpage
+\subsection{Moduły pobierania danych}
+W części klienckiej zaimplementowano serwisy odbierające dane z części serwerowej. Pierwszym z nich jest odpowiedzialny za połączenie z modułem wyszukiwania po stronie serwera. Zawiera on dane adresu sieciowego serwera udostępniającego zebrane wyniki wyszukiwania połączeń lotniczych.
+\begin{lstlisting}[language=JavaScript, caption= Kod źródłowy funkcji pobierającej wyniki z serwera]
+import { Injectable } from '@angular/core';
+import { baseUrl } from '../../../environments/environment';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { MultiFlight } from 'src/app/model/interfaces/MultiFlight';
 
+@Injectable({
+  providedIn: 'root'
+})
+export class FlightsService {
+
+  getFlightsURL: string = baseUrl + 'api/flights/';
+
+  constructor(private http: HttpClient) {
+  }
+
+  getFlights(originAirport: string, destinationAirport: string, departureDate: string, typeOfConnection: string, currency: string) : Observable<MultiFlight[]>{
+    var requestUrl = this.getFlightsURL + originAirport + '/' + destinationAirport + '/' + departureDate + '/' + typeOfConnection + '/' + currency;
+    return this.http.get<MultiFlight[]>(requestUrl);   
+  }
+
+}
+\end{lstlisting}
+Na powyższym listingu przedstawiono fragment oprogramowania pobierający wyniki wyszukiwania. Funkcja \textit{getFlights} przyjmuje 5 parametrów które zapewnia jej użytkownik. Pierwszym procesem tej funkcji jest zbudowanie adresu URL który posłuży do zbudowania żądania pobrania danych. Jej działanie polega na złączeniu wcześniej wspomnianych parametrów oddzielając je znakiem "/" w roli separatora. Ostatnim krokiem jest stworzenia żądania GET protokołu HTTP.
+
+Drugim zaimplementowanym serwisem jest prosta funkcja pobierające dane o lotniskach. Jej działanie zostanie przedstawione na kolejnym listingu.
+\begin{lstlisting}[language=JavaScript, caption= Kod źródłowy funkcji pobierającej wyniki z serwera]
+import { Injectable } from '@angular/core';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { baseUrl } from '../../../environments/environment';
+import { Airport } from '../../model/interfaces/Airport';
+import { Observable, throwError } from 'rxjs';
+import { catchError, retry } from 'rxjs/operators';
+
+export class AirportsService {
+
+  getAirportsUsingIncompletePhraseURL: string = baseUrl + 'api/airports/getAirportsStartingWith/';
+
+  getAirportsStartingWithPhrase(phrase: string): Observable<Airport[]>{
+    return this.http.get<Airport[]>(this.getAirportsUsingIncompletePhraseURL + phrase).pipe(catchError(this.handleError)); 
+  }  
+}
+\end{lstlisting}
+Działanie przedstawionego kodu źródłowego rozpoczyna się od stworzenia adresu URL pod którym część serwerowa udostępnia poszukiwane dane. Do zmiennej \textit{baseUrl} oznaczającej domenę serwera zostaje dodana część sparametryzowana dla danych o lotniskach. Funkcja zwraca obiekty typu \textit{Airport} oraz dodatkowo obsługuje błędy zwrócone z drugiej części aplikacji.
+\newpage
 \section{Oprogramowanie po stronie serwera}
 test
 \newpage

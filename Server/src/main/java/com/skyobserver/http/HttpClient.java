@@ -10,12 +10,13 @@ import java.util.concurrent.TimeUnit;
 
 public class HttpClient {
 
+    private static final int TIMEOUT = 30;
     private static OkHttpClient client;
 
     public HttpClient() {
         client = new OkHttpClient.Builder()
-                .connectTimeout(30, TimeUnit.SECONDS)
-                .readTimeout(30, TimeUnit.SECONDS)
+                .connectTimeout(TIMEOUT, TimeUnit.SECONDS)
+                .readTimeout(TIMEOUT, TimeUnit.SECONDS)
                 .build();
     }
 

@@ -24,5 +24,12 @@ public class AirlineRepositoryTest {
         assertNotNull(airline);
     }
 
-
+    @Test
+    public void shouldReturnProprtAirlineObjectFromAPI() throws IOException {
+        Airline airline = airlineRepository.getAirlineFromApi("AA");
+        assertEquals(airline.getNameAirline(), "American Airlines");
+        assertEquals(airline.getStatusAirline(), "active");
+        assertEquals(airline.getCallsign(), "AMERICAN");
+        assertEquals(airline.getNameCountry(), "United States");
+    }
 }

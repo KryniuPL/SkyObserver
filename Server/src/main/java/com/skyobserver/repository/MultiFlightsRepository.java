@@ -46,7 +46,7 @@ public class MultiFlightsRepository {
         return flightList;
     }
 
-    private String buildCacheKey(String originAirportIATA, String destinationAirportIATA, String departureDate, String typeOfConnection, String currency){
+    public String buildCacheKey(String originAirportIATA, String destinationAirportIATA, String departureDate, String typeOfConnection, String currency){
         return originAirportIATA + "/" + destinationAirportIATA + "/" + departureDate + "/" + typeOfConnection + "/" + currency;
     }
 
@@ -84,7 +84,7 @@ public class MultiFlightsRepository {
                 .sum();
     }
 
-    public static String buildRequestUrl(String originAirportIATA, String destinationAirportIATA, String departureDate, String typeOfConnection) {
+    public String buildRequestUrl(String originAirportIATA, String destinationAirportIATA, String departureDate, String typeOfConnection) {
         return FLIGHT_LOOKUP_HOST_URL + originAirportIATA + REQUEST_SEPARATOR + destinationAirportIATA + REQUEST_SEPARATOR + departureDate + "/?7Day=N&Connection=" + typeOfConnection + "&Compression=ALL&Sort=Departure&Time=ANY&Interline=Y&NoFilter=N&ExpandResults=Y&Max_Results=25";
     }
 }

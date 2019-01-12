@@ -20,7 +20,11 @@ public class BaggageParser {
     private static final String HTML_ROWS = "tr";
     private static final String HTML_COLUMN = "td";
 
-    public  Baggage getBaggageObjectFromHTMLFile(String airlineName) throws IOException {
+    private static String readFileContentToString() throws IOException {
+        return FileUtils.readFileToString(BAGGAGE_HTML_FILE, ENCODING);
+    }
+
+    public Baggage getBaggageObjectFromHTMLFile(String airlineName) throws IOException {
         Baggage baggage = Baggage.NOT_FOUND;
         String htmlFile = readFileContentToString();
         Document htmlDocument = Jsoup.parse(htmlFile);
@@ -31,16 +35,11 @@ public class BaggageParser {
         for (int i = 1; i < rows.size(); i++) {
             Element row = rows.get(i);
             Elements cols = row.select(HTML_COLUMN);
-            if(cols.get(0).text().equals(airlineName)){
+            if (cols.get(0).text().equals(airlineName)) {
                 baggage = new Baggage(cols.get(1).text(), cols.get(2).text(), cols.get(3).text());
             }
         }
         return baggage;
-    }
-
-
-    private static String readFileContentToString() throws IOException {
-        return FileUtils.readFileToString(BAGGAGE_HTML_FILE, ENCODING);
     }
 
 

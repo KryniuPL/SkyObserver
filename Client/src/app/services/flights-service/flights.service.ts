@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { baseUrl } from '../../../environments/environment';
 import { HttpClient } from '@angular/common/http';
-
 import { Observable } from 'rxjs';
 import { MultiFlight } from 'src/app/model/interfaces/MultiFlight';
 
@@ -12,7 +11,6 @@ import { MultiFlight } from 'src/app/model/interfaces/MultiFlight';
 export class FlightsService {
 
   getFlightsURL: string = baseUrl + 'api/flights/';
-  
 
   constructor(private http: HttpClient) {
 

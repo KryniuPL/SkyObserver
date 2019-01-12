@@ -21,7 +21,7 @@ public class BaggageRepositoryTest {
 
     @Test
     public void shouldCreateHtmlFile() throws IOException {
-        baggageRepository.initializeRepository();
+        BaggageRepository.initializeRepository();
         File htmlFile = new File(BAGGAGE_HTML_FILE_PATH);
         assertTrue(htmlFile.exists());
     }

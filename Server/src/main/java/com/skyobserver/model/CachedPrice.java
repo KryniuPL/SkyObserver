@@ -10,7 +10,7 @@ import javax.persistence.Id;
 public class CachedPrice {
 
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
     private String originPointOfRoute;
     private String destinationPointOfRoute;
@@ -23,6 +23,10 @@ public class CachedPrice {
         this.destinationPointOfRoute = destinationPointOfRoute;
         this.value = value;
         this.currency = currency;
+    }
+
+    public CachedPrice(double value) {
+        this.value = value;
     }
 
     public String getOriginPointOfRoute() {

@@ -634,6 +634,9 @@ import { Airport } from '../../model/interfaces/Airport';
 import { Observable, throwError } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
 
+@Injectable({
+  providedIn: 'root'
+})
 export class AirportsService {
 
   getAirportsUsingIncompletePhraseURL: string = baseUrl + 'api/airports/getAirportsStartingWith/';
@@ -644,9 +647,60 @@ export class AirportsService {
 }
 \end{lstlisting}
 Działanie przedstawionego kodu źródłowego rozpoczyna się od stworzenia adresu URL pod którym część serwerowa udostępnia poszukiwane dane. Do zmiennej \textit{baseUrl} oznaczającej domenę serwera zostaje dodana część sparametryzowana dla danych o lotniskach. Funkcja zwraca obiekty typu \textit{Airport} oraz dodatkowo obsługuje błędy zwrócone z drugiej części aplikacji.
+\subsection{Interfejs graficzny}
+Walory szybkości oraz użyteczności aplikacji tracą na znaczeniu jeśli budowane oprogramowanie nie jest wyposażone w czytelny interfejs użytkownika. Jest on formą interakcji pomiędzy użytkownikiem a aplikacją. Stworzone środowisko graficzne jest grupą wzajemnie współpracujących przycisków oraz obrazów zapewniających podstawowe poruszanie się po aplikacji klienckiej w obrębie przeglądarki internetowej. 
+W części klienckiej zaimplementowano responsywny wygląd z takimi komponentami jak panel wyszukiwania lotów czy panel podróży wieloetapowej. Ich ogólny kształt i funkcje zostały w części zaczerpnięte z rynkowych rozwiązań, aby zwiększyć konkurencyjność aplikacji klienckiej. 
+\newpage
+W bieżącym podrozdziale zostanie przedstawiony stworzony interfejs aplikacji wraz z krótkim opisem.
+
+\begin{figure}[!ht]
+\centering
+\includegraphics[scale=0.32, keepaspectratio]{client_main_page.png}
+\caption{Strona główna aplikacji klienckiej}
+\label{fig:client_main_page}
+\end{figure}
+Rysunek 4.1.2 przedstawia stronę startową części klienckiej. Jego tło jest na całej szerokości oraz długości wypełnione obrazem miasta Hongkong. Górna część strony przedstawia pasek nawigacyjny aplikacji, panel ustawień oraz odwołanie do repozytorium kodu stworzonej pracy dyplomowej. Następnym komponentem aplikacji klienckiej jest panel wyszukiwania lotów.
+
+\begin{figure}[!ht]
+\centering
+\includegraphics[scale=0.39, keepaspectratio]{search_panel.png}
+\caption{Panel wyszukiwania połączeń lotniczych}
+\label{fig:search_panel}
+\end{figure}
+
+Przedstawiony komponent obrazuje rozmieszczenie przycisków, pól wyboru parametrów wyszukiwania oraz dostępne opcje konfiguracyjne. Górna część panelu zawiera trzy przyciski konfiguracyjne. Odpowiadają one kolejna za wybór rodzaju lotu, ilość pasażerów oraz klasę poszukiwanego biletu lotniczego. W aplikacji założono trzy typy lotów: lot z możliwością powrotu, lot bezpośredni oraz podróż wieloetapową. Kolejna część poniżej opisanych przycisków przedstawia pola do wyboru parametrów poszukiwania. Ich ilość zmienia się w zależności od wybranego typu lotu.
+\newpage
+W elementach wyboru lotnisk został zaimplementowwany mechanizm podpowiedzi wyszukiwania. Użytkownik po wpisaniu kilku pierwszych liter poszukiwanego miasta będzie mógł zobaczyć listę proponowanych lotnisk w obrębie tej miejscowości. 
+
+\begin{figure}[!ht]
+\centering
+\includegraphics[scale=0.8, keepaspectratio]{airport_choose.png}
+\caption{Komponent wyboru lotniska}
+\label{fig:search_panel}
+\end{figure}
+
+Operacja ta jest dokonywana poprzez pobranie wpisanych liter a następnie zgłoszenia żądania do części serwerowej która zwraca wyniki z bazy danych. Implementacja tego mechanizmu znalazła się w poprzednim podrozdziale. Użytkownikowi wyświetlane są pełne nazwy lotnisk. Po wybraniu poszukiwanego miejsca na pozycji odlotu bądź odlotu widoczna jest nazwa miasta wraz z unikalnym kodem IATA identyfikującym lotnisko. Elementem pomiędzy polami dotyczącymi wyboru lotnisk jest przycisk zamiany pól. Jego funkcją jest zamiana informacji zawartych w polach miejsca odlotu oraz przylotu. Ostatnimi elementami są pola wyboru dat lotu docelowego oraz powrotnego. Obecność drugiego jest uzależniona od wybranego typu lotu. W przypadku gdy wyszukiwany jest tylko w jedną stronę jest on niewidoczny a szerokość pierwszego jest rozszerzona. Kliknięcie w ikonę kalendarza wyzwala okno modalne z jego powiększonym widokiem. Szarym okręgiem jest na nim zaznaczony dzień dzisiejszy. Po wybraniu, data zapisywana jest w pamięci aplikacji. Ten zabieg służy do zabezpieczenie sytuacji przy późniejszym ewentualnym wyborze daty powrotu. W takiej sytuacji aplikacji wskaże zapisaną datę jako najwcześniejszą wartość przy wyborze daty lotu powrotnego. \\ \indent
+Ważnym komponentem w który włożono dużo pracy jest moduł podróży wieloetapowej. Umożliwia on zaplanowanie podróży złożonej z maksymalnie pięciu lotów w jedną stronę.
+
+\begin{figure}[!ht]
+\centering
+\includegraphics[scale=0.40, keepaspectratio]{multi_panel.png}
+\caption{Komponent podróży wieloetapowej}
+\label{fig:multi_panel}
+\end{figure}
+\noindent Rysunek 4.15 przedstawia wygląd opisywanego komponentu. Interfejs oferuje przyciski do dodawania kolejnych etapów podróży oraz ich usuwania. \\ \indent
+Wspólnym elementem zarówno dla modułu wieloczęściowej podróży jak i podróży w jedną stronę i powrotnych jest przycisk wyszukiwania. Po kliknięciu go, aplikacja pobiera wprowadzone przez użytkownika parametry wyszukiwania i przekazuje je dalej do modułu odpytującego serwer. Moduł ten został przedstawiony w poprzednim podrozdziale. Wygląd przykładowych wyników wyszukiwania zaprezentowano na obrazku 4.1.6 Wyświetla on listę połączeń lotniczych pomiędzy wybranymi miejscami. Każdy element z tej listy jest rozwijalny co oznacza że po kliknięciu wysunie się dodatkowy obszar ze szczegółowymi informacjami o locie. W zależności od typu lotu wyświetlana jest zmienna liczba komponentów do wyboru połączenia lotniczego na wybranej trasie.
+\begin{figure}[!ht]
+\centering
+\includegraphics[scale=0.40, keepaspectratio]{result_component.png}
+\caption{Wyniki wyszukiwania}
+\label{fig:result_component}
+\end{figure}
+
+
 \newpage
 \section{Oprogramowanie po stronie serwera}
-test
+
 \newpage
 
 \chapter{Testy}

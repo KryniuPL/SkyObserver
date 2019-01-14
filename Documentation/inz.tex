@@ -700,13 +700,163 @@ Wspólnym elementem zarówno dla modułu wieloczęściowej podróży jak i podr�
 
 \newpage
 \section{Oprogramowanie po stronie serwera}
+Oprogramowanie serwerowe stanowi większą część całej aplikacji. Zostały w nim zaimplementowane mechanizmy parsowania, wyszukiwania i testowania danych lotniczych. Kwestie związane z użytymi technologiami przy tworzeniu serwera aplikacji zostały omówione w poprzednim rozdziale. W bieżącej części pracy zostanie opisana struktura części serwerowej, oprogramowanie odpowiedzialne za parsowanie różnych rodzajów danych jak i zaimplementowany moduł wyszukiwania.
+\subsection{Struktura pakietowa}
+Proces powstawania części serwerowej rozpoczął się od podzielenia tej części aplikacji na logiczne pakiety których nazwa związana byłaby z ich rolą. Poniższy rysunek prezentuje podział aplikacji.
 
-\newpage
+\begin{figure}[!ht]
+\centering
+\includegraphics[scale=0.90, keepaspectratio]{server_structure.png}
+\caption{Podział strukturalny części serwerowej}
+\label{fig:server_structure}
+\end{figure}
 
+Omawiania tych katalogów najlepiej zacząć od pakietu \textit{config}. Jego zadaniem jest konfiguracja różnych parametrów serwera podczas jego startu. Ustawia on takie rzeczy jak klucze dostępowe do zasobów lotniczych, parametry lokalnego cache'u czy też zabezpieczenia aplikacji. Warstwa modelowa aplikacji znajduje się w pakiece \textit{model}. Zaimplementowane zostały w nim klasy modelowe które opisują obiekty krążące po całej aplikacji. Związanym z tym pakietem jest katalog \textit{repository}. Jest on miejscem na klasy implementujący pozyskiwanie obiektów odpowiadających klas modelowych. Niektóre z nich używają swoich analogicznych odpowiedników z pakietu \textit{service}. Potrzeba ta wynika z konieczności parsowania niektórych formatów danych do obiektów języka Java. Pakietem który udostępnia obiekty modelowe dla części klienckiej jest katalog \textit{controller}. Kod odpowiedzialny za wysyłanie żądań HTTP zaimplementowany jest w części \textit{http}. W części serwerowej zaimplementowano też moduły których wywołanie jest zaplanowane i precyzyjnie określone. Dotyczy to lokalnych plików przechowywujących dane o lotniskach oraz bagażach. Kod odpowiedzialny za ich aktualizowanie jest opracowany w katalogu \textit{schedulers}. Pozostałe pakiety \textit{util,enums} oraz \textit{exceptions} wprowadzają mniej znaczne dla aplikacji funkcje.  
+
+\subsection{Oprogramowanie wyszukujące połączenia lotnicze}
+Moduł wyszukiwania połączeń lotniczych został już opisany w poprzednim rozdziale, bieżący zostanie poświęcony kwestiom jego implementacji. Na potrzeby jego stworzenie opracowano specjalny sposób tworzenia obiektu lotu. Standardowy proces powstawania obiektu przez konstruktor języka Java okazał się mało czytelny dla wielu obiektów wchodzących w skład jednostki połączenia lotniczego. Dla tego obiektu opracowano implementację wzorując się na wzoru projektowym o nazwie \textit{Budowniczy}. Budowniczy to programistyczny wzorzec projektowy który opisuje algorytm tworzenia złożonego obiektu z innych. Algorytm ten powinien być niezależny od składowych obiektu. Ponadto proces budowania powinien zezwalać na budowę różnych form tworzonego obiektu.\cite{builder}
+Klasa modelowa \textit{Flight} została wyposażona klasę wewnętrzną ją budującą. Zarówno ta klasa oraz jej przepis budowy zostanie zaprezentowany na rysunkach 4.2.1 oraz 4.2.2
+\begin{lstlisting}[language=java, caption=Fragment klasy Flight]
+@JsonSerialize
+public class Flight {
+    private String departureTime;
+    private String arrivalTime;
+    private Airport originAirport;
+    private Airport destinationAirport;
+    private String duration;
+    private CachedPrice price;
+    private Airline airline;
+    private Baggage baggage;
+    
+    ...
+}
+\end{lstlisting}
+
+\begin{lstlisting}[language=java, caption=Fragment wewnętrznej klasy Builder]
+@JsonSerialize
+public static class Builder{
+    private String departureTime;
+    private String arrivalTime;
+    private Airport originAirport;
+    private Airport destinationAirport;
+    private String duration;
+    private CachedPrice price;
+    private Airline airline;
+    private Baggage baggage;
+    ...
+     
+    public Flight build(){
+        return new Flight(this);
+    }
+}
+\end{lstlisting}
+
+ \noindent Klasą odpowiedzialną za zbieranie danych o połączeniach lotniczych jest plik \textit{FlightsRepository}. W jej kodzie źródłowym zaimportowano wszystkie pozostałe repozytoria danych. Jego działanie polega na ustawieniu każdej jego składowej widocznej na listingu 4.2.2 pobierając odpowiednie dane z analogicznych repozytoriów tych składowych. Ze względu na złożoność oraz wielkość jego implementacji jego kod nie zostanie pokazany w tym rozdziale.
+
+\subsection{Parsowanie danych}
+Podrozdział ten jest odwołaniem do swojego odpowiednika w rozdziale trzecim. Zostanie w nim zwrócona szczególna uwaga na implementacje komponentów odpowiedzialnych za parsowanie różnych rodzajów danych.\\ \indent
+	Opracowane następujące klasy parsujące:
+	\begin{itemize}[noitemsep,topsep=0pt]
+\item AirlineParser - parser danych o liniach lotniczych konwertujący obiekty JSON na obiekty Java
+\item AirportsParser - komponent pozyskujące obiekty z plików CSV
+\item BaggagesParser - moduł parsujący dokumenty HTML
+\item PricesParser - klasa konwertująca obiekty JSON dotyczące cen lotów
+\item FlightsParser - moduł parsujący złożone treści otrzymane w języku znaczników XML na analogiczne obiekty języka Java
+\end{itemize}
+Wymienione komponenty zostaną krótko opisane wraz z przedstawieniem ich implementacji.
+Ze względu na prostą złożoność jako pierwszy zostanie opisany parser danych linii lotniczych.
+\begin{lstlisting}[language=java, caption=Implementacja parsowania treści JSON]
+public class AirlineParser {
+    private static final int FIRST_ELEMENT = 0;
+    private Gson gson = new Gson();
+
+    public Airline getAirlineObjectFromJSONResponse(String jsonObject) {
+         Airline[] airlines = gson.fromJson(jsonObject, Airline[].class);
+         return airlines[FIRST_ELEMENT];
+    }
+}
+\end{lstlisting}
+Powyższy listing przedstawia sposób konwersji treści w formacie JSON. Do tego celu posłużono się biblioteka gson firmy Google. Wywołując metodę \textit{fromJson} na obiekcie typu \textit{Gson} w prosty sposób odbywa się konwersja obiektów Json na obiekty \textit{Airline}. Funkcja jako wynik zwraca pierwszy element zparsowanej tablicy danych.\\ \indent
+Translacja treści zwróconej z serwisu \textit{Flight Lookup} otrzymanej w postaci XML odbywała się przy pomocy biblioteki Jackson. Pierwszym krokiem było stworzenie odpowiedników elementów odpowiedzi na klasy modelowe w części serwerowej. Po tej czynności można było przystąpić do implementacji metody konwertującej.
+\begin{lstlisting}[language=java, caption=Implementacja parsowania treści XML]
+public class FlightsParser {
+    private JacksonXmlModule xmlModule = new JacksonXmlModule();
+
+    public OTA_AirDetailsRS getDeserializedXML(String XML) throws IOException {
+        xmlModule.setDefaultUseWrapper(false);
+        ObjectMapper objectMapper = new XmlMapper(xmlModule);
+        return objectMapper.readValue(XML, OTA_AirDetailsRS.class);
+    }
+}
+
+\end{lstlisting}
+Powyższa implementacja jest podobna do poprzedniej przedstawionej na listingu 4.2.3 Metoda jako argument przyjmuje ciąg znaków XML. Do konwersji używana jest klasa \textit{ObjectMapper} pochodząca ze wcześniej wspomnianej biblioteki. Wynikiem zwróconym przez funkcję jest pojedynczy obiekt \textit{OTAAirDetailsRS} zawierający w sobie listę wszystkich wyszukanych lotów.
+Ze względu na ilość kodu pozostałych parserów ich implementacja nie zostanie przedstawiona, ich źródła można znaleźć w dołączonym repozytorium w pakiecie \textit{service}.
+\subsection{Kontrolery serwera}
+W części serwerowej stworzono specjalny komponent odpowiedzialny za obsługę żądań wyszukiwania lotów oraz zwrócenie im poszukiwanych wyników. 
+\begin{lstlisting}[language=java, caption=Implementacja parsowania treści XML]
+@RestController
+@RequestMapping("/flights")
+public class FlightsController {
+
+    @Autowired
+    private MultiFlightsRepository multiFlightsRepository;
+    private static final Logger logger = LoggerFactory.getLogger(PricesRepository.class);
+
+    @GetMapping(value = "/{from}/{to}/{date}/{connection}/{currency}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public Collection<MultiFlight> searchForFlights(@PathVariable String from, @PathVariable String to, @PathVariable String date, @PathVariable String connection, @PathVariable String currency) throws AirportsNotFoundException, IOException {
+        Collection<MultiFlight> flights = multiFlightsRepository.searchForMultiFlights(from, to, date, connection, currency);
+        if (flights.isEmpty()){
+            throw new FlightsNotFoundException();
+        }
+        return flights;
+    }
+}
+\end{lstlisting}
+Powyższy kontroler został zaimplemetnowany w pakiecie \textit{controller}. Dwie adnotacje nad deklaracją klasy tworzą w serwerze specjalne miejsce w którym po podaniu odpowiednich parametrów kontroler zostanie wywołany. Parametry te opisane są nad deklaracją metody \textit{searchForFlights}. Funkcja pobiera z adresu URL kody IATA lotniska wylotowego oraz docelowego, datę wylotu, typ połączenia i kod walutowy. Przedstawione parametry są przekazywane w wywołaniu klasy repozytorium lotów które zwraca wyniki wyszukiwania w postaci kolekcji obiektów. W przypadku nie znalezienia żadnych połączeń lotniczych, metoda zwraca wyrzuca wyjątek który implikuje zwróceniem odpowiedzi o kodzie 404.
 \chapter{Testy}
-test
-\newpage
+Proces powstawania oprogramowania jest zbiorem czynności opartych na wielu czynnikach. Patrząc wstecz, programowanie jako fach ma jedynie kilka dekad. Tworzenie oprogramowania można potraktować jako proces ewolucyjny gdzie ewoluuje ono z upływem czasu. Programiście szybko dochodzą do wniosków, że pisanie kodu jest trudne i podatne na liczne błędy. Wiele projektów zawodzi, ponieważ zespoły napotykają trudności ze złożonością tworzonych systemów. W wyniku tych niedociągnięć projekt nie zostaje skończony w terminie a koszt jego finalizacji przekracza początkowe oczekiwania\cite{testing}. Rozwój oparty na sprzężonym testowaniu tworzonego kodu jest jedną z praktyk efektywnego rozwoju oprogramowania. Testy potwierdzają funkcje aplikacji oraz jej użyteczność dla użytkownika. Standardowy podział ze względu na przeznaczenie można przedstawić następująco:
+\begin{itemize}[noitemsep,topsep=0pt]
+\item testy jednostkowe - potwierdzają poprawne działanie najmniejszych elementów systemu takich jak metody czy funkcje
+\item testy integracyjne - sprawdzają poprawność integracji tworzonego oprogramowania z zewnętrznymi systemami
+\item testy akceptacyjne - zapewniają o spełnieniu oczekiwań klienta który zamówił oprogramowanie
+\item testy regresyjne - potwierdzają brak wpływu napisanego oprogramowania na pozostałe elementy systemu
+\end{itemize}
+W stworzonej aplikacji zdecydowano się na przetestowanie kluczowych fragmentów oprogramowania odpowiedzialnych za podstawowe funkcje systemu. Testy zaimplementowane zostały przy użyciu frameworków JUnit oraz Spring. Biblioteka JUnit to zewnętrzny pakiet oprogramowania dostarczająca zestaw narzędzi do testowania oprogramowania napisanego w języku Java. Znany i sprawdzony przez wielu programistów jest częścią wielu komercyjnych systemów. Drugi z nich, przedstawiony wcześniej w rozdziale trzecim dostarcza instrumenty do testowania jego oprogramowania serwerowego. \\ \indent
+Podstawową metodą testującą oprogramowanie była asercja. Jest to predykat, który zwraca wartość logiczną. Najczęściej przyjmuje dwa argumenty a następnie porównuje je zwracając wynik\cite{assertion}. Napisane testy znajdują się w części serwerowej aplikacji, testują one poprawność odpowiedzi serwera, informacje otrzymane z zewnętrznych serwisów, parsowanie różnych formatów danych jak i najbardziej podstawowe elementy aplikacji. Nazwy testów przemawiają za kodem źródłowym który testują. Dla przykładu test dla klasy \textit{FlightRepository} będzie nazywał się \textit{FlightsRepositoryTest}. \\
+\subsection{Testy jednostkowe}
+Podstawowymi testami były testy jednostkowe. Na poniższym listingu przedstawiono zaimplementowany kod testujący poprawność działania funkcji zwracającej adres żądania HTTP.
+\begin{lstlisting}[language=java, caption=Przykładowy test jednostkowy]
+@Test
+public void shouldReturnValidCacheKey() {
+  assertEquals("WAW/LHR/20190110/DIRECT/PLN",
+    multiFlightsRepository.buildCacheKey("WAW", "LHR", "20190110", "DIRECT", "PLN"));
+    }
+\end{lstlisting}
+Bardziej złożonym przypadkiem jest test odpowiedzialny za sprawdzenie poprawnej ceny całej podróży.
+\begin{lstlisting}[language=java, caption=Przykładowy test jednostkowy]
+@Test
+public void shouldReturnProperSumOfTotalFlightPrice() {
+  Flight firstFlight = new Flight.Builder()
+         .setPrice(new CachedPrice(200.43))
+         .build();
+ 
+  Flight secondFlight = new Flight.Builder()
+         .setPrice(new CachedPrice(800.99))
+         .build();
 
+  Flight thirdFlight = new Flight.Builder()
+         .setPrice(new CachedPrice(436.67))
+         .build();
+  List<Flight> flightList = List.of(firstFlight, secondFlight, thirdFlight);
+  assertEquals(1438.09, multiFlightsRepository.calculateTotalFlightPrice(flightList), 0.001);
+    }
+\end{lstlisting}
+Test zaprezentowany na listingu 5.0.2 inicjalizuje 3 obiekty typu \textit{Flight} z podanymi "na sztywno" wartościami cen przelotów. Obiekty te łączone są w kolekcję. Końcowa asercja sprawdza poprawbedziałanie metody \textit{calculateTotalFlightPrice} porównując jej wynik z oczekiwaną wartością. Warto zwrócić na trzeci argument jaki przyjmuje metoda \textit{assertEquals}. Oznacza on dopuszczalną różnicę między oczekiwanym a otrzymanym wynikiem.
+\newpage
+\subsection{Testy integracyjne}
+
+\newpage
 \chapter{Uwagi i wnioski}
 test
 \begin{thebibliography}{9}
@@ -741,6 +891,17 @@ Beginning Java 8 APIs, Extensions and Libraries Swing, JavaFX, JavaScript, JDBC 
 
 \bibitem{i/o}
 Java I/O, NIO, NIO.2, Jeff Friesen
+
+\bibitem{builder}
+Design Patterns: Elements of Reusable Object-Oriented Software, John Vlissides, Ralph Johnson, Richard Helm, Erich Gamma
+
+\bibitem{testing}
+Java Unit Testing with JUnit 5, Shekhar Gulati, Rahul Sharma
+
+\bibitem{assertion}
+Asercja,Wikipedia \\
+\url{https://pl.wikipedia.org/wiki/Asercja_(informatyka)} \\
+Stan na dzień 14.01.2019
 
 \end{thebibliography}
 \end{document}

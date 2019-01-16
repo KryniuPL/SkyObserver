@@ -12,25 +12,26 @@
 \BOOKMARK [1][-]{section.2.3}{Por\363wnanie aplikacji}{chapter.2}% 12
 \BOOKMARK [0][-]{chapter.3}{Projekt aplikacji}{}% 13
 \BOOKMARK [1][-]{section.3.1}{Og\363lna architektura aplikacji}{chapter.3}% 14
-\BOOKMARK [1][-]{section.3.2}{Baza danych}{chapter.3}% 15
-\BOOKMARK [1][-]{section.3.3}{Czesc kliencka}{chapter.3}% 16
-\BOOKMARK [1][-]{section.3.4}{Czesc serwerowa}{chapter.3}% 17
-\BOOKMARK [1][-]{section.3.5}{Modu\233 wyszukiwania po\233aczen lotniczych}{chapter.3}% 18
-\BOOKMARK [1][-]{section.3.6}{Komunikacja miedzy komponentami aplikacji}{chapter.3}% 19
-\BOOKMARK [2][-]{subsection.3.6.1}{Protok\363\233 HTTP}{section.3.6}% 20
-\BOOKMARK [2][-]{subsection.3.6.2}{JDBC}{section.3.6}% 21
-\BOOKMARK [2][-]{subsection.3.6.3}{I/O}{section.3.6}% 22
-\BOOKMARK [0][-]{chapter.4}{Implementacja}{}% 23
-\BOOKMARK [1][-]{section.4.1}{Oprogramowanie po stronie klienta}{chapter.4}% 24
-\BOOKMARK [2][-]{subsection.4.1.1}{Podzia\233 strukturalny}{section.4.1}% 25
-\BOOKMARK [2][-]{subsection.4.1.2}{Modu\233y pobierania danych}{section.4.1}% 26
-\BOOKMARK [2][-]{subsection.4.1.3}{Interfejs graficzny}{section.4.1}% 27
-\BOOKMARK [1][-]{section.4.2}{Oprogramowanie po stronie serwera}{chapter.4}% 28
-\BOOKMARK [2][-]{subsection.4.2.1}{Struktura pakietowa}{section.4.2}% 29
-\BOOKMARK [2][-]{subsection.4.2.2}{Oprogramowanie wyszukujace po\233aczenia lotnicze}{section.4.2}% 30
-\BOOKMARK [2][-]{subsection.4.2.3}{Parsowanie danych}{section.4.2}% 31
-\BOOKMARK [2][-]{subsection.4.2.4}{Kontrolery serwera}{section.4.2}% 32
-\BOOKMARK [0][-]{chapter.5}{Testy}{}% 33
-\BOOKMARK [1][-]{subsection.5.0.1}{Testy jednostkowe}{chapter.5}% 34
-\BOOKMARK [2][-]{subsection.5.0.2}{Testy integracyjne}{subsection.5.0.1}% 35
-\BOOKMARK [0][-]{chapter.6}{Uwagi i wnioski}{}% 36
+\BOOKMARK [1][-]{section.3.2}{Diagram UML}{chapter.3}% 15
+\BOOKMARK [1][-]{section.3.3}{Baza danych}{chapter.3}% 16
+\BOOKMARK [1][-]{section.3.4}{Czesc kliencka}{chapter.3}% 17
+\BOOKMARK [1][-]{section.3.5}{Czesc serwerowa}{chapter.3}% 18
+\BOOKMARK [1][-]{section.3.6}{Modu\233 wyszukiwania po\233aczen lotniczych}{chapter.3}% 19
+\BOOKMARK [1][-]{section.3.7}{Komunikacja miedzy komponentami aplikacji}{chapter.3}% 20
+\BOOKMARK [2][-]{subsection.3.7.1}{Protok\363\233 HTTP}{section.3.7}% 21
+\BOOKMARK [2][-]{subsection.3.7.2}{JDBC}{section.3.7}% 22
+\BOOKMARK [2][-]{subsection.3.7.3}{I/O}{section.3.7}% 23
+\BOOKMARK [0][-]{chapter.4}{Implementacja}{}% 24
+\BOOKMARK [1][-]{section.4.1}{Oprogramowanie po stronie klienta}{chapter.4}% 25
+\BOOKMARK [2][-]{subsection.4.1.1}{Podzia\233 strukturalny}{section.4.1}% 26
+\BOOKMARK [2][-]{subsection.4.1.2}{Modu\233y pobierania danych}{section.4.1}% 27
+\BOOKMARK [2][-]{subsection.4.1.3}{Interfejs graficzny}{section.4.1}% 28
+\BOOKMARK [1][-]{section.4.2}{Oprogramowanie po stronie serwera}{chapter.4}% 29
+\BOOKMARK [2][-]{subsection.4.2.1}{Struktura pakietowa}{section.4.2}% 30
+\BOOKMARK [2][-]{subsection.4.2.2}{Oprogramowanie wyszukujace po\233aczenia lotnicze}{section.4.2}% 31
+\BOOKMARK [2][-]{subsection.4.2.3}{Parsowanie danych}{section.4.2}% 32
+\BOOKMARK [2][-]{subsection.4.2.4}{Kontrolery serwera}{section.4.2}% 33
+\BOOKMARK [0][-]{chapter.5}{Testy}{}% 34
+\BOOKMARK [1][-]{subsection.5.0.1}{Testy jednostkowe}{chapter.5}% 35
+\BOOKMARK [2][-]{subsection.5.0.2}{Testy integracyjne}{subsection.5.0.1}% 36
+\BOOKMARK [0][-]{chapter.6}{Uwagi i wnioski}{}% 37

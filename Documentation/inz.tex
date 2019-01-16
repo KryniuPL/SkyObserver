@@ -279,7 +279,7 @@ Słowa kluczowe: Java, Angular 6, REST, programowanie obiektowe, protokół HTTP
 	{\fontsize{14pt}{12pt}\selectfont
 		\textbf{Summary}}\\
 	\vspace{1cm}
-\tab The purpose of thesis was to build a web application, which will be able to search flight connections using data included on air websites or others data sources. Application was divided into two parts: client and server. Client was implemented using technology of Angular 6, whereas server in Java 10 technology. Description of architecture built application, module of air connections searching and theoretical issues related to building user interface for web application are included in this thesis. 
+\tab The purpose of thesis was to build a web application, which will be able to search flight connections using data included on air websites or other data sources. Application was divided into two parts: client and server. Client was implemented using technology of Angular 6, whereas server in Java 10 technology. Description of architecture built application, module of air connections searching and theoretical issues related to building user interface for web application are included in this thesis. 
 \end{flushleft}
 \vspace{0.5cm}
 Keywords: - Java, Angular 6, REST, Object Oriented Programming, HTTP Protocol, Functional Programming
@@ -296,13 +296,13 @@ Keywords: - Java, Angular 6, REST, Object Oriented Programming, HTTP Protocol, F
 \newpage
 \chapter*{Wstęp}
 \addcontentsline{toc}{chapter}{Wstęp}
-Branża lotnicza to jedna z głównych gałęzi dzisiejszego transportu. Za jej początek uznaje się pierwszy pomyślny lot braci Wright 17 grudnia 1903 roku na polach Kitty Hawk. To wydarzenie zapoczątkowało proces tworzenia się przemysłu lotniczego. W dzisiejszych czasach transport lotniczy uznaje się za najszybszy i najbardziej bezpieczny. Obecnie wykorzystuje się go między innymi w transporcie osób, towarów czy celach militarnych. Warto wspomnieć też o jego roli jako prekursora lotów kosmicznych. Dzięki niemu powstała nieosiągalna wcześniej możliwość podróżowania po całym świecie w najkrótszym możliwe czasie.\\
+Branża lotnicza to jedna z głównych gałęzi dzisiejszego transportu. Za jej początek uznaje się pierwszy pomyślny lot braci Wright 17 grudnia 1903 roku na polach Kitty Hawk. To wydarzenie zapoczątkowało proces tworzenia się przemysłu lotniczego. W dzisiejszych czasach transport lotniczy uznaje się za najszybszy i najbardziej bezpieczny. Wykorzystuje się go między innymi w transporcie osób, towarów lub też w celach militarnych. Warto wspomnieć też o jego roli jako prekursora lotów kosmicznych. Dzięki niemu powstała nieosiągalna wcześniej możliwość podróżowania po całym świecie w możliwe najkrótszym czasie.\\
 \indent W niniejszej pracy podjęto się stworzenia aplikacji internetowej umożliwiającej wyszukiwanie realnych połączeń lotniczych. Aplikacja ta składa się z części klienckiej oraz serwerowej. Dla zwiększenia jej wydajności do architektury została dodana relacyjna baza danych oraz mechanizmy cachowania danych.
 Jej główną funkcjonalnością jest zbieranie danych o połączeniach lotniczych z zewnętrznych serwisów oraz zasobów internetowych. 
  Pozwala ona na uzyskanie informacji o lotach uwzględniając dane o ich cenie, linii lotniczej go obsługującej, wymiarów i wagi dozwolonego bagażu, czasu podróży czy też liczby przesiadek.\\
 \indent
-Praca została podzielona na 6 rozdziałów. Rozdział pierwszy przedstawia zagadnienie wyszukiwania połączeń lotniczych wraz z opisem najważniejszych problemów które podjęto rozwiązaniu podczas powstawania aplikacji. Drugi rozdział opisuje obecnie istniejące rozwiązania na rynku. Jest to opis dwóch komercyjnych aplikacji które zyskały duże uznanie od ich użytkowników. Zakończony został podsumowującym porównaniem obu aplikacji ze stworzoną w ramach tej pracy. Rozdział trzeci przedstawia projekt aplikacji. Znajdują się w nim schematyczne rysunki z opisem które przestawiają architekturę powstałej aplikacji. Obrazuje podział funkcjonalności między bazą danych, warstwą logiki biznesowej czy też warstwą prezentacji. Opisane zostały również ścieżki komunikacji pomiędzy tymi warstwami.
-Rozdział czwarty przedkłada implementację aplikacji. W rozdziale tym zostaną przedstawione najważniejsze fragmenty oprogramowania tworzące funkcjonalność aplikacji. Można będzie w nim znaleźć informacje o użytych technologiach jak i zewnętrznych bibliotekach którymi się posłużono.Piąty rozdział poświęcony jest opisowi testów oprogramowania które potwierdzają prawidłowe działanie aplikacji. Ostatni rozdział przedstawia uwagi i wnioski odnoszące się do tematu pracy oraz stworzonej aplikacji.
+Praca została podzielona na 6 rozdziałów. Rozdział pierwszy przedstawia zagadnienie wyszukiwania połączeń lotniczych wraz z opisem najważniejszych problemów które podjęto rozwiązaniu podczas powstawania aplikacji. Drugi rozdział opisuje obecnie istniejące rozwiązania na rynku. Jest to opis dwóch komercyjnych aplikacji które zyskały duże uznanie swoich użytkowników. Zakończony został podsumowującym porównaniem obu aplikacji. Rozdział trzeci przedstawia projekt aplikacji. Znajdują się w nim schematy z opisem, które przestawiają architekturę powstałej aplikacji. Obrazuje podział funkcjonalności między bazą danych, warstwą logiki biznesowej czy też warstwą prezentacji. Opisane zostały również ścieżki komunikacji pomiędzy tymi warstwami.
+Rozdział czwarty przedkłada implementację aplikacji. W rozdziale tym zostaną przedstawione najważniejsze fragmenty oprogramowania tworzące funkcjonalność aplikacji. Można będzie w nim znaleźć informacje o użytych technologiach jak i zewnętrznych bibliotekach którymi się posłużono. Piąty rozdział poświęcony jest testom oprogramowania, które potwierdzają prawidłowe działanie aplikacji. Ostatni rozdział przedstawia uwagi i wnioski odnoszące się do tematu pracy oraz stworzonej aplikacji.
 
 \newpage
 \chapter{Opis rozwiązywanego zagadnienia}
@@ -522,6 +522,18 @@ Kluczowym zagadnieniem jest komunikacja między powyższymi komponentami. W stwo
 
 \newpage
 Na rysunku 3.1.1 zamieszczony został schemat architektury stworzonego systemu. Przedstawia on rozdział strukturalny aplikacji oraz drogę jaką musi odbyć żądanie użytkownika w celu uzyskania pożądanej odpowiedzi. Użytkownik po wypełnieniu odpowiednich formularzy w części klienckiej rozpoczyna proces wyszukiwania połączeń lotniczych. Oprogramowanie klienta po pobraniu od użytkownika niezbędnych parametrów takich jak miejsce wylotu czy rodzaj lotu zwraca się do części serwerowej o wyszukanie lotów zgodnych z podanymi parametrami. Komunikacja między tymi modułami odbywa się protokołem HTTP. Po wywołaniu, część serwerowa zwraca się do modułu wyszukiwania lotów. Moduł ten sprawdza wszystkie źródła danych zamieszczone na schemacie 3.1.1 . Zebrane dane są odpowiednio parsowane i przekazywane modułowi wyszukiwania który z kolei zwraca je kontrolerowi wywołanemu przez użytkownika. Kontroler następnie przekazuje dane do części klienckiej która wyświetla je w  graficznym interfejsie użytkownika. 
+\section{Diagram UML}
+Kluczowym elementem podczas tworzenia oprogramowania jest komunikacja. Przełożenie złożonej logiki biznesowej na język informatyczny to zadanie trudne oraz wymagające zrozumienia wymagań potencjalnego odbiorcy tworzonej dokumentacji technicznej. Ważny jest więc czytelny sposób opisu oprogramowania, który byłby w stanie zrozumiale przedstawić swoja treść wszystkim osobom się z nim zaznajamiającym. Podstawowym narzędziem w tej dziedzinie stał się język UML\footnote{Unified Modelling Language}.\cite{uml} \\
+
+
+\begin{figure}[!ht]
+\centering
+\includegraphics[scale=0.56, keepaspectratio]{activity_diagram.png}
+\caption{Diagram aktywności}
+\label{fig:architecure_diagram}
+\end{figure}
+Dla opracowanej aplikacji przygotowano diagram aktywności widoczny na rysunku 3.2.1 Obrazuje on przebieg wydarzeń które wykonywane są przez użytkownika po wczytaniu przez niego strony startowej. Jego najważniejszą funkcją jest ukazanie sekwencji kroków wykonywanych w części klienckiej.
+\newpage
 \section{Baza danych}
 Baza danych nie była sprecyzowana w wymaganiach pracy dyplomowej. Została ona użyta opcjonalnie jako miejsce dające szybki dostęp do danych o lotniskach. Użyto darmowego rozwiązania bazodanowego MySQL. MySQL to system zarządzania bazami danych rozwijany w przeszłości przez firmę MySQL AB, a obecnie przez korporację Oracle. Jest to szybki i obecnie jeden z popularniejszych serwerów baz danych dostępny na licencji GPL\footnote{General Public License} jak i w wersjach komercyjnych \cite{mysql}.
 
@@ -855,10 +867,60 @@ public void shouldReturnProperSumOfTotalFlightPrice() {
 Test zaprezentowany na listingu 5.0.2 inicjalizuje 3 obiekty typu \textit{Flight} z podanymi "na sztywno" wartościami cen przelotów. Obiekty te łączone są w kolekcję. Końcowa asercja sprawdza poprawbedziałanie metody \textit{calculateTotalFlightPrice} porównując jej wynik z oczekiwaną wartością. Warto zwrócić na trzeci argument jaki przyjmuje metoda \textit{assertEquals}. Oznacza on dopuszczalną różnicę między oczekiwanym a otrzymanym wynikiem.
 \newpage
 \subsection{Testy integracyjne}
+Specyfikacja projektu narzucała konieczność przetestowania integracji napisanego oprogramowania z zewnętrznymi systemami. Testowano poprawność pobierania danych oraz ich oczekiwane parametry. Wszystkie klasy z pakietu \textit{repository} zostały przetestowane w sposób analogiczny do siebie.
+\begin{lstlisting}[language=java, caption=Przykładowy test jednostkowy]
+@Test
+public void shouldReturnProprtAirlineObjectFromAPI() throws IOException {
+     Airline airline = airlineRepository.getAirlineFromApi("AA");
+     assertEquals(airline.getNameAirline(), "American Airlines");
+     assertEquals(airline.getStatusAirline(), "active");
+     assertEquals(airline.getCallsign(), "AMERICAN");
+     assertEquals(airline.getNameCountry(), "United States");
+    }
+\end{lstlisting}
+Oprogramowanie przedstawione na listingu powyżej testuje funkcjonowanie repozytorium zwracające informacje o liniach lotniczych. W pierwszym kroku pobiera ono obiekt linii lotniczej. Po przypisaniu tych danych do obiektu, sprawdzane są poszczególne parametry zwróconych informacji. \\ \indent
+Test o analogicznej funkcji sprawdzał też repozytorium zwracające ceny lotów.
+\begin{lstlisting}[language=java, caption=Przykładowy test jednostkowy]
+@Test
+public void shouldReturnValidPriceObject() throws IOException {
+  CachedPrice price = pricesRepository.getFlightPrice("PLN", "WAW", "LHR", "20190128", "20190130");
+  assertNotNull(price);
+  assertEquals(price.getCurrency(), "PLN");
+  assertEquals(price.getOriginPointOfRoute(), "WAW");
+  assertEquals(price.getDestinationPointOfRoute(), "LHR");
+}
+\end{lstlisting}
 
 \newpage
 \chapter{Uwagi i wnioski}
-test
+Opracowanie aplikacji wyszukującej połączenia lotnicze było zadaniem trudnym i wymagającym bardzo dużej ilości pracy. Droga do stworzenia oprogramowania spełniającego wszystkie wymagania przedstawione w celach pracy wymagała głębokiego zrozumienia logiki biznesowej związanej z danymi lotniczymi. Do największych wyzwań podczas pracy z pewnością było znalezienie odpowiednich źródeł danych udostępniających dane o lotach. Wysłano szereg zgłoszeń mailowych z prośbą o udostepnienie takich danych. W większości przypadków odpowiedzi były negatywne lub niesatysfakcjonujące z powodu żądania od dostawcy pokaźnej zapłaty za korzystanie z usługi. W warunkach akademickich skorzystanie z takich rozwiązań było niemożliwe. Po wnikliwej analizie rynku danych lotniczych udało się znaleźć odpowiednie źródło informacji dla potrzeb stworzonej aplikacji. \\ \indent
+ Z dużą dozą pewności można stwierdzić iż opracowana aplikacja w pełni spełnia założone wymagania. Pozwala z całkiem dobrą szybkością wyszukiwać połączenia lotnicze oraz dostarczać wielu dodatkowych informacji z nimi powiązanych. W sposób logiczny i przemyślany zaprojektowano moduł wyszukiwania lotów. Opracowano dla niego specjalną architekturę która została odzwierciedlona w kodzie źródłowym pod postacią wzorca projektowego. Dzięki temu zabiegowi aplikacja zachowuje potencjał łatwego i mało problemowego rozwoju. \\ \indent
+Zaimplementowany system został wyposażony w bogaty interfejs użytkownika. Opracowany w nowoczesnej technologii Angular, poziomem dobrego stylu i wyglądu dorównuje komercyjnym aplikacjom internetowym. Część pomysłów na jego kreatywną realizację zaczerpnięto z obecnych wyszukiwarek na rynku. \\ \indent
+Z uwagi na warunki akademickie aplikację można usprawnić na wielu płaszczyznach. W stworzonej pracy zabrakło takich dodatkowych funkcji jak możliwość wyszukiwania lotów również z pobliskich lotnisk od aktualnie wybranego czy też wprowadzenia wersji w języku polskim. Część serwerowa mogłaby zostać poprawiona w zakresie "czystości kodu" oraz poprawnego nazewnictwa jej elementów. Istotne znaczenie dla podniesienia atrakcyjności aplikacji byłoby też zwiększenie poziomu jej responsywności. Część kliencka wymaga w tym zakresie lekkich poprawek. \\ \indent
+Stworzonej aplikacji internetowej nadano nazwę \textit{SkyObserver}\footnote{SkyObserver - obserwator nieba}. Jest ona zwieńczeniem zebranej wiedzy i doświadczenia podczas studiów inżynierskich. Praca nad nią zaowocowała pogłębieniem technicznego sposobu myślenia oraz zrozumieniem wyzwań XXI wieku stawianym inżynierom informatykom.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 \begin{thebibliography}{9}
 \bibitem{xml}
 XML. Almanach, Elliotte Rusty Harold, W.Scott Means, Wydawnictwo O'REILLY
@@ -877,6 +939,10 @@ Instant Effective Caching with Ehcache, Daniel Wind, Packt Publishing
 \bibitem{architektura}
 tworzenie architektury oprogramowania, Christine Hofmeister, Robert Nord, Wydawnictwo Naukowo-Techniczne Warszawa
 
+\bibitem{uml}
+	Diagramy UML | Michał Wolski\\ \url{https://www.michalwolski.pl/diagramy-uml} \\
+	Stan na dzień 16.01.2019
+	
 \bibitem{mysql}
 MySQL Darmowa baza danych - Ćwiczenia praktyczne, Marcin Lis, Wydawnictwo Helion
 

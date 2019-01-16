@@ -15,7 +15,7 @@
 \contentsline {section}{\numberline {3.2}Diagram UML}{24}{section.3.2}
 \contentsline {section}{\numberline {3.3}Baza danych}{26}{section.3.3}
 \contentsline {section}{\numberline {3.4}Cz\IeC {\k e}\IeC {\'s}\IeC {\'c} kliencka}{26}{section.3.4}
-\contentsline {section}{\numberline {3.5}Cz\IeC {\k e}\IeC {\'s}\IeC {\'c} serwerowa}{28}{section.3.5}
+\contentsline {section}{\numberline {3.5}Cz\IeC {\k e}\IeC {\'s}\IeC {\'c} serwerowa}{27}{section.3.5}
 \contentsline {section}{\numberline {3.6}Modu\IeC {\l } wyszukiwania po\IeC {\l }\IeC {\k a}cze\IeC {\'n} lotniczych}{29}{section.3.6}
 \contentsline {section}{\numberline {3.7}Komunikacja mi\IeC {\k e}dzy komponentami aplikacji}{30}{section.3.7}
 \contentsline {subsection}{\numberline {3.7.1}Protok\IeC {\'o}\IeC {\l } HTTP}{30}{subsection.3.7.1}

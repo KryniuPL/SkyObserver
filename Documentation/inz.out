@@ -32,6 +32,6 @@
 \BOOKMARK [2][-]{subsection.4.2.3}{Parsowanie danych}{section.4.2}% 32
 \BOOKMARK [2][-]{subsection.4.2.4}{Kontrolery serwera}{section.4.2}% 33
 \BOOKMARK [0][-]{chapter.5}{Testy}{}% 34
-\BOOKMARK [1][-]{subsection.5.0.1}{Testy jednostkowe}{chapter.5}% 35
-\BOOKMARK [2][-]{subsection.5.0.2}{Testy integracyjne}{subsection.5.0.1}% 36
+\BOOKMARK [1][-]{section.5.1}{Testy jednostkowe}{chapter.5}% 35
+\BOOKMARK [1][-]{section.5.2}{Testy integracyjne}{chapter.5}% 36
 \BOOKMARK [0][-]{chapter.6}{Uwagi i wnioski}{}% 37

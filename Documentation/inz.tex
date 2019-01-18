@@ -263,7 +263,7 @@
 	{\fontsize{14pt}{12pt}\selectfont
 		\textbf{Streszczenie}}\\
 	\vspace{1cm}
-\tab Celem niniejszej pracy było opracowanie aplikacji internetowej która pozwoliłaby na wyszukiwanie połączeń lotniczych korzystając z danych zawartych na stronach internetowych przewoźników bądź z innych centr danych. Aplikacja została podzielona na część kliencką oraz serwerową. Klient został napisany przy użyciu technologii Angular 6, natomiast część serwerowa w technologii Java 10. W pracy znajduje się opis architektury stworzonej aplikacji, modułu wyszukiwania połączeń lotniczych a także zagadnień teoretycznych związanych z projektowaniem interfejsu użytkownika dla przeglądarki internetowej.
+\tab Celem niniejszej pracy było opracowanie aplikacji internetowej, która pozwoliłaby na wyszukiwanie połączeń lotniczych korzystając z danych zawartych na stronach internetowych przewoźników bądź z innych centr danych. Aplikacja została podzielona na część kliencką oraz serwerową. Klient został napisany przy użyciu technologii Angular 6, natomiast część serwerowa w technologii Java 10. W pracy znajduje się opis architektury stworzonej aplikacji, modułu wyszukiwania połączeń lotniczych a także zagadnień teoretycznych związanych z projektowaniem interfejsu użytkownika dla przeglądarki internetowej.
 \end{flushleft}
 \vspace{0.5cm}
 Słowa kluczowe: Java, Angular 6, REST, programowanie obiektowe, protokół HTTP, programowanie funkcyjne
@@ -285,14 +285,13 @@ Słowa kluczowe: Java, Angular 6, REST, programowanie obiektowe, protokół HTTP
 Keywords: - Java, Angular 6, REST, Object Oriented Programming, HTTP Protocol, Functional Programming
 \afterpage{\blankpage}
 
-% ---------------- Spis Treści ---------------
+
 \renewcommand{\contentsname}{Spis treści}
 \newpage
 \pagenumbering{arabic}
 \setcounter{page}{9}
-% Ustawia numerację strony od aktualnej na numer 9
 \tableofcontents
-% ------------------- Wstęp ------------------
+
 \newpage
 \chapter*{Wstęp}
 \addcontentsline{toc}{chapter}{Wstęp}
@@ -336,13 +335,13 @@ Skyscanner jest komercyjną aplikacją zbierającą wiele rodzajów danych lotni
 Użycie jego serwisów wymagało podania miejsca jak i daty wylotu oraz przylotu. Dodatkowym wymaganym parametrem był unikalny kod walutowy który umożliwiał zwrócenie poprawnych wyników. Oprócz cen przelotów Skyscanner posiada też stronę internetową z tabelą opisującą dozwolone wymiary oraz wagę bagażu podczas przelotu. Adres tej strony to: \url{www.skyscanner.net/news/tips/check-in-luggage-size-and-weight-restrictions}\\
 Zawartość tej strony jest parsowana przez część serwerową jednak to zagadnienie zostanie opisane szerzej w następnym podrozdziale.\\ \indent
 Kolejnym ważnym źródłem danych jest usługa chmurowa Aviation Edge. Serwis ten w przejrzysty sposób udostępnia dane o liniach lotniczych wykorzystując do tego interfejs REST\footnote{Representational state transfer}. Do użycia tej usługi wymagane było podanie unikalnego kodu linii lotniczej w celu jej zidentyfikowania oraz pobrania danych w postaci JSON. Aviation Edge jest bezpłatnym serwisem, do korzystania z jego zasobów wymagane jest tylko założenia konta w celu uzyskania klucza identyfikującego użytkownika. \\ \indent
-Ostatnim źródłem danych jest strona internetowa ourairport.com znajdująca się pod adresem internetowm: \url{http://ourairports.com/}. Jej zasobem który został wykorzystany jako źródło danych jest plik csv zawierający ponad 50000 rekordów lotnisk. Zawiera dane z szerokiego przekroju typów lotnisk począwszy od małych lotnisk dla awionetek aż po największe lotniska świata takie jak London Heathrow Airport. Dane te zabrane są w całości w postaci pliku CSV który jest pobierany przez część serwerową. Poddawane są procesowi filtracji w celu wyeliminowania lotnisk obsługujących poniżej 4 tysięcy pasażerów rocznie.
+Ostatnim źródłem danych jest strona internetowa ourairport.com znajdująca się pod adresem internetowm: \url{http://ourairports.com/}. Jej zasobem, który został wykorzystany jako źródło danych jest plik csv zawierający ponad 50000 rekordów lotnisk. Przechowuje dane z szerokiego przekroju typów lotnisk począwszy od tych małych dedykowanych dla awionetek aż po największe lotniska świata takie jak London Heathrow Airport. Dane te zabrane są w całości w postaci pliku CSV który jest pobierany przez część serwerową. Poddawane są procesowi filtracji w celu wyeliminowania lotnisk obsługujących poniżej 4 tysięcy pasażerów rocznie.
 \newpage
 \section{Parsowanie różnych rodzajów danych}
 
 Dane dostarczone przez zewnętrzne serwisy prezentowały swoją treść w różnych formatach. Aby zebrać pełną odpowiedź serwera należało w pierwszym kroku sparsować pojedyncze elementy a następnie zbudować z nich obiekt języka Java.
 \subsection{Język znaczników XML}
-XML\footnote{eXtensible Markup Language} to standard oznaczeń popierany przez organizację W3C. Definiuje on ogólną składnię, stosowaną przy oznaczaniu danych za pomocą prostych znaczników.\cite{xml} Ponadto oferuje standardowy format dokumentów komputerowych. Format ten można dostosowywać do dziedzin tak odmiennych jak witryny WWW, wymiana danych elektronicznych, grafika wektorowa, serializacja obiektów czy systemy poczty głosowej. Dane w dokumentach XML są zapisywane w postaci ciągów tekstowych, zawartych w oznaczeniu tekstowym opisującym te dane. Poszczególne jednostki danych i oznaczenia nazywane są elementami. Specyfikacja XML określa, jakie wymogi składniowe musi spełniać takie oznaczenie: w jaki sposób elementy są rozgraniczane przez znaczniki, jak wygląda znacznik, jakie nazwy elementów są akceptowanie, gdzie trzeba umieszczać atrybuty i tak dalej. Oznaczenia dokumentu XML są bardzo podobne do oznaczeń dokumentów HTML, choć występują między nimi pewne różnice.
+XML\footnote{eXtensible Markup Language} to standard formatowania treści wspierany przez organizację W3C. Określa on uniwersalną składnię, używaną przy oznaczaniu danych za pomocą znaczników. Ponadto oferuje standardowy format dokumentów komputerowych. Format ten można dostosowywać do dziedzin tak odmiennych jak witryny WWW, grafika wektorowa, serializacja obiektów, wymiana danych elektronicznych czy systemy poczty głosowej. Oznakowanie XML jest udokumentowane za pomocą specjalnych znaczników. Są to konstrukcje z ogranicznikami w nawiasach trójkątnych. Specyfikacja XML określa, jakie wymagania składniowe musi spełniać takie oznaczenie: w jaki sposób elementy są rozpoznawane przez znaczniki, jak przedstawiony jest znacznik, jakie nazwy elementów są akceptowalne oraz gdzie elementy powinny być rozmieszczone. Dokumenty słownika XML są podobne do dokumentów HTML\footnote{Hypertext Markup Language}, jednak istnieją pomiędzy nimi zasadnicze różnice. Kluczową róźnicą między XML a HTML jest to, że XML zachęca do tworzenia własnikch znaczników, podczas gdy w HTML nie ma takiej możliwości.\cite{xml}
 
 \begin{lstlisting}[language=XML, caption=Fragment danych w formacie XML]
     <FlightDetails TotalFlightTime="PT3H35M"
@@ -359,24 +358,23 @@ XML\footnote{eXtensible Markup Language} to standard oznaczeń popierany przez o
                    FLSFlightType="Connect"
                    FLSFlightLegs="2"
                    FLSFlightDays="...4..."
-                   FLSDayIndicator=""
     >
 \end{lstlisting}
 \newpage
-XML jest wyłącznie językiem znaczników, nie jest on ani językiem programowania, protokołem transportu sieciowego czy też bazą danych. XML oferuje możliwość formatowania danych, zapewnia to ich prawdziwą wieloplatformowość i odporność na upływ czasu. Dotychczas dokument zapisany za pomocą jakiegoś oprogramowania na jednej platformie nie dawał się odczytywać na innej platformie ani na zbliżonej platformie za pomocą innego rodzaju oprogramowania. 
+XML jest językiem znaczników, nie jest on językiem programowania, magazynem danych czy też protokołem transportu sieciowego. XML oferuje możliwość formatowania danych, zapewnia to ich prawdziwą wieloplatformowość i odporność na upływ czasu. Dotychczas dokument zapisany za pomocą dowolnego oprogramowania na jednej platformie nie dawał się odczytywać na innej. Wersja 3.2 jest najnowszą wersją XML. Zapewnia ona obsługę Unicode, co oznacza, że dokumenty XML składają się w całości ze znaków pobranych z zestawu znaków Unicode. 
 
 Wyszukiwanie informacji o połączeniach lotniczych zaczynało się od odebrania danych z serwisu FlightLookup w postaci XML. Jest to najważniejsza operacja podczas procesu wyszukiwania połączeń lotniczych. Dane zebrane w tej części są parametrami wyszukiwania podczas korzystania ze źródeł danych wykorzystanych w późniejszym etapie tego procesu. Przykład odebranej treści znajduje się na listingu 1.2.1 załączonym na poprzedniej stronie.
 
 Operacja parsowania obiektów XML na obiekty języka Java zostanie szerzej opisana w rozdziale o implementacji. Załączony listing 1.2.1 przedstawia jeden z elementów danych XML o nazwie \textit{FlightDetails}. Zawiera on przykładowe pola takie jak: \textit{TotalMiles} czy \textit{FLSFlightDays}. Elementy te zostały odwzorowane w postaci klas języka Java o takich samych nazwach jak nazwa elementu. Powstała klasa posiada też takie same pola jak obiekt w XML.
+
 \subsection{Notacja JSON}
-Notacja JSON\footnote{JavaScript Object Notation} jest modernistycznym sposobem prezentacji danych. Wywodzi się ona z języka JavaScript gdzie została głównym formatem prezentacji obiektów tej technologii. Notacja Json jest zbudowana na dwóch strukturach\cite{json}:
+Notacja JSON\footnote{JavaScript Object Notation} jest modernistycznym sposobem prezentacji danych. Wywodzi się ona z języka JavaScript gdzie została głównym formatem prezentacji obiektów tej technologii. Notacja Json jest zbudowana na dwóch strukturach:
 \begin{itemize}[noitemsep,topsep=0pt]
-\item Kolekcji par nazwa/wartość, w zależności od języka programowania zrealizowana jako obiekt, rekord, struktura, słownik bądź kolekcja
+\item Kolekcji par nazwa/wartość, w zależności od języka programowania zrealizowana jako obiekt, słownik bądź kolekcja danych
 \item Posortowana lista wartości. W większości języków zrealizowana jako tablica, wektor, lista lub sekwencja
 \end{itemize}
-Są to uniwersalne struktury danych. Wirtualnie wszystkie nowoczesne języki programowania wspierają je w specyficznej dla siebie formie. Notacja JSON jest to format danych, który jest wymienny z językami programowania. Ta właściwość czyni ją najpopularniejszym formatem wymiany danych między aplikacjami oraz mikroserwisami. W stworzonej aplikacji dane w tym formacie dotyczyły liniach lotniczych oraz cen przelotów. W pierwszym przypadku obiekt JSON można było w prosty sposób skonwertować na obiekt języka Java. Przykładową strukturę zaprezentowano na listingu 1.2.3\\
+Są to uniwersalne struktury danych. Prawie wszystkie nowoczesne języki programowania wspierają je w odpowiedniej dla siebie formie. Notacja JSON jest to format danych, który jest wymienny z językami programowania. Ta właściwość czyni ją najpopularniejszym formatem wymiany informacji między aplikacjami oraz mikroserwisami\cite{json}. W stworzonej aplikacji dane w tym formacie dotyczyły liniach lotniczych oraz cen przelotów. W pierwszym przypadku obiekt JSON można było w prosty sposób skonwertować na obiekt języka Java. Przykładową strukturę zaprezentowano na listingu 1.2.3\\
 Kod odpowiedzialny za konwersję tego obiektu zostanie przedstawiony w rozdziale piątym.
-\newpage
 \begin{lstlisting}[language=JSON, caption= Przykładowy obiekt w notacji JSON]
    [
     {
@@ -396,7 +394,7 @@ Kod odpowiedzialny za konwersję tego obiektu zostanie przedstawiony w rozdziale
 ]
 \end{lstlisting}
 \subsection{Język HTML}
-HTML\footnote{Hypertext Markup Language} jest standardowym językiem znaczników dla tworzenia stron internetowych\cite{html}. Dokumenty HTML są podstawową treścią jaką generują przeglądarki internetowe. W pracy dyplomowej źródłem danych o wymiarach i wadze dozwolonych bagaży była strona internetowa aplikacji Skyscanner. Poniżej przedstawiono fragment danych zapisanych w formacie HTML które posłużyły do celów pracy.
+HTML jest standardowym językiem znaczników dla tworzenia stron internetowych\cite{html}. Dokumenty HTML są podstawową treścią jaką generują przeglądarki internetowe. W pracy dyplomowej źródłem danych o wymiarach i wadze dozwolonych bagaży była strona internetowa aplikacji Skyscanner. Poniżej przedstawiono fragment danych zapisanych w formacie HTML które posłużyły do celów pracy.
 \begin{lstlisting}[language=HTML5, caption= Fragment dokumentu HTML]
 <table class="tftable" style="height: 3990px" border="1" width="578">
 <tbody>
@@ -416,13 +414,13 @@ Wyszukiwanie tak złożonych danych jak informacje o połączeniach lotniczych, 
 Dla zbierania danych dotyczących lotnisk oraz bagażów wprowadzono rozwiązania polegające na pobieraniu pełnych zasobów tych danów do bazy danych lub do pliku tekstowego znajdującego się na serwerze. Pozwoliło to na pominięcie opóźnienia sieciowego związanego z potencjalną koniecznością pobierania tych danych ze stron lub zewnętrznych baz danych.\\ \indent
 Kolejnym rozwiązaniem było wprowadzenie funkcyjnego stylu programowania w kluczowych elementach części serwerowej które odpowiadały za wyszukiwanie połączeń lotniczych.  Programowanie funkcyjne wprowadzone w Javie 8 pozwala skrócić operacje po stronie wirtualnej maszyny Javy,a więc też zaoszczędzić cenne milisekundy w trakcie wyszukiwania lotów.
 Implementacje tych rozwiązań znajdują się w rodziale czwartym.\\ \indent
-Ostatnim mechanizmem był rozwiązanie cachowania danych. Caching jest mechanizmem przyspieszającym działanie aplikacji oraz zwiększającym ogólną wydajność. Część danych która jest gromadzona w aplikacji o długich czasach dostępu i niższej przepustowości jest dodatkowo przechowywana w pamięci RAM o lepszych parametrach\cite{ehcache}. Pamięć RAM inaczej nazywana jest też pamięcią podręczną. Jest podstawą wszystkich nowoczesnych systemów informatycznych. Odczytywanie danych z tej pamięci jest najszybsze porównując go na przykład z odczytywaniem z dokumentów XML, JSON, bazy danych czy też zasobów sieciowych. Jego przeznaczeniem jest skracanie czasu odpowiedzi dla określonych zapytań do części serwerowej,które są zwielokrotnione i wywoływane przez wielu użytkowników. Wykonując operacje wyszukiwania lotów, moduł wyszukiwania sprawdza czy w cache'u znajdują się poszukiwanie operacje. Jeśli tak, zwraca je użytkownikowi. W przeciwnym wypadku  wyszukuje loty standardowym sposobem a wynik zapisuje do cache'u. Dla danych o liniach lotniczych, bagażach oraz dla całego obiektu lotu w części serwerowej stworzono 3 kontenery cache'u. Czas przetrzymywanie danych w tych kontenerach wynosi odpowiednio: 7 dni, 3 dni oraz 3 godziny. Przy wyborze informacji które powinny znaleźć się w pamięci podręcznej sugerowano się temperaturą danych. Trzy wcześniej wymienione zasoby oceniono z największym prawdopodobieństem na ich użycie przez użytkowników aplikacji.
+Ostatnim mechanizmem był rozwiązanie cachowania danych. Caching jest mechanizmem przyspieszającym działanie aplikacji oraz zwiększającym ogólną wydajność. Część danych, która jest gromadzona w aplikacji o długich czasach dostępu i niższej przepustowości jest dodatkowo przechowywana w pamięci RAM o lepszych parametrach\cite{ehcache}. Pamięć RAM inaczej nazywana jest też pamięcią podręczną. Jest podstawą wszystkich nowoczesnych systemów informatycznych. Odczytywanie danych z tej pamięci jest najszybsze porównując go na przykład z odczytywaniem z dokumentów XML, JSON, bazy danych czy też zasobów sieciowych. Jego przeznaczeniem jest skracanie czasu odpowiedzi dla określonych zapytań do części serwerowej,które są zwielokrotnione i wywoływane przez wielu użytkowników. Wykonując operacje wyszukiwania lotów, moduł wyszukiwania sprawdza czy w cache'u znajdują się poszukiwanie operacje. Jeśli tak, zwraca je użytkownikowi. W przeciwnym wypadku  wyszukuje loty standardowym sposobem a wynik zapisuje do cache'u. Dla danych o liniach lotniczych, bagażach oraz dla całego obiektu lotu w części serwerowej stworzono 3 kontenery cache'u. Czas przetrzymywanie danych w tych kontenerach wynosi odpowiednio: 7 dni, 3 dni oraz 3 godziny. Przy wyborze informacji które powinny znaleźć się w pamięci podręcznej sugerowano się temperaturą danych. Trzy wcześniej wymienione zasoby oceniono z największym prawdopodobieństem na ich użycie przez użytkowników aplikacji.
 Jednostki te wybrano uwzględniając wrażliwość tych danych na ciągłe zmiany w systemach lotniczych. Implementacja tych mechanizmów wraz z kodem źródłowym znajduje się w rozdziale czwartym.
 \newpage
 \chapter{Przegląd istniejących rozwiązań}
 Analiza istniejących rozwiązań, aplikacji wyszukujących połączenia lotnicze pozwoliła nadać pracy bardziej precyzyjne wymagania oraz zaprojektować jej ogólny przebieg. W internecie można znaleźć wiele aplikacji o podobnych lub takich samych funkcjonalnościach jak opracowana praca. W tym rozdziale zostaną opisane najbardziej znane wyszukiwarki lotów dostępnych na rynku. 
 \section{Wyszukiwarka lotów Skyscanner}
-Pierwszym przykładem została aplikacja internetowa Skyscanner. Jest to wyszukiwarka lotów, która umożliwia użytkownikom szukanie lotów według ceny i lokalizacji. Oprócz funkcji wyszukiwania lotów, Skyscanner oferuje opcje wyszukiwania hotelów blisko lotnisk oraz wypożyczenia auta w pobliżu lotniska docelowego. Aplikacja ta została stworzona oraz wdrożona w 2002 roku. Od tego czasu firma Ctrip która jest właścicielem tego produktu zatrudnia ponad 200 pracowników. Warto wspomnieć o jej innej usłudze która udostępnia dane o połączeniach lotniczym zewnętrznym firmom i deweloperom. Jej dane były brane pod uwagę w czasie szukania źródeł danych lecz Skyscanner wymaga dużych opłat za swoje usługi, w warunkach akademickich niemożliwe było z ich skorzystanie.
+Pierwszym przykładem została aplikacja internetowa Skyscanner. Jest to wyszukiwarka lotów, która umożliwia użytkownikom szukanie lotów według ceny i lokalizacji. Oprócz funkcji wyszukiwania lotów, Skyscanner oferuje opcje wyszukiwania hotelów blisko lotnisk oraz wypożyczenia auta w pobliżu lotniska docelowego. Aplikacja ta została stworzona oraz wdrożona w 2002 roku. Od tego czasu firma Ctrip, która jest właścicielem tego produktu zatrudnia ponad 200 pracowników. Warto wspomnieć o jej innej usłudze która udostępnia dane o połączeniach lotniczym zewnętrznym firmom i deweloperom. Jej dane były brane pod uwagę w czasie szukania źródeł danych lecz Skyscanner wymaga dużych opłat za swoje usługi, w warunkach akademickich niemożliwe było z ich skorzystanie.
 Aplikacja ta jest dostępna w ponad 30 językach oraz używana przez 60 milionów użytkowników miesięcznie. Aplikacja wiele razy nagradzana była za swoją funkcjonalność i użyteczność użytkownikom. Skyscanner znajduje się pod adresem sieciowym: 
 \url{https://www.skyscanner.net/}.\\ \indent
 Opisywana aplikacja ma dla swoich użytkowników szereg przydatnych funkcjonalności. Korzystające z jej osoby mogą korzystać z kompleksowego modułu wyszukiwania połączeń lotniczych. W panelu wyboru parametrów lotów można wybrać lotnisko wylotu, lotnisko docelowe jak i daty wylotu. Skyscanner oferuje 3 sposoby wyszukiwania lotów: lot powrotny, lot w jedną stronę oraz podróż wieloetapowa. Dodatkowo użytkownik jest w stanie sprecyzować liczbę osób podczas podróży jak i klasę biletu lotniczego. Ciekawą funkcjonalnością jest możliwość dodania pobliskich lotnisk do tych wybranych przez użytkownika. Znajduje ona zastosowanie, gdy na przykład aplikacja nie może znaleźć lotów z wybranego lotniska. Następuje wtedy wyszukiwanie lotów z pobliskich lotnisk o zadanym promieniu odległości.
@@ -477,8 +475,8 @@ Wszystkie produkty firmy Google, które można obejrzeć w przeglądarce interne
 \begin{figure}[!ht]
 \centering
 \includegraphics[scale=0.50, keepaspectratio]{google_flights_result.png}
-\caption{Komponent podróży wieloetapowej aplikacji Google Flights}
-\label{fig:google_flights_multi}
+\caption{Wyniki wyszukiwania lotów}
+\label{fig:google_flights_result}
 \end{figure}
 
 \newpage
@@ -505,7 +503,7 @@ Każda część posiada unikalną dla siebie funkcjonalność.
 Ze względu na rozmiar pracy włożony w każde z nich, w tym rozdziale zostaną one krótko opisane.
 Część serwerowa w całym systemie jest odpowiedzialna za dostarczenie danych do interfejsu użytkownika inaczej nazywanego częścią kliencką. Znajduje się w nim złożony moduł wyszukiwania połączeń lotniczych. Moduł ten sam w sobie posiada złożoną architekturę i  zostanie mu poświęcony dedykowany podrozdział.
 Część kliencka to internetowy interfejs użytkownika. Osadzony jest on w przeglądarce internetowej. W aplikacji nie zdecydowano się na podział względem ról użytkownika. Wynika to ze specyfiki projektowanej aplikacji. Każdy użytkownik ją odwiedzający posiada takie same uprawnienia do jej zasobów.
-Oprócz dwóch wspomnianych wcześniej modułów w skład architektury aplikacji wchodzi relacyjna baza danych która jest nośnikiem danych dla tabeli lotnisk.
+Oprócz dwóch wspomnianych wcześniej modułów w skład architektury aplikacji wchodzi relacyjna baza danych, która jest nośnikiem danych dla tabeli lotnisk.
 Kluczowym zagadnieniem jest komunikacja między powyższymi komponentami. W stworzonej aplikacji istnieje kilka rodzajów transportu danych między modułami. Każdy z nich zostanie szczegółowo opisany w dalszej części tego rozdziału.
 
 
@@ -517,7 +515,7 @@ Kluczowym zagadnieniem jest komunikacja między powyższymi komponentami. W stwo
 \end{figure}
 
 \newpage
-Na rysunku 3.1.1 zamieszczony został schemat architektury stworzonego systemu. Przedstawia on rozdział strukturalny aplikacji oraz drogę jaką musi odbyć żądanie użytkownika w celu uzyskania pożądanej odpowiedzi. Użytkownik po wypełnieniu odpowiednich formularzy w części klienckiej rozpoczyna proces wyszukiwania połączeń lotniczych. Oprogramowanie klienta po pobraniu od użytkownika niezbędnych parametrów takich jak miejsce wylotu, czy rodzaj lotu zwraca się do części serwerowej o wyszukanie lotów zgodnych z podanymi parametrami. Komunikacja między tymi modułami odbywa się protokołem HTTP. Po wywołaniu, część serwerowa zwraca się do modułu wyszukiwania lotów. Moduł ten sprawdza wszystkie źródła danych zamieszczone na schemacie 3.1.1 . Zebrane dane są odpowiednio parsowane i przekazywane modułowi wyszukiwania który z kolei zwraca je kontrolerowi wywołanemu przez użytkownika. Kontroler następnie przekazuje dane do części klienckiej która wyświetla je w  graficznym interfejsie użytkownika. 
+Na rysunku 3.1.1 zamieszczony został schemat architektury stworzonego systemu. Przedstawia on rozdział strukturalny aplikacji oraz drogę jaką musi odbyć żądanie użytkownika w celu uzyskania pożądanej odpowiedzi. Użytkownik po wypełnieniu odpowiednich formularzy w części klienckiej rozpoczyna proces wyszukiwania połączeń lotniczych. Oprogramowanie klienta po pobraniu od użytkownika niezbędnych parametrów takich jak miejsce wylotu, czy rodzaj lotu zwraca się do części serwerowej o wyszukanie lotów zgodnych z podanymi parametrami. Komunikacja między tymi modułami odbywa się protokołem HTTP. Po wywołaniu, część serwerowa zwraca się do modułu wyszukiwania lotów. Moduł ten sprawdza wszystkie źródła danych zamieszczone na schemacie 3.1.1 . Zebrane dane są odpowiednio parsowane i przekazywane modułowi wyszukiwania który z kolei zwraca je kontrolerowi wywołanemu przez użytkownika. Kontroler następnie przekazuje dane do części klienckiej, która wyświetla je w  graficznym interfejsie użytkownika. 
 \section{Diagram UML}
 Kluczowym elementem podczas tworzenia oprogramowania jest komunikacja. Przełożenie złożonej logiki biznesowej na język informatyczny to zadanie trudne oraz wymagające zrozumienia wymagań potencjalnego odbiorcy tworzonej dokumentacji technicznej. Ważny jest więc czytelny sposób opisu oprogramowania, który byłby w stanie zrozumiale przedstawić swoja treść wszystkim osobom się z nim zaznajamiającym. Podstawowym narzędziem w tej dziedzinie stał się język UML\footnote{Unified Modelling Language}.\cite{uml} \\
 
@@ -526,7 +524,7 @@ Kluczowym elementem podczas tworzenia oprogramowania jest komunikacja. Przełoż
 \centering
 \includegraphics[scale=0.56, keepaspectratio]{activity_diagram.png}
 \caption{Diagram aktywności}
-\label{fig:architecure_diagram}
+\label{fig:activity_diagram}
 \end{figure}
 Dla opracowanej aplikacji przygotowano diagram aktywności widoczny na rysunku 3.2.1 Obrazuje on przebieg wydarzeń które wykonywane są przez użytkownika po wczytaniu przez niego strony startowej. Jego najważniejszą funkcją jest ukazanie sekwencji kroków wykonywanych w części klienckiej.
 \newpage
@@ -586,7 +584,7 @@ Protokół HTTP\footnote{Hypertext Transfer Protocol} to jeden z najpopularniejs
 \subsection{JDBC}
 JDBC\footnote{Java Database Connectivity} to standardowy, niezależny od bazy danych interfejs do interakcji z dowolnym źródłem danych opartym na tabelaryczności. Przeważnie jest używany do współdziałania z relacyjnym systemem zarządzania bazami danych. Za pomocą tego interfejsu można też korzystać z dowolnego tabelarycznego źródła danych, takiego jak arkusz csv, plik tekstowy itd. Zazwyczaj używa się go do łączenia z bazą danych, wyszukiwania danych i ich aktualizowania. Umożliwia także wykonywanie procedur SQL w bazie danych przy użyciu składni niezależnej od bazy danych.\cite{jdbc} Używanie JDBC zwalnia użytkownika z konieczności uczenia się nowej składni za każdym razem pracy na innej bazie danych. JDBC dostarcza zestaw oprogramowania w języku Java do przetwarzania zestawu wyników zapytań SQL w sposób niezależny od bazy danych. W opracowanej aplikacji interfejs JDBC pośredniczył pomiędzy relacyjną bazą danych MySQL a częścią serwerową aplikacji.
 \subsection{I/O}
-Operacje zapisu oraz odczytu są podstawowymi częściami systemów operacyjnych wraz z językami programowania oraz ich bibliotekami. Prawie wszystkie programy komputerowe wykonują pewne operacje zapisu/odczytu inaczej zwanymi operacjami wejściowymi i wyjściowymi. W opracowanej aplikacji za wykonywanie tych operacji odpowiadał język Java która przez system operacyjny zwracała się do zasobów plikowych lub pamięci podręcznej. Operacje I/O dotyczą systemu plików, który jest elementarnym składnikiem każdego systemu operacyjnego. Zarządza on archiwizacją danych oraz ich późniejszym odzyskiwaniem. System plików przetrzymuje dane w plikach, które zaś są przechowywane w katalogach. Dostęp do plików oraz katalogów uzyskuje się przez zdefiniowanie ścieżek dostępu, które lokalizują obiektu systemu plików.\cite{i/o}
+Operacje zapisu oraz odczytu są podstawowymi częściami systemów operacyjnych wraz z językami programowania oraz ich bibliotekami. Prawie wszystkie programy komputerowe wykonują pewne operacje zapisu/odczytu inaczej zwanymi operacjami wejściowymi i wyjściowymi. W opracowanej aplikacji za wykonywanie tych operacji odpowiadał język Java ,który przez system operacyjny zwracał się do zasobów plikowych lub pamięci podręcznej. Operacje I/O dotyczą systemu plików, który jest elementarnym składnikiem każdego systemu operacyjnego. Zarządza on archiwizacją danych oraz ich późniejszym odzyskiwaniem. System plików przetrzymuje dane w plikach, które zaś są przechowywane w katalogach. Dostęp do plików oraz katalogów uzyskuje się przez zdefiniowanie ścieżek dostępu, które lokalizują obiektu systemu plików.\cite{i/o}
 
 \newpage
 \chapter{Implementacja}
@@ -684,7 +682,7 @@ W elementach wyboru lotnisk został zaimplementowany mechanizm podpowiedzi wyszu
 \centering
 \includegraphics[scale=0.8, keepaspectratio]{airport_choose.png}
 \caption{Komponent wyboru lotniska}
-\label{fig:search_panel}
+\label{fig:airport_choose}
 \end{figure}
 
 Operacja ta jest dokonywana poprzez pobranie wpisanych liter a następnie zgłoszenia żądania do części serwerowej, która zwraca wyniki z bazy danych. Implementacja tego mechanizmu znalazła się w poprzednim podrozdziale. Użytkownikowi wyświetlane są pełne nazwy lotnisk. Po wybraniu poszukiwanego miejsca widoczna jest nazwa miasta wraz z unikalnym kodem IATA identyfikującym lotnisko. Elementem pomiędzy polami dotyczącymi wyboru lotnisk jest przycisk zamiany pól. Jego funkcją jest zamiana informacji zawartych w polach miejsca odlotu oraz przylotu. Ostatnimi elementami są pola wyboru dat lotu docelowego oraz powrotnego. Obecność drugiego jest uzależniona od wybranego typu lotu. W przypadku gdy wyszukiwany jest tylko w jedną stronę jest on niewidoczny a szerokość pierwszego jest rozszerzona. Kliknięcie w ikonę kalendarza wyzwala okno modalne z jego powiększonym widokiem. Szarym okręgiem jest na nim zaznaczony dzień dzisiejszy. Po wybraniu, data zapisywana jest w pamięci aplikacji. Ten zabieg służy do zabezpieczenia sytuacji przy ewentualnym wyborze daty powrotu. W takiej sytuacji aplikacja wskaże zapisaną datę jako najwcześniejszą wartość przy wyborze daty lotu powrotnego. \\ \indent
@@ -813,7 +811,7 @@ Proces powstawania oprogramowania jest zbiorem czynności opartych na wielu czyn
 \end{itemize}
 W stworzonej aplikacji zdecydowano się na przetestowanie kluczowych fragmentów oprogramowania odpowiedzialnych za podstawowe funkcje systemu. Testy zaimplementowane zostały przy użyciu frameworków JUnit oraz Spring. Biblioteka JUnit to zewnętrzny pakiet oprogramowania dostarczająca zestaw narzędzi do testowania oprogramowania napisanego w języku Java. Znany i sprawdzony przez wielu programistów jest częścią wielu komercyjnych systemów. Drugi z nich, przedstawiony wcześniej w rozdziale trzecim dostarcza instrumenty do testowania jego oprogramowania serwerowego. \\ \indent
 Podstawową metodą testującą oprogramowanie była asercja. Jest to predykat, który zwraca wartość logiczną. Najczęściej przyjmuje dwa argumenty a następnie porównuje je zwracając wynik\cite{assertion}. Napisane testy znajdują się w części serwerowej aplikacji, testują one poprawność odpowiedzi serwera, informacje otrzymane z zewnętrznych serwisów, parsowanie różnych formatów danych jak i najbardziej podstawowe elementy aplikacji. Nazwy testów przemawiają za kodem źródłowym który testują. Dla przykładu test dla klasy \textit{FlightRepository} będzie nazywał się \textit{FlightsRepositoryTest}. \\
-\subsection{Testy jednostkowe}
+\section{Testy jednostkowe}
 Podstawowymi testami były testy jednostkowe. Na poniższym listingu przedstawiono zaimplementowany kod testujący poprawność działania funkcji zwracającej adres żądania HTTP.
 \begin{lstlisting}[language=java, caption=Przykładowy test jednostkowy]
 @Test
@@ -843,9 +841,9 @@ public void shouldReturnProperSumOfTotalFlightPrice() {
 \end{lstlisting}
 Test zaprezentowany na listingu 5.0.2 inicjalizuje 3 obiekty typu \textit{Flight} z podanymi "na sztywno" wartościami cen przelotów. Obiekty te łączone są w kolekcję. Końcowa asercja sprawdza poprawbedziałanie metody \textit{calculateTotalFlightPrice} porównując jej wynik z oczekiwaną wartością. Warto zwrócić na trzeci argument jaki przyjmuje metoda \textit{assertEquals}. Oznacza on dopuszczalną różnicę między oczekiwanym a otrzymanym wynikiem.
 \newpage
-\subsection{Testy integracyjne}
+\section{Testy integracyjne}
 Specyfikacja projektu narzucała konieczność przetestowania integracji napisanego oprogramowania z zewnętrznymi systemami. Testowano poprawność pobierania danych oraz ich oczekiwane parametry. Wszystkie klasy z pakietu \textit{repository} zostały przetestowane w sposób analogiczny do siebie.
-\begin{lstlisting}[language=java, caption=Przykładowy test jednostkowy]
+\begin{lstlisting}[language=java, caption=Przykładowy test integracyjny]
 @Test
 public void shouldReturnProprtAirlineObjectFromAPI() throws IOException {
      Airline airline = airlineRepository.getAirlineFromApi("AA");
@@ -857,7 +855,7 @@ public void shouldReturnProprtAirlineObjectFromAPI() throws IOException {
 \end{lstlisting}
 Oprogramowanie przedstawione na listingu powyżej testuje funkcjonowanie repozytorium zwracające informacje o liniach lotniczych. W pierwszym kroku pobiera ono obiekt linii lotniczej. Po przypisaniu tych danych do obiektu, sprawdzane są poszczególne parametry zwróconych informacji. \\ \indent
 Test o analogicznej funkcji sprawdzał też repozytorium zwracające ceny lotów.
-\begin{lstlisting}[language=java, caption=Przykładowy test jednostkowy]
+\begin{lstlisting}[language=java, caption=Przykładowy test integracyjny]
 @Test
 public void shouldReturnValidPriceObject() throws IOException {
   CachedPrice price = pricesRepository.getFlightPrice("PLN", "WAW", "LHR", "20190128", "20190130");
@@ -871,7 +869,7 @@ public void shouldReturnValidPriceObject() throws IOException {
 \newpage
 \chapter{Uwagi i wnioski}
 Opracowanie aplikacji wyszukującej połączenia lotnicze było zadaniem trudnym i wymagającym bardzo dużej ilości pracy. Droga do stworzenia oprogramowania spełniającego wszystkie wymagania przedstawione w celach pracy wymagała głębokiego zrozumienia logiki biznesowej związanej z danymi lotniczymi. Do największych wyzwań podczas pracy z pewnością należało znalezienie odpowiednich źródeł danych udostępniających dane o lotach. Wysłano szereg zgłoszeń mailowych z prośbą o udostępnienie takich danych. W większości przypadków odpowiedzi były negatywne lub niesatysfakcjonujące z powodu żądania od dostawcy pokaźnej zapłaty za korzystanie z usługi. W warunkach akademickich skorzystanie z takich rozwiązań było niemożliwe. Po wnikliwej analizie rynku danych lotniczych udało się znaleźć odpowiednie źródło informacji dla potrzeb stworzonej aplikacji. \\ \indent
- Z dużą dozą pewności można stwierdzić iż opracowana aplikacja w pełni spełnia założone wymagania. Pozwala z całkiem dobrą szybkością wyszukiwać połączenia lotnicze oraz dostarczać wielu dodatkowych informacji z nimi powiązanych. W sposób logiczny i przemyślany zaprojektowano moduł wyszukiwania lotów. Opracowano dla niego specjalną architekturę która została odzwierciedlona w kodzie źródłowym pod postacią wzorca projektowego. Dzięki temu zabiegowi aplikacja zachowuje potencjał łatwego i mało problemowego rozwoju. \\ \indent
+ Z dużą dozą pewności można stwierdzić iż opracowana aplikacja w pełni spełnia założone wymagania. Pozwala z całkiem dobrą szybkością wyszukiwać połączenia lotnicze oraz dostarczać wielu dodatkowych informacji z nimi powiązanych. W sposób logiczny i przemyślany zaprojektowano moduł wyszukiwania lotów. Opracowano dla niego specjalną architekturę, która została odzwierciedlona w kodzie źródłowym pod postacią wzorca projektowego. Dzięki temu zabiegowi aplikacja zachowuje potencjał łatwego i mało problemowego rozwoju. \\ \indent
 Zaimplementowany system został wyposażony w bogaty interfejs użytkownika. Opracowany w nowoczesnej technologii Angular, poziomem dobrego stylu i wyglądu dorównuje komercyjnym aplikacjom internetowym. Część pomysłów na jego kreatywną realizację zaczerpnięto z obecnych wyszukiwarek na rynku. \\ \indent
 Z uwagi na warunki akademickie aplikację można usprawnić na wielu płaszczyznach. W stworzonej pracy zabrakło takich dodatkowych funkcji jak możliwość wyszukiwania lotów również z pobliskich lotnisk od aktualnie wybranego czy też wprowadzenia wersji w języku polskim. Część serwerowa mogłaby zostać poprawiona w zakresie "czystości kodu" oraz poprawnego nazewnictwa jej elementów. Istotne znaczenie dla podniesienia atrakcyjności aplikacji byłoby też zwiększenie poziomu jej responsywności. Część kliencka wymaga w tym zakresie lekkich poprawek. \\ \indent
 Stworzonej aplikacji internetowej nadano nazwę \textit{SkyObserver}\footnote{SkyObserver - obserwator nieba}. Jest ona zwieńczeniem zebranej wiedzy i doświadczenia podczas studiów inżynierskich. Praca nad nią zaowocowała pogłębieniem technicznego sposobu myślenia oraz zrozumieniem wyzwań XXI wieku stawianym inżynierom informatykom.
@@ -903,46 +901,48 @@ Stworzonej aplikacji internetowej nadano nazwę \textit{SkyObserver}\footnote{Sk
 XML. Almanach, Elliotte Rusty Harold, W.Scott Means, Wydawnictwo O'REILLY
 
 \bibitem{json}
+  JSON \\
   \url{https://www.json.org/} \\
   Stan na dzień 03.01.2019
 
 \bibitem{html}
+    HTML, Wikipedia \\
 	\url{https://en.wikipedia.org/wiki/HTML} \\
 	Stan na dzień 04.01.2019
 \bibitem{ehcache}
-Instant Effective Caching with Ehcache, Daniel Wind, Packt Publishing
+Instant Effective Caching with Ehcache: Daniel Wind, Packt Publishing
 
 
 \bibitem{architektura}
-tworzenie architektury oprogramowania, Christine Hofmeister, Robert Nord, Wydawnictwo Naukowo-Techniczne Warszawa
+tworzenie architektury oprogramowania: Christine Hofmeister, Robert Nord, Wydawnictwo Naukowo-Techniczne Warszawa
 
 \bibitem{uml}
 	Diagramy UML | Michał Wolski\\ \url{https://www.michalwolski.pl/diagramy-uml} \\
 	Stan na dzień 16.01.2019
 	
 \bibitem{mysql}
-MySQL Darmowa baza danych - Ćwiczenia praktyczne, Marcin Lis, Wydawnictwo Helion
+MySQL Darmowa baza danych - Ćwiczenia praktyczne: Marcin Lis, Wydawnictwo Helion
 
 \bibitem{jvm}
-Java Programming Basics, Simon Roberts, Addison-Wesley Professional
+Java Programming Basics: Simon Roberts, Addison-Wesley Professional
 
 \bibitem{http}
-HTTP Protocols, Ilya Grigorik, wydawnictwo O'REILLY
+HTTP Protocols: Ilya Grigorik, wydawnictwo O'REILLY
 
 \bibitem{jdbc}
-Beginning Java 8 APIs, Extensions and Libraries Swing, JavaFX, JavaScript, JDBC and Network Programming APIs, Altamash Shaikh
+Beginning Java 8 APIs, Extensions and Libraries Swing, JavaFX, JavaScript, JDBC and Network Programming APIs: Altamash Shaikh
 
 \bibitem{i/o}
-Java I/O, NIO, NIO.2, Jeff Friesen
+Java I/O, NIO, NIO.2: Jeff Friesen
 
 \bibitem{builder}
-Design Patterns: Elements of Reusable Object-Oriented Software, John Vlissides, Ralph Johnson, Richard Helm, Erich Gamma
+Design Patterns: Elements of Reusable Object-Oriented Software: John Vlissides, Ralph Johnson, Richard Helm, Erich Gamma
 
 \bibitem{testing}
-Java Unit Testing with JUnit 5, Shekhar Gulati, Rahul Sharma
+Java Unit Testing with JUnit 5: Shekhar Gulati, Rahul Sharma
 
 \bibitem{assertion}
-Asercja,Wikipedia \\
+Asercja, Wikipedia \\
 \url{https://pl.wikipedia.org/wiki/Asercja_(informatyka)} \\
 Stan na dzień 14.01.2019
 

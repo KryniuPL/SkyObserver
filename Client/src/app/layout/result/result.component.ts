@@ -6,8 +6,6 @@ import { MultiFlight } from 'src/app/model/interfaces/MultiFlight';
 import { FlightForm } from 'src/app/model/classes/FlightForm';
 import { DataService } from 'src/app/services/data-service/data.service';
 import { Router } from '@angular/router';
-import { element } from '@angular/core/src/render3/instructions';
-import { HttpErrorResponse } from '@angular/common/http';
 import { Flight } from 'src/app/model/interfaces/Flight';
 
 
@@ -75,7 +73,8 @@ export class ResultComponent implements OnInit {
       this.initializeStepFormGroups();
       this.flightForms.forEach(element => {
         this.flightsService.getFlights(this.formatAirportFormDataToIataCode(element.originAirport), this.formatAirportFormDataToIataCode(element.destinationAirport), element.departureDate, element.isDirectOnly ? 'DIRECT' : 'MORE', 'PLN')
-          .subscribe(res => {
+        .toPromise()  
+        .then(res => {
             element.displayedFlights = res;
             this.formatFlightDataToDisplay(element.displayedFlights);
             if(this.flightForms.indexOf(element) === this.flightForms.length -1){
@@ -83,31 +82,25 @@ export class ResultComponent implements OnInit {
             }
           }
           ,error => {
-            console.error("NO FLIGHTS WITH GIVEN PARAMETERS" + error);
+            //console.error("NO FLIGHTS WITH GIVEN PARAMETERS" + error);
             element.displayedFlights = [];
             this.spinner.hide();
           })
       });
-      console.log(this.flightForms);
+      //console.log(this.flightForms);
     })
     if (this.flightForms.length === 0) {
       this.router.navigate(['']);
     }
-
-    // let json = require('../../../assets/json/directFlightsMock.json');
-    // this.mockFlights = json;
   }
 
   formatAirportFormDataToIataCode(airportInfo: string){
-    var dividedParts = airportInfo.split(" ");
-    var lastPart = dividedParts[1].split('');
-    var iataCodeWithBraces = lastPart.slice(1,lastPart.length-1);
-    let iataCode = '';
-    iataCodeWithBraces.forEach(element => {
-      iataCode += element;
-    });
-    return iataCode;
+    var dividedParts = airportInfo.split("\(");
+    var lastPart = dividedParts[1];
+    var iataCode = lastPart.replace("\)","");
+    return iataCode.trim();
   }
+
 
 
   formatFlightDataToDisplay(flightsArray: MultiFlight[]) {

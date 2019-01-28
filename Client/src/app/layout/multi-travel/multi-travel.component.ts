@@ -10,6 +10,7 @@ import { MultiFlight } from 'src/app/model/interfaces/MultiFlight';
 import { FlightForm } from 'src/app/model/classes/FlightForm';
 import { MultiFlightOption } from 'src/app/model/classes/MultiFlightOption';
 import { DataService } from 'src/app/services/data-service/data.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-multi-travel',
@@ -21,7 +22,7 @@ export class MultiTravelComponent implements OnInit {
   flights: MultiFlightOption[] = [];
   startDate = new Date();
 
-  constructor(private airportService: AirportsService, private data: DataService) {}
+  constructor(private airportService: AirportsService, private data: DataService, private router: Router) {}
 
   ngOnInit() {
     this.loadMultiFlights();
@@ -39,6 +40,7 @@ export class MultiTravelComponent implements OnInit {
       flightsOptions.push(flightFormObject);
     });
     this.data.changeMessage(flightsOptions);
+    this.router.navigate(['/result']);
   }
 
   formatDateObjectToApiFormat(dateInString: string) {

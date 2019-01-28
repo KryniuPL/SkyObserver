@@ -93,7 +93,7 @@ export class SearchPanelComponent implements OnInit {
   }
 
   searchForFlights(){
-    this.router.navigate(['/result']);
+    
     this.selectedFlightForm.$type = this.selectedJourney.name;
 
     var formToPass = new Array<FlightForm>();
@@ -113,6 +113,7 @@ export class SearchPanelComponent implements OnInit {
       formToPass.push(returnObject);
     }
     this.data.changeMessage(formToPass);
+    this.router.navigate(['/result']);
   }
 
   swapInputValues(){

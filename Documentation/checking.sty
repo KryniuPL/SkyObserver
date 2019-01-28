@@ -1,0 +1,37 @@
+%Pakiet z makrami do sprawdzania prac dyplomowych
+\NeedsTeXFormat{LaTeX2e}[1995/12/02]
+\ProvidesPackage{checking}[2018/06/16 v0.1 Diploma Thesis Advisor Package]
+\PassOptionsToPackage{normalem}{ulem}
+\RequirePackage{ifthen,xcolor,ulem}
+
+\newif\ifshowcomments
+\showcommentsfalse
+\DeclareOption{show}{\showcommentstrue}
+\ProcessOptions
+
+
+\ifshowcomments
+\newcommand{\hint}[1]{{\color{red}(#1)}}
+\else
+\newcommand{\hint}[1]{}
+\fi
+
+\ifshowcomments
+\newcommand{\change}[2]{{\color{red}{\sout{#1} #2}}}
+\else
+\newcommand{\change}[2]{#2}
+\fi
+
+\ifshowcomments
+\newcommand{\add}[1]{{\color{red}{#1}}}
+\else
+\newcommand{\add}[1]{#1}
+\fi
+
+\ifshowcomments
+\newcommand{\delete}[1]{{\color{red}{\sout{#1}}}}
+\else
+\newcommand{\delete}[1]{}
+\fi
+
+\endinput

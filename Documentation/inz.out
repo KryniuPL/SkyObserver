@@ -11,7 +11,7 @@
 \BOOKMARK [1][-]{section.2.2}{Wyszukiwarka lot\363w Google Flights}{chapter.2}% 11
 \BOOKMARK [1][-]{section.2.3}{Por\363wnanie aplikacji}{chapter.2}% 12
 \BOOKMARK [0][-]{chapter.3}{Projekt aplikacji}{}% 13
-\BOOKMARK [1][-]{section.3.1}{Og\363lna architektura aplikacji}{chapter.3}% 14
+\BOOKMARK [1][-]{section.3.1}{Architektura aplikacji}{chapter.3}% 14
 \BOOKMARK [1][-]{section.3.2}{Diagram UML}{chapter.3}% 15
 \BOOKMARK [1][-]{section.3.3}{Baza danych}{chapter.3}% 16
 \BOOKMARK [1][-]{section.3.4}{Czesc kliencka}{chapter.3}% 17
@@ -27,12 +27,12 @@
 \BOOKMARK [2][-]{subsection.4.1.2}{Modu\233y pobierania danych}{section.4.1}% 27
 \BOOKMARK [2][-]{subsection.4.1.3}{Interfejs graficzny}{section.4.1}% 28
 \BOOKMARK [1][-]{section.4.2}{Oprogramowanie po stronie serwera}{chapter.4}% 29
-\BOOKMARK [2][-]{subsection.4.2.1}{Struktura pakietowa}{section.4.2}% 30
+\BOOKMARK [2][-]{subsection.4.2.1}{Podzia\233 na pakiety}{section.4.2}% 30
 \BOOKMARK [2][-]{subsection.4.2.2}{Oprogramowanie wyszukujace po\233aczenia lotnicze}{section.4.2}% 31
 \BOOKMARK [2][-]{subsection.4.2.3}{Parsowanie danych}{section.4.2}% 32
 \BOOKMARK [2][-]{subsection.4.2.4}{Zabezpieczenia}{section.4.2}% 33
 \BOOKMARK [2][-]{subsection.4.2.5}{Kontrolery serwera}{section.4.2}% 34
 \BOOKMARK [0][-]{chapter.5}{Testy}{}% 35
 \BOOKMARK [1][-]{section.5.1}{Testy jednostkowe}{chapter.5}% 36
-\BOOKMARK [1][-]{section.5.2}{Testy integracyjne}{chapter.5}% 37
+\BOOKMARK [1][-]{section.5.2}{Testy integracji}{chapter.5}% 37
 \BOOKMARK [0][-]{chapter.6}{Uwagi i wnioski}{}% 38

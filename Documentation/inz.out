@@ -11,16 +11,16 @@
 \BOOKMARK [1][-]{section.2.2}{Wyszukiwarka lot\363w Google Flights}{chapter.2}% 11
 \BOOKMARK [1][-]{section.2.3}{Por\363wnanie aplikacji}{chapter.2}% 12
 \BOOKMARK [0][-]{chapter.3}{Projekt aplikacji}{}% 13
-\BOOKMARK [1][-]{section.3.1}{Architektura aplikacji}{chapter.3}% 14
-\BOOKMARK [1][-]{section.3.2}{Diagram UML}{chapter.3}% 15
-\BOOKMARK [1][-]{section.3.3}{Baza danych}{chapter.3}% 16
-\BOOKMARK [1][-]{section.3.4}{Czesc kliencka}{chapter.3}% 17
-\BOOKMARK [1][-]{section.3.5}{Czesc serwerowa}{chapter.3}% 18
-\BOOKMARK [1][-]{section.3.6}{Modu\233 wyszukiwania po\233aczen lotniczych}{chapter.3}% 19
-\BOOKMARK [1][-]{section.3.7}{Komunikacja miedzy komponentami aplikacji}{chapter.3}% 20
-\BOOKMARK [2][-]{subsection.3.7.1}{Protok\363\233 HTTP}{section.3.7}% 21
-\BOOKMARK [2][-]{subsection.3.7.2}{JDBC}{section.3.7}% 22
-\BOOKMARK [2][-]{subsection.3.7.3}{I/O}{section.3.7}% 23
+\BOOKMARK [1][-]{section.3.1}{Diagram przypadk\363w uzycia}{chapter.3}% 14
+\BOOKMARK [1][-]{section.3.2}{Diagram aktywnosci}{chapter.3}% 15
+\BOOKMARK [1][-]{section.3.3}{Architektura aplikacji}{chapter.3}% 16
+\BOOKMARK [1][-]{section.3.4}{Projekt bazy danych}{chapter.3}% 17
+\BOOKMARK [1][-]{section.3.5}{Modu\233 wyszukiwania po\233aczen lotniczych}{chapter.3}% 18
+\BOOKMARK [1][-]{section.3.6}{Komunikacja miedzy komponentami aplikacji}{chapter.3}% 19
+\BOOKMARK [2][-]{subsection.3.6.1}{Protok\363\233 HTTP}{section.3.6}% 20
+\BOOKMARK [2][-]{subsection.3.6.2}{JDBC}{section.3.6}% 21
+\BOOKMARK [2][-]{subsection.3.6.3}{I/O}{section.3.6}% 22
+\BOOKMARK [1][-]{section.3.7}{Podsumowanie}{chapter.3}% 23
 \BOOKMARK [0][-]{chapter.4}{Implementacja}{}% 24
 \BOOKMARK [1][-]{section.4.1}{Oprogramowanie po stronie klienta}{chapter.4}% 25
 \BOOKMARK [2][-]{subsection.4.1.1}{Podzia\233 strukturalny}{section.4.1}% 26

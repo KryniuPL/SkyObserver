@@ -262,7 +262,6 @@
 
 % --------------------------------------------
 % --------------- Streszczenie ---------------
-\newpage
 \thispagestyle{empty}
 \begin{center}
 	{\fontsize{14pt}{12pt}\selectfont
@@ -297,12 +296,11 @@ Keywords: - Java, Angular 6, REST, Object Oriented Programming, HTTP Protocol, F
 
 
 \renewcommand{\contentsname}{Spis treści}
-\newpage
 \pagenumbering{arabic}
 \setcounter{page}{9}
 \tableofcontents
 
-\newpage
+
 \chapter*{Wstęp}
 \addcontentsline{toc}{chapter}{Wstęp}
 Branża lotnicza to jedna z głównych gałęzi współczesnego transportu. Za jej początek uznaje się pierwszy pomyślny lot braci Wright 17 grudnia 1903 roku na polach Kitty Hawk. To wydarzenie zapoczątkowało proces tworzenia się przemysłu lotniczego. W dzisiejszych czasach transport lotniczy uznaje się za najszybszy i najbardziej bezpieczny. Wykorzystuje się go między innymi w transporcie osób, towarów lub też w celach militarnych. Warto wspomnieć też o jego roli w~rozwoju lotów kosmicznych. Dzięki niemu powstała nieosiągalna wcześniej możliwość podróżowania po całym świecie w względnie krótkim czasie.
@@ -433,26 +431,28 @@ Pierwszym przykładem jest aplikacja internetowa Skyscanner. To wyszukiwarka lot
 Aplikacja ta jest dostępna w ponad 30 językach oraz używana przez 60 milionów użytkowników miesięcznie. Skyscanner znajduje się pod adresem sieciowym: 
 \url{https://www.skyscanner.net/}.
 
-Opisywana aplikacja \change{ma dla swoich użytkowników szereg przydatnych funkcjonalności.}{oferuje swoim użytkownikom szereg przydatnych funkcji.} Korzystające z jej osoby mogą \change{korzystać z kompleksowego modułu}{posługiwać się kompleksowym modułem} wyszukiwania połączeń lotniczych. W panelu wyboru parametrów lotów można \change{wybrać}{określić} lotnisko wylotu, lotnisko docelowe jak i daty \change{wylotu}{lotu}. Skyscanner oferuje \change{3}{trzy} \change{sposoby}{opcje} wyszukiwania lotów: \change{lot powrotny}{z~lotem powrotnym}, lot w jedną stronę oraz podróż wieloetapowa. Dodatkowo użytkownik \change{jest w stanie sprecyzować}{może określić} liczbę osób \change{podczas}{biorących udział w~}podróży jak i klasę biletu lotniczego. \change{Ciekawą funkcjonalnością}{Interesującą funkcją} jest możliwość dodania pobliskich lotnisk do tych wybranych przez użytkownika. Znajduje ona zastosowanie, gdy na przykład aplikacja nie może znaleźć lotów z wybranego lotniska. Następuje wtedy wyszukiwanie lotów z pobliskich lotnisk \change{o zadanym promieniu odległości}{znajdujących się w~zasięgu o~kształcie koła o~zadanej długości promienia}.
-Oprócz \change{bogatego}{rozbudowanego} interfejsu do wyboru parametrów lotów Skyscanner oferuje bardzo dobrą wydajność podczas wyszukiwania. Loty bezpośrednie wyszukiwane są natychmiastowo. Na loty z zaznaczoną opcj\change{a}{ą} możliwych przesiadek trzeba poczekać \add{zwykle} kilka sekund. Interfejs aplikacji Skyscanner \change{zostanie}{jest} zaprezentowany \change{na następnej stronie}{na ilustracji \ref{fig:skyscanner_main}}.
-%\newpage
+Opisywana aplikacja oferuje swoim użytkownikom szereg przydatnych funkcji. Korzystające z jej osoby mogą posługiwać się kompleksowym modułem wyszukiwania połączeń lotniczych. W panelu wyboru parametrów lotów można określić lotnisko wylotu, lotnisko docelowe jak i daty lotu. Skyscanner oferuje trzy opcje wyszukiwania lotów: z~lotem powrotnym, lot w jedną stronę oraz podróż wieloetapowa. Dodatkowo użytkownik może określić liczbę osób biorących udział w podróży jak i klasę biletu lotniczego. Interesującą funkcją jest możliwość dodania pobliskich lotnisk do tych wybranych przez użytkownika. Znajduje ona zastosowanie, gdy na przykład aplikacja nie może znaleźć lotów z wybranego lotniska. Następuje wtedy wyszukiwanie lotów z pobliskich lotnisk znajdujących się w~zasięgu o~kształcie koła o~zadanej długości promienia.
+Oprócz rozbudowanego interfejsu do wyboru parametrów lotów Skyscanner oferuje bardzo dobrą wydajność podczas wyszukiwania. Loty bezpośrednie wyszukiwane są natychmiastowo. Na loty z zaznaczoną opcją możliwych przesiadek trzeba poczekać zwykle kilka sekund. Interfejs aplikacji Skyscanner jest zaprezentowany na ilustracji \ref{fig:skyscanner_main}.
+
 \begin{figure}[!ht]
 \centering
 \includegraphics[scale=0.50, keepaspectratio]{skyscanner_main.png}
 \caption{Panel wyszukiwania lotów aplikacji Skyscanner}
 \label{fig:skyscanner_main}
 \end{figure}
-Po wybraniu odpowiednich parametrów \add{w~widocznym na rysunku \ref{fig:skyscanner_main} menu} należy nacisnąć zielony przycisk po prawej\add{,} aby rozpocząć proces wyszukiwania lotów. \change{Jego przykładowe}{Przykładowe} wyniki zaprezentowano na rysunku \change{2.1.2}{\ref{fig:skyscanner_result}}\change{, m}{. M}ożna na nim zauważyć wyszukane loty z dokładnymi informacjami o linii lotniczej obsługującej lot, miejsca wylotu oraz przylotu, czasie podróży jak i liczbie przesiadek. Z lewej strony dostępny jest panel dzięki któremu można dokonać 
-\change{różnego rodzaju filtracji na otrzymanych wynikach}{filtrowania otrzymanych wyników}.
+
+Po wybraniu odpowiednich parametrów w~widocznym na rysunku \ref{fig:skyscanner_main} menu należy nacisnąć zielony przycisk po prawej, aby rozpocząć proces wyszukiwania lotów. Przykładowe wyniki zaprezentowano na rysunku \ref{fig:skyscanner_result}. Można na nim zauważyć wyszukane loty z dokładnymi informacjami o linii lotniczej obsługującej lot, miejsca wylotu oraz przylotu, czasie podróży jak i liczbie przesiadek. Z lewej strony dostępny jest panel dzięki któremu można dokonać filtrowania otrzymanych wyników.
+
 \begin{figure}[!ht]
 \centering
 \includegraphics[scale=0.45, keepaspectratio]{skyscanner_result.png}
 \caption{Wyniki wyszukiwania lotów aplikacji Skyscanner}
 \label{fig:skyscanner_result}
 \end{figure}
-%\newpage
 
-Warto zwrócić uwagę na panel podróży wieloetapowej, który jest dostępny po kliknięciu  odpowiedniego przycisku powyżej pola \delete{do} wyboru lotniska wylotowego. Można w nim wybrać do siedmiu osobnych połączeń lotniczych i na ich podstawie zaplanować \delete{swoją} podróż. Każde z tych połączeń jest domyślnie \change{połączeniem}{lotem} w jedną stronę. 
+
+Warto zwrócić uwagę na panel podróży wieloetapowej, który jest dostępny po kliknięciu  odpowiedniego przycisku powyżej pola wyboru lotniska wylotowego. Można w nim wybrać do siedmiu osobnych połączeń lotniczych i na ich podstawie zaplanować podróż. Każde z tych połączeń jest domyślnie lotem w jedną stronę.
+ 
 \begin{figure}[!ht]
 \centering
 \includegraphics[scale=0.50, keepaspectratio]{skyscanner_multi.png}
@@ -461,7 +461,7 @@ Warto zwrócić uwagę na panel podróży wieloetapowej, który jest dostępny p
 \end{figure}
 
 \section{Wyszukiwarka lotów Google Flights}
-Kolejnym przedstawianym rozwiązaniem jest aplikacja internetowa Google Flights firmy Google. Jest to jeden z głównych internetowych produktów \change{giganta}{firmy} z Kalifornii\change{. W pełni integruje się}{, zintegrowany} z innymi usługami tej firmy\add{,} co czyni go bardzo praktycznym systemem. Google Flights zostało wdrożone 13 października 2011 roku. Ma zbliżone \change{funkcjonalności}{funkcje} do wcześniej opisywanego konkurenta\add{,} Skyscanner. Oferuje jednak pewne \change{innowacje}{dodatkowe udogodnienia}. Pozwala \add{on} użytkownikowi na wyszukiwanie lotów \change{określając okres czasowy go interesujący oraz budżet na jaki pozwala jego portfel}{według takich kryteriów, jak czas trwania podróży oraz koszt}. \hint{Nie jestem pewien, czy chodziło Panu o czas trwania podróży. Jeśli nie, to proszę poprawić, ale na pewno nie ma czegoś takiego jak ,,okres czasowy". Okres to czas i~tyle.} Największą zaletą tej aplikacji jest jej \change{szybkość}{efektywność}. \change{Dzięki spokrewnieniu z silnikiem Google Search szybkość wyszukiwania połączeń lotniczych jest bezkonkurencyjna na rynku wyszukiwarek lotów.}{Silnik tej wyszukiwarki jest podobny do tego stosowanego w~Google Search.} \change{Szybkość ta została uzyskana}{Wydajność tego oprogramowania została uzyskana} przez użycie wyspecjalizowanych algorytmów szukających firmy Google oraz specjalnemu indeksowaniu danych. Oprócz \change{samej funkcjonalności}{tej zalety} aplikacja prezentuje \add{również} czytelny i \change{responsywny interfejs}{dostosowujący się do używanego medium (ang. \emph{responsive}) interfejs}, który \change{zyskał aprobatę ze strony}{jest dobrze oceniany przez} użytkowników.
+Kolejnym przedstawianym rozwiązaniem jest aplikacja internetowa Google Flights firmy Google. Jest to jeden z głównych internetowych produktów firmy z Kalifornii, zintegrowany z innymi usługami tej firmy, co czyni go bardzo praktycznym systemem. Google Flights zostało wdrożone 13 października 2011 roku. Ma zbliżone funkcje do wcześniej opisywanego konkurenta, Skyscanner. Oferuje jednak pewne dodatkowe udogodnienia. Pozwala on użytkownikowi na wyszukiwanie lotów według takich kryteriów, jak czas trwania podróży oraz koszt. Największą zaletą tej aplikacji jest jej efektywność. Silnik tej wyszukiwarki jest podobny do tego stosowanego w~Google Search. Wydajność tego oprogramowania została uzyskana przez użycie wyspecjalizowanych algorytmów szukających firmy Google oraz specjalnemu indeksowaniu danych. Oprócz tej zalety aplikacja prezentuje również czytelny i dostosowujący się do używanego medium (ang. \emph{responsive}) interfejs, który jest dobrze oceniany przez użytkowników.
 
 \begin{figure}[!ht]
 \centering
@@ -469,7 +469,7 @@ Kolejnym przedstawianym rozwiązaniem jest aplikacja internetowa Google Flights 
 \caption{Panel wyszukiwania lotów aplikacji Google Flights}
 \label{fig:google_flights_search_panel}
 \end{figure}
-\change{Na rysunku 2.2.1 przedstawiono}{Rysunek \ref{fig:google_flights_search_panel} przedstawia} panel wyszukiwania lotów oferowany przez opisywaną aplikację. Dostępny jest też komponent podróży wieloetapowej który znalazł się też w poprzednio opisywanej aplikacji oraz w \change{części praktycznej}{w~aplikacji powstałej w~ramach} tej pracy.
+Rysunek \ref{fig:google_flights_search_panel} przedstawia panel wyszukiwania lotów oferowany przez opisywaną aplikację. Dostępny jest też komponent podróży wieloetapowej który znalazł się też w poprzednio opisywanej aplikacji oraz w~aplikacji powstałej w~ramach tej pracy.
 
 \begin{figure}[!ht]
 \centering
@@ -477,7 +477,7 @@ Kolejnym przedstawianym rozwiązaniem jest aplikacja internetowa Google Flights 
 \caption{Komponent podróży wieloetapowej aplikacji Google Flights}
 \label{fig:google_flights_multi}
 \end{figure}
-Wszystkie produkty firmy Google, które \change{można obejrzeć w przeglądarce internetowej}{dostępne są za pomocą przeglądarki WWW} charakteryzują się specyficznym stylem interfejsu. Jest to \change{platforma}{styl} Material Design, \change{która wyznacza}{który określa} specyfikację pojedynczych elementów aplikacji Google'a. Rysunek \change{2.2.3}{\ref{fig:skyscanner_result}} przedstawia przykładowe wyniki wyszukiwania lotów. \change{Wyszukane loty znajdują się w}{Znajdują się one na } rozwijanej liście. Po kliknięciu w wybrany element listy rozwija się panel z dokładniejszymi informacjami o locie. Każdy element zaprezentowany na \change{poniższym}{wspomnianym} rysunku jest zgodny z~\delete{wcześniej wspomnianą platformą }Material Design. Widać na przykład zaokrąglenia przycisków charakterystyczne dla produktów marki Google. 
+Wszystkie produkty firmy Google, które dostępne są za pomocą przeglądarki WWW charakteryzują się specyficznym stylem interfejsu. Jest to styl Material Design, który określa specyfikację pojedynczych elementów aplikacji Google'a. Rysunek \ref{fig:skyscanner_result} przedstawia przykładowe wyniki wyszukiwania lotów. Znajdują się one na rozwijanej liście. Po kliknięciu w wybrany element listy rozwija się panel z dokładniejszymi informacjami o locie. Każdy element zaprezentowany na wspomnianym rysunku jest zgodny z Material Design. Widać na przykład zaokrąglenia przycisków charakterystyczne dla produktów marki Google. 
 
 \hint{Informacje w~akapicie dotyczącym stylu są interesujące, ale czy na pewno wnoszą coś do pracy? Proszę się zastanowić nad jego usunięciem.}
  
@@ -488,39 +488,58 @@ Wszystkie produkty firmy Google, które \change{można obejrzeć w przeglądarce
 \label{fig:google_flights_result}
 \end{figure}
 
-%\newpage
+
 \section{Porównanie aplikacji}
-Obie opisane aplikacje są rozwiązaniami komercyjnymi, stworzonymi przez wieloosobowe zespoły programistów. Są \add{także} systemami sprawnie działającymi, z czytelnym \delete{oraz zrozumiałym} interfejsem graficznym. \change{Swoją funkcjonalnością są do siebie identyczne}{Dostarczają one niemal identycznych usług}\change{,}{ {\dywiz}} posiadają \change{tą}{tę} samą ofertę dla użytkownika\add{,} jednak różnią się jakością jej wykonania. 
+Obie opisane aplikacje są rozwiązaniami komercyjnymi, stworzonymi przez wieloosobowe zespoły programistów. Są także systemami sprawnie działającymi, z czytelnym interfejsem graficznym. Dostarczają one niemal identycznych usług {\dywiz} posiadają tę samą ofertę dla użytkownika, jednak różnią się jakością jej wykonania. 
 
-\change{Zaletami}{Zaletą} aplikacji Skyscanner jest z pewnością rzetelność jej danych\change{. Jest to potwierdzone ze strony linii lotniczych, które wielokrotnie ją nagradzały}{, która jest potwierdzona licznymi nagrodami od linii lotniczych}. Warto też wspomnieć o jej systemie wyszukiwania lotów. \change{Ilość}{Liczba} wyszukanych lotów z przesiadkami często przekracza \change{100}{sto} wystąpień. Świadczy to o zaawansowanym silniku wyszukującym i analizującym różne przypadki połączeń. Za wady można uznać dosyć prosty i \change{nieresponsywny}{niedostosowany do potrzeb urządzeń mobilnych} interfejs użytkownika. Nie reprezentuje on poziomu nowoczesnych aplikacji. 
+Zaletą aplikacji Skyscanner jest z pewnością rzetelność jej danych, która jest potwierdzona licznymi nagrodami od linii lotniczych. Warto też wspomnieć o jej systemie wyszukiwania lotów. Liczba wyszukanych lotów z przesiadkami często przekracza sto wystąpień. Świadczy to o zaawansowanym silniku wyszukującym i analizującym różne przypadki połączeń. Za wady można uznać dosyć prosty i niedostosowany do potrzeb urządzeń mobilnych interfejs użytkownika. Nie reprezentuje on poziomu nowoczesnych aplikacji. 
 
-Druga wyszukiwarka jest \delete{bardzo} dopracowanym produktem \change{światowego giganta}{firmy Google}. \change{Jak wcześniej już wspomniano jego szybkość wyszukiwania danych jest bezkonkurencyjna}{Wyszukuje ona loty bardziej efektywnie niż rozwiązania konkurencji, między innymi Skyscanner}. \delete{Aplikacja Skyscanner znacznie ustępuje jej na tym polu.} Google Flights \change{jest sprzężona}{współpracuje} z systemami sprzedażowymi większości przewoźników lotniczych. Daje to możliwość kupna biletu bezpośrednio z jej \change{poziomu}{strony WWW} bez konieczności przechodzenia na zewnętrzną stronę linii lotniczej. \change{Jej dużą zaletą}{Zaletą wyszukiwarki} z pewnością jest dopracowany interfejs zgodny ze standardami \change{reprezentowanymi w rodzimych produktach}{firmy Google}. Gwarantuje on \change{pełną responsywność}{dostosowanie do używanego medium} oraz czytelność prezentowanych danych. Wyszukiwarka Google Flights \change{prezentuje się lepiej}{wydaje się być lepszym rozwiązaniem} od aplikacji Skyscanner jednak różnica \add{jakości} je dzieląca nie jest duża.
+Druga wyszukiwarka jest dopracowanym produktem firmy Google. Wyszukuje ona loty bardziej efektywnie niż rozwiązania konkurencji, między innymi Skyscanner. Google Flights współpracuje z systemami sprzedażowymi większości przewoźników lotniczych. Daje to możliwość kupna biletu bezpośrednio z jej strony WWW bez konieczności przechodzenia na zewnętrzną stronę linii lotniczej. Zaletą wyszukiwarki z pewnością jest dopracowany interfejs zgodny ze standardami firmy Google. Gwarantuje on dostosowanie do używanego medium oraz czytelność prezentowanych danych. Wyszukiwarka Google Flights wydaje się być lepszym rozwiązaniem od aplikacji Skyscanner jednak różnica jakości je dzieląca nie jest duża.
 
-\delete{W opracowywanej aplikacji starano się w rzetelny sposób zrealizować podstawowe \change{funkcjonalności}{funkcje} obu opisywanych wcześniej \change{aplikacji}{wyszukiwarek}. Komercyjne aplikacje mają dużą przewagę biorąc pod uwagę szybkość wyszukiwania. W powstałej aplikacji czas odpowiedzi na żądania użytkownika jest zauważalnie \change{większy}{dłuższy}. W warunkach akademickich trudno było o uzyskanie konkurencyjnych rezultatów.}  \hint{Ten wykreślony akapit proszę przenieść do podsumowania pracy. Tutaj powinny się pojawić wymagania odnośnie tworzonej przez Pana aplikacji, które wynikają z~analizy istniejących rozwiązań.}
-%\newpage
-\hint{Proszę wyrzucić z pracy wszystkie polecenia \texttt{newpage}.}
+\delete{W opracowywanej aplikacji starano się w rzetelny sposób zrealizować podstawowe funkcje obu opisywanych wcześniej wyszukiwarek. Komercyjne aplikacje mają dużą przewagę biorąc pod uwagę szybkość wyszukiwania. W powstałej aplikacji czas odpowiedzi na żądania użytkownika jest zauważalnie dłuższy. W warunkach akademickich trudno było o uzyskanie konkurencyjnych rezultatów.}  \hint{Ten wykreślony akapit proszę przenieść do podsumowania pracy. Tutaj powinny się pojawić wymagania odnośnie tworzonej przez Pana aplikacji, które wynikają z~analizy istniejących rozwiązań.}
+
 
 \chapter{Projekt aplikacji}
-\delete{Następnym krokiem po analizie zagadnienia oraz zaznajomieniem się z przykładami istniejących rozwiązań było opracowanie projektu aplikacji. Zadanie to jest mocno związane z dziedziną architektury oprogramowania. Dobrze zaprojektowany system pozwala na uniknięcie wielu kosztownych problemów w przyszłości. Projektowanie aplikacji wymusza na osobie to wykonującej dostatecznie wczesne rozważenia najważniejszych aspektów projektowania w odniesieniu do całego tworzonego systemu\cite{architektura}. Wynikiem zrealizowania zadań analitycznych są wymagania postawione tworzonemu systemowi. Wynikiem tych działań mogą być takie elementy jak model dziedziny, model organizacyjny czy model wymagań . Projekt aplikacji ukierunkowuje zadania implementacyjne razem z projektowaniem szczegółowym, implementacją kodu, inegracją modułów oraz testowaniem.} \hint{Wstęp ma opisywać zawartość rodziału, a~nie zaś być rozważaniami na temat projektowania aplikacji. Proszę to poprawić, zaczynając od fragmentu, który dalej zamieszczę.}
-\add{W~tym rozdziale jest opisany projekt aplikacji. \dots}
-\hint{Dlaczego zaczyna Pan od architektury, skoro nie wiadomo jakie są wymagania odnośnie projektowanego oprogramowania? Należy rozpocząć od podrodziału, gdzie będą one wymienione. Dobrze by było gdyby pojawił się w~nim diagram przypadków użycia.}
+W tym rozdziale jest opisany projekt aplikacji. Zrozumienie podejmowanego zagadnienia w pracy oraz przegląd istniejących rozwiązań pozwolił określić sposoby realizacji wymaganych funkcji w stworzonej aplikacji.  Kluczową sprawą było też ustalenie odbiorców aplikacji oraz przebiegu procesu wyszukiwania połączeń lotniczych. W tym celu stworzono diagramy aktywności oraz przypadków użycia. Poświęcono osobne podrozdziały dla architektury aplikacji, projektu jej interfejsu użytkownika, strukturze serwera oraz modułowi wyszukiwania lotów. Na końcu rozdziału znajduje część podsumowująca opracowane rozwiązania i diagramy.
+
+\section{Diagram przypadków użycia}
+Diagram przypadków użycia przedstawia funkcje systemu wraz z jego otoczeniem. Jest on specjalnym rodzajem ogólniejszego zbioru diagramów UML. Na stronie WWW opisującej te diagramy, Michał Wolski przedstawia ich funkcje następująco: \emph{''Diagramy przypadków użycia pozwalają na graficzne zaprezentowanie własności systemu tak, jak są one widziane po stronie użytkownika.''}.\cite{uml}
+\begin{figure}[!ht]
+\centering
+\includegraphics[scale=0.60, keepaspectratio]{usecase_diagram.png}
+\caption{Diagram przypadków użycia aplikacji}
+\label{fig:usecase_diagram}
+\end{figure}
+
+\noindent Zaprezentowany diagram na rysunku \ref{fig:usecase_diagram} obrazuje aktorów i przypadki użycia w stworzonej aplikacji. Uwzględniono w nim tylko jedno aktora, którym jest \textit{Użytkownik}. Reprezentuje on każdą osobę, która korzysta z usług aplikacji. Użytkownik ma możliwość wyboru parametrów lotów, który zawiera się w kolejnym przypadku użycia reprezentującym cały proces wyszukiwania połączeń lotniczych. Jest to oznaczone adnotacją \textit{include}. Kolejnym przypadkiem użycia jest wyświetlenie wyników wyszukiwania lotów. Użytkownik mając te wyniki może wybrać interesujący go przelot i uzyskać o nim dokładniejsze informacje.
+\section{Diagram aktywności} 
+Diagram aktywności jest diagramem przedstawiającym interakcję dynamicznych aspektów systemu.\cite{uml}
+
+\begin{figure}[!ht]
+\centering
+\includegraphics[scale=0.56, keepaspectratio]{activity_diagram.png}
+\caption{Diagram aktywności dla procesu wyszukiwania połączeń lotniczych}
+\label{fig:activity_diagram}
+\end{figure}
+
+Dla opracowanej aplikacji przygotowano diagram aktywności widoczny na rysunku \ref{fig:activity_diagram}. Prezentuje on przebieg kroków, które wykonywane są przez stworzone oprogramowanie. Etap początkowy oraz końcowy został oznaczony czarnym kółkiem. Między nimi znajdują się poszczególne etapy procesu wyszukiwania lotów. Miejsca połączenia różnych ścieżek przebiegu tego procesu lub elementy warunkowe zostały oznaczone rombem.
+
+\begin{comment}
+\hint{Jeszcze raz to podkreślę: UML jest narzędziem, które powinien Pan wykorzystać do dokumentowania projektu oprogramowania. \textbf{Nie} jest tematem tej pracy. Proszę zatem tak zmienić treść tego podrozdziału, aby dotyczyła stworzonego przez Pana oprogramowania, nie zaś przeznaczenia diagramów UML.}
+\end{comment}
+
 
 \section{Architektura aplikacji}
-\hint{Zmieniłem tytuł podrozdziału. Architektura jest już ogólnym przedstawieniem systemu. Nie może być bardziej ogólna.}
-Projektowanie aplikacji \change{wymagało}{rozpoczęto od} stworzenia \delete{czytelnego} schematu obrazującego poszczególne części systemu oraz \change{sposoby}{schematy} komunikacji między nimi.
-Aplikację można podzielić na \change{3 logiczne}{trzy} części: 
-\begin{itemize}[noitemsep,topsep=0pt]
-\item \change{C}{c}zęść serwerowa\add{,}
-\item \change{C}{c}zęść kliencka\add{,}
-\item \change{B}{b}aza danych\add{.}
-\end{itemize}
-\hint{Wydzielanie bazy danych jest dosyć dyskusyjne, bo można ją zaliczyć do części serwerowej. Proszę uzasadnić, że jest to konieczne.}
+Projektowanie aplikacji rozpoczęto od stworzenia schematu obrazującego poszczególne części systemu oraz schematy komunikacji między nimi. Opracowane oprogramowanie zostało stworzone według architektury trójwarstwowej. Jest ona rodzajem architektury oprogramowania, która składa się z trzech warstw logicznego przetwarzania danych. 
+
+\begin{comment}
 Każda \change{część}{z~wymienionych części} \change{posiada unikalną dla siebie funkcjonalność}{pełni w~aplikacji odpowiednią rolę}. 
 \delete{Ze względu na rozmiar pracy włożony w każde z nich, w tym rozdziale zostaną one krótko opisane.}
 Część serwerowa \delete{w całym systemie} jest odpowiedzialna za dostarczenie danych do interfejsu użytkownika inaczej nazywanego częścią kliencką. Znajduje się w nim \hint{W~części serwerowej, czy w~interfejsie? Proszę to tak poprawić, aby można było jednoznacznie stwierdzić, o~którą część chodzi.} \delete{złożony} moduł wyszukiwania połączeń lotniczych. Moduł ten \delete{sam w sobie} posiada złożoną \change{architekturę}{budowę}\change{i  zostanie mu}{, której jest} poświęcony \change{dedykowany}{osobny} podrozdział.
 Część kliencka to \delete{internetowy} interfejs użytkownika. Osadzony jest on w przeglądarce internetowej. \change{W aplikacji nie zdecydowano się na podział względem ról użytkownika}{Aplikacja nie uwzględnia ról użytkownika}. Wynika to ze \add{jej} specyfiki\delete{ projektowanej aplikacji}. Każdy użytkownik \delete{ją odwiedzający} posiada takie same uprawnienia do jej zasobów.
 Oprócz dwóch wspomnianych wcześniej \change{modułów}{części} w skład architektury aplikacji wchodzi relacyjna baza danych, która jest \change{nośnikiem danych dla tabeli lotnisk}{magazynem danych dla lotnisk}.
-\change{Kluczowym zagadnieniem jest komunikacja między powyższymi komponentami. W stworzonej aplikacji istnieje kilka rodzajów transportu danych między modułami.}{Komunikacja między opisanymi kluczowymi elementami aplikacji odbywa się na kilka sposobów.} Każdy z nich \change{zostanie}{jest} szczegółowo opisany w dalszej części tego rozdziału.
+Komunikacja między opisanymi kluczowymi elementami aplikacji odbywa się na kilka sposobów. Każdy z nich jest szczegółowo opisany w dalszej części tego rozdziału.
+\end{comment}
 
 \begin{figure}[!ht]
 \centering
@@ -528,36 +547,37 @@ Oprócz dwóch wspomnianych wcześniej \change{modułów}{części} w skład arc
 \caption{Schemat architektury stworzonej aplikacji}
 \label{fig:architecure_diagram}
 \end{figure}
-\hint{Projekt powinien być niezależny od technologii, aby nie narzucać sposobu implementacji. W~związku z~tym mam wątpliwości co do tego rysunku. JDBC jest technologią związaną z językiem Java, SQL dosyć konkretnie wskazuje, że baza danych jest relacyjna. Na pewno trzeba poprawić ,,Lokalny cache w~pamięci RAM". Ten opis powinien być następujący ,,Lokalna pamięć podręczna". Dodatkowo nie ,,część serwerowa", a~,,serwer".}
-%\newpage
-\change{Na rysunku 3.1.1zamieszczony został}{Rysunek \ref{fig:architecure_diagram} zawiera} schemat architektury \change{stworzonego systemu}{opracowanej aplikacji}. Przedstawia on \change{rozdział strukturalny}{strukturę} aplikacji oraz \change{drogę jaką musi odbyć żądanie użytkownika w celu uzyskania pożądanej odpowiedzi}{ścieżkę przetwarzania żądania pochodzącego z~przeglądarki WWW}. Użytkownik po wypełnieniu odpowiednich formularzy w części klienckiej rozpoczyna proces wyszukiwania połączeń lotniczych. Oprogramowanie klienta po pobraniu od użytkownika niezbędnych parametrów takich jak miejsce wylotu, \change{czy}{lub} rodzaj lotu zwraca się do części serwerowej o wyszukanie lotów\delete{ zgodnych z podanymi parametrami}. Komunikacja między tymi modułami odbywa się \change{protokołem}{z~użyciem protokołu} HTTP. \change{Po wywołaniu, część serwerowa zwraca się do modułu wyszukiwania lotów}{Odebrane żądanie część serwerowa przekazuje do modułu wyszukiwania lotów}. Moduł ten sprawdza wszystkie źródła danych zamieszczone na schemacie \delete{3.1.1}. \hint{Proszę tu umieścić referencję do rysunku.}  Zebrane \change{dane }{informacje} są \delete{odpowiednio} parsowane i przekazywane modułowi wyszukiwania który z kolei zwraca je kontrolerowi wywołanemu przez użytkownika. \hint{?? Moduł wyszukiwania zwraca przekazuje dane do modułu wyszukiwania? Proszę poprawić.} Kontroler następnie przekazuje dane do części klienckiej, która wyświetla je w  graficznym interfejsie użytkownika. 
 
-\section{Diagram UML}
-\hint{Co to za tytuł??? Pomijając już to, że jest około 14 takich diagramów, to UML jest narzędziem, które używane jest do projektowania, a~nie elementem aplikacji!! Proszę to poprawić.} 
-\delete{Kluczowym elementem podczas tworzenia oprogramowania jest komunikacja. Przełożenie złożonej logiki biznesowej na język informatyczny to zadanie trudne oraz wymagające zrozumienia wymagań potencjalnego odbiorcy tworzonej dokumentacji technicznej. Ważny jest więc czytelny sposób opisu oprogramowania, który byłby w stanie zrozumiale przedstawić swoja treść wszystkim osobom się z nim zaznajamiającym\cite{uml}. Podstawowym narzędziem w tej dziedzinie stał się język UML}\footnote{Unified Modelling Language}. \hint{To nie jest praca na temat UML!! Proszę się skupić na opisywaniu budowy aplikacji, a nie na opisie narzędzi do tego służących.}
+\noindent Rysunek \ref{fig:architecure_diagram} zawiera schemat architektury opracowanej aplikacji. Przedstawia on jej trzy warstwy. Pierwszą z nich jest warstwa prezentacji. Renderuje ona treści odpowiednie treści w przeglądarce internetowej. Komunikacja między warstwą prezentacji a logiki biznesowej biznesowej odbywa się z użyciem protokołu HTTP. Warstwa logiki biznesowej obsługuje żądanie tego protokołu przekazując zawarte w nim parametry do modułu wyszukiwania połączeń lotniczych. Z uwagi na jego złożoność zostanie mu poświęcony osobny podrozdział.
 
-\begin{figure}[!ht]
-\centering
-\includegraphics[scale=0.56, keepaspectratio]{activity_diagram.png}
-\caption{Diagram aktywności \change{procesy}{dla procesu} wyboru parametrów wyszukiwania}
-\label{fig:activity_diagram}
-\end{figure}
-Dla opracowanej aplikacji przygotowano diagram aktywności widoczny na rysunku \delete{3.2.1} \hint{Jak wcześniej.} Obrazuje on przebieg \change{wydarzeń}{czynności,} które wykonywane są przez użytkownika \hint{To jest diagram dla użytkownika, czy dla oprogramowania? Proszę poprawić.} po wczytaniu przez niego strony startowej. \delete{Jego najważniejszą funkcją jest ukazanie sekwencji kroków wykonywanych w części klienckiej.} 
-%\newpage
-\hint{Jeszcze raz to podkreślę: UML jest narzędziem, które powinien Pan wykorzystać do dokumentowania projektu oprogramowania. \textbf{Nie} jest tematem tej pracy. Proszę zatem tak zmienić treść tego podrozdziału, aby dotyczyła stworzonego przez Pana oprogramowania, nie zaś przeznaczenia diagramów UML.}
+\begin{comment}
+Przedstawia on \change{rozdział strukturalny}{strukturę} aplikacji oraz \change{drogę jaką musi odbyć żądanie użytkownika w celu uzyskania pożądanej odpowiedzi}{ścieżkę przetwarzania żądania pochodzącego z~przeglądarki WWW}. Użytkownik po wypełnieniu odpowiednich formularzy w części klienckiej rozpoczyna proces wyszukiwania połączeń lotniczych. Oprogramowanie klienta po pobraniu od użytkownika niezbędnych parametrów takich jak miejsce wylotu, \change{czy}{lub} rodzaj lotu zwraca się do części serwerowej o wyszukanie lotów\delete{ zgodnych z podanymi parametrami}. Komunikacja między tymi modułami odbywa się \change{protokołem}{z~użyciem protokołu} HTTP. \change{Po wywołaniu, część serwerowa zwraca się do modułu wyszukiwania lotów}{Odebrane żądanie część serwerowa przekazuje do modułu wyszukiwania lotów}. Moduł ten sprawdza wszystkie źródła danych zamieszczone na schemacie \delete{3.1.1}. \hint{Proszę tu umieścić referencję do rysunku.}  Zebrane \change{dane }{informacje} są \delete{odpowiednio} parsowane i przekazywane modułowi wyszukiwania który z kolei zwraca je kontrolerowi wywołanemu przez użytkownika. \hint{?? Moduł wyszukiwania zwraca przekazuje dane do modułu wyszukiwania? Proszę poprawić.} Kontroler następnie przekazuje dane do części klienckiej, która wyświetla je w  graficznym interfejsie użytkownika. 
+\end{comment}
 
-\section{Baza danych}
-\delete{Baza danych nie była sprecyzowana w wymaganiach pracy dyplomowej.} \hint{Nie było także sprecyzowane, że ma Pan użyć komputera, a~jednak Pan to zrobił.} \change{Została ona użyta opcjonalnie}{Baza danych jest używana w~aplikacji} jako miejsce dające szybki dostęp do danych o lotniskach. \hint{To do czego użył Pan pamięci podręcznej?} \delete{Użyto darmowego rozwiązania bazodanowego MySQL. Jest to system zarządzania relacyjnymi bazami danych rozwijany w przeszłości przez firmę MySQL AB, a obecnie przez korporację Oracle. Stanowi szybko działające oprogramowanie i obecnie jest jednym z popularniejszych serwerów baz danych dostępny na licencji GPL}\footnote{General Public License} jak i w wersjach komercyjnych \cite{mysql}. \hint{To są informacje potrzebne w~rozdziale o~implementacji. Teraz opisuje Pan projekt.}
+\section{Projekt bazy danych}
+Baza danych jest używana w~aplikacji jako miejsce dające szybki dostęp do dużego zbioru jakim są dane o lotniskach. Na jej użycie zdecydowano się ze względu na duży rozmiar zasobu informacji reprezentowanych danych oraz sprawdzonych sposobów dostępu do niego.
+
+\begin{comment}
+\delete{Użyto darmowego rozwiązania bazodanowego MySQL. Jest to system zarządzania relacyjnymi bazami danych rozwijany w przeszłości przez firmę MySQL AB, a obecnie przez korporację Oracle. Stanowi szybko działające oprogramowanie i obecnie jest jednym z popularniejszych serwerów baz danych dostępny na licencji GPL}\footnote{General Public License} jak i w wersjach komercyjnych \cite{mysql}. \hint{To są informacje potrzebne w~rozdziale o~implementacji. Teraz opisuje Pan projekt.}
+\end{comment}
 
 \begin{figure}[!ht]
 \centering
-\includegraphics[scale=0.80, keepaspectratio]{database.png}
+\includegraphics[scale=1.00, keepaspectratio]{database.png}
 \caption{Tabela danych lotnisk}
 \label{fig:database}
 \end{figure}
-\delete{Jedyna tabela znajdująca się w bazie danych to tabela lotnisk z parametrami wskazanymi powyżej.} \hint{Proszę opisać ten rysunek, a~nie tylko napisać, że parametry ,,widać". Poza tym proszę używać odnośników do rysunków. Skąd pewność, że ten tekst znajdzie się ostatecznie pod rysunkiem?}
 
-\section{Część kliencka}
+\noindent Rysunek \ref{fig:database} przedstawia jedyną tabelę znajdującą się w bazie danych, która przechowuje informacje dotyczące lotnisk. Tabela ta zawiera szereg parametrów takich jak na przykład: współrzędne lotniska, jego kody GPS i IATA, nazwę jak i jego typ. Zaprezentowane parametry są określone typami danych w jakich są przechowywane. Dane liczbowe są reprezentowane przez typ całkowity \textit{int} lub przez typ podwójnej precyzji \textit{double}. Parametry oznaczone typem \textit{text} określają ciągi znaków.
+
+
+\begin{comment}
+\hint{Proszę opisać ten rysunek, a~nie tylko napisać, że parametry ,,widać". Poza tym proszę używać odnośników do rysunków. Skąd pewność, że ten tekst znajdzie się ostatecznie pod rysunkiem?}
+\end{comment}
+
+
+\begin{comment}
+\section{Projekt interfejsu użytkownika}
 \delete{Aplikacja kliencka została zaimplementowana w technologii Angular 6, otwartym framework'u i platformie do tworzenia SPA}\footnote{Single Page Application}. \delete{Angular został w całości napisany w języku TypeScript, opiekę nad jego rozwojem sprawuje firma Google. Platforma ta umożliwia tworzenie stron internetowych których treść jest dynamicznie zmieniana bez przeładowywania strony. Przynosi to ogromne korzyści w wydajności aplikacji. Całość kodu napisanego w tym framework'u jest kompilowana do języka JavaScript a następnie renderowana w przeglądarce internetowej. W skład stworzonej aplikacji klienckiej wchodzą dodatkowo dodane zewnętrzne biblioteki.\\ Są to: }
 \begin{itemize}[noitemsep,topsep=0pt]
 \item \delete{Material Design - pakiet oprogramowania od firmy Google do edytowania wyglądu strony}
@@ -567,7 +587,7 @@ Dla opracowanej aplikacji przygotowano diagram aktywności widoczny na rysunku \
 \end{itemize}
 \delete{Implementacja częśći klienckiej jak i jej logiczny podział strukturalny znajdzie się w następnym rozdziale.} \hint{\textbf{To nie jest rozdział o~implementacji tylko projekcie!!! Proszę tu opisać projekt części klienckiej, nie jej implementację!!!} \textbf{Proszę nie używać zwrotów typu ,,ogromne korzyści"! To jest praca inżynierska, nie ulotka marketingowa!}}
 
-\section{Część serwerowa}
+\section{Diagram klas serwera}
 \delete{Do opracowania aplikacji serwerowej posłużono się językiem programowania Java w wersji 10 oraz pakietami oprogramowania Spring i Hibernate. Java jest w pełni obiektowym językiem programowania z ponad 20 letnią historią. Pierwotnie stworzona i rozwijana przez Jamesa Goslinga została przejęta przez korporację Oracle. Głównym założeniem tego języka jest sentencja \textit{"Napisz raz, uruchom wszędzie"}. Te słowa przemawiają za specjalnym mechanizmem kompilowania i uruchamiania kodu przez Javę. Proces zaczyna się od skompilowania plików o rozszerzeniu java do bytecode'u czyli specjalnej sekwencji bajtów rozumianej przez JVM}\footnote{Java Virtual Machine}. \delete{Następnym krokiem jest uruchomienie bytecode'u przez wirtualną maszynę Javy, która komunikuje się z systemem operacyjnym\cite{jvm}.} \hint{\textbf{Znowu pisze Pan o~implementacji, nie o~projekcie!!! Poza tym, Java nie jest językiem ,,w pełni obiektowym"!! Ma typy proste takie jak int, char, double, które nie są obiektami.}}
 \delete{Powstałe oprogramowanie serwerowe jest w dużej mierze oparte na zewnętrznych bibliotekach platformy Spring Framework w wersji 5. Spring jest otwartym źródłowo frameworkiem bazującym na wirtualnej maszynie Javy. Jego składowymi jest zbiór bibliotek, których głównym celem jest rozwiązanie popularnych problemów programistycznych. Został stworzony w roku 2002 jako kandydat do zastąpienia oprogramowania spod znaku JavyEE}\footnote{Java Enterprise Edition}. \delete{W dzisiejszych czasach Spring jest rozwijany przez setki programistów z całego świata co czyni go stale nowoczesną technologią. W części serwerowej Sping Framework odpowiada za komunikację z bazą danych, udostępnienie danych o połączeniach lotniczych aplikacji klienckiej oraz za zabezpieczenia całego systemu.} 
 
@@ -583,20 +603,20 @@ Dla opracowanej aplikacji przygotowano diagram aktywności widoczny na rysunku \
 \end{itemize}
 
 W skład części serwerowej wchodzi też \delete{cały} moduł wyszukiwania połączeń lotniczych. Ze względu na jego znaczenie zostanie mu poświęcony osobny podrozdział. Implementacja części serwerowej  zostanie zaprezentowana w następnym rozdziale.
-%\newpage
 
+\end{comment}
 \section{Moduł wyszukiwania połączeń lotniczych}
-Rozwiązanie problemu wyszukiwania połączeń lotniczych \change{było}{jest} zadaniem \change{trudnym i skomplikowanym}{złożonym}. \change{Wymagało}{Wymaga} \delete{to} poradzenia sobie z problemem przeszukiwania wielu źródeł danych oraz konwertowania informacji przez nie zwracany\add{ch} \change{do formy zrozumiałem dla części serwerowej oraz klienckiej}{do postaci, w~której mogą być przetwarzane zarówno przez stronę kliencką, jak i~serwerową}. \change{Zagadnienie to wymagało stworzenia wyodrębnionego modułu wyszukiwania połączeń lotniczych który został osadzony jako część oprogramowania serwerowego powstałej aplikacji.}{W~związku z~tym wyodrębniono w~strukturze aplikacji moduł, będący elementem części serwerowej oprogramowania, który jest odpowiedzialny za te czynności.}
+Rozwiązanie problemu wyszukiwania połączeń lotniczych jest zadaniem złożonym. Wymaga poradzenia sobie z problemem przeszukiwania wielu źródeł danych oraz konwertowania informacji przez nie zwracanych do postaci, w~której mogą być przetwarzane zarówno przez stronę kliencką, jak i~serwerową. W~związku z~tym wyodrębniono w~strukturze aplikacji moduł, będący elementem części serwerowej oprogramowania, który jest odpowiedzialny za te czynności.
 
 \begin{figure}[!ht]
 \centering
 \includegraphics[scale=0.50, keepaspectratio]{search_module.png}
-\caption{Schemat \change{architektoniczny}{architektury} modułu wyszukiwania lotów}
+\caption{Schemat architektury modułu wyszukiwania lotów}
 \label{fig:search_module}
 \end{figure}
-\hint{Ten schemat znowu budzi moje wątpliwości, bo zawiera informacje, o~konkretnych technologiach. Niech jednak zostanie, bo przerobienie go zabrałoby Pan zbyt dużo czasu, a~jest on dosyć istotny w~tym rozdziale.}
 
-Na rysunku \delete{3.5.1} \hint{Pisałem wcześniej.} przedstawiono schemat \delete{zaprojektowanego} modułu wyszukiwania połączeń lotniczych. \delete{Zobrazowano na nim przebieg procesu wyszukiwania z uwzględnieniem źródeł danych, sposobów ich uzyskiwania oraz rodzajów odpowiedzi.} \hint{To w~końcu jest to schemat budowy modułu, czy przebiegu procesu? To są dwie różne rzeczy. Proszę poprawić.} \change{Górny opis strzałek oznacza metodę zwrócenia się o dane, natomiast dolny opisuje rodzaj zwróconej treści.}{Napisy nad strzałkami są nazwami protokołów służących do realizacji zapytań, a~te pod strzałkami oznaczają format treści zwróconej w~odpowiedzi.} Wyszukiwanie \change{rozpoczynało}{zaczyna} się od wysłania żądania z kontrolera serwerowego do \change{omawianego}{opisywanego} modułu. Żądanie to \change{musiało}{musi} uwzględniać \delete{w sobie} parametry wyszukiwania. Moduł swoją pracę rozpoczyna od pozyskania danych lotniczych z serwisu FlightLookup. Treść odpowiedzi stanowi większą część całego obiektu lotu który \change{ma zostać zwrócony}{jest zwracany}. Po otrzymaniu tych danych moduł zwraca się do lokalnej bazy danych o udostępnienie danych lotnisk \change{podając przy tym ich unikalne kody}{na podstawie ich unikalnych kodów} IATA\footnote{International Air Transport Association}. Następnym krokiem jest pozyskanie ceny lotu. Czynność ta rozpoczyna się od sprawdzenia\add{,} czy poszukiwana informacja \delete{nie} znajduje się w \change{cache'u}{pamięci podręcznej}. Jeśli takie dane są \change{zwrócone, cache}{obecne, to pamięć podręczna} \delete{natychmiastowo} zwraca odpowiedni zasób. Jeśli natomiast taka informacja nie jest dostępna, moduł zwraca się do \change{serwisów}{serwerów} firmy Skyscanner o udostępnienie cen \change{na}{za} poszukiwany przelot. \change{Analogiczna sytuacja dokonuje się w przypadku pozyskiwania}{Analogicznie przebiega pozyskiwanie} danych o linii lotniczej obsługującej lot. Ostatnim etapem \add{wyszukiwania} jest \change{wyszukanie}{znalezienie} informacji o dozwolonym bagażu podczas lotu. Jest to zrealizowane przez zwrócenie się do strony internetowej aplikacji Skyscanner posiadającej aktualne dane. Jej adres został wspomniany w rozdziale drugim. Po zebraniu wszystkich poszukiwanych informacji oraz sparsowaniu ich, obiekt lotu zwracany jest przez moduł wyszukiwania do kontrolera a następnie do części klienckiej gdzie użytkownik może obejrzeć wyniki całego procesu wyszukiwania.
+Na rysunku \ref{fig:search_module} przedstawiono schemat modułu wyszukiwania połączeń lotniczych wraz ze sposobami pozyskiwania danych do budowy obiektu przez niego zwracanego.
+Napisy nad strzałkami są nazwami protokołów służących do realizacji zapytań, a~te pod strzałkami oznaczają format treści zwróconej w~odpowiedzi. Wyszukiwanie zaczyna się od wysłania żądania z kontrolera serwerowego do opisywanego modułu. Żądanie to musi uwzględniać  parametry wyszukiwania. Moduł swoją pracę rozpoczyna od pozyskania danych lotniczych z serwisu FlightLookup. Treść odpowiedzi stanowi większą część całego obiektu lotu który jest zwracany. Po otrzymaniu tych danych moduł zwraca się do lokalnej bazy danych o udostępnienie danych lotniskna podstawie ich unikalnych kodów IATA\footnote{International Air Transport Association}. Następnym krokiem jest pozyskanie ceny lotu. Czynność ta rozpoczyna się od sprawdzenia, czy poszukiwana informacja znajduje się w pamięci podręcznej. Jeśli takie dane są obecne, to pamięć podręczna zwraca odpowiedni zasób. Jeśli natomiast taka informacja nie jest dostępna, moduł zwraca się do serwerów firmy Skyscanner o udostępnienie cen za poszukiwany przelot. Analogicznie przebiega pozyskiwanie danych o linii lotniczej obsługującej lot. Ostatnim etapem wyszukiwania jest znalezienie informacji o dozwolonym bagażu podczas lotu. Jest to zrealizowane przez zwrócenie się do strony internetowej aplikacji Skyscanner posiadającej aktualne dane. Jej adres został wspomniany w rozdziale drugim. Po zebraniu wszystkich poszukiwanych informacji oraz sparsowaniu ich, obiekt lotu zwracany jest przez moduł wyszukiwania do kontrolera a następnie do części klienckiej gdzie użytkownik może obejrzeć wyniki całego procesu wyszukiwania.
 
 \section{Komunikacja między komponentami aplikacji}
 Opisane we wcześniejszych podrozdziałach komponenty \change{narzucały sposoby komunikacji między nimi}{narzucają określony sposób komunikacji między nimi}. \change{Każde}{Każdy} z nich zostanie \add{przedstawiony} w tym podrozdziale \delete{stosownie przedstawione}. 
@@ -615,6 +635,10 @@ JDBC\footnote{Java Database Connectivity} to standardowy, niezależny od bazy da
 
 \hint{Nigdzie nie wyjaśnił Pan do czego służ pamięć podręczna w~tej aplikacji.}
 \hint{Gdzie jest podsumowanie rozdziału?}
+
+\section{Podsumowanie}
+
+
 
 %\newpage
 \chapter{Implementacja}

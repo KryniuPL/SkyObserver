@@ -15,24 +15,28 @@
 \contentsline {section}{\numberline {3.2}Diagram aktywno\IeC {\'s}ci}{26}{section.3.2}
 \contentsline {section}{\numberline {3.3}Architektura aplikacji}{27}{section.3.3}
 \contentsline {section}{\numberline {3.4}Projekt bazy danych}{28}{section.3.4}
-\contentsline {section}{\numberline {3.5}Modu\IeC {\l } wyszukiwania po\IeC {\l }\IeC {\k a}cze\IeC {\'n} lotniczych}{29}{section.3.5}
-\contentsline {section}{\numberline {3.6}Komunikacja mi\IeC {\k e}dzy komponentami aplikacji}{30}{section.3.6}
-\contentsline {subsection}{\numberline {3.6.1}Protok\IeC {\'o}\IeC {\l } HTTP}{30}{subsection.3.6.1}
-\contentsline {subsection}{\numberline {3.6.2}JDBC}{31}{subsection.3.6.2}
-\contentsline {subsection}{\numberline {3.6.3}I/O}{31}{subsection.3.6.3}
-\contentsline {section}{\numberline {3.7}Podsumowanie}{32}{section.3.7}
-\contentsline {chapter}{\numberline {4}Implementacja}{33}{chapter.4}
-\contentsline {section}{\numberline {4.1}Oprogramowanie po stronie klienta}{33}{section.4.1}
-\contentsline {subsection}{\numberline {4.1.1}Podzia\IeC {\l } strukturalny}{33}{subsection.4.1.1}
-\contentsline {subsection}{\numberline {4.1.2}Modu\IeC {\l }y pobierania danych}{33}{subsection.4.1.2}
-\contentsline {subsection}{\numberline {4.1.3}Interfejs graficzny}{35}{subsection.4.1.3}
-\contentsline {section}{\numberline {4.2}Oprogramowanie po stronie serwera}{38}{section.4.2}
-\contentsline {subsection}{\numberline {4.2.1}Podzia\IeC {\l } na pakiety}{39}{subsection.4.2.1}
-\contentsline {subsection}{\numberline {4.2.2}Oprogramowanie wyszukuj\IeC {\k a}ce po\IeC {\l }\IeC {\k a}czenia lotnicze}{40}{subsection.4.2.2}
-\contentsline {subsection}{\numberline {4.2.3}Parsowanie danych}{41}{subsection.4.2.3}
-\contentsline {subsection}{\numberline {4.2.4}Zabezpieczenia}{42}{subsection.4.2.4}
-\contentsline {subsection}{\numberline {4.2.5}Kontrolery serwera}{43}{subsection.4.2.5}
-\contentsline {chapter}{\numberline {5}Testy}{45}{chapter.5}
-\contentsline {section}{\numberline {5.1}Testy jednostkowe}{46}{section.5.1}
-\contentsline {section}{\numberline {5.2}Testy integracji}{47}{section.5.2}
-\contentsline {chapter}{\numberline {6}Uwagi i wnioski}{49}{chapter.6}
+\contentsline {section}{\numberline {3.5}Projekt interfejsu u\IeC {\.z}ytkownika}{29}{section.3.5}
+\contentsline {subsection}{\numberline {3.5.1}Projekt strony g\IeC {\l }\IeC {\'o}wnej}{29}{subsection.3.5.1}
+\contentsline {subsection}{\numberline {3.5.2}Projekt panelu wyszukiwania lot\IeC {\'o}w}{29}{subsection.3.5.2}
+\contentsline {subsection}{\numberline {3.5.3}Projekt strony z wynikami wyszukiwania}{31}{subsection.3.5.3}
+\contentsline {section}{\numberline {3.6}Modu\IeC {\l } wyszukiwania po\IeC {\l }\IeC {\k a}cze\IeC {\'n} lotniczych}{31}{section.3.6}
+\contentsline {section}{\numberline {3.7}Komunikacja mi\IeC {\k e}dzy komponentami aplikacji}{33}{section.3.7}
+\contentsline {subsection}{\numberline {3.7.1}Protok\IeC {\'o}\IeC {\l } HTTP}{33}{subsection.3.7.1}
+\contentsline {subsection}{\numberline {3.7.2}JDBC}{33}{subsection.3.7.2}
+\contentsline {subsection}{\numberline {3.7.3}I/O}{33}{subsection.3.7.3}
+\contentsline {section}{\numberline {3.8}Podsumowanie}{34}{section.3.8}
+\contentsline {chapter}{\numberline {4}Implementacja}{35}{chapter.4}
+\contentsline {section}{\numberline {4.1}Oprogramowanie po stronie klienta}{35}{section.4.1}
+\contentsline {subsection}{\numberline {4.1.1}Podzia\IeC {\l } strukturalny}{35}{subsection.4.1.1}
+\contentsline {subsection}{\numberline {4.1.2}Modu\IeC {\l }y pobierania danych}{35}{subsection.4.1.2}
+\contentsline {subsection}{\numberline {4.1.3}Interfejs graficzny}{37}{subsection.4.1.3}
+\contentsline {section}{\numberline {4.2}Oprogramowanie po stronie serwera}{40}{section.4.2}
+\contentsline {subsection}{\numberline {4.2.1}Podzia\IeC {\l } na pakiety}{41}{subsection.4.2.1}
+\contentsline {subsection}{\numberline {4.2.2}Oprogramowanie wyszukuj\IeC {\k a}ce po\IeC {\l }\IeC {\k a}czenia lotnicze}{42}{subsection.4.2.2}
+\contentsline {subsection}{\numberline {4.2.3}Parsowanie danych}{43}{subsection.4.2.3}
+\contentsline {subsection}{\numberline {4.2.4}Zabezpieczenia}{44}{subsection.4.2.4}
+\contentsline {subsection}{\numberline {4.2.5}Kontrolery serwera}{45}{subsection.4.2.5}
+\contentsline {chapter}{\numberline {5}Testy}{47}{chapter.5}
+\contentsline {section}{\numberline {5.1}Testy jednostkowe}{48}{section.5.1}
+\contentsline {section}{\numberline {5.2}Testy integracji}{49}{section.5.2}
+\contentsline {chapter}{\numberline {6}Uwagi i wnioski}{51}{chapter.6}

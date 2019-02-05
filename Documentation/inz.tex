@@ -420,8 +420,7 @@ Kolejnym rozwiązaniem było wprowadzenie funkcyjnego stylu programowania w kluc
 Implementacje tych rozwiązań są opisane w rozdziale czwartym.
 
 Ostatnim zastosowanym mechanizmem są pamięci podręczne (ang. \emph{cache}) danych. Część danych, która jest gromadzona przez aplikację w~zasobach o długich czasach dostępu i względnie niskiej przepustowości jest dodatkowo przechowywana w pamięci RAM o lepszych parametrach\cite{ehcache}. To rozwiązanie jest często stosowane w~nowoczesnych systemach informatycznych. Odczytywanie danych z tej pamięci jest szybsze w porównaniu na przykład z odczytywaniem dokumentów XML i~JSON z~pamięci masowej, zewnętrznej bazy danych czy też zasobów sieciowych. Przeznaczeniem pamięci masowych jest skracanie czasu odpowiedzi dla określonych zapytań do części serwerowej, które są zwielokrotnione i wykonywane przez wielu użytkowników. Wykonując operacje wyszukiwania lotów, moduł wyszukiwania sprawdza czy w  ~pamięci podręcznej znajdują się poszukiwane wyniki. Jeśli tak, zwraca je użytkownikowi. W przeciwnym wypadku  wyszukuje loty standardowym sposobem a wynik zapisuje do pamięci podręcznej. Dla danych o liniach lotniczych, bagażach oraz dla całego obiektu lotu w części serwerowej stworzono 3 kontenery pamięci podręcznych. Czas przetrzymywania danych w tych kontenerach wynosi odpowiednio: 7 dni, 7 dni oraz 2 godziny. Definiując czasy dla informacji o lotniskach oraz bagażach sugerowano się częstotliwością aktualizowania tych danych przez dostawców. Na ich stronach zmiany są dokonywane średnio raz na kwartał. Ponadto, opracowany serwer zawiera oprogramowanie, które codziennie sprawdza czy nastąpiła jakaś zmiana we wspomnianych zasobach. Jeśli taka sytuacja by wystąpiła, odpowiednie kontenery pamięci podręcznej zostaną wyczyszczone. Dane o połączeniach lotniczych charakteryzują się znacznie większą wrażliwością na zmiany w czasie rzeczywistym. Parametry lotu takie jak data wylotu bądź czas przelotu mogą okazać się dla użytkownika kluczowe i zadecydować o jego wyborze. Z tego powodu czas przetrzymywania tych danych w pamięci podręcznej został ograniczony do 2 godzin. 
-Wybór informacji, które powinny znaleźć się w pamięci podręcznej bazuje na tzw. temperaturze danych. Trzy wcześniej wymienione zasoby oceniono z największym prawdopodobieństwem na ich użycie przez użytkowników aplikacji. 
-Trzy wymienione wcześniej zasoby są najczęściej wykorzystywane przez serwer, dlatego też zdecydowano się na stworzenie dla nich odpowiednich kontenerów pamięci podręcznej.
+Wybór informacji, które powinny znaleźć się w pamięci podręcznej bazuje na tzw. temperaturze danych. Trzy wymienione wcześniej zasoby są najczęściej wykorzystywane przez serwer, dlatego też zdecydowano się na stworzenie dla nich odpowiednich kontenerów pamięci podręcznej.
 
 \chapter{Przegląd istniejących rozwiązań}
 Analiza istniejących rozwiązań, czyli aplikacji wyszukujących połączenia lotnicze pozwoliła sprecyzować wymagania względem budowanego oprogramowania. W Internecie można znaleźć wiele aplikacji o podobnej lub takiej samej dziedzinie zastosowania, jak opracowana aplikacja. W tym rozdziale opisane są najbardziej znane wyszukiwarki lotów dostępnych na rynku. 
@@ -576,17 +575,63 @@ Baza danych jest używana w~aplikacji jako miejsce dające szybki dostęp do du�
 \end{comment}
 
 
-\begin{comment}
+%Posprawdzac styl,czy jest opisane tak jak powinno byc dla projektowania
 \section{Projekt interfejsu użytkownika}
-\delete{Aplikacja kliencka została zaimplementowana w technologii Angular 6, otwartym framework'u i platformie do tworzenia SPA}\footnote{Single Page Application}. \delete{Angular został w całości napisany w języku TypeScript, opiekę nad jego rozwojem sprawuje firma Google. Platforma ta umożliwia tworzenie stron internetowych których treść jest dynamicznie zmieniana bez przeładowywania strony. Przynosi to ogromne korzyści w wydajności aplikacji. Całość kodu napisanego w tym framework'u jest kompilowana do języka JavaScript a następnie renderowana w przeglądarce internetowej. W skład stworzonej aplikacji klienckiej wchodzą dodatkowo dodane zewnętrzne biblioteki.\\ Są to: }
-\begin{itemize}[noitemsep,topsep=0pt]
-\item \delete{Material Design - pakiet oprogramowania od firmy Google do edytowania wyglądu strony}
-\item \delete{MDBootstrap - zestaw narzędzi z gotowymi komponentami do tworzenia stron internetowych}
-\item \delete{NgxSpinner - zewnętrzna biblioteka dodająca komponenty ładowania efektów wizualnych}
-\item \delete{Bootstrap - pakiet oprogramowania do tworzenia responsywnego interfejsu}
-\end{itemize}
-\delete{Implementacja częśći klienckiej jak i jej logiczny podział strukturalny znajdzie się w następnym rozdziale.} \hint{\textbf{To nie jest rozdział o~implementacji tylko projekcie!!! Proszę tu opisać projekt części klienckiej, nie jej implementację!!!} \textbf{Proszę nie używać zwrotów typu ,,ogromne korzyści"! To jest praca inżynierska, nie ulotka marketingowa!}}
+Klient aplikacji został wyposażony w intuicyjny interfejs użytkownika. Proces jego projektowania polega na tworzeniu schematów lub prototypów. W tym rozdziale zostaną opisane  schematy interfejsu użytkownika przygotowane dla strony głównej aplikacji, panelu wyszukiwania lotów oraz dla strony z wynikami wyszukiwania lotów.
+\subsection{Projekt strony głównej}
+Prototyp strony głównej jest projektem widoku dla strony startowej aplikacji. Na rysunku \ref{fig:main_page_schema} przedstawiono jego schemat.
 
+\begin{figure}[!ht]
+\centering
+\includegraphics[scale=0.50, keepaspectratio]{main_page_interface_project.PNG}
+\caption{Prototyp strony głównej aplikacji}
+\label{fig:main_page_schema}
+\end{figure}
+
+Górna część strony przedstawia pasek nawigacji pozwalający na poruszanie się po aplikacji oraz konfigurujący jej ustawienia. Poniżej zobrazowany jest panel wyszukiwania lotów. Ze względu na jego złożoność został mu poświęcony osobny podrozdział. Dolna część strony ukazuje tak zwaną stopkę. Jest to komponent przeznaczony między innymi do zamieszczenia informacji o autorze aplikacji.
+\subsection{Projekt panelu wyszukiwania lotów}
+Panel wyszukiwania jest komponentem dynamicznym i podlegającym zmianom pod wpływem wyborów użytkownika. Z tego powodu zaprojektowano dla niego trzy różne widoki. Pierwszy prezentuje panel dla wybranego lotu z możliwością powrotu, drugi obrazuje go dla lotu bezpośredniego, a ostatni przedstawia panel podróży wieloetapowej. Na rysunku \ref{fig:interface_project_departure} zaprezentowano wygląd pierwszego wymienionego panelu.
+\begin{figure}[!ht]
+\centering
+\includegraphics[scale=0.60, keepaspectratio]{interface_project_departure.PNG}
+\caption{Prototyp panelu wyszukiwania lotów z możliwością wybrania daty powrotu}
+\label{fig:interface_project_departure}
+\end{figure}
+
+\noindent Górna część ukazuje trzy przyciski wyboru typu lotu, liczby pasażerów oraz klasy poszukiwanego biletu. Poniżej zamieszczone są dwa pola do wyboru lotniska wylotowego oraz docelowego. Na prawo od nich znajdują się dwa pola wyboru dat dla wylotu oraz powrotu.
+
+Dla lotu bezpośrednio wygląd panelu wyszukiwania zmienia się. Zaprezentowano to na rysunku \ref{fig:interface_project_direct} Można na nim zauważyć rozszerzone pole do wyboru daty wylotu. Opcja wyboru daty powrotu jest niewidoczna.
+\begin{figure}[!ht]
+\centering
+\includegraphics[scale=0.60, keepaspectratio]{interface_project_direct.PNG}
+\caption{Prototyp panelu wyszukiwania lotów bezpośrednich}
+\label{fig:interface_project_direct}
+\end{figure}
+
+Na rysunku \ref{fig:multi_travel_interface} przedstawiono projekt interfejsu dla komponentu podróży wieloetapowej. Można na nim dostrzec dodatkowe przyciski oraz pola.
+\begin{figure}[!ht]
+\centering
+\includegraphics[scale=0.60, keepaspectratio]{multi_travel_interface.PNG}
+\caption{Prototyp komponentu podróży wieloetapowej}
+\label{fig:multi_travel_interface}
+\end{figure}
+Komponent jest wyposażony w elementy wyboru lotnisk i daty wylotu, które można zwiększać lub zmniejszać odpowiednimi przyciskami. Przycisk oznaczony napisem \textit{Add Flight} dodaje kolejne pola wyboru parametrów lotu. Na prawo od daty wylotu można zauważyć ikonę do usuwania odpowiednich pól. Pozostałe elementy są zaczerpnięte z poprzednio opisanych schematów.
+\subsection{Projekt strony z wynikami wyszukiwania}
+Ostatnim prototyp dotyczy strony z wynikami wyszukiwania połączeń lotniczych. Zaprezentowano go na rysunku \ref{fig:result_interface}
+
+\begin{figure}[!ht]
+\centering
+\includegraphics[scale=0.60, keepaspectratio]{result_interface.PNG}
+\caption{Prototyp komponentu podróży wieloetapowej}
+\label{fig:result_interface}
+\end{figure}
+
+\noindent Górna część przedstawia zbiór przycisków, których liczba jest zależna od wybranego wcześniej typu lotu. Poniżej znajduje się lista wyszukanych lotów. Po kliknięciu w odpowiedni dla elementu listy przycisk powinien rozwinąć się panel z szczegółowymi informacjami o locie.
+
+
+
+
+\begin{comment}
 \section{Diagram klas serwera}
 \delete{Do opracowania aplikacji serwerowej posłużono się językiem programowania Java w wersji 10 oraz pakietami oprogramowania Spring i Hibernate. Java jest w pełni obiektowym językiem programowania z ponad 20 letnią historią. Pierwotnie stworzona i rozwijana przez Jamesa Goslinga została przejęta przez korporację Oracle. Głównym założeniem tego języka jest sentencja \textit{"Napisz raz, uruchom wszędzie"}. Te słowa przemawiają za specjalnym mechanizmem kompilowania i uruchamiania kodu przez Javę. Proces zaczyna się od skompilowania plików o rozszerzeniu java do bytecode'u czyli specjalnej sekwencji bajtów rozumianej przez JVM}\footnote{Java Virtual Machine}. \delete{Następnym krokiem jest uruchomienie bytecode'u przez wirtualną maszynę Javy, która komunikuje się z systemem operacyjnym\cite{jvm}.} \hint{\textbf{Znowu pisze Pan o~implementacji, nie o~projekcie!!! Poza tym, Java nie jest językiem ,,w pełni obiektowym"!! Ma typy proste takie jak int, char, double, które nie są obiektami.}}
 \delete{Powstałe oprogramowanie serwerowe jest w dużej mierze oparte na zewnętrznych bibliotekach platformy Spring Framework w wersji 5. Spring jest otwartym źródłowo frameworkiem bazującym na wirtualnej maszynie Javy. Jego składowymi jest zbiór bibliotek, których głównym celem jest rozwiązanie popularnych problemów programistycznych. Został stworzony w roku 2002 jako kandydat do zastąpienia oprogramowania spod znaku JavyEE}\footnote{Java Enterprise Edition}. \delete{W dzisiejszych czasach Spring jest rozwijany przez setki programistów z całego świata co czyni go stale nowoczesną technologią. W części serwerowej Sping Framework odpowiada za komunikację z bazą danych, udostępnienie danych o połączeniach lotniczych aplikacji klienckiej oraz za zabezpieczenia całego systemu.} 
@@ -619,28 +664,28 @@ Na rysunku \ref{fig:search_module} przedstawiono schemat modułu wyszukiwania po
 Napisy nad strzałkami są nazwami protokołów służących do realizacji zapytań, a~te pod strzałkami oznaczają format treści zwróconej w~odpowiedzi. Wyszukiwanie zaczyna się od wysłania żądania z kontrolera serwerowego do opisywanego modułu. Żądanie to musi uwzględniać  parametry wyszukiwania. Moduł swoją pracę rozpoczyna od pozyskania danych lotniczych z serwisu FlightLookup. Treść odpowiedzi stanowi większą część całego obiektu lotu który jest zwracany. Po otrzymaniu tych danych moduł zwraca się do lokalnej bazy danych o udostępnienie danych lotniskna podstawie ich unikalnych kodów IATA\footnote{International Air Transport Association}. Następnym krokiem jest pozyskanie ceny lotu. Czynność ta rozpoczyna się od sprawdzenia, czy poszukiwana informacja znajduje się w pamięci podręcznej. Jeśli takie dane są obecne, to pamięć podręczna zwraca odpowiedni zasób. Jeśli natomiast taka informacja nie jest dostępna, moduł zwraca się do serwerów firmy Skyscanner o udostępnienie cen za poszukiwany przelot. Analogicznie przebiega pozyskiwanie danych o linii lotniczej obsługującej lot. Ostatnim etapem wyszukiwania jest znalezienie informacji o dozwolonym bagażu podczas lotu. Jest to zrealizowane przez zwrócenie się do strony internetowej aplikacji Skyscanner posiadającej aktualne dane. Jej adres został wspomniany w rozdziale drugim. Po zebraniu wszystkich poszukiwanych informacji oraz sparsowaniu ich, obiekt lotu zwracany jest przez moduł wyszukiwania do kontrolera a następnie do części klienckiej gdzie użytkownik może obejrzeć wyniki całego procesu wyszukiwania.
 
 \section{Komunikacja między komponentami aplikacji}
-Opisane we wcześniejszych podrozdziałach komponenty \change{narzucały sposoby komunikacji między nimi}{narzucają określony sposób komunikacji między nimi}. \change{Każde}{Każdy} z nich zostanie \add{przedstawiony} w tym podrozdziale \delete{stosownie przedstawione}. 
+Opisane we wcześniejszych podrozdziałach komponenty narzucają określony sposób komunikacji między nimi. Każdy z nich zostanie przedstawiony w tym podrozdziale.
 
 \subsection{Protokół HTTP}
-Protokół HTTP\footnote{Hypertext Transfer Protocol} to jeden z \change{najpopularniejszych}{najczęściej stosowanych} \delete{i powszechnie przyjętych} protokołów aplikacji w\change{ świecie internetu}{~Internecie}. \change{Jest to wspólny język między serwerami a klientami umożliwiający modernistyczną sieć. Od prostego początku jako ciąg znaków stał się protokołem nie tylko dla przeglądarek internetowych ale praktycznie też dla każdego oprogramowania i aplikacji sprzętowych}{Jego oryginalnym zastosowaniem jest przesyłanie treści stron WWW. Jest on również stosowany w~innych celach, np. jako protokół dla aplikacji sprzętowych.}\cite{http}. Cechą protokołu HTTP jest \change{zapis}{zapisywanie} i odczytywanie reprezentacji danych, co umożliwia budowę systemów niezależnych od przesyłanych \change{danych}{informacji}.
+Protokół HTTP\footnote{Hypertext Transfer Protocol} to jeden z najczęściej stosowanych  protokołów aplikacji w ~Internecie. Jego oryginalnym zastosowaniem jest przesyłanie treści stron WWW. Jest on również stosowany w~innych celach, np. jako protokół dla aplikacji sprzętowych.\cite{http}. Cechą protokołu HTTP jest zapisywanie i odczytywanie reprezentacji danych, co umożliwia budowę systemów niezależnych od przesyłanych informacji. Protokół HTTP znalazł szerokie zastosowanie w stworzonej aplikacji. Wysłania żądania z parametrami wyszukiwania lotów możliwe było dzięki zbudowaniu odpowiedniego polecenia GET opisywanego protokołu. Serwer po obsłużeniu żądania odpowiadał treścią w formacie JSON również wykorzystując ten protokół. Dzięki niemu, możliwe było też pobieranie zasobów ze stron WWW oraz zewnętrznych baz danych.
  
+\begin{comment}
 \delete{Początkowo protokół ten powstał z oznaczeniem wersji 0.9. Jest to obecnie dość stara wersja, używana jednak jeszcze przez niektóre serwery. HTTP 0.9 zostało podniesione do wersji 1.1 który jest najczęściej wykorzystywanym protokołem w internecie. Standard HTTP/1.1 rozwiązał wiele niejednoznaczności protokołu, które znaleziono we wcześniejszych wersjach i wdrożył szereg kluczowych optymalizacji wydajnościowych, dodatkowe mechanizmy buforowania oraz enkrypcję transferu. Jako odpowiedż na ciągle zwiekszajacą się liczbę urządzeń podłączonych do internetu oraz wymagania wobec niego, w 2012 roku zainicjowano protokół HTTP/2. Jego głównym celem jest poprawa wydajności transportu i osiągnięcie zarówno mniejszych opóźnień i wyższej przepustowości.} \hint{To nie ma być podrozdział o~historii protokołu HTTP, tylko o~jego zastosowaniu w~Pana aplikacji. Proszę się na tym skupić. Treść do poprawy.}
+\end{comment}
+
 \subsection{JDBC}
-JDBC\footnote{Java Database Connectivity} to standardowy, niezależny od bazy danych interfejs do interakcji z dowolnym źródłem danych \change{opartym na tabelaryczności}{w~którym informacje przechowywane są w~tabelach}. Przeważnie jest używany do współdziałania z relacyjnym systemem zarządzania bazami danych. Za pomocą tego interfejsu można też korzystać \change{ z dowolnego tabelarycznego źródła danych, takiego}{z~innych źródeł danych,} jak arkusz csv, plik tekstowy itd. Zazwyczaj używa się go do łączenia z bazą danych, wyszukiwania danych i ich aktualizowania. Umożliwia \add{on} także wykonywanie procedur SQL \delete{w bazie danych} przy użyciu składni niezależnej od bazy danych\cite{jdbc}. Używanie JDBC zwalnia \change{użytkownika}{programistę} z konieczności uczenia się nowej składni za każdym razem \change{pracy na innej bazie danych}{, gdy będzie on pracował z~nową bazą danych}. \hint{To nie jest przypadkiem cecha JPA, a~nie JDBC? Przecież sterowniki JDBC umożliwiają bezpośrednie korzystanie z~zapytań w~SQL.} JDBC dostarcza zestaw \change{oprogramowania w języku Java}{klas języka Java} do przetwarzania \delete{zestawu} wyników zapytań SQL w sposób niezależny od bazy danych. W opracowanej aplikacji interfejs JDBC pośredniczył pomiędzy relacyjną bazą danych \delete{MySQL} a częścią serwerową aplikacji.
-\hint{Ponieważ JDBC jest interfejsem, to ten podrozdział jest jeszcze do zaakceptowania w~tym miejscu, ale jest bardziej związany z~implementacją niż projektem.}
+JDBC\footnote{Java Database Connectivity} to standardowy, niezależny od bazy danych interfejs do interakcji z dowolnym źródłem danych w~którym informacje przechowywane są w~tabelach. Przeważnie jest używany do współdziałania z relacyjnym systemem zarządzania bazami danych. Za pomocą tego interfejsu można też korzystać z~innych źródeł danych, jak arkusz csv, plik tekstowy itd. Zazwyczaj używa się go do łączenia z bazą danych, wyszukiwania danych i ich aktualizowania. Umożliwia on także wykonywanie procedur SQL przy użyciu składni niezależnej od bazy danych\cite{jdbc}. W opracowanej aplikacji interfejs JDBC pośredniczył pomiędzy relacyjną bazą danych a częścią serwerową aplikacji.
+
 
 \subsection{I/O}
-\change{Operacje}{Podprogramy realizujące operacje} zapisu oraz odczytu są podstawowymi częściami systemów operacyjnych \change{wraz z językami programowania oraz ich bibliotekami}{oraz bibliotek języków programowania}. Prawie wszystkie programy komputerowe wykonują pewne operacje zapisu/odczytu inaczej zwanymi operacjami wejściowymi i wyjściowymi. W opracowanej aplikacji za wykonywanie tych operacji \change{odpowiadał}{odpowiada} język Java ,który \change{przez system operacyjny zwracał się do}{za pośrednictwem systemu operacyjnego korzysta z~}zasobów plikowych lub pamięci podręcznej. Operacje I/O dotyczą systemu plików, który jest elementarnym składnikiem każdego systemu operacyjnego. Zarządza on archiwizacją danych oraz ich późniejszym odzyskiwaniem. System plików przetrzymuje dane w plikach, które zaś są przechowywane w katalogach. Dostęp do plików oraz katalogów uzyskuje się przez zdefiniowanie ścieżek dostępu, które lokalizują obiektu systemu plików.\cite{i/o}
-\hint{W~zasadzie ten podrozdział jest o~niczym. Jeśli chciał Pan napisać, że Pana aplikacja korzysta z~plików, to proszę tak zrobić i~napisać jakie istotne dla jej działania informacje się w~nich znajdują.}  
-
-\hint{Nigdzie nie wyjaśnił Pan do czego służ pamięć podręczna w~tej aplikacji.}
-\hint{Gdzie jest podsumowanie rozdziału?}
+Podprogramy realizujące operacje zapisu oraz odczytu są podstawowymi częściami systemów operacyjnych oraz bibliotek języków programowania. Prawie wszystkie programy komputerowe wykonują pewne operacje zapisu/odczytu inaczej zwanymi operacjami wejściowymi i wyjściowymi. W opracowanej aplikacji za wykonywanie tych operacji odpowiada język Java ,który za pośrednictwem systemu operacyjnego korzysta z~zasobów plikowych lub pamięci podręcznej. Operacje I/O dotyczą systemu plików, który jest elementarnym składnikiem każdego systemu operacyjnego. Zarządza on archiwizacją danych oraz ich późniejszym odzyskiwaniem. System plików przetrzymuje dane w plikach, które zaś są przechowywane w katalogach. Dostęp do plików oraz katalogów uzyskuje się przez zdefiniowanie ścieżek dostępu, które lokalizują obiektu systemu plików.\cite{i/o}
+Opracowany serwer wykorzystuje opisane operacje do odczytu pamięci podręcznej, plików CSV oraz plików tekstowych. Czynności te wspomagają pracę serwera pozwalając na szybszy dostęp do zasobów danych.
 
 \section{Podsumowanie}
+Zaprezentowane w tym rozdziale projekty oraz schematy pozwoliły zrozumieć sposoby działania aplikacji. Diagramy przypadków użycia oraz aktywności dostarczyły informacji o odbiorach aplikacji oraz o możliwościach jakie ona udostępnia. Schemat architektury trójwarstwowej podzielił aplikacją na logiczne części objaśniając ich funkcje. Podrozdział dotyczący bazy danych pozwolił zrozumieć jej zastosowanie w powstałym systemie. Następnie zrealizowanie schematy interfejsu użytkownika przedstawiły ogólny zarys wymagań postawionych przed implementacją części klienckiej. Ze względu na swoją złożoność w kolejnej części tego rozdziału został omówiony moduł wyszukiwania lotów. Zaprezentował logikę stojącą za skomplikowanym procesem wyszukiwania. Ostatni podrozdział przybliżył rodzaje komunikacji między komponentami aplikacji oraz wyjaśnił ich użycie w aplikacji.
 
 
 
-%\newpage
 \chapter{Implementacja}
 \delete{Następstwem stworzenia projektu aplikacji była implementacja oprogramowania zawartego w założeniach pracy dyplomowej.} \change{Zostanie ona}{Implementacja aplikacji jest} szczegółowo opisana w tym rozdziale. Jego treść została stworzona na podstawie projektu aplikacji oraz zagadnień poruszonych w poprzednich rozdziałach. \change{Stworzona aplikacja}{Aplikacja} została \change{podzielona}{opracowana} według \delete{założonych} wymagań \change{opisanych na stronie trzeciej}{otrzymanych na podstawie analizy problemu}. \change{Została}{Jest ona} podzielona na dwie logiczne części: stronę serwerową oraz kliencką. \delete{Opisano je ogólnie w poprzednim rozdziale, w tej części pracy skupiono się zagadnieniach związanych z implementacją powstałego oprogramowania.} \hint{To właśnie jest błędem w~poprzednim rozdziale, że zawiera informacje na temat implementacji, nie projektu. To zdanie jest do poprawy.}
 
@@ -954,7 +999,7 @@ Opracowanie aplikacji wyszukującej połączenia lotnicze \delete{było zadaniem
 
 \change{Z uwagi na warunki akademickie a}{A}plikację można usprawnić na \change{wielu płaszczyznach}{wiele sposobów}. W \delete{stworzonej} pracy zabrakło takich \delete{dodatkowych} funkcji jak możliwość wyszukiwania lotów \change{również z pobliskich lotnisk od aktualnie wybranego}{z~lotnisk położonych w~pobliżu aktualnie wybranego miejsca,} czy też \delete{wprowadzenia} wersji w języku polskim. \change{Część serwerowa mogłaby zostać poprawiona w zakresie "czystości kodu" oraz poprawnego nazewnictwa jej elementów.}{Kod części serwerowej mógłby zostać poddany refaktoryzacji.} Istotne znaczenie dla podniesienia atrakcyjności aplikacji miałoby też zwiększenie poziomu jej responsywności. Część kliencka wymaga w tym zakresie \delete{lekkich} poprawek. 
 
-\delete{Stworzonej aplikacji internetowej nadano nazwę \textit{SkyObserver}}\footnote{SkyObserver - obserwator nieba}. \delete{Jest ona zwieńczeniem zebranej wiedzy i doświadczenia podczas studiów inżynierskich. Praca nad nią zaowocowała pogłębieniem technicznego sposobu myślenia oraz zrozumieniem wyzwań XXI wieku stawianym inżynierom informatykom.} \hint{Proszę nie pisać takich bzdur!}
+\delete{Stworzonej aplikacji internetowej nadano nazwę \textit{SkyObserver}}\footnote{SkyObserver - obserwator nieba}. \delete{Jest ona zwieńczeniem zebranej wiedzy i doświadczenia podczas studiów inżynierskich. Praca nad nią zaowocowała pogłębieniem technicznego sposobu myślenia oraz zrozumieniem wyzwań XXI wieku stawianym inżynierom informatykom.}
 
 \hint{Bibliografia powinna zawierać także miejsce i~rok wydania książki. Proszę sprawdzić odwołania do literatury, szczególnie tam gdzie wykreślałem fragmenty pracy. Wszystkie pozycje muszą być cytowane. Trochę jest ich mało.}
 \begin{thebibliography}{9}

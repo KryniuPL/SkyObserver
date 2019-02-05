@@ -5,8 +5,6 @@
 %usage of OT4 encoding destroys code listings 
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
-%Ten pakiet utrudnia pracę systemów antyplagiatowych:
-%\usepackage{times}
 \usepackage{color}
 \usepackage{comment}
 \usepackage{indentfirst}
@@ -369,7 +367,6 @@ XML\footnote{eXtensible Markup Language} to standard formatowania treści wspier
 XML jest językiem znaczników, nie jest on językiem programowania, magazynem danych czy też protokołem transportu sieciowego. XML oferuje możliwość formatowania danych. Zapewnia to im dostępność na wielu platformach i odporność na upływ czasu. W~starszych wersjach standardu XML dokument zapisany za pomocą dowolnego oprogramowania na jednej platformie nie dawał się odczytywać na innej. Wersja 3.2 usunęła tę wadę. Zapewnia ona obsługę Unicode, co oznacza, że dokumenty XML składają się w całości ze znaków należących do zestawu Unicode. 
 
 Wyszukiwanie informacji o połączeniach lotniczych rozpoczynało się od odebrania danych z serwisu FlightLookup w postaci XML. Jest to najważniejsza operacja podczas wyszukiwania połączeń lotniczych. Dane zebrane na tym etapie są parametrami wyszukiwania podczas korzystania ze źródeł danych wykorzystanych w późniejszej fazie tego procesu. Przykład odebranej treści znajduje się na listingu \ref{list::xml}.
-\hint{Skąd jest Pan pewien, że ten listing będzie na poprzedniej stronie? Być~może w~ostatecznej wersji znajdzie się na następnej. \LaTeX posiada system odwołań do listingów, tabel, rozdziałów, rysunków itp., który trzeba zastosować. Wymaga on użycia poleceń \texttt{label} i~\texttt{ref}, Przykład dla listingów ma Pan w tym akapicie. Resztę proszę uzupełnić samodzielnie.}
 
 Operacja parsowania obiektów XML na obiekty języka Java zostanie dokładniej opisana w rozdziale o implementacji. Załączony listing \ref{list::xml} przedstawia jeden z elementów danych XML o nazwie \textit{FlightDetails}. Zawiera on przykładowe pola takie jak: \textit{TotalMiles} i \textit{FLSFlightDays}. Elementy te zostały odwzorowane w postaci klas języka Java o takich samych nazwach jak nazwa elementu. Powstała klasa posiada też takie same pola jak obiekt w XML.
 
@@ -476,10 +473,8 @@ Rysunek \ref{fig:google_flights_search_panel} przedstawia panel wyszukiwania lot
 \caption{Komponent podróży wieloetapowej aplikacji Google Flights}
 \label{fig:google_flights_multi}
 \end{figure}
-Wszystkie produkty firmy Google, które dostępne są za pomocą przeglądarki WWW charakteryzują się specyficznym stylem interfejsu. Jest to styl Material Design, który określa specyfikację pojedynczych elementów aplikacji Google'a. Rysunek \ref{fig:skyscanner_result} przedstawia przykładowe wyniki wyszukiwania lotów. Znajdują się one na rozwijanej liście. Po kliknięciu w wybrany element listy rozwija się panel z dokładniejszymi informacjami o locie. Każdy element zaprezentowany na wspomnianym rysunku jest zgodny z Material Design. Widać na przykład zaokrąglenia przycisków charakterystyczne dla produktów marki Google. 
+Wszystkie produkty firmy Google, które dostępne są za pomocą przeglądarki WWW charakteryzują się specyficznym stylem interfejsu. Jest to styl Material Design, który określa specyfikację pojedynczych elementów aplikacji Google'a. Rysunek \ref{fig:google_flights_result} przedstawia przykładowe wyniki wyszukiwania lotów. Znajdują się one na rozwijanej liście. Po kliknięciu w wybrany element listy rozwija się panel z dokładniejszymi informacjami o locie. Każdy element zaprezentowany na wspomnianym rysunku jest zgodny z Material Design. Widać na przykład zaokrąglenia przycisków charakterystyczne dla produktów marki Google. 
 
-\hint{Informacje w~akapicie dotyczącym stylu są interesujące, ale czy na pewno wnoszą coś do pracy? Proszę się zastanowić nad jego usunięciem.}
- 
 \begin{figure}[!ht]
 \centering
 \includegraphics[scale=0.50, keepaspectratio]{google_flights_result.png}
@@ -494,9 +489,6 @@ Obie opisane aplikacje są rozwiązaniami komercyjnymi, stworzonymi przez wieloo
 Zaletą aplikacji Skyscanner jest z pewnością rzetelność jej danych, która jest potwierdzona licznymi nagrodami od linii lotniczych. Warto też wspomnieć o jej systemie wyszukiwania lotów. Liczba wyszukanych lotów z przesiadkami często przekracza sto wystąpień. Świadczy to o zaawansowanym silniku wyszukującym i analizującym różne przypadki połączeń. Za wady można uznać dosyć prosty i niedostosowany do potrzeb urządzeń mobilnych interfejs użytkownika. Nie reprezentuje on poziomu nowoczesnych aplikacji. 
 
 Druga wyszukiwarka jest dopracowanym produktem firmy Google. Wyszukuje ona loty bardziej efektywnie niż rozwiązania konkurencji, między innymi Skyscanner. Google Flights współpracuje z systemami sprzedażowymi większości przewoźników lotniczych. Daje to możliwość kupna biletu bezpośrednio z jej strony WWW bez konieczności przechodzenia na zewnętrzną stronę linii lotniczej. Zaletą wyszukiwarki z pewnością jest dopracowany interfejs zgodny ze standardami firmy Google. Gwarantuje on dostosowanie do używanego medium oraz czytelność prezentowanych danych. Wyszukiwarka Google Flights wydaje się być lepszym rozwiązaniem od aplikacji Skyscanner jednak różnica jakości je dzieląca nie jest duża.
-
-\delete{W opracowywanej aplikacji starano się w rzetelny sposób zrealizować podstawowe funkcje obu opisywanych wcześniej wyszukiwarek. Komercyjne aplikacje mają dużą przewagę biorąc pod uwagę szybkość wyszukiwania. W powstałej aplikacji czas odpowiedzi na żądania użytkownika jest zauważalnie dłuższy. W warunkach akademickich trudno było o uzyskanie konkurencyjnych rezultatów.}  \hint{Ten wykreślony akapit proszę przenieść do podsumowania pracy. Tutaj powinny się pojawić wymagania odnośnie tworzonej przez Pana aplikacji, które wynikają z~analizy istniejących rozwiązań.}
-
 
 \chapter{Projekt aplikacji}
 W tym rozdziale jest opisany projekt aplikacji. Zrozumienie podejmowanego zagadnienia w pracy oraz przegląd istniejących rozwiązań pozwolił określić sposoby realizacji wymaganych funkcji w stworzonej aplikacji.  Kluczową sprawą było też ustalenie odbiorców aplikacji oraz przebiegu procesu wyszukiwania połączeń lotniczych. W tym celu stworzono diagramy aktywności oraz przypadków użycia. Poświęcono osobne podrozdziały dla architektury aplikacji, projektu jej interfejsu użytkownika, strukturze serwera oraz modułowi wyszukiwania lotów. Na końcu rozdziału znajduje część podsumowująca opracowane rozwiązania i diagramy.
@@ -523,22 +515,8 @@ Diagram aktywności jest diagramem przedstawiającym interakcję dynamicznych as
 
 Dla opracowanej aplikacji przygotowano diagram aktywności widoczny na rysunku \ref{fig:activity_diagram}. Prezentuje on przebieg kroków, które wykonywane są przez stworzone oprogramowanie. Etap początkowy oraz końcowy został oznaczony czarnym kółkiem. Między nimi znajdują się poszczególne etapy procesu wyszukiwania lotów. Miejsca połączenia różnych ścieżek przebiegu tego procesu lub elementy warunkowe zostały oznaczone rombem.
 
-\begin{comment}
-\hint{Jeszcze raz to podkreślę: UML jest narzędziem, które powinien Pan wykorzystać do dokumentowania projektu oprogramowania. \textbf{Nie} jest tematem tej pracy. Proszę zatem tak zmienić treść tego podrozdziału, aby dotyczyła stworzonego przez Pana oprogramowania, nie zaś przeznaczenia diagramów UML.}
-\end{comment}
-
-
 \section{Architektura aplikacji}
 Projektowanie aplikacji rozpoczęto od stworzenia schematu obrazującego poszczególne części systemu oraz schematy komunikacji między nimi. Opracowane oprogramowanie zostało stworzone według architektury trójwarstwowej. Jest ona rodzajem architektury oprogramowania, która składa się z trzech warstw logicznego przetwarzania danych. 
-
-\begin{comment}
-Każda \change{część}{z~wymienionych części} \change{posiada unikalną dla siebie funkcjonalność}{pełni w~aplikacji odpowiednią rolę}. 
-\delete{Ze względu na rozmiar pracy włożony w każde z nich, w tym rozdziale zostaną one krótko opisane.}
-Część serwerowa \delete{w całym systemie} jest odpowiedzialna za dostarczenie danych do interfejsu użytkownika inaczej nazywanego częścią kliencką. Znajduje się w nim \hint{W~części serwerowej, czy w~interfejsie? Proszę to tak poprawić, aby można było jednoznacznie stwierdzić, o~którą część chodzi.} \delete{złożony} moduł wyszukiwania połączeń lotniczych. Moduł ten \delete{sam w sobie} posiada złożoną \change{architekturę}{budowę}\change{i  zostanie mu}{, której jest} poświęcony \change{dedykowany}{osobny} podrozdział.
-Część kliencka to \delete{internetowy} interfejs użytkownika. Osadzony jest on w przeglądarce internetowej. \change{W aplikacji nie zdecydowano się na podział względem ról użytkownika}{Aplikacja nie uwzględnia ról użytkownika}. Wynika to ze \add{jej} specyfiki\delete{ projektowanej aplikacji}. Każdy użytkownik \delete{ją odwiedzający} posiada takie same uprawnienia do jej zasobów.
-Oprócz dwóch wspomnianych wcześniej \change{modułów}{części} w skład architektury aplikacji wchodzi relacyjna baza danych, która jest \change{nośnikiem danych dla tabeli lotnisk}{magazynem danych dla lotnisk}.
-Komunikacja między opisanymi kluczowymi elementami aplikacji odbywa się na kilka sposobów. Każdy z nich jest szczegółowo opisany w dalszej części tego rozdziału.
-\end{comment}
 
 \begin{figure}[!ht]
 \centering
@@ -548,10 +526,6 @@ Komunikacja między opisanymi kluczowymi elementami aplikacji odbywa się na kil
 \end{figure}
 
 \noindent Rysunek \ref{fig:architecure_diagram} zawiera schemat architektury opracowanej aplikacji. Przedstawia on jej trzy warstwy. Pierwszą z nich jest warstwa prezentacji. Renderuje ona treści odpowiednie treści w przeglądarce internetowej. Komunikacja między warstwą prezentacji a logiki biznesowej biznesowej odbywa się z użyciem protokołu HTTP. Warstwa logiki biznesowej obsługuje żądanie tego protokołu przekazując zawarte w nim parametry do modułu wyszukiwania połączeń lotniczych. Z uwagi na jego złożoność zostanie mu poświęcony osobny podrozdział.
-
-\begin{comment}
-Przedstawia on \change{rozdział strukturalny}{strukturę} aplikacji oraz \change{drogę jaką musi odbyć żądanie użytkownika w celu uzyskania pożądanej odpowiedzi}{ścieżkę przetwarzania żądania pochodzącego z~przeglądarki WWW}. Użytkownik po wypełnieniu odpowiednich formularzy w części klienckiej rozpoczyna proces wyszukiwania połączeń lotniczych. Oprogramowanie klienta po pobraniu od użytkownika niezbędnych parametrów takich jak miejsce wylotu, \change{czy}{lub} rodzaj lotu zwraca się do części serwerowej o wyszukanie lotów\delete{ zgodnych z podanymi parametrami}. Komunikacja między tymi modułami odbywa się \change{protokołem}{z~użyciem protokołu} HTTP. \change{Po wywołaniu, część serwerowa zwraca się do modułu wyszukiwania lotów}{Odebrane żądanie część serwerowa przekazuje do modułu wyszukiwania lotów}. Moduł ten sprawdza wszystkie źródła danych zamieszczone na schemacie \delete{3.1.1}. \hint{Proszę tu umieścić referencję do rysunku.}  Zebrane \change{dane }{informacje} są \delete{odpowiednio} parsowane i przekazywane modułowi wyszukiwania który z kolei zwraca je kontrolerowi wywołanemu przez użytkownika. \hint{?? Moduł wyszukiwania zwraca przekazuje dane do modułu wyszukiwania? Proszę poprawić.} Kontroler następnie przekazuje dane do części klienckiej, która wyświetla je w  graficznym interfejsie użytkownika. 
-\end{comment}
 
 \section{Projekt bazy danych}
 Baza danych jest używana w~aplikacji jako miejsce dające szybki dostęp do dużego zbioru jakim są dane o lotniskach. Na jej użycie zdecydowano się ze względu na duży rozmiar zasobu informacji reprezentowanych danych oraz sprawdzonych sposobów dostępu do niego.
@@ -629,25 +603,10 @@ Ostatnim prototyp dotyczy strony z wynikami wyszukiwania połączeń lotniczych.
 \noindent Górna część przedstawia zbiór przycisków, których liczba jest zależna od wybranego wcześniej typu lotu. Poniżej znajduje się lista wyszukanych lotów. Po kliknięciu w odpowiedni dla elementu listy przycisk powinien rozwinąć się panel z szczegółowymi informacjami o locie.
 
 
-
-
 \begin{comment}
 \section{Diagram klas serwera}
-\delete{Do opracowania aplikacji serwerowej posłużono się językiem programowania Java w wersji 10 oraz pakietami oprogramowania Spring i Hibernate. Java jest w pełni obiektowym językiem programowania z ponad 20 letnią historią. Pierwotnie stworzona i rozwijana przez Jamesa Goslinga została przejęta przez korporację Oracle. Głównym założeniem tego języka jest sentencja \textit{"Napisz raz, uruchom wszędzie"}. Te słowa przemawiają za specjalnym mechanizmem kompilowania i uruchamiania kodu przez Javę. Proces zaczyna się od skompilowania plików o rozszerzeniu java do bytecode'u czyli specjalnej sekwencji bajtów rozumianej przez JVM}\footnote{Java Virtual Machine}. \delete{Następnym krokiem jest uruchomienie bytecode'u przez wirtualną maszynę Javy, która komunikuje się z systemem operacyjnym\cite{jvm}.} \hint{\textbf{Znowu pisze Pan o~implementacji, nie o~projekcie!!! Poza tym, Java nie jest językiem ,,w pełni obiektowym"!! Ma typy proste takie jak int, char, double, które nie są obiektami.}}
-\delete{Powstałe oprogramowanie serwerowe jest w dużej mierze oparte na zewnętrznych bibliotekach platformy Spring Framework w wersji 5. Spring jest otwartym źródłowo frameworkiem bazującym na wirtualnej maszynie Javy. Jego składowymi jest zbiór bibliotek, których głównym celem jest rozwiązanie popularnych problemów programistycznych. Został stworzony w roku 2002 jako kandydat do zastąpienia oprogramowania spod znaku JavyEE}\footnote{Java Enterprise Edition}. \delete{W dzisiejszych czasach Spring jest rozwijany przez setki programistów z całego świata co czyni go stale nowoczesną technologią. W części serwerowej Sping Framework odpowiada za komunikację z bazą danych, udostępnienie danych o połączeniach lotniczych aplikacji klienckiej oraz za zabezpieczenia całego systemu.} 
-
-\delete{W części serwerowej w celu przyspieszenia prac programistycznych użyto szeregu zewnętrznego oprogramowania. Należą do nich biblioteki:}
-\begin{itemize}[noitemsep,topsep=0pt]
-\item \delete{okhttp - klient protokołu HTTP do pobierania zasobów internetowych}
-\item \delete{gson - biblioteka do parsowania obiektów w notacji JSON}
-\item \delete{jackson-dataformat-xml - biblioteka do parsowania języka znaczników XML}
-\item \delete{jsoup - biblioteka do parsowania dokumentów HTML}
-\item \delete{ehcache - oprogramowanie zarządzające danymi w pamięci podręcznej aplikacji}
-\item \delete{commons-csv - biblioteka do parsowania plików CSV}
-\item \delete{jaxb-api - biblioteka języka Java usunięta z głównej ścieżki modułowej w wersji JDK}\footnote{Java Development Kit} \delete{9}
-\end{itemize}
-
-W skład części serwerowej wchodzi też \delete{cały} moduł wyszukiwania połączeń lotniczych. Ze względu na jego znaczenie zostanie mu poświęcony osobny podrozdział. Implementacja części serwerowej  zostanie zaprezentowana w następnym rozdziale.
+Do opracowania aplikacji serwerowej posłużono się językiem programowania Java w wersji 10 oraz pakietami oprogramowania Spring i Hibernate. Java jest w pełni obiektowym językiem programowania z ponad 20 letnią historią. Pierwotnie stworzona i rozwijana przez Jamesa Goslinga została przejęta przez korporację Oracle. Głównym założeniem tego języka jest sentencja \textit{"Napisz raz, uruchom wszędzie"}. Te słowa przemawiają za specjalnym mechanizmem kompilowania i uruchamiania kodu przez Javę. Proces zaczyna się od skompilowania plików o rozszerzeniu java do bytecode'u czyli specjalnej sekwencji bajtów rozumianej przez JVM}\footnote{Java Virtual Machine}.
+Powstałe oprogramowanie serwerowe jest też w dużej mierze oparte na zewnętrznych bibliotekach platformy Spring Framework w wersji 5.
 
 \end{comment}
 \section{Moduł wyszukiwania połączeń lotniczych}
@@ -687,24 +646,15 @@ Zaprezentowane w tym rozdziale projekty oraz schematy pozwoliły zrozumieć spos
 
 
 \chapter{Implementacja}
-\delete{Następstwem stworzenia projektu aplikacji była implementacja oprogramowania zawartego w założeniach pracy dyplomowej.} \change{Zostanie ona}{Implementacja aplikacji jest} szczegółowo opisana w tym rozdziale. Jego treść została stworzona na podstawie projektu aplikacji oraz zagadnień poruszonych w poprzednich rozdziałach. \change{Stworzona aplikacja}{Aplikacja} została \change{podzielona}{opracowana} według \delete{założonych} wymagań \change{opisanych na stronie trzeciej}{otrzymanych na podstawie analizy problemu}. \change{Została}{Jest ona} podzielona na dwie logiczne części: stronę serwerową oraz kliencką. \delete{Opisano je ogólnie w poprzednim rozdziale, w tej części pracy skupiono się zagadnieniach związanych z implementacją powstałego oprogramowania.} \hint{To właśnie jest błędem w~poprzednim rozdziale, że zawiera informacje na temat implementacji, nie projektu. To zdanie jest do poprawy.}
+Implementacja aplikacji jest szczegółowo opisana w tym rozdziale. Jego treść została stworzona na podstawie projektu aplikacji oraz zagadnień poruszonych w poprzednich rozdziałach. Aplikacja została opracowana według wymagań otrzymanych na podstawie analizy problemu. Jest ona podzielona na dwie logiczne części: stronę serwerową oraz kliencką. 
 
 \section{Oprogramowanie po stronie klienta}
-Część kliencka to osobna aplikacja osadzona w przeglądarce internetowej. Został w niej stworzony graficzny interfejs użytkownika oraz serwis odbierający dane od części serwerowej.
-
+Aplikacja kliencka została zaimplementowana w technologii Angular 6, otwartym framework'u i platformie do tworzenia SPA\footnote{Single Page Application}. Angular został w całości napisany w języku TypeScript, opiekę nad jego rozwojem sprawuje firma Google. Platforma ta umożliwia tworzenie stron internetowych których treść jest dynamicznie zmieniana bez przeładowywania strony. Przynosi to ogromne korzyści w wydajności aplikacji. Całość kodu napisanego w tym framework'u jest kompilowana do języka JavaScript a następnie renderowana w przeglądarce internetowej. 
 \subsection{Podział strukturalny}
-Aplikacja kliencka została \delete{logicznie} podzielona na cztery pakiety\change{:}{.} 
-%\begin{figure}[!ht]
-%\centering
-%\includegraphics[scale=1.0, keepaspectratio]{client_structure.png}
-%\caption{Struktura plików części klienckiej}
-%\label{fig:client_structuresearch_module}
-%\end{figure}
-\hint{Ten rysunek nic nie wnosi do treści pracy.}
-Pakiet \textit{layout} przechowuje komponenty\change{o wielokrotnym użyciu}{, które są wielokrotnie używane} w aplikacji klienckiej. Katalog \textit{model} zawiera odpowiedniki klas modelowych z części serwerowej. Kolejnym elementem jest pakiet \textit{pages}. Znajdują się w nim komponenty renderujące kompletne strony internetowe\change{. Zostały, które są} zbudowane z segmentów \change{stworzonych}{umieszczonych} w katalogu \textit{layout}. Ostatnią częścią aplikacji klienckiej jest pakiet \textit{services}. Zawiera on oprogramowanie odpowiedzialne za komunikowanie się z serwerem. 
-%\newpage
+Aplikacja kliencka została podzielona na cztery pakiety. Pakiet \textit{layout} przechowuje komponenty, które są wielokrotnie używane w aplikacji klienckiej. Katalog \textit{model} zawiera odpowiedniki klas modelowych z części serwerowej. Kolejnym elementem jest pakiet \textit{pages}. Znajdują się w nim komponenty renderujące kompletne strony internetowe, które są zbudowane z segmentów umieszczonych w katalogu \textit{layout}. Ostatnią częścią aplikacji klienckiej jest pakiet \textit{services}. Zawiera on oprogramowanie odpowiedzialne za komunikowanie się z serwerem. 
+
 \subsection{Moduły pobierania danych}
-W części klienckiej zaimplementowano serwisy \hint{Proszę wyjaśnić, co ma Pan na myśli pisząc słowo ,,serwis", bo jest ono dosyć wieloznaczne} odbierające dane z części serwerowej. Pierwszy\delete{m} z nich jest odpowiedzialny za połączenie z modułem wyszukiwania po stronie serwera. Zawiera on dane adresu sieciowego serwera udostępniającego zebrane wyniki wyszukiwania połączeń lotniczych.
+W części klienckiej zaimplementowano oprogramowanie odbierające dane z części serwerowej. Pierwszy z nich jest odpowiedzialny za połączenie z modułem wyszukiwania po stronie serwera. Zawiera on dane adresu sieciowego serwera udostępniającego zebrane wyniki wyszukiwania połączeń lotniczych.
 \begin{lstlisting}[language=JavaScript, caption= Kod źródłowy funkcji pobierającej wyniki z serwera, label=lst:results]
 import { Injectable } from '@angular/core';
 import { baseUrl } from '../../../environments/environment';
@@ -729,10 +679,10 @@ export class FlightsService {
 
 }
 \end{lstlisting}
-Na \delete{powyższym} listingu \add{\ref{lst:results}} \hint{Proszę tak odwoływać się w~tekście do pozostałych listingów.} przedstawiono fragment \change{oprogramowania}{kodu} pobierający wyniki wyszukiwania. Funkcja \textit{getFlights} przyjmuje \change{5 parametrów}{pięć argumentów,} które dostarcza jej użytkownik. \change{Pierwszym procesem}{Pierwszą czynnością} tej funkcji jest zbudowanie adresu URL\add{,} który posłuży \add{jej} do zbudowania żądania pobrania danych. Jej działanie polega na złączeniu wcześniej wspomnianych parametrów \change{oddzielając je znakiem "/" w roli separatora. Ostatnim krokiem jest stworzenia}{i~stworzeniu} żądania GET protokołu HTTP.
+Na listingu \ref{lst:results} przedstawiono fragment kodu pobierający wyniki wyszukiwania. Funkcja \textit{getFlights} przyjmuje pięć argumentów, które dostarcza jej użytkownik. Pierwszą czynnością tej funkcji jest zbudowanie adresu URL, który posłuży jej do zbudowania żądania pobrania danych. Jej działanie polega na złączeniu wcześniej wspomnianych parametrów i~stworzeniu żądania GET protokołu HTTP.
 
-Drugim zaimplementowanym serwisem jest prosta funkcja pobierające dane o lotniskach. Jej \change{działanie zostanie przedstawione na kolejnym listingu}{kod jest przedstawiony na listingu \ldots}. \hint{Proszę uzupełnić.}
-\begin{lstlisting}[language=JavaScript, caption= Kod źródłowy funkcji pobierającej dane lotnisk]
+Drugim zaimplementowanym serwisem jest prosta funkcja pobierające dane o lotniskach. Jej kod jest przedstawiony na listingu \ref{lst:getAirportsData}
+\begin{lstlisting}[language=JavaScript, caption= Kod źródłowy funkcji pobierającej dane lotnisk, label=lst:getAirportsData]
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { baseUrl } from '../../../environments/environment';
@@ -755,25 +705,24 @@ export class AirportsService {
 Działanie przedstawionego kodu źródłowego rozpoczyna się od stworzenia adresu URL pod którym część serwerowa udostępnia poszukiwane dane. Do zmiennej \textit{baseUrl} oznaczającej domenę serwera zostaje dodana część sparametryzowana dla danych o lotniskach. Funkcja zwraca obiekty typu \textit{Airport} oraz dodatkowo obsługuje błędy zwrócone z drugiej części aplikacji.
 
 \subsection{Interfejs graficzny}
-Walory \change{szybkości}{efektywności} oraz użyteczności aplikacji tracą na znaczeniu jeśli budowane oprogramowanie nie jest wyposażone w czytelny interfejs użytkownika. \change{Jest on formą interakcji}{Umożliwia on sprawną interakcję} pomiędzy użytkownikiem a aplikacją.  \change{Stworzone}{Opracowane} środowisko graficzne jest grupą wzajemnie współpracujących przycisków oraz obrazów zapewniających \change{podstawowe poruszanie się}{nawigację} po aplikacji klienckiej w obrębie przeglądarki internetowej. 
-W części klienckiej zaimplementowano responsywny wygląd z takimi komponentami jak panel wyszukiwania lotów \change{czy}{oraz} panel podróży wieloetapowej. Ich \delete{ogólny} kształt i funkcje zostały \change{w części}{częściowo} zaczerpnięte z rozwiązań rynkowych aby zwiększyć \change{konkurencyjność}{użyteczność} aplikacji klienckiej. 
-%\newpage 
-W bieżącym podrozdziale zostanie przedstawiony \delete{stworzony} interfejs aplikacji wraz z krótkim opisem.
+Walory efektywności oraz użyteczności aplikacji tracą na znaczeniu jeśli budowane oprogramowanie nie jest wyposażone w czytelny interfejs użytkownika. Umożliwia on sprawną interakcję pomiędzy użytkownikiem a aplikacją.  Opracowane środowisko graficzne jest grupą wzajemnie współpracujących przycisków oraz obrazów zapewniających nawigację po aplikacji klienckiej w obrębie przeglądarki internetowej. 
+W części klienckiej zaimplementowano responsywny wygląd z takimi komponentami jak panel wyszukiwania lotów oraz panel podróży wieloetapowej. Ich kształt i funkcje zostały częściowo zaczerpnięte z rozwiązań rynkowych aby zwiększyć użyteczność aplikacji klienckiej. 
+W bieżącym podrozdziale zostanie przedstawiony interfejs aplikacji wraz z krótkim opisem.
 \begin{figure}[!ht]
 \centering
 \includegraphics[scale=0.32, keepaspectratio]{client_main_page.png}
 \caption{Strona główna aplikacji klienckiej}
 \label{fig:client_main_page}
 \end{figure}
-Rysunek \delete{4.1.2} przedstawia stronę startową części klienckiej. Jego tło jest na całej szerokości oraz długości wypełnione obrazem miasta Hongkong. Górna część strony przedstawia pasek nawigacyjny aplikacji, panel ustawień oraz odwołanie do repozytorium kodu stworzonej pracy dyplomowej. Następnym komponentem aplikacji klienckiej jest panel wyszukiwania lotów.
+Rysunek \ref{fig:client_main_page} przedstawia stronę startową części klienckiej. Jego tło jest na całej szerokości oraz długości wypełnione obrazem miasta Hongkong. Górna część strony przedstawia pasek nawigacyjny aplikacji, panel ustawień oraz odwołanie do repozytorium kodu stworzonej pracy dyplomowej. Następnym komponentem aplikacji klienckiej jest panel wyszukiwania lotów.
 \begin{figure}[!ht]
 \centering
 \includegraphics[scale=0.39, keepaspectratio]{search_panel.png}
 \caption{Panel wyszukiwania połączeń lotniczych}
 \label{fig:search_panel}
 \end{figure}
-Przedstawiony \hint{Gdzie?} komponent obrazuje rozmieszczenie przycisków, pól wyboru parametrów wyszukiwania oraz dostępne opcje konfiguracyjne. Górna część panelu zawiera trzy przyciski konfiguracyjne. Odpowiadają one \change{kolejna}{kolejno} za wybór rodzaju lotu, \change{ilość}{liczby} pasażerów oraz \change{klasę}{klasy} poszukiwanego biletu lotniczego. W aplikacji założono trzy typy lotów: lot z możliwością powrotu, lot bezpośredni oraz podróż wieloetapową. Kolejna część\add{,} poniżej opisanych przycisków przedstawia pola do wyboru parametrów \change{poszukiwania}{wyszukiwania}. Ich \change{ilość}{liczba} zmienia się w zależności od wybranego typu lotu.
-%\newpage
+Przedstawiony na rysunku \ref{fig:search_panel} komponent obrazuje rozmieszczenie przycisków, pól wyboru parametrów wyszukiwania oraz dostępne opcje konfiguracyjne. Górna część panelu zawiera trzy przyciski konfiguracyjne. Odpowiadają one kolejno za wybór rodzaju lotu, liczby pasażerów oraz klasy poszukiwanego biletu lotniczego. W aplikacji założono trzy typy lotów: lot z możliwością powrotu, lot bezpośredni oraz podróż wieloetapową. Kolejna część, poniżej opisanych przycisków przedstawia pola do wyboru parametrów wyszukiwania. Ich liczba zmienia się w zależności od wybranego typu lotu.
+
 W elementach wyboru lotnisk został zaimplementowany mechanizm podpowiedzi wyszukiwania. Użytkownik po wpisaniu kilku pierwszych liter poszukiwanego miasta będzie mógł zobaczyć listę proponowanych lotnisk w obrębie tej miejscowości. 
 \begin{figure}[!ht]
 \centering
@@ -781,19 +730,17 @@ W elementach wyboru lotnisk został zaimplementowany mechanizm podpowiedzi wyszu
 \caption{Komponent wyboru lotniska}
 \label{fig:airport_choose}
 \end{figure}
-Operacja ta jest dokonywana poprzez pobranie wpisanych liter a następnie zgłoszenia żądania do części serwerowej, która zwraca wyniki z bazy danych. Implementacja tego mechanizmu \change{znalazła się}{jest opisana} w poprzednim podrozdziale. Użytkownikowi wyświetlane są pełne nazwy lotnisk. Po wybraniu poszukiwanego miejsca widoczna jest nazwa miasta wraz z unikalnym kodem IATA identyfikującym lotnisko. Elementem \add{umieszczonym} pomiędzy polami dotyczącymi wyboru lotnisk jest przycisk zamiany pól. Jego funkcją jest zamiana informacji zawartych w polach miejsca odlotu oraz przylotu. Ostatnimi elementami są pola wyboru dat lotu docelowego oraz powrotnego. Obecność drugiego jest uzależniona od wybranego typu lotu. W przypadku gdy wyszukiwany jest tylko \add{lot} w jedną stronę \change{jest on}{element ten jest} niewidoczny a szerokość pierwszego jest \change{rozszerzona}{większa}. Kliknięcie w ikonę kalendarza wyzwala okno modalne z jego powiększonym widokiem. Szarym okręgiem jest na nim zaznaczony dzień \change{dzisiejszy}{bieżący}. Po wybraniu, data zapisywana jest w pamięci aplikacji. Ten zabieg służy \change{do zabezpieczenia sytuacji przy ewentualnym wyborze daty powrotu}{przeciwdziałaniu pomyłkom użytkownika przy wyborze daty powrotu}. \change{W takiej sytuacji}{Jeśli taka się pojawi, to} aplikacja wskaże zapisaną datę jako najwcześniejszą wartość przy wyborze daty lotu powrotnego. 
-
-Ważnym komponentem w który włożono \delete{dużo pracy} jest moduł podróży wieloetapowej. Umożliwia on zaplanowanie podróży złożonej z maksymalnie pięciu lotów w jedną stronę. 
+Operacja ta jest dokonywana poprzez pobranie wpisanych liter a następnie zgłoszenia żądania do części serwerowej, która zwraca wyniki z bazy danych. Implementacja tego mechanizmu jest opisana w poprzednim podrozdziale. Użytkownikowi wyświetlane są pełne nazwy lotnisk. Po wybraniu poszukiwanego miejsca widoczna jest nazwa miasta wraz z unikalnym kodem IATA identyfikującym lotnisko. Elementem umieszczonym pomiędzy polami dotyczącymi wyboru lotnisk jest przycisk zamiany pól. Jego funkcją jest zamiana informacji zawartych w polach miejsca odlotu oraz przylotu. Ostatnimi elementami są pola wyboru dat lotu docelowego oraz powrotnego. Obecność drugiego jest uzależniona od wybranego typu lotu. W przypadku gdy wyszukiwany jest tylko lot w jedną stronę element ten jest niewidoczny a szerokość pierwszego jest większa. Kliknięcie w ikonę kalendarza wyzwala okno modalne z jego powiększonym widokiem. Szarym okręgiem jest na nim zaznaczony dzień bieżący. Po wybraniu, data zapisywana jest w pamięci aplikacji. Ten zabieg służy przeciwdziałaniu pomyłkom użytkownika przy wyborze daty powrotu. Jeśli taka się pojawi, to aplikacja wskaże zapisaną datę jako najwcześniejszą wartość przy wyborze daty lotu powrotnego. 
+jest moduł podróży wieloetapowej. Umożliwia on zaplanowanie podróży złożonej z maksymalnie pięciu lotów w jedną stronę. 
 \begin{figure}[!ht]
 \centering
 \includegraphics[scale=0.40, keepaspectratio]{multi_panel.png}
 \caption{Komponent podróży wieloetapowej}
 \label{fig:multi_panel}
 \end{figure}
-Rysunek \delete{4.15} przedstawia wygląd opisywanego komponentu. Interfejs oferuje przyciski do dodawania kolejnych etapów podróży oraz ich usuwania.  
-\hint{Skoro ten komponent jest ważny, to dlaczego poświęcił Pan mu tak mało miejsca w~pracy?}
+Rysunek \ref{fig:multi_panel} przedstawia wygląd opisywanego komponentu. Interfejs oferuje przyciski do dodawania kolejnych etapów podróży oraz ich usuwania.  
 
-Wspólnym elementem zarówno dla \add{wszystkich} modułu \add{podróży} \delete{wieloczęściowej podróży jak i podróży w jedną stronę i powrotnych} jest przycisk wyszukiwania. Po kliknięciu go, aplikacja pobiera wprowadzone przez użytkownika parametry wyszukiwania i przekazuje je dalej do modułu odpytującego serwer. Moduł ten został przedstawiony w poprzednim podrozdziale. \change{Wygląd przykładowych wyników}{Przykładowe wyniki} wyszukiwania zaprezentowano na \change{obrazku}{rysunku} \delete{4.1.6} \change{Wyświetla on listę}{Jest to lista} połączeń lotniczych pomiędzy wybranymi miejscami. Każdy element z tej listy jest rozwijalny, co oznacza że po kliknięciu na niego wysunie się dodatkowy obszar ze szczegółowymi informacjami o locie. W zależności od typu lotu wyświetlana jest zmienna liczba komponentów do wyboru połączenia lotniczego na wybranej trasie.
+Wspólnym elementem zarówno dla wszystkich modułu podróży jest przycisk wyszukiwania. Po kliknięciu go, aplikacja pobiera wprowadzone przez użytkownika parametry wyszukiwania i przekazuje je dalej do modułu odpytującego serwer. Moduł ten został przedstawiony w poprzednim podrozdziale. Przykładowe wyniki wyszukiwania zaprezentowano na rysunku \ref{fig:result_component} Jest to lista połączeń lotniczych pomiędzy wybranymi miejscami. Każdy element z tej listy jest rozwijalny, co oznacza że po kliknięciu na niego wysunie się dodatkowy obszar ze szczegółowymi informacjami o locie. W zależności od typu lotu wyświetlana jest zmienna liczba komponentów do wyboru połączenia lotniczego na wybranej trasie.
 \begin{figure}[!ht]
 \centering
 \includegraphics[scale=0.40, keepaspectratio]{result_component.png}
@@ -802,22 +749,22 @@ Wspólnym elementem zarówno dla \add{wszystkich} modułu \add{podróży} \delet
 \end{figure}
 
 \section{Oprogramowanie po stronie serwera}
-Oprogramowanie serwerowe stanowi większą część \delete{całej} aplikacji. Zostały w nim zaimplementowane mechanizmy parsowania, wyszukiwania i testowania danych lotniczych. \hint{Mechanizmy testowania powinny być oddzielone od kodu produkcyjnego!} \delete{Kwestie związane z użytymi technologiami przy tworzeniu serwera aplikacji zostały omówione w poprzednim rozdziale.} \hint{Po pierwsze, w~pracy \textbf{pisemnej} można coś \textbf{opisać}, nie zaś omówić. Po drugie, nie opisuje się technologii w~rozdziale o~projekcie aplikacji.}  W bieżącej części pracy zostanie opisana struktura części serwerowej, oprogramowanie odpowiedzialne za parsowanie różnych rodzajów danych\add{,} jak i zaimplementowany moduł wyszukiwania.
-
+Oprogramowanie serwerowe stanowi większą część aplikacji. Zostały w nim zaimplementowane mechanizmy parsowania, wyszukiwania i udostępniania danych lotniczych. W bieżącej części pracy zostanie opisana struktura części serwerowej, oprogramowanie odpowiedzialne za parsowanie różnych rodzajów danych, jak i zaimplementowany moduł wyszukiwania.
+Do opracowania aplikacji serwerowej posłużono się językiem programowania Java w wersji 10 oraz pakietami oprogramowania Spring i Hibernate. Java jest językiem programowania z ponad 20 letnią historią. Pierwotnie stworzona i rozwijana przez Jamesa Goslinga została przejęta przez korporację Oracle. Głównym założeniem tego języka jest sentencja \textit{"Napisz raz, uruchom wszędzie"}. Te słowa przemawiają za specjalnym mechanizmem kompilowania i uruchamiania kodu przez Javę. Proces zaczyna się od skompilowania plików o rozszerzeniu java do bytecode'u czyli specjalnej sekwencji bajtów rozumianej przez JVM\footnote{Java Virtual Machine}.\cite{jvm}
+Powstałe oprogramowanie serwerowe jest też w dużej mierze oparte na zewnętrznych bibliotekach platformy Spring Framework w wersji 5.
 \subsection{Podział na pakiety}
-\hint{Zmieniłem tytuł podrozdziału.}
-\change{Proces powstawania części serwerowej rozpoczął się od podzielenia tej części aplikacji na logiczne pakiety których nazwa związana byłaby z ich rolą. Poniższy rysunek prezentuje podział aplikacji.}{Kod części serwerowej został podzielony na pakiety, których nazwa określa ich rolę w~aplikacji. Ten podział został przedstawiony na rysunku \ref{fig:server_structure}.}
+Kod części serwerowej został podzielony na pakiety, których nazwa określa ich rolę w~aplikacji. Ten podział został przedstawiony na rysunku \ref{fig:server_structure}.
 \begin{figure}[!ht]
 \centering
 \includegraphics[scale=0.90, keepaspectratio]{server_structure.png}
 \caption{Podział strukturalny części serwerowej}
 \label{fig:server_structure}
 \end{figure}
-\delete{Omawianie tych katalogów najlepiej zacząć od pakietu \textit{config}.} \change{Jego zadaniem}{Zadaniem pakietu \emph{config}} jest konfiguracja różnych parametrów serwera podczas jego startu. Ustawia on takie \change{rzeczy}{dane} jak klucze dostępowe do zasobów lotniczych, parametry \change{lokalnego cache'u czy}{pamięci podręcznej oraz} \delete{też} zabezpieczenia aplikacji. Warstwa modelowa aplikacji znajduje się w \change{pakiece}{pakiecie} \textit{model}. Zaimplementowane zostały w nim klasy modelowe które opisują obiekty krążące \hint{Jakie pakiety??? Proszę to poprawić.} po całej aplikacji. Związanym z tym pakietem jest katalog \textit{repository}. Jest on miejscem na klasy implementujące pozyskiwanie obiektów odpowiadających klas modelowych. \hint{To zdanie jest niezrozumiałe. O~jakie ,,odpowiadające klasy modelowe" chodzi? Proszę to poprawić.} Niektóre z nich używają swoich \delete{analogicznych} odpowiedników z pakietu \textit{service}. Potrzeba ta wynika z konieczności parsowania niektórych formatów danych \change{do obiektów}{na obiekty} języka Java. Pakietem który udostępnia obiekty modelowe dla części klienckiej jest katalog \textit{controller}. Kod odpowiedzialny za wysyłanie żądań HTTP zaimplementowany jest w części \textit{http}. W części serwerowej zaimplementowano też moduły\change{ których wywołanie jest zaplanowane i precyzyjnie określone}{, które są wywoływane cyklicznie}. \change{Dotyczy to lokalnych plików}{Aktualizują one lokalne pliki} \change{przechowywujących}{przechowujące} dane o lotniskach oraz bagażach. \change{Kod odpowiedzialny za ich aktualizowanie jest opracowany}{Ich kod jest umieszczony} w katalogu \textit{schedulers}. Pozostałe pakiety\add{, czyli} \textit{util,enums} oraz \textit{exceptions} \change{wprowadzają}{zawierają} mniej znaczące dla aplikacji funkcje.  
+Zadaniem pakietu \emph{config} jest konfiguracja różnych parametrów serwera podczas jego startu. Ustawia on takie dane jak klucze dostępowe do zasobów lotniczych, parametry pamięci podręcznej oraz zabezpieczenia aplikacji. Warstwa modelowa aplikacji znajduje się w pakiecie \textit{model}. Zaimplementowane zostały w nim klasy modelowe. Są to klasy, które są zwracane przez serwer jako wynik wyszukiwania lotów. Związanym z tym pakietem jest katalog \textit{repository}. Jest on miejscem na klasy implementujące pozyskiwanie obiektów odpowiadających klas modelowych. Niektóre z nich używają swoich odpowiedników z pakietu \textit{service}. Potrzeba ta wynika z konieczności parsowania niektórych formatów danych na obiekty języka Java. Pakietem który udostępnia obiekty modelowe dla części klienckiej jest katalog \textit{controller}. Kod odpowiedzialny za wysyłanie żądań HTTP zaimplementowany jest w części \textit{http}. W części serwerowej zaimplementowano też moduły, które są wywoływane cyklicznie. Aktualizują one lokalne pliki przechowujące dane o lotniskach oraz bagażach. Ich kod jest umieszczony w katalogu \textit{schedulers}. Pozostałe pakiety, czyli \textit{util, enums} oraz \textit{exceptions} zawierają mniej znaczące dla aplikacji funkcje.  
 
 \subsection{Oprogramowanie wyszukujące połączenia lotnicze}
-\change{Moduł}{Projekt modułu} wyszukiwania połączeń lotniczych został \delete{już} opisany w poprzednim rozdziale, bieżący \change{zostanie}{jest} poświęcony kwestiom jego implementacji. Na potrzeby \change{jego stworzenia opracowano}{tego modułu opracowano} specjalny sposób tworzenia obiektu lotu. Standardowy proces powstawania obiektu \change{przez konstruktor języka Java}{związany z~wywołaniem konstruktora} okazał się mało czytelny \hint{Co to znaczy mało czytelny? Czy miał Pan na myśli ,,nieprzydatny", czy jeszcze coś innego??} dla wielu obiektów wchodzących w skład jednostki połączenia lotniczego. \change{Dla tego obiektu opracowano implementację wzorując się na wzoru projektowym o nazwie}{Do tworzenia tego obiektu zastosowano wzorzec projektowy} \textit{Budowniczy}\delete{. Budowniczy to programistyczny wzorzec projektowy}, który opisuje algorytm \change{tworzenia}{uzyskiwania} złożonego obiektu z innych. Algorytm ten powinien być niezależny od składowych obiektu. Ponadto proces budowania powinien zezwalać na budowę różnych form tworzonego obiektu.\cite{builder}
-Klasa modelowa \textit{Flight} została wyposażona \add{w~}klasę wewnętrzną \delete{ją} budującą\add{ jej obiekty}.\change{Jej i}{I}mplementacja \add{tej klasy} \change{została}{jest} przedstawiona na listingu \delete{4.2.1}.
+Projekt modułu wyszukiwania połączeń lotniczych został opisany w poprzednim rozdziale, bieżący jest poświęcony kwestiom jego implementacji. Na potrzeby tego modułu opracowano specjalny sposób tworzenia obiektu lotu. Standardowy proces powstawania obiektu związany z~wywołaniem konstruktora okazał się mało przydatny dla wielu obiektów wchodzących w skład jednostki połączenia lotniczego. Do tworzenia tego obiektu zastosowano wzorzec projektowy \textit{Budowniczy}, który opisuje algorytm uzyskiwania złożonego obiektu z innych. Algorytm ten powinien być niezależny od składowych obiektu. Ponadto proces budowania powinien zezwalać na budowę różnych form tworzonego obiektu.\cite{builder}
+Klasa modelowa \textit{Flight} została wyposażona w~klasę wewnętrzną budującą jej obiekty. Implementacja tej klasy jest przedstawiona na listingu \ref{lst:attributes}.
 \begin{lstlisting}[language=java, caption=Fragment klasy Flight, label=lst:attributes]
 @JsonSerialize
 public class Flight {
@@ -833,22 +780,20 @@ public class Flight {
     ...
 }
 \end{lstlisting}
-Klas\change{ą}{a} odpowiedzialn\change{ą}{a} za zbieranie danych o połączeniach lotniczych jest \add{umieszczona w~}plik\add{u} \textit{FlightsRepository}. W jej kodzie źródłowym zaimportowano wszystkie pozostałe repozytoria danych. 
-\delete{Jego działanie polega na ustawieniu każdej jego składowej widocznej na listingu 4.2.2 pobierając odpowiednie dane z analogicznych repozytoriów tych składowych.}{Działanie tej klasy polega na zapisaniu w~jej atrybutach, widocznych na listingu \ref{lst:attributes}, wartości pobranych z~odpowiednich repozytoriów.}  Ze względu na złożoność oraz wielkość \delete{jego}
-implementacji \change{jego kod nie zostanie pokazany}{jej kod nie jest umieszczony w~całości} w tym rozdziale.
+Klasa odpowiedzialna za zbieranie danych o połączeniach lotniczych jest umieszczona w~pliku \textit{FlightsRepository}. W jej kodzie źródłowym zaimportowano wszystkie pozostałe repozytoria danych. 
+Działanie tej klasy polega na zapisaniu w~jej atrybutach, widocznych na listingu \ref{lst:attributes}, wartości pobranych z~odpowiednich repozytoriów. Ze względu na złożoność oraz wielkość implementacji jej kod nie jest umieszczony w~całości w tym rozdziale.
 
 \subsection{Parsowanie danych}
-\change{Podrozdział ten jest odwołaniem do swojego odpowiednika w rozdziale trzeci Zostanie w nim zwrócona szczególna uwaga na implementacje komponentów odpowiedzialnych za parsowanie różnych rodzajów danych.}{W~tym podrozdziale opisane są implementacje mechanizmów parsowania formatów danych przedstawionych w~rozdziale trzecim.} \change{Opracowane}{Opracowano} następujące klasy parsujące:
+W~tym podrozdziale opisane są implementacje mechanizmów parsowania formatów danych przedstawionych w~rozdziale trzecim. Opracowano następujące klasy parsujące:
 \begin{itemize}[noitemsep,topsep=0pt]
-\item AirlineParser - parser danych o liniach lotniczych konwertujący obiekty JSON na obiekty Java\add{,}
-\item AirportsParser - komponent pozyskujące obiekty z plików CSV\add{,}
-\item BaggagesParser - moduł parsujący dokumenty HTML\add{,}
-\item PricesParser - klasa konwertująca obiekty JSON \change{dotyczące}{zawierające} cen lotów\add{,}
-\item FlightsParser - moduł parsujący złożone \change{treści}{dane} otrzymane w języku znaczników XML na \change{analogiczne}{odpowiadające im} obiekty języka Java\add{.}
+\item AirlineParser - parser danych o liniach lotniczych konwertujący obiekty JSON na obiekty Java,
+\item AirportsParser - komponent pozyskujące obiekty z plików CSV,
+\item BaggagesParser - moduł parsujący dokumenty HTML,
+\item PricesParser - klasa konwertująca obiekty JSON zawierające cen lotów,
+\item FlightsParser - moduł parsujący złożone dane otrzymane w języku znaczników XML na odpowiadające im obiekty języka Java.
 \end{itemize}
-\delete{Wymienione komponenty zostaną krótko opisane wraz z przedstawieniem ich implementacji.}
-\change{Ze względu na prostą złożoność jako pierwszy zostanie opisany parser danych linii lotniczych.}{Parser linii lotniczych ma najprostszą budowę z~nich wszystkich i~dlatego zostanie przedstawiony jako pierwszy.}
-\begin{lstlisting}[language=java, caption=Implementacja parsowania treści JSON]
+Parser linii lotniczych ma najprostszą budowę z~nich wszystkich i~dlatego zostanie przedstawiony jako pierwszy.
+\begin{lstlisting}[language=java, caption=Implementacja parsowania treści JSON, label=lst:jsonParsing]
 public class AirlineParser {
     private static final int FIRST_ELEMENT = 0;
     private Gson gson = new Gson();
@@ -859,10 +804,10 @@ public class AirlineParser {
     }
 }
 \end{lstlisting}
-\change{Powyższy listing}{Listing \ldots} przedstawia \change{sposób}{kod dokonujący} konwersji treści w formacie JSON. Do tego celu posłużono się bibliotek\change{a}{ą} gson firmy Google. \change{Wywołując metodę \textit{fromJson} na obiekcie typu \textit{Gson} w prosty sposób odbywa się konwersja obiektów Json na obiekty \textit{Airline}}{Konwersja obiektów JSON na obiekty \emph{Airline} odbywa się poprzez wywołanie metody \emph{fromJson} na obiekcie klasy \emph{Gson}}. Funkcja jako wynik zwraca pierwszy element \change{zparsowanej}{przekonwertowanej} tablicy danych.
+Listing \ref{lst:jsonParsing} przedstawia kod dokonujący konwersji treści w formacie JSON. Do tego celu posłużono się biblioteką gson firmy Google. Konwersja obiektów JSON na obiekty \emph{Airline} odbywa się poprzez wywołanie metody \emph{fromJson} na obiekcie klasy \emph{Gson}. Funkcja jako wynik zwraca pierwszy element przekonwertowanej tablicy danych.
 
-Translacja treści zwróconej z serwisu \textit{Flight Lookup} otrzymanej w postaci XML \change{odbywała}{odbywa} się przy pomocy biblioteki Jackson. Pierwszym \change{jej} krokiem \change{było}{jest} stworzenie odpowiedników elementów odpowiedzi na klasy modelowe w części serwerowej. \hint{To zdanie jest niezrozumiałe, proszę poprawić.} Po tej czynności \change{można było przystąpić do implementacji metody konwertującej}{wywoływana jest metoda konwertująca, której kodu zawiera listing \ldots}.
-\begin{lstlisting}[language=java, caption=Implementacja parsowania treści XML]
+Translacja treści zwróconej z serwisu \textit{Flight Lookup} otrzymanej w postaci XML odbywa się przy pomocy biblioteki Jackson. Po tej czynności wywoływana jest metoda konwertująca, przedstawiona na listingu \ref{lst:xmlParsing}.
+\begin{lstlisting}[language=java, caption=Implementacja parsowania treści XML, label=lst:xmlParsing]
 public class FlightsParser {
     private JacksonXmlModule xmlModule = new JacksonXmlModule();
 
@@ -873,12 +818,12 @@ public class FlightsParser {
     }
 }
 \end{lstlisting}
-\change{Powyższa implementacja}{Kod klasy FlightsParser} jest podobn\change{a}{y} do poprzedniej przedstawionej na listingu \delete{4.2.3}\add{.} Metoda \hint{Która?} jako argument przyjmuje ciąg znaków XML. Do konwersji używana jest klasa \textit{ObjectMapper} pochodząca ze wcześniej wspomnianej biblioteki Jackson. Wynikiem zwróconym przez funkcję jest pojedynczy obiekt \textit{OTAAirDetailsRS} zawierający \delete{w sobie} listę wszystkich wyszukanych lotów.
+Kod klasy FlightsParser jest podobny do poprzedniej przedstawionej na listingu \ref{lst:xmlParsing}. Metoda \textit{getDeserializedXML} jako argument przyjmuje ciąg znaków XML. Do konwersji używana jest klasa \textit{ObjectMapper} pochodząca ze wcześniej wspomnianej biblioteki Jackson. Wynikiem zwróconym przez funkcję jest pojedynczy obiekt \textit{OTAAirDetailsRS} zawierający listę wszystkich wyszukanych lotów.
 Ze względu na złożoność kodu źródłowego pozostałych parserów ich implementacja nie zostanie przedstawiona. Kod ten można znaleźć w dołączonym repozytorium, w pakiecie \textit{service}.
 
 \subsection{Zabezpieczenia}
-\delete{Sześćdziesiąt miliardów to cena, jaką branża informatyczna corocznie wydaje na bezpieczeństwo swoich systemów. Tak wysoka kwota jest jednak wydatkiem koniecznym do skutecznej ochrony powstałego oprogramowania oraz danych jego użytkowników\cite{security}.} W części serwerowej opracowano zabezpieczenie ograniczające dostęp do udostępnianych danych lotniczych.
-\begin{lstlisting}[language=java, caption=Implementacja zabezpieczanie dostępu do serwera]
+W części serwerowej opracowano zabezpieczenie ograniczające dostęp do udostępnianych danych lotniczych.
+\begin{lstlisting}[language=java, caption=Implementacja zabezpieczanie dostępu do serwera, label=lst:security]
 @Configuration
 @EnableWebMvc
 public class CorsConfiguration implements WebMvcConfigurer {
@@ -889,13 +834,13 @@ public class CorsConfiguration implements WebMvcConfigurer {
     }
 }
 \end{lstlisting}
-Listing \delete{4.2.4} przedstawia implementację tego zabezpieczenia. Ustawia ono dostęp do serwera tylko z adresu części serwerowej podanego jako argument metody \textit{addMapping}. Zabieg ten \change{zabezpiecza dostęp}{chroni przed dostępem} do danych \change{dla}{z~}niepożądanych adresów sieciowych. 
+Listing \ref{lst:security} przedstawia implementację tego zabezpieczenia. Ustawia ono dostęp do serwera tylko z adresu części serwerowej podanego jako argument metody \textit{addMapping}. Zabieg ten chroni przed dostępem do danych z~niepożądanych adresów sieciowych. 
 
-Machanizm \change{cachowania danych}{pamięci podręcznej,} usprawniający wydajność aplikacji zminimalizował również szanse na skuteczny atak DDOS. Został on krótko opisany w rozdziale pierwszym w którym \change{omówiono 3}{przedstawiono trzy} kontenery \change{cache'u}{pamięci podręcznej} zaimplementowane w aplikacji. \change{Szybkość}{Wydajność} ich odpowiedzi uodparnia część serwerową na \change{nadmiarowy}{nadmierny} ruch sieciowy ze \change{stony}{strony} użytkowników aplikacji. Zdefiniowano \change{dla nich}{dla każdego z~kontenerów} maksymalny rozmiar przechowywanych danych wynoszący 1GB\delete{ dla każdego z kontenerów}. Po \add{jego} przekroczeniu \delete{go}, \change{cache zostanie wyczyszczony}{pamięć podręczna zostaje wyczyszczona}.
+Mechanizm pamięci podręcznej, usprawniający wydajność aplikacji zminimalizował również szanse na skuteczny atak DDOS. Został on krótko opisany w rozdziale pierwszym w którym przedstawiono trzy kontenery pamięci podręcznej zaimplementowane w aplikacji. Wydajność ich odpowiedzi uodparnia część serwerową na nadmierny ruch sieciowy ze strony użytkowników aplikacji. Zdefiniowano dla każdego z~kontenerów maksymalny rozmiar przechowywanych danych wynoszący 1GB. Po jego przekroczeniu, pamięć podręczna zostaje wyczyszczona.
 
 \subsection{Kontrolery serwera}
-W części serwerowej stworzono specjalny komponent odpowiedzialny za obsługę żądań wyszukiwania lotów oraz zwrócenie \delete{im poszukiwanych} wyników. 
-\begin{lstlisting}[language=java, caption=Kontroler zwracający wyniki wyszukiwania lotów]
+W części serwerowej stworzono specjalny komponent odpowiedzialny za obsługę żądań wyszukiwania lotów oraz zwrócenie wyników. 
+\begin{lstlisting}[language=java, caption=Kontroler zwracający wyniki wyszukiwania lotów, label=lst:flightsController]
 @RestController
 @RequestMapping("/flights")
 public class FlightsController {
@@ -913,27 +858,28 @@ public class FlightsController {
     }
 }
 \end{lstlisting}
-\change{Powyższy}{Ten} kontroler został \change{zaimplemetnowany}{zaimplementowany} w pakiecie \textit{controller}. Dwie adnotacje nad deklaracją klasy \add{(listing \ldots)} tworzą w serwerze specjalne miejsce, w którym po podaniu odpowiednich parametrów kontroler zostanie wywołany. Parametry te opisane są nad deklaracją metody \textit{searchForFlights}. Funkcja pobiera z adresu URL kody IATA lotniska wylotowego oraz docelowego, datę wylotu, typ połączenia i kod walutowy. Przedstawione parametry są przekazywane \change{w wywołaniu klasy}{klasie} \hint{Parametry przekazuje się \textbf{metodzie}, nie klasie. Klasy nie są wywoływane. Proszę poprawić dopisując, która metoda tej klasy otrzymuje wspomiane parametry.} repozytorium lotów, któr\change{e}{a} zwraca wyniki wyszukiwania w postaci kolekcji obiektów. W przypadku nie znalezienia żadnych połączeń lotniczych, metoda \delete{zwraca} wyrzuca wyjątek, który \change{implikuje}{skutkuje} zwróceniem odpowiedzi o kodzie 404. \hint{To nie jest dobry sposób sygnalizowania braku wyników. Taka sytuacja nie jest wyjątkowa. Wyjątkiem jest awaria serwera, nie zaś zwrócenie przez niego pustej listy wyników.}
-\hint{Brak podsumowania rozdziału.}
+Ten kontroler został zaimplementowany w pakiecie \textit{controller}. Dwie adnotacje nad deklaracją klasy \ref{lst:flightsController} tworzą w serwerze specjalne miejsce, w którym po podaniu odpowiednich parametrów kontroler zostanie wywołany. Parametry te opisane są nad deklaracją metody \textit{searchForFlights}. Funkcja pobiera z adresu URL kody IATA lotniska wylotowego oraz docelowego, datę wylotu, typ połączenia i kod walutowy. Przedstawione parametry są przekazywane metodzie \textit{searchForMultiFlights} z klasy \textit{MultiFlightsRepository}, która zwraca wyniki wyszukiwania w postaci kolekcji obiektów. W przypadku nie znalezienia żadnych połączeń lotniczych, metoda wyrzuca wyjątek, który skutkuje zwróceniem odpowiedzi o kodzie 202. W ten sposób serwer sygnalizuje o braku treści do zwrócenia.
+
+\section{Podsumowanie}
+Implementacja serwera oraz części klienckiej została wykonana według założeń przedstawionych w poprzednim rozdziale. Kolejnym etapem jest testowanie opracowanego oprogramowania. W powstałej aplikacji przetestowano najważniejsze moduły odpowiedzialne za zwracanie, parsowanie oraz wyszukiwanie danych lotniczych. Czynności te zostały szczegółowo opisane w następnym rozdziale.
 
 
 \chapter{Testy}
-\change{Proces powstawania oprogramowania jest zbiorem czynności opartych na wielu czynnikach. Patrząc wstecz, programowanie jako fach ma jedynie kilka dekad. Tworzenie oprogramowania można potraktować jako proces ewolucyjny \change{gdzie ewoluuje}{, w~którym zmienia się} ono z upływem czasu. Programiści szybko dochodzą do wniosków, że pisanie kodu jest trudne i podatne na liczne błędy. Wiele projektów zawodzi, ponieważ zespoły napotykają trudności ze złożonością tworzonych systemów. W wyniku tych niedociągnięć projekt nie zostaje skończony w terminie a koszt jego finalizacji przekracza początkowe oczekiwania\cite{testing}. Rozwój oparty na sprzężonym testowaniu tworzonego kodu jest jedną z praktyk efektywnego rozwoju oprogramowania. Testy potwierdzają funkcje aplikacji oraz jej użyteczność dla użytkownika. Standardowy podział ze względu na przeznaczenie można przedstawić następująco:}{Opracowaną aplikację poddano testom. W~inżynierii oprogramowania proces testowania podzielony jest na kilka etapów:}
+Opracowaną aplikację poddano testom. W~inżynierii oprogramowania proces testowania podzielony jest na kilka etapów:
 \begin{itemize}[noitemsep,topsep=0pt]
-\item testy jednostkowe - \change{potwierdzają poprawne}{sprawdzają} działanie najmniejszych elementów systemu takich jak metody \change{czy}{lub} funkcje\add{,}
-\item testy integracyjne - sprawdzają poprawność \change{integracji tworzonego oprogramowania z zewnętrznymi systemami}{współpracy komponentów oprogramowania,}
-\item \add{testy systemowe - badają takie cechy oprogramowania jak efektywność lub niezawodność,}
-\item testy akceptacyjne - zapewniają o spełnieniu oczekiwań klienta, który zamówił oprogramowanie\add{.}
-\item \delete{testy regresyjne - potwierdzają brak wpływu napisanego oprogramowania na pozostałe elementy systemu}
+\item testy jednostkowe - sprawdzają działanie najmniejszych elementów systemu takich jak metody lub funkcje,
+\item testy integracyjne - sprawdzają poprawność współpracy komponentów oprogramowania,
+\item testy systemowe - badają takie cechy oprogramowania jak efektywność lub niezawodność,
+\item testy akceptacyjne - zapewniają o spełnieniu oczekiwań klienta, który zamówił oprogramowanie.
 \end{itemize}
-\hint{Testy regresyjne, to nie etap testowania oprogramowania, a~jeden z~rodzajów testów. Nie należy do tej klasyfikacji.}
-W \change{stworzonej}{przypadku opracowanej} aplikacji zdecydowano się na przetestowanie kluczowych fragmentów oprogramowania odpowiedzialnych za podstawowe funkcje systemu. Testy zaimplementowane zostały przy użyciu frameworków JUnit oraz Spring. Biblioteka JUnit to zewnętrzny pakiet oprogramowania dostarczając\change{a}{y} zestaw narzędzi do testowania \change{oprogramowania napisanego}{programów napisanych} w języku Java. \delete{Znany i sprawdzony przez wielu programistów jest częścią wielu komercyjnych systemów.} \change{Drugi z nich, przedstawiony wcześniej w rozdziale trzecim}{Platforma Spring} dostarcza \change{instrumenty}{mechanizmów} do testowania \delete{jego} oprogramowania serwerowego.
 
-\change{Podstawową metodą testującą oprogramowanie była asercja.}{Metody testujące oprogramowanie zawierają asercje.} \change{Jest to predykat, który zwraca}{Są to predykaty, które zwracają} wartość logiczną. Najczęściej \change{przyjmuje}{przyjmują one} dwa argumenty a następnie \change{porównuje}{porównują} je \change{zwracając}{i~zwracają} wynik\cite{assertion}. Napisane testy znajdują się w części serwerowej aplikacji\change{, t}{. T}estują one poprawność odpowiedzi serwera, \change{informacje otrzymane}{informacji otrzymanych} z zewnętrznych serwisów, \change{parsowanie}{prasowania} różnych formatów danych jak i najbardziej \change{podstawowe elementy}{podstawowych elementów} aplikacji. \hint{Już o~tym wspominałem: kod testujący powinien być oddzielony od produkcyjnego, więc jeśli jest on częścią serwera, to jest to błąd.} Nazwy testów \change{przemawiają za}{powiązane są z~}kodem źródłowym który testują. \change{Dla przykładu}{Przykładowo,} test dla klasy \textit{FlightRepository} \delete{będzie} nazywa\delete{ł} się \textit{FlightsRepositoryTest}.
+W przypadku opracowanej aplikacji zdecydowano się na przetestowanie kluczowych fragmentów oprogramowania odpowiedzialnych za podstawowe funkcje systemu. Testy zaimplementowane zostały przy użyciu frameworków JUnit oraz Spring. Biblioteka JUnit to zewnętrzny pakiet oprogramowania dostarczający zestaw narzędzi do testowania programów napisanych w języku Java.  Platforma Spring dostarcza mechanizmów do testowania oprogramowania serwerowego.
+
+Metody testujące oprogramowanie zawierają asercje. Są to predykaty, które zwracają wartość logiczną. Najczęściej przyjmują one dwa argumenty a następnie porównują je i~zwracają wynik\cite{assertion}. Napisane są oddzielone od części serwerowej aplikacji. Testują one poprawność odpowiedzi serwera, informacji otrzymanych z zewnętrznych serwisów, parsowanie różnych formatów danych jak i najbardziej podstawowych elementów aplikacji. Nazwy testów powiązane są z~kodem źródłowym który testują. Przykładowo, test dla klasy \textit{FlightRepository} nazywa się \textit{FlightsRepositoryTest}.
 
 \section{Testy jednostkowe}
-\delete{Podstawowymi testami były testy jednostkowe.} Na \delete{poniższym} listingu \add{\ldots} przedstawiono \delete{zaimplementowany} kod testujący poprawność działania funkcji zwracającej adres żądania HTTP.
-\begin{lstlisting}[language=java, caption=Przykładowy test jednostkowy]
+Na listingu \ref{lst:unitTest1} przedstawiono kod testujący poprawność działania funkcji zwracającej adres żądania HTTP.
+\begin{lstlisting}[language=java, caption=Przykładowy test jednostkowy, label=lst:unitTest1]
 @Test
 public void shouldReturnValidCacheKey() {
   assertEquals("WAW/LHR/20190110/DIRECT/PLN",
@@ -941,7 +887,7 @@ public void shouldReturnValidCacheKey() {
     }
 \end{lstlisting}
 Bardziej złożonym przypadkiem jest test odpowiedzialny za sprawdzenie poprawnej ceny całej podróży.
-\begin{lstlisting}[language=java, caption=Przykładowy test jednostkowy]
+\begin{lstlisting}[language=java, caption=Przykładowy test jednostkowy, label=lst:unitTest2]
 @Test
 public void shouldReturnProperSumOfTotalFlightPrice() {
   Flight firstFlight = new Flight.Builder()
@@ -960,12 +906,11 @@ public void shouldReturnProperSumOfTotalFlightPrice() {
     }
 \end{lstlisting}
 
-Test zaprezentowany na listingu \delete{5.1.2} \change{inicjalizuje 3}{inicjuje trzy} obiekty typu \textit{Flight} z przykładowymi wartościami cen przelotów. Obiekty te łączone są w kolekcję. \change{Końcowa a}{A}sercja sprawdza \delete{poprawne} działanie metody \textit{calculateTotalFlightPrice} porównując jej wynik z oczekiwaną wartością. Warto zwrócić na trzeci argument jaki przyjmuje metoda \textit{assertEquals}. Oznacza on dopuszczalną różnicę między oczekiwanym a otrzymanym wynikiem. \hint{Przechowywanie kwot w zmiennych typu \texttt{double} lub \texttt{float} to proszenie się o~kłopoty. Od tego jest klasa BigDecimal.}
-%\newpage
+Test zaprezentowany na listingu \ref{lst:unitTest2} inicjuje trzy obiekty typu \textit{Flight} z przykładowymi wartościami cen przelotów. Obiekty te łączone są w kolekcję. Asercja sprawdza działanie metody \textit{calculateTotalFlightPrice} porównując jej wynik z oczekiwaną wartością. Warto zwrócić na trzeci argument jaki przyjmuje metoda \textit{assertEquals}. Oznacza on dopuszczalną różnicę między oczekiwanym a otrzymanym wynikiem.
+
 \section{Testy integracji}
-\hint{Zmieniłem tytuł podrozdziału, bo to nie są testy integracyjne, tylko testy integracji z~systemami zewnętrznymi, które są częścią testów systemowych.}
-Specyfikacja projektu \change{narzucała}{narzuciła} konieczność przetestowania integracji napisanego oprogramowania z zewnętrznymi systemami. Testowano poprawność pobierania danych oraz ich oczekiwane parametry. Wszystkie klasy z pakietu \textit{repository} zostały przetestowane w \add{ten sam} sposób \delete{analogiczny do siebie}.
-\begin{lstlisting}[language=java, caption=Przykładowy test integracyjny]
+Specyfikacja projektu narzuciła konieczność przetestowania integracji napisanego oprogramowania z zewnętrznymi systemami. Testowano poprawność pobierania danych oraz ich oczekiwane parametry. Wszystkie klasy z pakietu \textit{repository} zostały przetestowane w ten sam sposób.
+\begin{lstlisting}[language=java, caption=Przykładowy test integracyjny, label=lst:integrationTest1]
 @Test
 public void shouldReturnProprtAirlineObjectFromAPI() throws IOException {
      Airline airline = airlineRepository.getAirlineFromApi("AA");
@@ -975,10 +920,10 @@ public void shouldReturnProprtAirlineObjectFromAPI() throws IOException {
      assertEquals(airline.getNameCountry(), "United States");
     }
 \end{lstlisting}
-\change{Oprogramowanie przedstawione}{Kod przedstawiony na} na listingu \delete{powyżej} testuje funkcjonowanie repozytorium zwracające\add{go} informacje o liniach lotniczych. W pierwszym kroku pobiera on\delete{o} obiekt linii lotniczej. Po przypisaniu tych danych do obiektu, sprawdzane są poszczególne parametry zwróconych informacji. \hint{Pobiera obiekt i~przypisuje dane do obiektu? Proszę poprawić.}
+Kod przedstawiony na na listingu \ref{lst:integrationTest1} testuje funkcjonowanie repozytorium zwracające go informacje o liniach lotniczych. W pierwszym kroku pobiera on obiekt linii lotniczej. Po przypisaniu tych danych do obiektu , są one odpowiednio sprawdzane.
 
-\change{Test o analogicznej funkcji sprawdzał też}{Analogiczny test sprawdza} repozytorium zwracające ceny lotów.
-\begin{lstlisting}[language=java, caption=Przykładowy test integracyjny]
+Analogiczny test sprawdza repozytorium zwracające ceny lotów. Jego kod zaprezentowano na listingu \ref{lst:integrationTest2}
+\begin{lstlisting}[language=java, caption=Przykładowy test integracyjny, label=lst:integrationTest2]
 @Test
 public void shouldReturnValidPriceObject() throws IOException {
   CachedPrice price = pricesRepository.getFlightPrice("PLN", "WAW", "LHR", "20190128", "20190130");
@@ -989,17 +934,18 @@ public void shouldReturnValidPriceObject() throws IOException {
 }
 \end{lstlisting}
 
-%\newpage
+
 \chapter{Uwagi i wnioski}
-Opracowanie aplikacji wyszukującej połączenia lotnicze \delete{było zadaniem trudnym i wymagającym bardzo ducżej ilości pracy. Droga do stworzenia oprogramowania spełniającego wszystkie wymagania przedstawione w celach pracy wymagała głębokiego}\add{wymaga} zrozumienia logiki biznesowej związanej z pozyskiwaniem danych lotniczych. Do największych wyzwań podczas \add{tworzenia} pracy z pewnością należało znalezienie odpowiednich źródeł danych udostępniających \change{dane}{informacje} o lotach. Wysłano szereg zgłoszeń mailowych z prośbą o udostępnienie takich danych. W większości przypadków odpowiedzi były negatywne lub niesatysfakcjonujące z powodu żądania \change{od dostawcy}{przez dostawcę} pokaźnej zapłaty za korzystanie z usługi. \hint{Jeśli faktycznie byłoby tak jak Pan napisał, to dostawca by Panu płacił, a~nie odwrotnie. Trzeba było się zgodzić.} W warunkach akademickich skorzystanie z takich rozwiązań było niemożliwe. Po wnikliwej analizie rynku danych lotniczych udało się znaleźć odpowiednie źródło informacji dla potrzeb \change{stworzonej}{tworzonej} aplikacji.
+Opracowanie aplikacji wyszukującej połączenia lotnicze wymaga zrozumienia logiki biznesowej związanej z pozyskiwaniem danych lotniczych. Do największych wyzwań podczas tworzenia pracy z pewnością należało znalezienie odpowiednich źródeł danych udostępniających informacje o lotach. Wysłano szereg zgłoszeń mailowych z prośbą o udostępnienie takich danych. W większości przypadków odpowiedzi były negatywne lub niesatysfakcjonujące z powodu żądania przez dostawcę pokaźnej zapłaty za korzystanie z usługi. W warunkach akademickich skorzystanie z takich rozwiązań było niemożliwe. Po wnikliwej analizie rynku danych lotniczych udało się znaleźć odpowiednie źródło informacji dla potrzeb tworzonej aplikacji.
 
- \change{Z dużą dozą pewności można stwierdzić iż opracowana aplikacja w pełni spełnia}{Opracowana aplikacja spełnia} założone wymagania. Pozwala \change{z całkiem dobrą szybkością}{relatywnie szybko} wyszukiwać połączenia lotnicze oraz \change{dostarczać}{dostarcza} wielu dodatkowych informacji z nimi powiązanych. \change{W sposób logiczny i przemyślany zaprojektowano moduł wyszukiwania lotów}{Moduł wyszukiwana lotów został zaprojektowany tak, aby działał efektywnie}. Opracowano dla niego specjalną architekturę, która została odzwierciedlona w kodzie źródłowym pod postacią wzorca projektowego \add{Jakiego?}. Dzięki temu zabiegowi \change{aplikacja zachowuje potencjał łatwego i mało problemowego rozwoju.}{ułatwiony jest dalszy rozwój aplikacji.} 
+Opracowana aplikacja spełnia założone wymagania. Pozwala relatywnie szybko wyszukiwać połączenia lotnicze oraz dostarcza wielu dodatkowych informacji z nimi powiązanych. Moduł wyszukiwana lotów został zaprojektowany tak, aby działał efektywnie. Opracowano dla niego specjalną architekturę, która została odzwierciedlona w kodzie źródłowym pod postacią wzorca projektowego \textit{Budowniczy}. Dzięki temu zabiegowi ułatwiony jest dalszy rozwój aplikacji.
  
-\change{Zaimplementowany system został wyposażony w bogaty}{Aplikacja została wyposażona w~}interfejs użytkownika \add{bazujący na technologii Angular}. \delete{Opracowany w nowoczesnej technologii Angular, poziomem dobrego stylu i wyglądu dorównuje komercyjnym aplikacjom internetowym.} Część pomysłów na jego \delete{kreatywną} realizację zaczerpnięto z \delete{obecnych }wyszukiwarek \add{dostępnych} na rynku.
+Aplikacja została wyposażona w~interfejs użytkownika bazujący na technologii Angular.  Część pomysłów na jego realizację zaczerpnięto z wyszukiwarek dostępnych na rynku.
 
-\change{Z uwagi na warunki akademickie a}{A}plikację można usprawnić na \change{wielu płaszczyznach}{wiele sposobów}. W \delete{stworzonej} pracy zabrakło takich \delete{dodatkowych} funkcji jak możliwość wyszukiwania lotów \change{również z pobliskich lotnisk od aktualnie wybranego}{z~lotnisk położonych w~pobliżu aktualnie wybranego miejsca,} czy też \delete{wprowadzenia} wersji w języku polskim. \change{Część serwerowa mogłaby zostać poprawiona w zakresie "czystości kodu" oraz poprawnego nazewnictwa jej elementów.}{Kod części serwerowej mógłby zostać poddany refaktoryzacji.} Istotne znaczenie dla podniesienia atrakcyjności aplikacji miałoby też zwiększenie poziomu jej responsywności. Część kliencka wymaga w tym zakresie \delete{lekkich} poprawek. 
 
-\delete{Stworzonej aplikacji internetowej nadano nazwę \textit{SkyObserver}}\footnote{SkyObserver - obserwator nieba}. \delete{Jest ona zwieńczeniem zebranej wiedzy i doświadczenia podczas studiów inżynierskich. Praca nad nią zaowocowała pogłębieniem technicznego sposobu myślenia oraz zrozumieniem wyzwań XXI wieku stawianym inżynierom informatykom.}
+Opracowane oprogramowanie realizuje podstawowe funkcje wyszukiwarek opisanych szerzej w rozdziale drugim. Komercyjne aplikacje mają dużą przewagę w w szybkości wyszukiwania lotów. W powstałej aplikacji czas odpowiedzi serwera jest zauważalnie dłuższy. W warunkach akademickich trudne było uzyskanie konkurencyjnych rezultatów.
+
+Aplikację można usprawnić na wiele sposobów. W pracy zabrakło takich funkcji jak możliwość wyszukiwania lotów z~lotnisk położonych w~pobliżu aktualnie wybranego miejsca, czy też  wersji w języku polskim. Kod części serwerowej mógłby zostać poddany refaktoryzacji. Istotne znaczenie dla podniesienia atrakcyjności aplikacji miałoby też zwiększenie poziomu jej dostosowania się do używanego medium. Część kliencka wymaga w tym zakresie poprawek. 
 
 \hint{Bibliografia powinna zawierać także miejsce i~rok wydania książki. Proszę sprawdzić odwołania do literatury, szczególnie tam gdzie wykreślałem fragmenty pracy. Wszystkie pozycje muszą być cytowane. Trochę jest ich mało.}
 \begin{thebibliography}{9}
@@ -1017,16 +963,15 @@ Elliotte Rusty Harold, W.Scott Means \emph{ ,,XML. Almanach'' }. Wydawnictwo O'R
 \bibitem{ehcache}
 Daniel Wind \emph{ ,,Instant Effective Caching with Ehcache'' }. Wydawnicwto Packt
 
-\bibitem{architektura}
-Christine Hofmeister, Robert Nord \emph{ ,,Tworzenie architektury oprogramowania'' }. Wydawnictwo Naukowo-Techniczne Warszawa
+%\bibitem{architektura}
+%Christine Hofmeister, Robert Nord \emph{ ,,Tworzenie architektury oprogramowania'' }. %Wydawnictwo Naukowo-Techniczne Warszawa
 
 \bibitem{uml}
 	Diagramy UML | Michał Wolski\\ \url{https://www.michalwolski.pl/diagramy-uml} \\
 	Stan na dzień 16.01.2019
-	
-\bibitem{mysql}
-Marcin Lis \emph{ ,,MySQL Darmowa baza danych - Ćwiczenia praktyczne'' }. Wydawnictwo Helion
-
+		
+%\bibitem{mysql}
+%Marcin Lis \emph{ ,,MySQL Darmowa baza danych - Ćwiczenia praktyczne'' }. Wydawnictwo Helion
 
 \bibitem{jvm}
 Simon Roberts \emph{ ,,Java Programming Basics'' }. Wydawnictwo Addison-Wesley Professional
@@ -1043,11 +988,8 @@ Jeff Friesen \emph{ ,,Java I/O, NIO, NIO.2'' }. Wydawnictwo Apress
 \bibitem{builder}
 John Vlissides, Ralph Johnson, Richard Helm, Erich Gamma \emph{ ,,Design Patterns: Elements of Reusable Object-Oriented Software''}. Wydawnictwo Addison-Weasley Professional
 
-\bibitem{security}
-Vincent Liu, Bryan Sullivan \emph{ ,,Web Application Security'' }. Wydawnictwo McGraw-Hill
-
-\bibitem{testing}
-Shekhar Gulati, Rahul Sharma \emph{ ,,Java Unit Testing with JUnit 5'' }. Wydawnictwo Apress
+%\bibitem{security}
+%Vincent Liu, Bryan Sullivan \emph{ ,,Web Application Security'' }. Wydawnictwo McGraw-Hill
 
 \bibitem{assertion}
 Asercja, Wikipedia \\

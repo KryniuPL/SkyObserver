@@ -2,11 +2,9 @@
 \usepackage[a4paper, top=2.0cm, bottom=2.0cm, left=2.5cm, right=2.5cm]{geometry}
 
 \usepackage[MeX]{polski} 
-%usage of OT4 encoding destroys code listings 
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
 \usepackage{color}
-\usepackage{comment}
 \usepackage{indentfirst}
 \usepackage{graphicx}
 \usepackage{mathptmx}
@@ -22,9 +20,6 @@
 \usepackage{subcaption}
 \usepackage{listings}
 \usepackage{chngcntr}
-%To mój pakiet do recenzowania prac. Usunięcie opcji show zostawia poprawki, a ukrywa uwagi.
-\usepackage[show]{checking}
-%Pakiet dodający wcięcie do pierwszego zdania w akapicie.
 \usepackage{indentfirst}
 
 \ProvidesPackage{java}
@@ -312,9 +307,7 @@ Rozdział czwarty objaśnia implementację aplikacji. W rozdziale tym zostaną p
 %Poprawić czas przeszły na czas teraźniejszy wg zaleceń doktora
 \chapter{Opis zagadnienia}
 \label{chp:first}
-Głównym zagadnieniem podjętym w jest pozyskanie realnych danych o połączeniach lotniczych  i~zaprezentowanie ich w~ kompleksowym interfejsie oraz we względnie krótkim czasie dla użytkownika powstałej aplikacji.
-
-Zagadnienie to można podzielić na 3 części:
+Głównym zagadnieniem podjętym w pracy jest pozyskanie realnych danych o połączeniach lotniczych  i~zaprezentowanie ich w~kompleksowym interfejsie oraz we względnie krótkim czasie dla użytkownika powstałej aplikacji. Zagadnienie to można podzielić na 3 części:
 \begin{itemize}[noitemsep,topsep=0pt]
 \item znalezienie źródeł danych o połączeniach lotniczych,
 \item parsowanie różnych typów danych,
@@ -324,25 +317,24 @@ Części te zostaną opisane w podrozdziałach bieżącego rozdziału.
 
 
 \section{Źródła danych o połączeniach lotniczych}
-Największą trudnością podczas pisania pracy było znalezienie odpowiednich zasobów danych, które nie byłyby płatne oraz zapewniałyby rzetelne i sprawdzone dane lotnicze. Poszukiwania zaczęto od złożenia podań do centrów danych o dostęp do ich zasobów. Większość z nich wymaga opłaty za swoje usługi, które sięgają nawet 10 000\$. Niektóre z nich oferują jednak darmowy, choć limitowany, dostęp do ich zasobów. Na potrzeby pracy wybrano serwis FlightLookup jako głównego dostawcę danych. Informacje przez niego dostarczane stanowią większą część odpowiedzi serwera. Darmowy dostęp jest do 500 zapytań w trakcie miesiąca.
+Największą trudnością podczas pisania pracy było znalezienie odpowiednich zasobów danych, które nie byłyby płatne oraz zapewniałyby rzetelne i sprawdzone dane lotnicze. Poszukiwania zaczęto od złożenia podań do centrów danych o dostęp do ich zasobów. Większość z nich wymaga opłaty za swoje usługi, które sięgają nawet 10 000\$. Niektóre z nich oferują jednak darmowy, choć limitowany, dostęp. Na potrzeby pracy wybrano serwis FlightLookup jako głównego dostawcę danych. Informacje przez niego dostarczane stanowią większą część odpowiedzi serwera. Darmowy dostęp jest do 500 zapytań w trakcie miesiąca.
 Dodatkowymi źródłami danych są:
 \begin{itemize}[noitemsep,topsep=0pt]
 \item Skyscanner - serwis udostępniający średnie ceny przelotów w określonym przedziale czasowym oraz informacje dotyczące dozwolonego bagażu,
 \item Aviation Edge - usługa chmurowa udostępniająca dane o liniach lotniczych,
 \item ourairports.com - strona internetowa umożliwiająca pobranie danych o większości lotnisk na świecie.
 \end{itemize}
-Skyscanner jest komercyjną aplikacją zbierającą wiele rodzajów danych lotniczych. Jej szczegółowe działanie zostanie opisane w następnym rozdziale. W tej części pracy zostanie przedstawione użycie zasobów tego produktu w~stworzonym oprogramowaniu. Zasoby Skyscanner'a dostarczyły danych dotyczących dozwolonego bagażu podczas podróży. Aktualne ceny lotów zostały pobrane z serwisu RapidApi korzystającego wewnętrznie z zasobów aplikacji Skyscanner.Jest on dostępny pod adresem sieciowym: \url{https://rapidapi.com/skyscanner/api/skyscanner-flight-search}.
+Skyscanner jest komercyjną aplikacją zbierającą wiele rodzajów danych lotniczych. Jej szczegółowe działanie zostanie opisane w następnym rozdziale. W tej części pracy zostanie przedstawione użycie zasobów tego produktu w~stworzonym oprogramowaniu. Zasoby Skyscanner'a dostarczyły danych dotyczących dozwolonego bagażu podczas podróży. Aktualne ceny lotów zostały pobrane z serwisu RapidApi korzystającego wewnętrznie z zasobów aplikacji Skyscanner. Jest on dostępny pod adresem sieciowym: \url{https://rapidapi.com/skyscanner/api/skyscanner-flight-search}.
 
 Użycie jego usług wymaga podania miejsca jak i daty wylotu oraz przylotu. Dodatkowym obowiązkowym parametrem jest unikalny kod walutowy który umożliwiał zwrócenie poprawnych wyników. Oprócz cen przelotów Skyscanner posiada też stronę internetową z tabelą opisującą dozwolone wymiary oraz wagę bagażu podczas przelotu. Adres tej strony to:\\ \url{www.skyscanner.net/news/tips/check-in-luggage-size-and-weight-restrictions}\\
 Zawartość tej strony jest parsowana przez część serwerową, jednak to zagadnienie zostanie opisane bardziej szczegółowo w następnym podrozdziale.
 
-Kolejnym ważnym źródłem danych jest usługa chmurowa Aviation Edge. Serwis ten udostępnia czytelne dane o liniach lotniczych wykorzystując do tego interfejs REST\footnote{Representational State Transfer}. Do użycia tej usługi wymagane jest podanie unikalnego kodu linii lotniczej w celu jej zidentyfikowania oraz pobrania danych w postaci JSON. Aviation Edge jest bezpłatnym serwisem. Do korzystania z jego zasobów wymagane jest tylko założenie konta w celu uzyskania klucza identyfikującego użytkownika.
+Kolejnym ważnym źródłem danych jest usługa chmurowa Aviation Edge. Serwis ten udostępnia dane o liniach lotniczych wykorzystując do tego interfejs REST\footnote{Representational State Transfer}. Do użycia tej usługi wymagane jest podanie unikalnego kodu linii lotniczej w celu jej zidentyfikowania oraz pobrania danych w postaci JSON. Aviation Edge jest bezpłatnym serwisem. Do korzystania z jego zasobów wymagane jest tylko założenie konta w celu uzyskania klucza identyfikującego użytkownika.
 
-Ostatnim źródłem danych jest strona internetowa ourairport.com znajdująca się pod adresem internetowm: \url{http://ourairports.com/}. Jej zasobem, który został wykorzystany jako źródło danych jest plik CSV zawierający ponad 50000 rekordów dotyczących lotnisk. Przechowuje on dane z szerokiego spektrum typów lotnisk począwszy od tych małych dedykowanych dla awionetek, aż po największe lotniska świata takie jak London Heathrow Airport. Dane te gromadzone są w pliku CSV, który jest pobierany przez część serwerową. Następnie informacje te są filtrowane w celu wyeliminowania lotnisk obsługujących poniżej 4 tysięcy pasażerów rocznie.
+Ostatnim źródłem danych jest strona internetowa \textit{ourairport.com} znajdująca się pod adresem internetowm: \url{http://ourairports.com/}. Jej zasobem, który został wykorzystany jako źródło danych jest plik CSV zawierający ponad 50000 rekordów dotyczących lotnisk. Przechowuje on dane z szerokiego spektrum typów lotnisk począwszy od tych małych dedykowanych dla awionetek, aż po największe lotniska świata takie jak London Heathrow Airport. Dane te gromadzone są w pliku CSV, który jest pobierany przez część serwerową. Następnie informacje te są filtrowane w celu wyeliminowania lotnisk obsługujących poniżej 4 tysięcy pasażerów rocznie.
 
 \section{Parsowanie danych}
-Dane dostarczone przez zewnętrzne usługi są w różnych formatach. Aby zebrać pełną odpowiedź serwera należy  sparsować pojedyncze elementy a następnie zbudować z nich obiekty języka Java.
-\hint{\textbf{To co Pan tu opisuje dzieje się cały czas w~aplikacji, nie tylko wtedy gdy Pan ją tworzył. Należy zatem użyci czasu teraźniejszego. Proszę przerobić w~ten sposób resztę rozdziału. Oczywiście tam, gdzie faktycznie coś było wykonane tylko raz proszę zostawić czas przeszły.}}
+Dane dostarczane przez zewnętrzne usługi są w różnych formatach. Aby zebrać pełną odpowiedź serwera należy  sparsować pojedyncze elementy a następnie zbudować z nich obiekty języka Java.
 \subsection{Język znaczników XML}
 XML\footnote{eXtensible Markup Language} to standard formatowania treści wspierany przez organizację W3C. Określa on uniwersalną składnię, używaną przy oznaczaniu danych za pomocą znaczników. Ponadto oferuje standardowy format dokumentów komputerowych. Format ten można dostosowywać do dziedzin tak odmiennych jak witryny WWW, grafika wektorowa, serializacja obiektów, wymiana danych elektronicznych czy systemy poczty głosowej. Oznakowanie XML jest udokumentowane za pomocą specjalnych znaczników. Są to konstrukcje z ogranicznikami w nawiasach trójkątnych. Specyfikacja XML określa, jakie wymagania składniowe musi spełniać takie oznaczenie: w jaki sposób elementy są rozpoznawane przez parsery, jak przedstawiony jest znacznik, jakie nazwy elementów są akceptowalne oraz gdzie elementy powinny być rozmieszczone. Dokumenty słownika XML są podobne do dokumentów HTML\footnote{Hypertext Markup Language}, jednak istnieją pomiędzy nimi zasadnicze różnice. Kluczową różnicą między XML a HTML jest to, że XML umożliwia tworzenie własnych znaczników, podczas gdy w HTML nie ma takiej możliwości\cite{xml}.
 
@@ -366,7 +358,7 @@ XML\footnote{eXtensible Markup Language} to standard formatowania treści wspier
 
 XML jest językiem znaczników, nie jest on językiem programowania, magazynem danych czy też protokołem transportu sieciowego. XML oferuje możliwość formatowania danych. Zapewnia to im dostępność na wielu platformach i odporność na upływ czasu. W~starszych wersjach standardu XML dokument zapisany za pomocą dowolnego oprogramowania na jednej platformie nie dawał się odczytywać na innej. Wersja 3.2 usunęła tę wadę. Zapewnia ona obsługę Unicode, co oznacza, że dokumenty XML składają się w całości ze znaków należących do zestawu Unicode. 
 
-Wyszukiwanie informacji o połączeniach lotniczych rozpoczynało się od odebrania danych z serwisu FlightLookup w postaci XML. Jest to najważniejsza operacja podczas wyszukiwania połączeń lotniczych. Dane zebrane na tym etapie są parametrami wyszukiwania podczas korzystania ze źródeł danych wykorzystanych w późniejszej fazie tego procesu. Przykład odebranej treści znajduje się na listingu \ref{list::xml}.
+Wyszukiwanie informacji o połączeniach lotniczych rozpoczyna się od odebrania danych z serwisu FlightLookup w postaci XML. Jest to najważniejsza operacja podczas wyszukiwania połączeń lotniczych. Dane zebrane na tym etapie są parametrami wyszukiwania podczas korzystania ze źródeł danych wykorzystanych w późniejszej fazie tego procesu. Przykład odebranej treści znajduje się na listingu \ref{list::xml}.
 
 Operacja parsowania obiektów XML na obiekty języka Java zostanie dokładniej opisana w rozdziale o implementacji. Załączony listing \ref{list::xml} przedstawia jeden z elementów danych XML o nazwie \textit{FlightDetails}. Zawiera on przykładowe pola takie jak: \textit{TotalMiles} i \textit{FLSFlightDays}. Elementy te zostały odwzorowane w postaci klas języka Java o takich samych nazwach jak nazwa elementu. Powstała klasa posiada też takie same pola jak obiekt w XML.
 
@@ -410,7 +402,7 @@ HTML jest standardowym językiem znaczników do tworzenia stron WWW. Dokumenty H
 \end{lstlisting}
 
 \section{Wydajność wyszukiwania}
-Wyszukiwanie tak złożonych danych jak informacje o połączeniach lotniczych, a następnie parsowanie ich, niesie za sobą pewne konsekwencje. Są one związane z~czasem. Użytkownik powinien otrzymać interesującą go treść w jak najkrótszym czasie. W celu poprawy wydajności aplikacji wprowadzono mechanizmy skracające czas odpowiedzi części serwerowej.
+Wyszukiwanie tak złożonych danych jak informacje o połączeniach lotniczych, a następnie parsowanie ich, niesie za sobą pewne konsekwencje. Są one związane z~czasem. Użytkownik powinien otrzymać interesującą go treść w jak najkrótszym czasie. W celu poprawy wydajności aplikacji wprowadzono mechanizmy skracające czas odpowiedzi serwera.
 Dla zbierania danych dotyczących lotnisk oraz bagażów zaimplementowano rozwiązania polegające na pobieraniu pełnych zbiorów tych informacji do bazy danych lub do pliku tekstowego znajdującego się na serwerze. Pozwoliło to na ograniczenie częstości pobierania danych ze stron lub zewnętrznych baz danych.
 
 Kolejnym rozwiązaniem było wprowadzenie funkcyjnego stylu programowania w kluczowych elementach części serwerowej, które odpowiadały za wyszukiwanie połączeń lotniczych.  Programowanie funkcyjne wprowadzone w Javie 8 pozwala skrócić czas trwania niektórych operacji wykonywanych przez maszynę wirtualną Javy, a więc też czas wyszukiwania lotów.
@@ -423,8 +415,8 @@ Wybór informacji, które powinny znaleźć się w pamięci podręcznej bazuje n
 Analiza istniejących rozwiązań, czyli aplikacji wyszukujących połączenia lotnicze pozwoliła sprecyzować wymagania względem budowanego oprogramowania. W Internecie można znaleźć wiele aplikacji o podobnej lub takiej samej dziedzinie zastosowania, jak opracowana aplikacja. W tym rozdziale opisane są najbardziej znane wyszukiwarki lotów dostępnych na rynku. 
 
 \section{Wyszukiwarka lotów Skyscanner}
-Pierwszym przykładem jest aplikacja internetowa Skyscanner. To wyszukiwarka lotów, która umożliwia użytkownikom szukanie według ceny i lokalizacji. Oprócz wyszukiwania lotów, Skyscanner oferuje opcje szukania hoteli blisko lotnisk oraz wypożyczania auta w pobliżu lotniska docelowego. Warto wspomnieć o~innej jej usłudze, czyli udostępnianiu danych~o połączeniach lotniczych zewnętrznym firmom i programistom.W~związku z~tym aplikacja Skyscanner była brana pod uwagę, jako potencjalne źródło danych, ale jej właściciel wymaga dużych opłat za swoje usługi, w warunkach akademickich niemożliwe było skorzystanie z~nich.
-Aplikacja ta jest dostępna w ponad 30 językach oraz używana przez 60 milionów użytkowników miesięcznie. Skyscanner znajduje się pod adresem sieciowym: 
+Pierwszym przykładem jest aplikacja internetowa Skyscanner. To wyszukiwarka lotów, która umożliwia użytkownikom szukanie według ceny i lokalizacji. Oprócz wyszukiwania lotów, Skyscanner oferuje opcje szukania hoteli blisko lotnisk oraz wypożyczania auta w pobliżu lotniska docelowego. Warto wspomnieć o~innej jej usłudze, czyli udostępnianiu danych~o połączeniach lotniczych zewnętrznym firmom i programistom. W~związku z~tym aplikacja Skyscanner była brana pod uwagę, jako potencjalne źródło danych. Jej właściciel jednak wymaga dużych opłat za swoje usługi, w warunkach akademickich niemożliwe było skorzystanie z~nich.
+Aplikacja ta jest dostępna w ponad 30 językach oraz używana przez 60 milionów użytkowników miesięcznie\cite{skyscanner}. Skyscanner znajduje się pod adresem sieciowym: 
 \url{https://www.skyscanner.net/}.
 
 Opisywana aplikacja oferuje swoim użytkownikom szereg przydatnych funkcji. Korzystające z jej osoby mogą posługiwać się kompleksowym modułem wyszukiwania połączeń lotniczych. W panelu wyboru parametrów lotów można określić lotnisko wylotu, lotnisko docelowe jak i daty lotu. Skyscanner oferuje trzy opcje wyszukiwania lotów: z~lotem powrotnym, lot w jedną stronę oraz podróż wieloetapowa. Dodatkowo użytkownik może określić liczbę osób biorących udział w podróży jak i klasę biletu lotniczego. Interesującą funkcją jest możliwość dodania pobliskich lotnisk do tych wybranych przez użytkownika. Znajduje ona zastosowanie, gdy na przykład aplikacja nie może znaleźć lotów z wybranego lotniska. Następuje wtedy wyszukiwanie lotów z pobliskich lotnisk znajdujących się w~zasięgu o~kształcie koła o~zadanej długości promienia.
@@ -457,7 +449,7 @@ Warto zwrócić uwagę na panel podróży wieloetapowej, który jest dostępny p
 \end{figure}
 
 \section{Wyszukiwarka lotów Google Flights}
-Kolejnym przedstawianym rozwiązaniem jest aplikacja internetowa Google Flights firmy Google. Jest to jeden z głównych internetowych produktów firmy z Kalifornii, zintegrowany z innymi usługami tej firmy, co czyni go bardzo praktycznym systemem. Google Flights zostało wdrożone 13 października 2011 roku. Ma zbliżone funkcje do wcześniej opisywanego konkurenta, Skyscanner. Oferuje jednak pewne dodatkowe udogodnienia. Pozwala on użytkownikowi na wyszukiwanie lotów według takich kryteriów, jak czas trwania podróży oraz koszt. Największą zaletą tej aplikacji jest jej efektywność. Silnik tej wyszukiwarki jest podobny do tego stosowanego w~Google Search. Wydajność tego oprogramowania została uzyskana przez użycie wyspecjalizowanych algorytmów szukających firmy Google oraz specjalnemu indeksowaniu danych. Oprócz tej zalety aplikacja prezentuje również czytelny i dostosowujący się do używanego medium (ang. \emph{responsive}) interfejs, który jest dobrze oceniany przez użytkowników.
+Kolejnym przedstawianym rozwiązaniem jest aplikacja internetowa Google Flights firmy Google. Jest to jeden z głównych internetowych produktów firmy z Kalifornii, zintegrowany z innymi usługami tej firmy, co czyni go bardzo praktycznym systemem. Google Flights zostało wdrożone 13 października 2011 roku\cite{googleFlights}. Ma zbliżone funkcje do wcześniej opisywanego konkurenta, Skyscanner. Oferuje jednak pewne dodatkowe udogodnienia. Pozwala on użytkownikowi na wyszukiwanie lotów według takich kryteriów, jak czas trwania podróży oraz koszt. Największą zaletą tej aplikacji jest jej efektywność. Silnik tej wyszukiwarki jest podobny do tego stosowanego w~Google Search. Wydajność tego oprogramowania została uzyskana przez użycie wyspecjalizowanych algorytmów szukających firmy Google oraz specjalnemu indeksowaniu danych. Oprócz tej zalety aplikacja prezentuje również czytelny i dostosowujący się do używanego medium (ang. \emph{responsive}) interfejs, który jest dobrze oceniany przez użytkowników.
 
 \begin{figure}[!ht]
 \centering
@@ -486,15 +478,15 @@ Wszystkie produkty firmy Google, które dostępne są za pomocą przeglądarki W
 \section{Porównanie aplikacji}
 Obie opisane aplikacje są rozwiązaniami komercyjnymi, stworzonymi przez wieloosobowe zespoły programistów. Są także systemami sprawnie działającymi, z czytelnym interfejsem graficznym. Dostarczają one niemal identycznych usług {\dywiz} posiadają tę samą ofertę dla użytkownika, jednak różnią się jakością jej wykonania. 
 
-Zaletą aplikacji Skyscanner jest z pewnością rzetelność jej danych, która jest potwierdzona licznymi nagrodami od linii lotniczych. Warto też wspomnieć o jej systemie wyszukiwania lotów. Liczba wyszukanych lotów z przesiadkami często przekracza sto wystąpień. Świadczy to o zaawansowanym silniku wyszukującym i analizującym różne przypadki połączeń. Za wady można uznać dosyć prosty i niedostosowany do potrzeb urządzeń mobilnych interfejs użytkownika. Nie reprezentuje on poziomu nowoczesnych aplikacji. 
+Zaletą aplikacji Skyscanner jest z pewnością rzetelność jej danych, która jest potwierdzona licznymi nagrodami od linii lotniczych. Warto też wspomnieć o jej systemie wyszukiwania lotów. Liczba wyszukanych lotów z przesiadkami często przekracza sto wystąpień. Świadczy to o zaawansowanym silniku wyszukującym  analizującym różne przypadki połączeń. Za wady można uznać dosyć prosty i niedostosowany do potrzeb urządzeń mobilnych interfejs użytkownika. Nie reprezentuje on poziomu nowoczesnych aplikacji. 
 
 Druga wyszukiwarka jest dopracowanym produktem firmy Google. Wyszukuje ona loty bardziej efektywnie niż rozwiązania konkurencji, między innymi Skyscanner. Google Flights współpracuje z systemami sprzedażowymi większości przewoźników lotniczych. Daje to możliwość kupna biletu bezpośrednio z jej strony WWW bez konieczności przechodzenia na zewnętrzną stronę linii lotniczej. Zaletą wyszukiwarki z pewnością jest dopracowany interfejs zgodny ze standardami firmy Google. Gwarantuje on dostosowanie do używanego medium oraz czytelność prezentowanych danych. Wyszukiwarka Google Flights wydaje się być lepszym rozwiązaniem od aplikacji Skyscanner jednak różnica jakości je dzieląca nie jest duża.
 
 \chapter{Projekt aplikacji}
-W tym rozdziale jest opisany projekt aplikacji. Zrozumienie podejmowanego zagadnienia w pracy oraz przegląd istniejących rozwiązań pozwolił określić sposoby realizacji wymaganych funkcji w stworzonej aplikacji.  Kluczową sprawą było też ustalenie odbiorców aplikacji oraz przebiegu procesu wyszukiwania połączeń lotniczych. W tym celu stworzono diagramy aktywności oraz przypadków użycia. Poświęcono osobne podrozdziały dla architektury aplikacji, projektu jej interfejsu użytkownika, strukturze serwera oraz modułowi wyszukiwania lotów. Na końcu rozdziału znajduje część podsumowująca opracowane rozwiązania i diagramy.
+W tym rozdziale jest opisany projekt aplikacji. Zrozumienie podejmowanego zagadnienia w pracy oraz przegląd istniejących rozwiązań pozwolił określić sposoby realizacji wymaganych funkcji w stworzonej aplikacji.  Kluczową sprawą było też ustalenie odbiorców aplikacji oraz przebiegu procesu wyszukiwania połączeń lotniczych. W tym celu stworzono diagramy aktywności oraz przypadków użycia. Poświęcono osobne podrozdziały dla architektury aplikacji, projektu jej interfejsu użytkownika oraz modułowi wyszukiwania lotów. Na końcu rozdziału znajduje część podsumowująca opracowane rozwiązania i diagramy.
 
 \section{Diagram przypadków użycia}
-Diagram przypadków użycia przedstawia funkcje systemu wraz z jego otoczeniem. Jest on specjalnym rodzajem ogólniejszego zbioru diagramów UML. Na stronie WWW opisującej te diagramy, Michał Wolski przedstawia ich funkcje następująco: \emph{''Diagramy przypadków użycia pozwalają na graficzne zaprezentowanie własności systemu tak, jak są one widziane po stronie użytkownika.''}.\cite{uml}
+Diagram przypadków użycia przedstawia funkcje systemu wraz z jego otoczeniem. Jest on specjalnym rodzajem ogólniejszego zbioru diagramów UML. Na stronie WWW opisującej te diagramy, Michał Wolski przedstawia ich funkcje następująco: \emph{''Diagramy przypadków użycia pozwalają na graficzne zaprezentowanie własności systemu tak, jak są one widziane po stronie użytkownika.''}\cite{uml}.
 \begin{figure}[!ht]
 \centering
 \includegraphics[scale=0.60, keepaspectratio]{usecase_diagram.png}
@@ -504,7 +496,7 @@ Diagram przypadków użycia przedstawia funkcje systemu wraz z jego otoczeniem. 
 
 \noindent Zaprezentowany diagram na rysunku \ref{fig:usecase_diagram} obrazuje aktorów i przypadki użycia w stworzonej aplikacji. Uwzględniono w nim tylko jedno aktora, którym jest \textit{Użytkownik}. Reprezentuje on każdą osobę, która korzysta z usług aplikacji. Użytkownik ma możliwość wyboru parametrów lotów, który zawiera się w kolejnym przypadku użycia reprezentującym cały proces wyszukiwania połączeń lotniczych. Jest to oznaczone adnotacją \textit{include}. Kolejnym przypadkiem użycia jest wyświetlenie wyników wyszukiwania lotów. Użytkownik mając te wyniki może wybrać interesujący go przelot i uzyskać o nim dokładniejsze informacje.
 \section{Diagram aktywności} 
-Diagram aktywności jest diagramem przedstawiającym interakcję dynamicznych aspektów systemu.\cite{uml}
+Diagram aktywności jest diagramem przedstawiającym interakcję dynamicznych aspektów systemu\cite{uml}.
 
 \begin{figure}[!ht]
 \centering
@@ -516,7 +508,7 @@ Diagram aktywności jest diagramem przedstawiającym interakcję dynamicznych as
 Dla opracowanej aplikacji przygotowano diagram aktywności widoczny na rysunku \ref{fig:activity_diagram}. Prezentuje on przebieg kroków, które wykonywane są przez stworzone oprogramowanie. Etap początkowy oraz końcowy został oznaczony czarnym kółkiem. Między nimi znajdują się poszczególne etapy procesu wyszukiwania lotów. Miejsca połączenia różnych ścieżek przebiegu tego procesu lub elementy warunkowe zostały oznaczone rombem.
 
 \section{Architektura aplikacji}
-Projektowanie aplikacji rozpoczęto od stworzenia schematu obrazującego poszczególne części systemu oraz schematy komunikacji między nimi. Opracowane oprogramowanie zostało stworzone według architektury trójwarstwowej. Jest ona rodzajem architektury oprogramowania, która składa się z trzech warstw logicznego przetwarzania danych. 
+Projektowanie aplikacji rozpoczęto od stworzenia prototypu obrazującego poszczególne części systemu oraz schematy komunikacji między nimi. Opracowane oprogramowanie zostało stworzone według architektury trójwarstwowej. Jest ona rodzajem architektury oprogramowania, która składa się z trzech warstw logicznego przetwarzania danych\cite{architektura}.
 
 \begin{figure}[!ht]
 \centering
@@ -525,14 +517,10 @@ Projektowanie aplikacji rozpoczęto od stworzenia schematu obrazującego poszcze
 \label{fig:architecure_diagram}
 \end{figure}
 
-\noindent Rysunek \ref{fig:architecure_diagram} zawiera schemat architektury opracowanej aplikacji. Przedstawia on jej trzy warstwy. Pierwszą z nich jest warstwa prezentacji. Renderuje ona treści odpowiednie treści w przeglądarce internetowej. Komunikacja między warstwą prezentacji a logiki biznesowej biznesowej odbywa się z użyciem protokołu HTTP. Warstwa logiki biznesowej obsługuje żądanie tego protokołu przekazując zawarte w nim parametry do modułu wyszukiwania połączeń lotniczych. Z uwagi na jego złożoność zostanie mu poświęcony osobny podrozdział.
+\noindent Rysunek \ref{fig:architecure_diagram} obrazuje schemat architektury opracowanej aplikacji. Przedstawia on jej trzy warstwy. Pierwszą z nich jest warstwa prezentacji. Renderuje ona treści odpowiednie treści w przeglądarce internetowej. Komunikacja między warstwą prezentacji a logiki biznesowej biznesowej odbywa się z użyciem protokołu HTTP. Warstwa logiki biznesowej obsługuje żądanie tego protokołu przekazując zawarte w nim parametry do modułu wyszukiwania połączeń lotniczych. Z uwagi na jego złożoność zostanie mu poświęcony osobny podrozdział.
 
 \section{Projekt bazy danych}
 Baza danych jest używana w~aplikacji jako miejsce dające szybki dostęp do dużego zbioru jakim są dane o lotniskach. Na jej użycie zdecydowano się ze względu na duży rozmiar zasobu informacji reprezentowanych danych oraz sprawdzonych sposobów dostępu do niego.
-
-\begin{comment}
-\delete{Użyto darmowego rozwiązania bazodanowego MySQL. Jest to system zarządzania relacyjnymi bazami danych rozwijany w przeszłości przez firmę MySQL AB, a obecnie przez korporację Oracle. Stanowi szybko działające oprogramowanie i obecnie jest jednym z popularniejszych serwerów baz danych dostępny na licencji GPL}\footnote{General Public License} jak i w wersjach komercyjnych \cite{mysql}. \hint{To są informacje potrzebne w~rozdziale o~implementacji. Teraz opisuje Pan projekt.}
-\end{comment}
 
 \begin{figure}[!ht]
 \centering
@@ -543,15 +531,9 @@ Baza danych jest używana w~aplikacji jako miejsce dające szybki dostęp do du�
 
 \noindent Rysunek \ref{fig:database} przedstawia jedyną tabelę znajdującą się w bazie danych, która przechowuje informacje dotyczące lotnisk. Tabela ta zawiera szereg parametrów takich jak na przykład: współrzędne lotniska, jego kody GPS i IATA, nazwę jak i jego typ. Zaprezentowane parametry są określone typami danych w jakich są przechowywane. Dane liczbowe są reprezentowane przez typ całkowity \textit{int} lub przez typ podwójnej precyzji \textit{double}. Parametry oznaczone typem \textit{text} określają ciągi znaków.
 
-
-\begin{comment}
-\hint{Proszę opisać ten rysunek, a~nie tylko napisać, że parametry ,,widać". Poza tym proszę używać odnośników do rysunków. Skąd pewność, że ten tekst znajdzie się ostatecznie pod rysunkiem?}
-\end{comment}
-
-
 %Posprawdzac styl,czy jest opisane tak jak powinno byc dla projektowania
 \section{Projekt interfejsu użytkownika}
-Klient aplikacji został wyposażony w intuicyjny interfejs użytkownika. Proces jego projektowania polega na tworzeniu schematów lub prototypów. W tym rozdziale zostaną opisane  schematy interfejsu użytkownika przygotowane dla strony głównej aplikacji, panelu wyszukiwania lotów oraz dla strony z wynikami wyszukiwania lotów.
+Klient aplikacji został wyposażony w intuicyjny interfejs użytkownika. Proces jego projektowania polega na tworzeniu schematów lub prototypów. W tym rozdziale zostaną opisane schematy interfejsu użytkownika przygotowane dla strony głównej aplikacji, panelu wyszukiwania lotów oraz dla strony z wynikami wyszukiwania lotów.
 \subsection{Projekt strony głównej}
 Prototyp strony głównej jest projektem widoku dla strony startowej aplikacji. Na rysunku \ref{fig:main_page_schema} przedstawiono jego schemat.
 
@@ -572,9 +554,9 @@ Panel wyszukiwania jest komponentem dynamicznym i podlegającym zmianom pod wpł
 \label{fig:interface_project_departure}
 \end{figure}
 
-\noindent Górna część ukazuje trzy przyciski wyboru typu lotu, liczby pasażerów oraz klasy poszukiwanego biletu. Poniżej zamieszczone są dwa pola do wyboru lotniska wylotowego oraz docelowego. Na prawo od nich znajdują się dwa pola wyboru dat dla wylotu oraz powrotu.
+\noindent W prototypie przewidziano trzy przyciski wyboru typu lotu, liczby pasażerów oraz klasy poszukiwanego biletu. Poniżej zamieszczone są dwa pola do wyboru lotniska wylotowego oraz docelowego. Na prawo od nich znajdują się dwa pola wyboru dat dla wylotu oraz powrotu. 
 
-Dla lotu bezpośrednio wygląd panelu wyszukiwania zmienia się. Zaprezentowano to na rysunku \ref{fig:interface_project_direct} Można na nim zauważyć rozszerzone pole do wyboru daty wylotu. Opcja wyboru daty powrotu jest niewidoczna.
+Dla lotu bezpośrednio wygląd panelu wyszukiwania zmienia się. Zaprezentowano to na rysunku \ref{fig:interface_project_direct} Pole do wyboru daty wylotu powinno być poszerzone , a element wyboru daty powrotu niewidoczny.
 \begin{figure}[!ht]
 \centering
 \includegraphics[scale=0.60, keepaspectratio]{interface_project_direct.PNG}
@@ -589,7 +571,7 @@ Na rysunku \ref{fig:multi_travel_interface} przedstawiono projekt interfejsu dla
 \caption{Prototyp komponentu podróży wieloetapowej}
 \label{fig:multi_travel_interface}
 \end{figure}
-Komponent jest wyposażony w elementy wyboru lotnisk i daty wylotu, które można zwiększać lub zmniejszać odpowiednimi przyciskami. Przycisk oznaczony napisem \textit{Add Flight} dodaje kolejne pola wyboru parametrów lotu. Na prawo od daty wylotu można zauważyć ikonę do usuwania odpowiednich pól. Pozostałe elementy są zaczerpnięte z poprzednio opisanych schematów.
+W komponencie przewidziano elementy wyboru lotnisk i daty wylotu, których liczbę można zwiększać lub zmniejszać odpowiednimi przyciskami. Przycisk oznaczony napisem \textit{Add Flight} dodaje kolejne pola wyboru parametrów lotu. Na prawo od daty wylotu można zauważyć ikonę do usuwania odpowiednich pól. Pozostałe elementy są zaczerpnięte z poprzednio opisanych schematów.
 \subsection{Projekt strony z wynikami wyszukiwania}
 Ostatnim prototyp dotyczy strony z wynikami wyszukiwania połączeń lotniczych. Zaprezentowano go na rysunku \ref{fig:result_interface}
 
@@ -600,15 +582,8 @@ Ostatnim prototyp dotyczy strony z wynikami wyszukiwania połączeń lotniczych.
 \label{fig:result_interface}
 \end{figure}
 
-\noindent Górna część przedstawia zbiór przycisków, których liczba jest zależna od wybranego wcześniej typu lotu. Poniżej znajduje się lista wyszukanych lotów. Po kliknięciu w odpowiedni dla elementu listy przycisk powinien rozwinąć się panel z szczegółowymi informacjami o locie.
+\noindent Górna część przedstawia zbiór przewidzianych przycisków, których liczba powinna być zależna od wybranego wcześniej typu lotu. Poniżej zobrazowano listę elementów, które powinny zawierać informacje o wyszukanych lotach. Po kliknięciu w odpowiedni dla elementu listy przycisk powinien rozwinąć się panel z szczegółowymi informacjami o locie.
 
-
-\begin{comment}
-\section{Diagram klas serwera}
-Do opracowania aplikacji serwerowej posłużono się językiem programowania Java w wersji 10 oraz pakietami oprogramowania Spring i Hibernate. Java jest w pełni obiektowym językiem programowania z ponad 20 letnią historią. Pierwotnie stworzona i rozwijana przez Jamesa Goslinga została przejęta przez korporację Oracle. Głównym założeniem tego języka jest sentencja \textit{"Napisz raz, uruchom wszędzie"}. Te słowa przemawiają za specjalnym mechanizmem kompilowania i uruchamiania kodu przez Javę. Proces zaczyna się od skompilowania plików o rozszerzeniu java do bytecode'u czyli specjalnej sekwencji bajtów rozumianej przez JVM}\footnote{Java Virtual Machine}.
-Powstałe oprogramowanie serwerowe jest też w dużej mierze oparte na zewnętrznych bibliotekach platformy Spring Framework w wersji 5.
-
-\end{comment}
 \section{Moduł wyszukiwania połączeń lotniczych}
 Rozwiązanie problemu wyszukiwania połączeń lotniczych jest zadaniem złożonym. Wymaga poradzenia sobie z problemem przeszukiwania wielu źródeł danych oraz konwertowania informacji przez nie zwracanych do postaci, w~której mogą być przetwarzane zarówno przez stronę kliencką, jak i~serwerową. W~związku z~tym wyodrębniono w~strukturze aplikacji moduł, będący elementem części serwerowej oprogramowania, który jest odpowiedzialny za te czynności.
 
@@ -620,7 +595,7 @@ Rozwiązanie problemu wyszukiwania połączeń lotniczych jest zadaniem złożon
 \end{figure}
 
 Na rysunku \ref{fig:search_module} przedstawiono schemat modułu wyszukiwania połączeń lotniczych wraz ze sposobami pozyskiwania danych do budowy obiektu przez niego zwracanego.
-Napisy nad strzałkami są nazwami protokołów służących do realizacji zapytań, a~te pod strzałkami oznaczają format treści zwróconej w~odpowiedzi. Wyszukiwanie zaczyna się od wysłania żądania z kontrolera serwerowego do opisywanego modułu. Żądanie to musi uwzględniać  parametry wyszukiwania. Moduł swoją pracę rozpoczyna od pozyskania danych lotniczych z serwisu FlightLookup. Treść odpowiedzi stanowi większą część całego obiektu lotu który jest zwracany. Po otrzymaniu tych danych moduł zwraca się do lokalnej bazy danych o udostępnienie danych lotniskna podstawie ich unikalnych kodów IATA\footnote{International Air Transport Association}. Następnym krokiem jest pozyskanie ceny lotu. Czynność ta rozpoczyna się od sprawdzenia, czy poszukiwana informacja znajduje się w pamięci podręcznej. Jeśli takie dane są obecne, to pamięć podręczna zwraca odpowiedni zasób. Jeśli natomiast taka informacja nie jest dostępna, moduł zwraca się do serwerów firmy Skyscanner o udostępnienie cen za poszukiwany przelot. Analogicznie przebiega pozyskiwanie danych o linii lotniczej obsługującej lot. Ostatnim etapem wyszukiwania jest znalezienie informacji o dozwolonym bagażu podczas lotu. Jest to zrealizowane przez zwrócenie się do strony internetowej aplikacji Skyscanner posiadającej aktualne dane. Jej adres został wspomniany w rozdziale drugim. Po zebraniu wszystkich poszukiwanych informacji oraz sparsowaniu ich, obiekt lotu zwracany jest przez moduł wyszukiwania do kontrolera a następnie do części klienckiej gdzie użytkownik może obejrzeć wyniki całego procesu wyszukiwania.
+Napisy nad strzałkami są nazwami protokołów służących do realizacji zapytań, a~te pod strzałkami oznaczają format treści zwróconej w~odpowiedzi. Wyszukiwanie zaczyna się od wysłania żądania z kontrolera serwerowego do opisywanego modułu. Żądanie to musi uwzględniać  parametry wyszukiwania. Moduł swoją pracę rozpoczyna od pozyskania danych lotniczych z serwisu FlightLookup. Treść odpowiedzi stanowi większą część całego obiektu lotu który jest zwracany. Po otrzymaniu tych danych moduł zwraca się do lokalnej bazy danych o udostępnienie danych lotniska podstawie ich unikalnych kodów IATA\footnote{International Air Transport Association}. Następnym krokiem jest pozyskanie ceny lotu. Czynność ta rozpoczyna się od sprawdzenia, czy poszukiwana informacja znajduje się w pamięci podręcznej. Jeśli takie dane są obecne, to pamięć podręczna zwraca odpowiedni zasób. Jeśli natomiast taka informacja nie jest dostępna, moduł zwraca się do serwerów firmy Skyscanner o udostępnienie cen za poszukiwany przelot. Analogicznie przebiega pozyskiwanie danych o linii lotniczej obsługującej lot. Ostatnim etapem wyszukiwania jest znalezienie informacji o dozwolonym bagażu podczas lotu. Jest to zrealizowane przez zwrócenie się do strony internetowej aplikacji Skyscanner posiadającej aktualne dane. Jej adres został wspomniany w rozdziale drugim. Po zebraniu wszystkich poszukiwanych informacji oraz sparsowaniu ich, obiekt lotu zwracany jest przez moduł wyszukiwania do kontrolera a następnie do części klienckiej gdzie użytkownik może obejrzeć wyniki całego procesu wyszukiwania.
 
 \section{Komunikacja między komponentami aplikacji}
 Opisane we wcześniejszych podrozdziałach komponenty narzucają określony sposób komunikacji między nimi. Każdy z nich zostanie przedstawiony w tym podrozdziale.
@@ -628,16 +603,12 @@ Opisane we wcześniejszych podrozdziałach komponenty narzucają określony spos
 \subsection{Protokół HTTP}
 Protokół HTTP\footnote{Hypertext Transfer Protocol} to jeden z najczęściej stosowanych  protokołów aplikacji w ~Internecie. Jego oryginalnym zastosowaniem jest przesyłanie treści stron WWW. Jest on również stosowany w~innych celach, np. jako protokół dla aplikacji sprzętowych.\cite{http}. Cechą protokołu HTTP jest zapisywanie i odczytywanie reprezentacji danych, co umożliwia budowę systemów niezależnych od przesyłanych informacji. Protokół HTTP znalazł szerokie zastosowanie w stworzonej aplikacji. Wysłania żądania z parametrami wyszukiwania lotów możliwe było dzięki zbudowaniu odpowiedniego polecenia GET opisywanego protokołu. Serwer po obsłużeniu żądania odpowiadał treścią w formacie JSON również wykorzystując ten protokół. Dzięki niemu, możliwe było też pobieranie zasobów ze stron WWW oraz zewnętrznych baz danych.
  
-\begin{comment}
-\delete{Początkowo protokół ten powstał z oznaczeniem wersji 0.9. Jest to obecnie dość stara wersja, używana jednak jeszcze przez niektóre serwery. HTTP 0.9 zostało podniesione do wersji 1.1 który jest najczęściej wykorzystywanym protokołem w internecie. Standard HTTP/1.1 rozwiązał wiele niejednoznaczności protokołu, które znaleziono we wcześniejszych wersjach i wdrożył szereg kluczowych optymalizacji wydajnościowych, dodatkowe mechanizmy buforowania oraz enkrypcję transferu. Jako odpowiedż na ciągle zwiekszajacą się liczbę urządzeń podłączonych do internetu oraz wymagania wobec niego, w 2012 roku zainicjowano protokół HTTP/2. Jego głównym celem jest poprawa wydajności transportu i osiągnięcie zarówno mniejszych opóźnień i wyższej przepustowości.} \hint{To nie ma być podrozdział o~historii protokołu HTTP, tylko o~jego zastosowaniu w~Pana aplikacji. Proszę się na tym skupić. Treść do poprawy.}
-\end{comment}
-
 \subsection{JDBC}
 JDBC\footnote{Java Database Connectivity} to standardowy, niezależny od bazy danych interfejs do interakcji z dowolnym źródłem danych w~którym informacje przechowywane są w~tabelach. Przeważnie jest używany do współdziałania z relacyjnym systemem zarządzania bazami danych. Za pomocą tego interfejsu można też korzystać z~innych źródeł danych, jak arkusz csv, plik tekstowy itd. Zazwyczaj używa się go do łączenia z bazą danych, wyszukiwania danych i ich aktualizowania. Umożliwia on także wykonywanie procedur SQL przy użyciu składni niezależnej od bazy danych\cite{jdbc}. W opracowanej aplikacji interfejs JDBC pośredniczył pomiędzy relacyjną bazą danych a częścią serwerową aplikacji.
 
 
 \subsection{I/O}
-Podprogramy realizujące operacje zapisu oraz odczytu są podstawowymi częściami systemów operacyjnych oraz bibliotek języków programowania. Prawie wszystkie programy komputerowe wykonują pewne operacje zapisu/odczytu inaczej zwanymi operacjami wejściowymi i wyjściowymi. W opracowanej aplikacji za wykonywanie tych operacji odpowiada język Java ,który za pośrednictwem systemu operacyjnego korzysta z~zasobów plikowych lub pamięci podręcznej. Operacje I/O dotyczą systemu plików, który jest elementarnym składnikiem każdego systemu operacyjnego. Zarządza on archiwizacją danych oraz ich późniejszym odzyskiwaniem. System plików przetrzymuje dane w plikach, które zaś są przechowywane w katalogach. Dostęp do plików oraz katalogów uzyskuje się przez zdefiniowanie ścieżek dostępu, które lokalizują obiektu systemu plików.\cite{i/o}
+Podprogramy realizujące operacje zapisu oraz odczytu są podstawowymi częściami systemów operacyjnych oraz bibliotek języków programowania. Prawie wszystkie programy komputerowe wykonują pewne operacje zapisu/odczytu inaczej zwanymi operacjami wejściowymi i wyjściowymi. W opracowanej aplikacji za wykonywanie tych operacji odpowiada język Java ,który za pośrednictwem systemu operacyjnego korzysta z~zasobów plikowych lub pamięci podręcznej. Operacje I/O dotyczą systemu plików, który jest elementarnym składnikiem każdego systemu operacyjnego. Zarządza on archiwizacją danych oraz ich późniejszym odzyskiwaniem. System plików przetrzymuje dane w plikach, które zaś są przechowywane w katalogach. Dostęp do plików oraz katalogów uzyskuje się przez zdefiniowanie ścieżek dostępu, które lokalizują obiektu systemu plików\cite{i/o}.
 Opracowany serwer wykorzystuje opisane operacje do odczytu pamięci podręcznej, plików CSV oraz plików tekstowych. Czynności te wspomagają pracę serwera pozwalając na szybszy dostęp do zasobów danych.
 
 \section{Podsumowanie}
@@ -723,15 +694,14 @@ Rysunek \ref{fig:client_main_page} przedstawia stronę startową części klienc
 \end{figure}
 Przedstawiony na rysunku \ref{fig:search_panel} komponent obrazuje rozmieszczenie przycisków, pól wyboru parametrów wyszukiwania oraz dostępne opcje konfiguracyjne. Górna część panelu zawiera trzy przyciski konfiguracyjne. Odpowiadają one kolejno za wybór rodzaju lotu, liczby pasażerów oraz klasy poszukiwanego biletu lotniczego. W aplikacji założono trzy typy lotów: lot z możliwością powrotu, lot bezpośredni oraz podróż wieloetapową. Kolejna część, poniżej opisanych przycisków przedstawia pola do wyboru parametrów wyszukiwania. Ich liczba zmienia się w zależności od wybranego typu lotu.
 
-W elementach wyboru lotnisk został zaimplementowany mechanizm podpowiedzi wyszukiwania. Użytkownik po wpisaniu kilku pierwszych liter poszukiwanego miasta będzie mógł zobaczyć listę proponowanych lotnisk w obrębie tej miejscowości. 
+W elementach wyboru lotnisk został zaimplementowany mechanizm podpowiedzi wyszukiwania. Użytkownik po wpisaniu kilku pierwszych liter poszukiwanego miasta ma możliwość zobaczyć listę proponowanych lotnisk w obrębie tej miejscowości. 
 \begin{figure}[!ht]
 \centering
 \includegraphics[scale=0.8, keepaspectratio]{airport_choose.png}
 \caption{Komponent wyboru lotniska}
 \label{fig:airport_choose}
 \end{figure}
-Operacja ta jest dokonywana poprzez pobranie wpisanych liter a następnie zgłoszenia żądania do części serwerowej, która zwraca wyniki z bazy danych. Implementacja tego mechanizmu jest opisana w poprzednim podrozdziale. Użytkownikowi wyświetlane są pełne nazwy lotnisk. Po wybraniu poszukiwanego miejsca widoczna jest nazwa miasta wraz z unikalnym kodem IATA identyfikującym lotnisko. Elementem umieszczonym pomiędzy polami dotyczącymi wyboru lotnisk jest przycisk zamiany pól. Jego funkcją jest zamiana informacji zawartych w polach miejsca odlotu oraz przylotu. Ostatnimi elementami są pola wyboru dat lotu docelowego oraz powrotnego. Obecność drugiego jest uzależniona od wybranego typu lotu. W przypadku gdy wyszukiwany jest tylko lot w jedną stronę element ten jest niewidoczny a szerokość pierwszego jest większa. Kliknięcie w ikonę kalendarza wyzwala okno modalne z jego powiększonym widokiem. Szarym okręgiem jest na nim zaznaczony dzień bieżący. Po wybraniu, data zapisywana jest w pamięci aplikacji. Ten zabieg służy przeciwdziałaniu pomyłkom użytkownika przy wyborze daty powrotu. Jeśli taka się pojawi, to aplikacja wskaże zapisaną datę jako najwcześniejszą wartość przy wyborze daty lotu powrotnego. 
-jest moduł podróży wieloetapowej. Umożliwia on zaplanowanie podróży złożonej z maksymalnie pięciu lotów w jedną stronę. 
+Operacja ta jest dokonywana poprzez pobranie wpisanych liter a następnie zgłoszenia żądania do części serwerowej, która zwraca wyniki z bazy danych. Implementacja tego mechanizmu jest opisana w poprzednim podrozdziale. Użytkownikowi wyświetlane są pełne nazwy lotnisk. Po wybraniu poszukiwanego miejsca widoczna jest nazwa miasta wraz z unikalnym kodem IATA identyfikującym lotnisko. Efekty wizualne działania tych mechanizmów zostały zaprezentowane na rysunku \ref{fig:airport_choose} Elementem umieszczonym pomiędzy polami dotyczącymi wyboru lotnisk jest przycisk zamiany pól. Jego funkcją jest zamiana informacji zawartych w polach miejsca odlotu oraz przylotu. Ostatnimi elementami są pola wyboru dat lotu docelowego oraz powrotnego. Obecność drugiego jest uzależniona od wybranego typu lotu. W przypadku gdy wyszukiwany jest tylko lot w jedną stronę element ten jest niewidoczny a szerokość pierwszego jest większa. Kliknięcie w ikonę kalendarza wyzwala okno modalne z jego powiększonym widokiem. Szarym okręgiem jest na nim zaznaczony dzień bieżący. Po wybraniu, data zapisywana jest w pamięci aplikacji. Ten zabieg służy przeciwdziałaniu pomyłkom użytkownika przy wyborze daty powrotu. Jeśli taka się pojawi, to aplikacja wskaże zapisaną datę jako najwcześniejszą wartość przy wyborze daty lotu powrotnego. Umożliwia on zaplanowanie podróży złożonej z maksymalnie pięciu lotów w jedną stronę. 
 \begin{figure}[!ht]
 \centering
 \includegraphics[scale=0.40, keepaspectratio]{multi_panel.png}
@@ -750,7 +720,7 @@ Wspólnym elementem zarówno dla wszystkich modułu podróży jest przycisk wysz
 
 \section{Oprogramowanie po stronie serwera}
 Oprogramowanie serwerowe stanowi większą część aplikacji. Zostały w nim zaimplementowane mechanizmy parsowania, wyszukiwania i udostępniania danych lotniczych. W bieżącej części pracy zostanie opisana struktura części serwerowej, oprogramowanie odpowiedzialne za parsowanie różnych rodzajów danych, jak i zaimplementowany moduł wyszukiwania.
-Do opracowania aplikacji serwerowej posłużono się językiem programowania Java w wersji 10 oraz pakietami oprogramowania Spring i Hibernate. Java jest językiem programowania z ponad 20 letnią historią. Pierwotnie stworzona i rozwijana przez Jamesa Goslinga została przejęta przez korporację Oracle. Głównym założeniem tego języka jest sentencja \textit{"Napisz raz, uruchom wszędzie"}. Te słowa przemawiają za specjalnym mechanizmem kompilowania i uruchamiania kodu przez Javę. Proces zaczyna się od skompilowania plików o rozszerzeniu java do bytecode'u czyli specjalnej sekwencji bajtów rozumianej przez JVM\footnote{Java Virtual Machine}.\cite{jvm}
+Do opracowania aplikacji serwerowej posłużono się językiem programowania Java w wersji 10 oraz pakietami oprogramowania Spring i Hibernate. Java jest językiem programowania z ponad 20 letnią historią. Pierwotnie stworzona i rozwijana przez Jamesa Goslinga została przejęta przez korporację Oracle. Głównym założeniem tego języka jest sentencja \textit{"Napisz raz, uruchom wszędzie"}. Te słowa przemawiają za specjalnym mechanizmem kompilowania i uruchamiania kodu przez Javę. Proces zaczyna się od skompilowania plików o rozszerzeniu java do bytecode'u czyli specjalnej sekwencji bajtów rozumianej przez JVM\footnote{Java Virtual Machine}\cite{jvm}.
 Powstałe oprogramowanie serwerowe jest też w dużej mierze oparte na zewnętrznych bibliotekach platformy Spring Framework w wersji 5.
 \subsection{Podział na pakiety}
 Kod części serwerowej został podzielony na pakiety, których nazwa określa ich rolę w~aplikacji. Ten podział został przedstawiony na rysunku \ref{fig:server_structure}.
@@ -763,7 +733,7 @@ Kod części serwerowej został podzielony na pakiety, których nazwa określa i
 Zadaniem pakietu \emph{config} jest konfiguracja różnych parametrów serwera podczas jego startu. Ustawia on takie dane jak klucze dostępowe do zasobów lotniczych, parametry pamięci podręcznej oraz zabezpieczenia aplikacji. Warstwa modelowa aplikacji znajduje się w pakiecie \textit{model}. Zaimplementowane zostały w nim klasy modelowe. Są to klasy, które są zwracane przez serwer jako wynik wyszukiwania lotów. Związanym z tym pakietem jest katalog \textit{repository}. Jest on miejscem na klasy implementujące pozyskiwanie obiektów odpowiadających klas modelowych. Niektóre z nich używają swoich odpowiedników z pakietu \textit{service}. Potrzeba ta wynika z konieczności parsowania niektórych formatów danych na obiekty języka Java. Pakietem który udostępnia obiekty modelowe dla części klienckiej jest katalog \textit{controller}. Kod odpowiedzialny za wysyłanie żądań HTTP zaimplementowany jest w części \textit{http}. W części serwerowej zaimplementowano też moduły, które są wywoływane cyklicznie. Aktualizują one lokalne pliki przechowujące dane o lotniskach oraz bagażach. Ich kod jest umieszczony w katalogu \textit{schedulers}. Pozostałe pakiety, czyli \textit{util, enums} oraz \textit{exceptions} zawierają mniej znaczące dla aplikacji funkcje.  
 
 \subsection{Oprogramowanie wyszukujące połączenia lotnicze}
-Projekt modułu wyszukiwania połączeń lotniczych został opisany w poprzednim rozdziale, bieżący jest poświęcony kwestiom jego implementacji. Na potrzeby tego modułu opracowano specjalny sposób tworzenia obiektu lotu. Standardowy proces powstawania obiektu związany z~wywołaniem konstruktora okazał się mało przydatny dla wielu obiektów wchodzących w skład jednostki połączenia lotniczego. Do tworzenia tego obiektu zastosowano wzorzec projektowy \textit{Budowniczy}, który opisuje algorytm uzyskiwania złożonego obiektu z innych. Algorytm ten powinien być niezależny od składowych obiektu. Ponadto proces budowania powinien zezwalać na budowę różnych form tworzonego obiektu.\cite{builder}
+Projekt modułu wyszukiwania połączeń lotniczych został opisany w poprzednim rozdziale, bieżący jest poświęcony kwestiom jego implementacji. Na potrzeby tego modułu opracowano specjalny sposób tworzenia obiektu lotu. Standardowy proces powstawania obiektu związany z~wywołaniem konstruktora okazał się mało przydatny dla wielu obiektów wchodzących w skład jednostki połączenia lotniczego. Do tworzenia tego obiektu zastosowano wzorzec projektowy \textit{Budowniczy}, który opisuje algorytm uzyskiwania złożonego obiektu z innych. Algorytm ten powinien być niezależny od składowych obiektu. Ponadto proces budowania powinien zezwalać na budowę różnych form tworzonego obiektu\cite{builder}.
 Klasa modelowa \textit{Flight} została wyposażona w~klasę wewnętrzną budującą jej obiekty. Implementacja tej klasy jest przedstawiona na listingu \ref{lst:attributes}.
 \begin{lstlisting}[language=java, caption=Fragment klasy Flight, label=lst:attributes]
 @JsonSerialize
@@ -836,7 +806,7 @@ public class CorsConfiguration implements WebMvcConfigurer {
 \end{lstlisting}
 Listing \ref{lst:security} przedstawia implementację tego zabezpieczenia. Ustawia ono dostęp do serwera tylko z adresu części serwerowej podanego jako argument metody \textit{addMapping}. Zabieg ten chroni przed dostępem do danych z~niepożądanych adresów sieciowych. 
 
-Mechanizm pamięci podręcznej, usprawniający wydajność aplikacji zminimalizował również szanse na skuteczny atak DDOS. Został on krótko opisany w rozdziale pierwszym w którym przedstawiono trzy kontenery pamięci podręcznej zaimplementowane w aplikacji. Wydajność ich odpowiedzi uodparnia część serwerową na nadmierny ruch sieciowy ze strony użytkowników aplikacji. Zdefiniowano dla każdego z~kontenerów maksymalny rozmiar przechowywanych danych wynoszący 1GB. Po jego przekroczeniu, pamięć podręczna zostaje wyczyszczona.
+Mechanizm pamięci podręcznej, usprawniający wydajność aplikacji zminimalizował również szanse na skuteczny atak DDOS. Atak ten uniemożliwia dostęp do usług udostępnianych przez zaatakowane systemy\cite{ddos}. Zabezpieczenie polegające na zastosowaniu pamięci podręcznej zostało krótko opisane w rozdziale pierwszym w, którym przedstawiono trzy kontenery pamięci podręcznej zaimplementowane w aplikacji. Wydajność ich odpowiedzi uodparnia część serwerową na nadmierny ruch sieciowy ze strony użytkowników aplikacji. Zdefiniowano dla każdego z~kontenerów maksymalny rozmiar przechowywanych danych wynoszący 1GB. Po jego przekroczeniu, pamięć podręczna zostaje wyczyszczona.
 
 \subsection{Kontrolery serwera}
 W części serwerowej stworzono specjalny komponent odpowiedzialny za obsługę żądań wyszukiwania lotów oraz zwrócenie wyników. 
@@ -865,7 +835,7 @@ Implementacja serwera oraz części klienckiej została wykonana według założ
 
 
 \chapter{Testy}
-Opracowaną aplikację poddano testom. W~inżynierii oprogramowania proces testowania podzielony jest na kilka etapów:
+Opracowaną aplikację poddano testom. W~inżynierii oprogramowania proces testowania podzielony jest na kilka etapów\cite{testing}:
 \begin{itemize}[noitemsep,topsep=0pt]
 \item testy jednostkowe - sprawdzają działanie najmniejszych elementów systemu takich jak metody lub funkcje,
 \item testy integracyjne - sprawdzają poprawność współpracy komponentów oprogramowania,
@@ -875,7 +845,7 @@ Opracowaną aplikację poddano testom. W~inżynierii oprogramowania proces testo
 
 W przypadku opracowanej aplikacji zdecydowano się na przetestowanie kluczowych fragmentów oprogramowania odpowiedzialnych za podstawowe funkcje systemu. Testy zaimplementowane zostały przy użyciu frameworków JUnit oraz Spring. Biblioteka JUnit to zewnętrzny pakiet oprogramowania dostarczający zestaw narzędzi do testowania programów napisanych w języku Java.  Platforma Spring dostarcza mechanizmów do testowania oprogramowania serwerowego.
 
-Metody testujące oprogramowanie zawierają asercje. Są to predykaty, które zwracają wartość logiczną. Najczęściej przyjmują one dwa argumenty a następnie porównują je i~zwracają wynik\cite{assertion}. Napisane są oddzielone od części serwerowej aplikacji. Testują one poprawność odpowiedzi serwera, informacji otrzymanych z zewnętrznych serwisów, parsowanie różnych formatów danych jak i najbardziej podstawowych elementów aplikacji. Nazwy testów powiązane są z~kodem źródłowym który testują. Przykładowo, test dla klasy \textit{FlightRepository} nazywa się \textit{FlightsRepositoryTest}.
+Metody testujące oprogramowanie zawierają asercje. Są to predykaty, które zwracają wartość logiczną. Najczęściej przyjmują one dwa argumenty a następnie porównują je i~zwracają wynik\cite{assertion}. Napisane testy są oddzielone od części serwerowej aplikacji. Testują one poprawność odpowiedzi serwera, informacji otrzymanych z zewnętrznych serwisów, parsowanie różnych formatów danych jak i najbardziej podstawowych elementów aplikacji. Nazwy testów powiązane są z~kodem źródłowym który testują. Przykładowo, test dla klasy \textit{FlightRepository} nazywa się \textit{FlightsRepositoryTest}.
 
 \section{Testy jednostkowe}
 Na listingu \ref{lst:unitTest1} przedstawiono kod testujący poprawność działania funkcji zwracającej adres żądania HTTP.
@@ -946,11 +916,12 @@ Aplikacja została wyposażona w~interfejs użytkownika bazujący na technologii
 Opracowane oprogramowanie realizuje podstawowe funkcje wyszukiwarek opisanych szerzej w rozdziale drugim. Komercyjne aplikacje mają dużą przewagę w w szybkości wyszukiwania lotów. W powstałej aplikacji czas odpowiedzi serwera jest zauważalnie dłuższy. W warunkach akademickich trudne było uzyskanie konkurencyjnych rezultatów.
 
 Aplikację można usprawnić na wiele sposobów. W pracy zabrakło takich funkcji jak możliwość wyszukiwania lotów z~lotnisk położonych w~pobliżu aktualnie wybranego miejsca, czy też  wersji w języku polskim. Kod części serwerowej mógłby zostać poddany refaktoryzacji. Istotne znaczenie dla podniesienia atrakcyjności aplikacji miałoby też zwiększenie poziomu jej dostosowania się do używanego medium. Część kliencka wymaga w tym zakresie poprawek. 
-
-\hint{Bibliografia powinna zawierać także miejsce i~rok wydania książki. Proszę sprawdzić odwołania do literatury, szczególnie tam gdzie wykreślałem fragmenty pracy. Wszystkie pozycje muszą być cytowane. Trochę jest ich mało.}
 \begin{thebibliography}{9}
+
 \bibitem{xml}
-Elliotte Rusty Harold, W.Scott Means \emph{ ,,XML. Almanach'' }. Wydawnictwo O'REILLY
+Elliotte Rusty Harold, W.Scott Means \emph{ ,,XML. Almanach'' } \\
+Wydawnictwo O'REILLY, Gliwice 2002
+
 \bibitem{json}
   JSON \\
   \url{https://www.json.org/} \\
@@ -960,36 +931,49 @@ Elliotte Rusty Harold, W.Scott Means \emph{ ,,XML. Almanach'' }. Wydawnictwo O'R
     HTML, Wikipedia \\
 	\url{https://en.wikipedia.org/wiki/HTML} \\
 	Stan na dzień 04.01.2019
+	
 \bibitem{ehcache}
-Daniel Wind \emph{ ,,Instant Effective Caching with Ehcache'' }. Wydawnicwto Packt
+Daniel Wind \emph{ ,,Instant Effective Caching with Ehcache'' }\\
+Wydawnictwo Packt, 2013
 
-%\bibitem{architektura}
-%Christine Hofmeister, Robert Nord \emph{ ,,Tworzenie architektury oprogramowania'' }. %Wydawnictwo Naukowo-Techniczne Warszawa
-
+\bibitem{skyscanner}
+	Skyscanner - Wikipedia \\
+	\url{https://pl.wikipedia.org/wiki/Skyscanner} \\
+	Stan na dzień 06.02.2019
+	
+\bibitem{googleFlights}
+	Google Flights - Wikipedia \\
+	\url{https://en.wikipedia.org/wiki/Google_Flights} \\
+	Stan na dzień 06.02.2019
+	
 \bibitem{uml}
 	Diagramy UML | Michał Wolski\\ \url{https://www.michalwolski.pl/diagramy-uml} \\
 	Stan na dzień 16.01.2019
-		
-%\bibitem{mysql}
-%Marcin Lis \emph{ ,,MySQL Darmowa baza danych - Ćwiczenia praktyczne'' }. Wydawnictwo Helion
-
-\bibitem{jvm}
-Simon Roberts \emph{ ,,Java Programming Basics'' }. Wydawnictwo Addison-Wesley Professional
+	
+\bibitem{architektura}
+Christine Hofmeister, Robert Nord \emph{ ,,Tworzenie architektury oprogramowania''} \\
+Wydawnictwo Naukowo-Techniczne Warszawa, Warszawa 2006
 
 \bibitem{http}
-Ilya Grigorik \emph{ ,,HTTP Protocols'' }. Wydawnictwo O'REILLY
+Ilya Grigorik \emph{ ,,HTTP Protocols'' }\\ Wydawnictwo O'REILLY, 2017
 
 \bibitem{jdbc}
-Kishori Sharan \emph{ ,,Beginning Java 8 APIs, Extensions and Libraries Swing, JavaFX, JavaScript, JDBC and Network Programming APIs'' }. Wydawnictwo Apress
+Kishori Sharan \emph{ ,,Beginning Java 8 APIs, Extensions and Libraries Swing, JavaFX, JavaScript, JDBC and Network Programming APIs'' }\\ Wydawnictwo Apress, 2014 
  
 \bibitem{i/o}
-Jeff Friesen \emph{ ,,Java I/O, NIO, NIO.2'' }. Wydawnictwo Apress
+Jeff Friesen \emph{ ,,Java I/O, NIO, NIO.2'' }\\ Wydawnictwo Apress, 2015
+
+\bibitem{jvm}
+Simon Roberts \emph{ ,,Java Programming Basics'' }\\ Wydawnictwo Addison-Wesley Professional, 2014
 
 \bibitem{builder}
-John Vlissides, Ralph Johnson, Richard Helm, Erich Gamma \emph{ ,,Design Patterns: Elements of Reusable Object-Oriented Software''}. Wydawnictwo Addison-Weasley Professional
+John Vlissides, Ralph Johnson, Richard Helm, Erich Gamma \emph{ ,,Design Patterns: Elements of Reusable Object-Oriented Software'' }\\ Wydawnictwo Addison-Weasley Professional, 1994
 
-%\bibitem{security}
-%Vincent Liu, Bryan Sullivan \emph{ ,,Web Application Security'' }. Wydawnictwo McGraw-Hill
+\bibitem{ddos}
+Rich Groves, Eric Chou \emph{ ,,Distributed Denial of Service (DDoS)'' }\\ Wydawnictwo O'REILLY, 2018
+
+\bibitem{testing}
+Rodger D.Drabick \emph{ ,,Best Practices for the Formal Software Testing Process: A Menu of Testing Tasks'' }\\ Wydawnictwo Addison-Wesley-Professional, 2013
 
 \bibitem{assertion}
 Asercja, Wikipedia \\

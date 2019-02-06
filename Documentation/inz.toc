@@ -37,7 +37,7 @@
 \contentsline {subsection}{\numberline {4.2.4}Zabezpieczenia}{44}{subsection.4.2.4}
 \contentsline {subsection}{\numberline {4.2.5}Kontrolery serwera}{44}{subsection.4.2.5}
 \contentsline {section}{\numberline {4.3}Podsumowanie}{45}{section.4.3}
-\contentsline {chapter}{\numberline {5}Testy}{46}{chapter.5}
-\contentsline {section}{\numberline {5.1}Testy jednostkowe}{46}{section.5.1}
-\contentsline {section}{\numberline {5.2}Testy integracji}{47}{section.5.2}
-\contentsline {chapter}{\numberline {6}Uwagi i wnioski}{49}{chapter.6}
+\contentsline {chapter}{\numberline {5}Testy}{47}{chapter.5}
+\contentsline {section}{\numberline {5.1}Testy jednostkowe}{47}{section.5.1}
+\contentsline {section}{\numberline {5.2}Testy integracji}{48}{section.5.2}
+\contentsline {chapter}{\numberline {6}Uwagi i wnioski}{50}{chapter.6}

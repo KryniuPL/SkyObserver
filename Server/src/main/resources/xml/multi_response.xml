@@ -12,15 +12,7 @@
             FLSOriginCode="WAW"
             FLSOriginName="Warsaw"
             FLSDestinationCode="LHR"
-            FLSDestinationName="London Heathrow"
-            FLSStartDate="2018-11-15"
-            FLSEndDate="2018-11-15"
-
-            FLSResultCount="20"
-            FLSRoutesFound="193"
-            FLSBranchCount="4330"
-            FLSTargetCount="17178"
-            FLSRecordCount="5765271"
+      
     />
 
     <FlightDetails TotalFlightTime="PT3H35M"

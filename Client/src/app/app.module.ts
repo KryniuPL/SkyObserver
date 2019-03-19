@@ -10,8 +10,8 @@ import { FooterComponent } from './layout/footer/footer.component';
 import { HomePageComponent } from './pages/home-page/home-page.component';
 import { SearchPanelComponent } from './layout/search-panel/search-panel.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatAutocompleteModule, MatInputModule, MatNativeDateModule, MAT_DATE_LOCALE} from '@angular/material';
-import { MatFormFieldModule} from '@angular/material/form-field';
+import { MatAutocompleteModule, MatInputModule, MatNativeDateModule, MAT_DATE_LOCALE } from '@angular/material';
+import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
 import { MatListModule } from '@angular/material/list';
@@ -23,11 +23,11 @@ import { HttpClientModule } from '@angular/common/http';
 import { ExploreMapComponent } from './layout/explore-map/explore-map.component';
 import { AgmCoreModule } from '@agm/core';
 import { FlightsService } from './services/flights-service/flights.service';
-import {MatCheckboxModule} from '@angular/material/checkbox';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 import { ResultComponent } from './layout/result/result.component';
 import { NgxSpinnerModule } from 'ngx-spinner';
-import {MatStepperModule} from '@angular/material/stepper';
-import {MatExpansionModule} from '@angular/material/expansion';
+import { MatStepperModule } from '@angular/material/stepper';
+import { MatExpansionModule } from '@angular/material/expansion';
 import { DataService } from './services/data-service/data.service';
 
 @NgModule({
@@ -67,18 +67,18 @@ import { DataService } from './services/data-service/data.service';
     BrowserModule,
     AppRoutingModule
   ],
-  schemas: [ NO_ERRORS_SCHEMA ],
+  schemas: [NO_ERRORS_SCHEMA],
   providers: [
     DataService,
     AirportsService,
     FlightsService,
-    { 
-      provide: MAT_DATE_LOCALE, useValue: 'en-GB' 
+    {
+      provide: MAT_DATE_LOCALE, useValue: 'en-GB'
     },
 
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { 
+export class AppModule {
 
 }
